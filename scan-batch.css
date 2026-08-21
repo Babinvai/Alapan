@@ -471,8 +471,8 @@ p { margin-bottom: 15px; }
 /* 4. Increases the height of the image wrapper */
 .premium-image-wrapper {
     position: relative;
-    width: 100%;
-    height: 550px; /* Increased from 450px for a more premium, taller look */
+    width: 90%;
+    height: 480px; /* Increased from 450px for a more premium, taller look */
     background: var(--soft-cream);
     border-radius: 12px;
     display: flex;
