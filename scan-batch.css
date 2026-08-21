@@ -786,7 +786,7 @@ p { margin-bottom: 15px; }
     
     /* STEP 1: Reduce the gap between header and hero section */
     .premium-scan-hero { 
-        padding-top: 30px !important; /* Reduced from 100px. Decrease this number if you want it even tighter! */
+        padding-top: 10px !important; /* Reduced from 100px. Decrease this number if you want it even tighter! */
     }
 
 }
