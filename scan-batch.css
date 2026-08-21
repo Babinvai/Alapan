@@ -798,13 +798,21 @@ p { margin-bottom: 15px; }
     .footer-grid {
         grid-template-columns: 1fr 1fr !important;
         text-align: center !important;
-        gap: 30px 10px !important;
+        gap: 30px 20px !important;
         margin-bottom: 30px !important;
     }
     
     .footer-grid > div:nth-child(1),
     .footer-grid > div:nth-child(4) {
         grid-column: 1 / -1 !important;
+    }
+    
+    .footer-grid > div:nth-child(2) {
+        justify-self: end !important;
+    }
+    
+    .footer-grid > div:nth-child(3) {
+        justify-self: start !important;
     }
     
     .brand-logo-img-footer {
