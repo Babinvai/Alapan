@@ -541,6 +541,31 @@ p { margin-bottom: 15px; }
         padding: 20px; 
         box-shadow: 0 10px 20px rgba(0,0,0,0.1); 
     }
+
+    /* =========================================================
+   MOBILE HEADER FIX (Add inside your max-width: 768px media query)
+========================================================= */
+
+    .header-container {
+        padding: 0 15px; /* Reduces the side padding to give elements more room */
+        width: 100%;
+        justify-content: space-between;
+    }
+
+    .brand-logo {
+        height: 35px; /* Slightly scales down the logo to save horizontal space */
+    }
+
+    .header-actions {
+        gap: 12px; /* Pulls the button, cart, and hamburger closer together */
+    }
+
+    /* Scales down the header button specifically for mobile so it doesn't push the screen out */
+    .header-actions .btn {
+        padding: 6px 12px;
+        font-size: 0.8rem;
+        min-height: auto;
+    }
     
     .main-nav.active { display: block; }
     .main-nav ul { flex-direction: column; text-align: center; gap: 15px; }
