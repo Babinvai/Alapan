@@ -234,7 +234,7 @@ p { margin-bottom: 15px; }
 .accordion-icon::before { top: 9px; left: 0; width: 20px; height: 2px; }
 .accordion-icon::after { top: 0; left: 9px; width: 2px; height: 20px; }
 .accordion-item.open .accordion-icon::after { transform: rotate(90deg); }
-.accordion-content { max-height: 0; overflow: hidden; transition: max-height 0.4s ease-in-out; }
+.accordion-content { display: block; max-height: 0; padding: 0; overflow: hidden; transition: max-height 0.4s ease-in-out; }
 .accordion-item.open .accordion-content { max-height: 500px; }
 .accordion-content p { padding-top: 5px; padding-bottom: 25px; margin: 0; color: rgba(33, 73, 56, 0.7); line-height: 1.6; }
 
@@ -786,3 +786,6 @@ p { margin-bottom: 15px; }
     .social-icons { justify-content: center; }
     .footer-logo { margin: 0 auto 20px; }
 }
+
+
+
