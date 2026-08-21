@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Story - Ghosh Dhara</title>
+    
+    <!-- Google Fonts: Playfair Display (Serif) & Inter (Sans-serif) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="style.css"> <!-- Your main styles for header/footer/cart -->
+    <link rel="stylesheet" href="ourstory.css"> <!-- Specific styles for this page -->
+</head>
+<body>
+
+    <!-- ========================================================= -->
+    <!-- HEADER (Sticky with scroll effect)                        -->
+    <!-- ========================================================= -->
+      <!-- HEADER -->
+  <header>
+    <!-- ========================================================= -->
+    <!-- 1. MOBILE HEADER (Clean Layout: Cart, Logo, Menu)         -->
+    <!-- ========================================================= -->
+    <div class="mobile-header-layout">
+        
+        <!-- LEFT: Cart Icon -->
+        <div class="mobile-header-left">
+            <!-- Note: Removed 'cart-icon-btn' here so JS only updates the badge number, keeping the SVG safe -->
+            <a href="#" class="mobile-cart-btn" onclick="window.openCart(); return false;" aria-label="Open Cart">
+                <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="#174B37" stroke-width="1.5">
+                    <circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle>
+                    <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                </svg>
+                <!-- This span is targeted by your JS to update just the number -->
+                <span class="cart-count">0</span>
+            </a>
+        </div>
+
+        <!-- CENTER: Brand Logo -->
+        <div class="mobile-header-center">
+            <a href="index.html" class="logo">
+                <img src="Logo.png" alt="Ghosh Dhara Logo" class="brand-logo-img">
+            </a>
+        </div>
+
+        <!-- RIGHT: Hamburger Menu -->
+        <div class="mobile-header-right">
+            <button id="mobileMenuBtn" class="hamburger-btn" aria-label="Open Menu">
+                <svg viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="#B86745" stroke-width="2">
+                    <path d="M3 12h18M3 6h18M3 18h18"></path>
+                </svg>
+            </button>
+        </div>
+    </div>
+
+    <!-- ========================================================= -->
+    <!-- 2. DESKTOP HEADER (Automatically hidden on mobile via CSS)-->
+    <!-- ========================================================= -->
+    <div class="container header-inner desktop-nav-only">
+        
+        <!-- Desktop Logo -->
+        <a href="index.html" class="logo">
+            <img src="Logo.png" alt="Ghosh Family Ghee Logo" class="brand-logo-img">
+        </a>
+        
+        <!-- Desktop Nav -->
+        <nav class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="shop.html">Shop</a>
+            <a href="story.html">Our Story</a>
+            <a href="traceability.html">Quality</a>
+            <a href="recipes.html">Recipes</a>
+            <a href="lab-report.html" style="color: #D35400; font-weight: 700;">Lab Report</a>
+            <a href="contact.html">Contact</a>
+        </nav>
+        
+        <!-- Desktop Utilities: Scan, Account Login & Cart -->
+        <!-- Desktop Utilities: Scan, Cart & Account Login -->
+        <div style="display: flex; align-items: center; gap: 20px;">
+            
+            <a href="scan.html" class="header-scan-btn">🔍 Scan Batch</a>
+            
+            <!-- Desktop Cart Icon (Moved BEFORE the account icon) -->
+            <a href="#" class="cart-icon-btn text-brand-green" onclick="window.openCart(); return false;" style="font-weight: bold; text-decoration: none;">🛒 (0)</a>
+            
+            <!-- PREMIUM ACCOUNT LOGIN ICON (Now at the absolute far right!) -->
+            <a href="login.html" class="header-account-btn" aria-label="Sign In or Register">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 24px; height: 24px;">
+                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                    <circle cx="12" cy="7" r="4"></circle>
+                </svg>
+            </a>
+            
+        </div>
+    </div>
+</header>
+
+
+<!-- ========================================================= -->
+<!-- 3. PREMIUM MOBILE SLIDE-OUT DRAWER                        -->
+<!-- ========================================================= -->
+<div id="mobileNavOverlay" class="mobile-nav-overlay"></div>
+<div id="mobileNavDrawer" class="mobile-nav-drawer">
+    
+    <!-- Drawer Header (Logo & Close Button) -->
+    <div class="mobile-nav-header">
+        <img src="Logo.png" alt="Ghosh Dhara" style="max-width: 80px;">
+        <button id="closeMobileNav" class="close-nav-btn">&times;</button>
+    </div>
+    
+    <!-- Animated Nav Links (Merged from your old mobile menu) -->
+    <ul class="mobile-nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="shop.html">Shop Ghee</a></li>
+        <li><a href="story.html">Our Story</a></li>
+        <li><a href="traceability.html">Quality & Traceability</a></li>
+        <li><a href="scan.html" style="color: #D9B12D;">🔍 Scan Your Batch</a></li>
+        <li><a href="recipes.html">Recipes</a></li>
+        <li><a href="lab-report.html">Lab Reports</a></li>
+        <li><a href="faq.html">FAQ</a></li>
+        <li><a href="contact.html">Contact Us</a></li>
+        <li><a href="shipping-returns.html">Shipping & Returns</a></li>
+    </ul>
+
+    <!-- Beautiful Account Section at bottom of drawer -->
+    <div class="mobile-account-section">
+        <h3>My Account</h3>
+        <a href="login.html" class="btn-mobile-login">LOG IN</a>
+        <a href="register.html" class="btn-mobile-register">REGISTER</a>
+    </div>
+</div>
+
+    <!-- ========================================================= -->
+    <!-- MAIN STORY CONTENT                                        -->
+    <!-- ========================================================= -->
+    <main>
+        <!-- 1. HERO SECTION -->
+        <section class="story-hero">
+            <div class="story-hero-texture"></div>
+            <div class="container story-hero-inner">
+                <div class="story-hero-content reveal-on-scroll">
+                    <span class="eyebrow">OUR ROOTS</span>
+                    <h1>From Local Dairy Heritage to Your Kitchen.</h1>
+                    <p>Ghosh Dhara brings together a long-standing connection with dairy, traditional care in every batch, and the clarity modern families deserve.</p>
+                    <div class="hero-actions">
+                        <a href="#process" class="btn-primary-gold">Discover Our Process</a>
+                        <a href="traceability.html" class="link-secondary">Explore Batch Testing &rarr;</a>
+                    </div>
+                </div>
+                <div class="story-hero-image-wrapper reveal-on-scroll delay-1">
+                    <div class="sun-circle-motif"></div>
+                    <img src="Best.jpeg" alt="Traditional brass vessel representing Ghosh Dhara source image" class="hero-img">
+                    <div class="floating-card">
+                        <strong>Rooted in Krishnanagar</strong>
+                        <span>Tradition, made transparent.</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 2. FOUNDER & HERITAGE SECTION -->
+        <section class="founder-heritage">
+            <div class="container founder-grid">
+                <div class="founder-image-col reveal-on-scroll">
+                    <figure class="founder-frame">
+                        <img src="Daily.jpeg" alt="Ghosh Dhara rural dairy heritage">
+                        <figcaption>The Ghosh family’s connection with dairy began long before Ghosh Dhara.</figcaption>
+                    </figure>
+                </div>
+                <div class="founder-text-col reveal-on-scroll delay-1">
+                    <span class="eyebrow">OUR BEGINNING</span>
+                    <h2>A Heritage Built on Milk.</h2>
+                    <div class="body-copy">
+                        <p>For generations, the Ghosh name has been closely connected with milk and dairy in Krishnanagar. Growing up around the everyday details of good milk—its source, freshness, careful handling and familiar aroma—we came to value food that is made with patience and responsibility.</p>
+                        <p>As food supply chains became longer and less visible, finding genuinely trustworthy ghee became harder. Ghosh Dhara began with a simple intention: to bring traditional ghee to modern homes with clear sourcing, careful handling and batch-level accountability.</p>
+                    </div>
+                    <div class="highlight-callout">
+                        <p>Our promise is simple: honour traditional preparation while following disciplined quality practices.</p>
+                        <span class="signature">&mdash; Alapan Ghosh, Ghosh Dhara</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. ROOTED IN [REGION] PANEL -->
+        <section class="rooted-panel">
+            <div class="courtyard-texture"></div>
+            <div class="container rooted-inner reveal-on-scroll">
+                <div class="rooted-header">
+                    <span class="eyebrow">WHERE WE COME FROM</span>
+                    <h2>Rooted in Krishnanagar.</h2>
+                    <p>Our story begins close to home. We believe good ghee starts with respect for the people, practices and local knowledge behind dairy. By building direct, responsible relationships with local producers, we work towards consistent quality and greater transparency in every jar.</p>
+                </div>
+                <div class="rooted-values-grid">
+                    <div class="value-point">
+                        <div class="icon-brass-pot">
+                            <svg viewBox="0 0 24 24" width="32" height="32" fill="none" stroke="#D9B12D" stroke-width="1.5"><path d="M17 10c0 3.866-2.239 7-5 7s-5-3.134-5-7V5h10v5zM7 5a5 5 0 0110 0M12 17v4m-3 0h6"/></svg>
+                        </div>
+                        <h4>Local Relationships</h4>
+                        <p>Closer connections with the people behind the dairy.</p>
+                    </div>
+                    <div class="value-point">
+                        <div class="icon-brass-pot">
+                            <svg viewBox="0 0 24 24" width="32" height="32" fill="none" stroke="#D9B12D" stroke-width="1.5"><path d="M9 12l2 2 4-4M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                        </div>
+                        <h4>Careful Selection</h4>
+                        <p>A focus on ghee that meets our quality expectations.</p>
+                    </div>
+                    <div class="value-point">
+                        <div class="icon-brass-pot">
+                            <svg viewBox="0 0 24 24" width="32" height="32" fill="none" stroke="#D9B12D" stroke-width="1.5"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/></svg>
+                        </div>
+                        <h4>Clear Accountability</h4>
+                        <p>Batch records and testing built into the way we work.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. PROCESS SECTION -->
+        <section id="process" class="process-section">
+            <div class="container reveal-on-scroll">
+                <!-- Add the class directly to your heading -->
+<h2 class="process-main-heading">From source to spoon, with care at every step.</h2>
+                <div class="process-flow">
+                    <div class="process-step">
+                        <div class="step-dot">1</div>
+                        <h4>Local Dairy Network</h4>
+                        <p>We begin with carefully selected dairy sources from our local network.</p>
+                    </div>
+                    <div class="process-connector"></div>
+                    <div class="process-step">
+                        <div class="step-dot">2</div>
+                        <h4>Traditional Preparation</h4>
+                        <p>Ghee is prepared with patience to develop its familiar rich aroma and taste.</p>
+                    </div>
+                    <div class="process-connector"></div>
+                    <div class="process-step">
+                        <div class="step-dot">3</div>
+                        <h4>Quality Check</h4>
+                        <p>Each batch follows a documented quality and handling process.</p>
+                    </div>
+                    <div class="process-connector"></div>
+                    <div class="process-step">
+                        <div class="step-dot">4</div>
+                        <h4>Careful Packing</h4>
+                        <p>Packed securely to protect freshness, flavour and traceability.</p>
+                    </div>
+                    <div class="process-connector"></div>
+                    <div class="process-step">
+                        <div class="step-dot">5</div>
+                        <h4>Your Kitchen</h4>
+                        <p>Delivered for the everyday meals and celebrations that matter.</p>
+                    </div>
+                </div>
+                
+                <div class="process-imagery">
+                    <img src="Milk.jpeg" alt="Dairy sourcing">
+                    <img src="Making.jpeg" alt="Ghee preparation">
+                    <img src="Food.jpeg" alt="Warm cooked food with ghee">
+                </div>
+            </div>
+        </section>
+
+        <!-- 5. OUR VALUES SECTION -->
+        <section class="values-section">
+            <div class="container">
+                <!-- Add the class directly to your heading -->
+<h2 class="guides-main-heading">What guides Ghosh Dhara.</h2>
+                <div class="values-grid">
+                    <article class="story-card bg-earthy-beige reveal-on-scroll">
+                        <div class="card-icon">✦</div>
+                        <h3>Tradition with Purpose</h3>
+                        <p>We respect the flavours and practices that make traditional ghee feel familiar—while keeping the process clear and responsible.</p>
+                    </article>
+                    <article class="story-card bg-ivory reveal-on-scroll delay-1">
+                        <div class="card-icon">✦</div>
+                        <h3>Trust You Can Check</h3>
+                        <p>Trust should never depend only on words. That is why batch information and quality reporting are part of our customer experience.</p>
+                    </article>
+                    <article class="story-card bg-clay-tint reveal-on-scroll delay-2">
+                        <div class="card-icon">✦</div>
+                        <h3>Made for Real Homes</h3>
+                        <p>Ghosh Dhara is for dal, roti, khichdi, festive sweets and every small meal that becomes special with a spoonful of ghee.</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+       <!-- 6. TIMELINE SECTION -->
+    <section class="timeline-section">
+        <div class="container">
+           <!-- ========================================================= -->
+<!-- JOURNEY SECTION HEADER                                    -->
+<!-- ========================================================= -->
+<div class="journey-header">
+    <h2>Our Journey</h2>
+    <p>A local heritage, shaped into a more transparent way to bring traditional ghee home.</p>
+</div>
+
+<!-- Your timeline code continues down here... -->
+            
+            <div class="timeline-container">
+                <div class="timeline-line"></div>
+
+                <!-- Block 1 -->
+                <div class="timeline-block reveal-on-scroll">
+                    <div class="timeline-dot"></div>
+                    
+                    <!-- SKETCH 1 (Empty space is on the Right) -->
+                    <div class="timeline-sketch sketch-1 sketch-right"></div>
+                    
+                    <div class="timeline-content left-align">
+                        <span class="timeline-date">Our Heritage</span>
+                        <h3>Foundation in Dairy</h3>
+                        <p>For generations, the Ghosh family has been connected with dairy farming in Krishnanagar, caring for cattle and producing fresh milk using traditional village practices.</p>
+                    </div>
+                </div>
+
+                <!-- Block 2 -->
+                <div class="timeline-block reveal-on-scroll">
+                    <div class="timeline-dot"></div>
+                    
+                    <!-- SKETCH 2 (Empty space is on the Left) -->
+                    <div class="timeline-sketch sketch-2 sketch-left"></div>
+                    
+                    <div class="timeline-content right-align">
+                        <span class="timeline-date">2026</span>
+                        <h3>Ghosh Dhara Takes Shape</h3>
+                        <p>Traditional knowledge and a commitment to clear quality practices come together under the Ghosh Dhara name.</p>
+                    </div>
+                </div>
+
+                <!-- Block 3 -->
+                <div class="timeline-block reveal-on-scroll">
+                    <div class="timeline-dot"></div>
+                    
+                    <!-- SKETCH 3 (Empty space is on the Right) -->
+                    <div class="timeline-sketch sketch-3 sketch-right"></div>
+                    
+                    <div class="timeline-content left-align">
+                        <span class="timeline-date">Today</span>
+                        <h3>Ghee with Greater Clarity</h3>
+                        <p>We are building a brand where customers can understand what they buy, scan their batch and enjoy ghee with confidence.</p>
+                    </div>
+                </div>
+
+                <!-- Block 4 -->
+                <div class="timeline-block reveal-on-scroll">
+                    <div class="timeline-dot"></div>
+                    
+                    <!-- SKETCH 4 (Empty space is on the Left) -->
+                    <div class="timeline-sketch sketch-4 sketch-left"></div>
+                    
+                    <div class="timeline-content right-align">
+                        <span class="timeline-date">Looking Forward</span>
+                        <h3>Growing Without Losing Our Roots</h3>
+                        <p>As we reach more homes, we remain committed to responsible sourcing, honest communication and the local values that shaped us.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+        <!-- 7. TRUST AND TRANSPARENCY -->
+        <section class="trust-transparency">
+            <div class="container trust-grid">
+                <div class="trust-text reveal-on-scroll">
+                    <h2>Heritage earns attention. Transparency earns trust.</h2>
+                    <p>Every Ghosh Dhara batch is part of a process designed for clarity—from documented sourcing and careful packing to batch information customers can access.</p>
+                    
+                    <ul class="proof-points">
+                        <li>✓ Batch-linked information</li>
+                        <li>✓ Quality-focused handling</li>
+                        <li>✓ Customer-first support</li>
+                    </ul>
+
+                    <div class="trust-actions">
+                        <a href="scan.html" class="btn-primary-gold">Scan Your Batch</a>
+                        <a href="lab-report.html" class="btn-outline-cream">View Lab Reports</a>
+                    </div>
+                </div>
+                <div class="trust-image reveal-on-scroll delay-1">
+                    <img src="Lab.jpeg" alt="Ghosh Dhara ghee quality check">
+                </div>
+            </div>
+        </section>
+
+        <!-- 8. FINAL CALL TO ACTION -->
+        <section class="final-cta">
+            <div class="field-lines-texture"></div>
+            <div class="container cta-inner reveal-on-scroll">
+                <div class="cta-content">
+                    <h2>Bring a little more warmth to your table.</h2>
+                    <p>Explore traditional ghee made with local roots, thoughtful care and a commitment to trust.</p>
+                    <div class="cta-actions">
+                        <a href="shop.html" class="btn-primary-dark">Shop Ghosh Dhara Ghee</a>
+                        <a href="recipes.html" class="link-terracotta">Explore Recipes &rarr;</a>
+                    </div>
+                </div>
+                <div class="cta-image">
+                    <img src="Mouth watering.jpeg" alt="Spoon pouring ghee">
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- ========================================================= -->
+  <!-- ========================================================= -->
+    <!-- FOOTER                                                    -->
+    <!-- ========================================================= -->
+   <!-- ========================================================= -->
+    <!-- UNIFIED FOOTER WITH GOLD-ADJUSTED 2D LANDSCAPE            -->
+    <!-- ========================================================= -->
+    <footer class="main-footer">
+        
+        <!-- 2D Ground Landscape with Yellow/Gold Adjustments -->
+        <div class="footer-landscape">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 150" preserveAspectRatio="none" style="width: 100%; height: 100%; display: block;">
+                <!-- Warm Golden-Olive Layer -->
+                <path d="M0,150 L0,100 Q150,70 300,95 T600,65 T900,105 T1200,55 L1200,150 Z" fill="#7A6822" opacity="0.85"></path>
+                <!-- Rich Deep Gold/Terracotta Transition Layer -->
+                <path d="M0,150 L0,125 Q200,95 400,115 T800,85 T1200,115 L1200,150 Z" fill="#5B4A15"></path>
+                <!-- Deep Earthy Base Silhouette -->
+                <path d="M0,150 L0,140 Q250,110 500,135 T1000,120 T1200,140 L1200,150 Z" fill="#382C0C"></path>
+                <!-- Subtle Grass Tufts -->
+                <g fill="#382C0C">
+                    <path d="M120,135 Q123,120 126,135 Z"></path>
+                    <path d="M125,137 Q128,115 130,137 Z"></path>
+                    <path d="M550,130 Q553,115 556,130 Z"></path>
+                    <path d="M555,132 Q560,110 562,132 Z"></path>
+                    <path d="M980,125 Q983,110 986,125 Z"></path>
+                    <path d="M985,127 Q990,105 992,127 Z"></path>
+                </g>
+            </svg>
+        </div>
+
+        <!-- Top Grid Section -->
+        <div class="container footer-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px; position: relative; z-index: 2;">
+            <div>
+                 <a href="index.html">
+                    <!-- You can use the same logo, or a white/light version if your footer is dark -->
+                    <img src="Logo 3.png" alt="Ghosh Family Ghee Logo" class="brand-logo-img-footer">
+                </a>
+                <p style="color: #FAF8F2; opacity: 0.9; font-size: 0.9rem; margin-top: 15px;">Traditional Ghee. Tested with Trust.</p>
+                <p style="color: #D9B12D; font-size: 0.8rem; margin-top: 10px; font-weight: 600;">FSSAI Lic. No. 12345</p>
+            </div>
+            
+            <div>
+                <h4 style="color: #D9B12D; margin-bottom: 15px; font-family: 'Playfair Display', serif;">Explore</h4>
+                <ul style="list-style: none; padding: 0; line-height: 2;">
+                    <li><a href="index.html" style="color: #FAF8F2; text-decoration: none; opacity: 0.8;">Home</a></li>
+                    <li><a href="shop.html" style="color: #FAF8F2; text-decoration: none; opacity: 0.8;">Shop</a></li>
+                    <li><a href="story.html" style="color: #FAF8F2; text-decoration: none; opacity: 0.8;">Our Story</a></li>
+                    <li><a href="traceability.html" style="color: #FAF8F2; text-decoration: none; opacity: 0.8;">Quality</a></li>
+                    <li><a href="recipes.html" style="color: #FAF8F2; text-decoration: none; opacity: 0.8;">Recipes</a></li>
+                </ul>
+            </div>
+            
+            <div>
+                <h4 style="color: #D9B12D; margin-bottom: 15px; font-family: 'Playfair Display', serif;">Customer Care</h4>
+                <ul style="list-style: none; padding: 0; line-height: 2;">
+                    <li><a href="scan.html" style="color: #FAF8F2; text-decoration: none; opacity: 0.8;">Scan Your Batch</a></li>
+                    <li><a href="contact.html" style="color: #FAF8F2; text-decoration: none; opacity: 0.8;">Contact Us</a></li>
+                    <li><a href="faq.html" style="color: #FAF8F2; text-decoration: none; opacity: 0.8;">FAQ</a></li>
+                    <li><a href="shipping-returns.html" style="color: #FAF8F2; text-decoration: none; opacity: 0.8;">Shipping & Returns</a></li>
+                </ul>
+            </div>
+            
+            <div>
+                <h4 style="color: #D9B12D; margin-bottom: 15px; font-family: 'Playfair Display', serif;">Contact</h4>
+                <ul>
+                    <li>WhatsApp: 8653890554</li>
+                    <li>Email: alapanghosh3@gmail.com</li>
+                    <li>Bergoom, Krishnanagar</li>
+                </ul>
+                <!-- Social Media Icons -->
+                <div class="social-icons">
+                    <!-- Facebook -->
+                    <a href="#" aria-label="Facebook">
+                        <svg viewBox="0 0 24 24"><path d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z"/></svg>
+                    </a>
+                    <!-- Instagram -->
+                    <a href="#" aria-label="Instagram">
+                        <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+                    </a>
+                    <!-- YouTube -->
+                    <a href="#" aria-label="YouTube">
+                        <svg viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.5 12 3.5 12 3.5s-7.505 0-9.377.55a3.016 3.016 0 0 0-2.122 2.136C0 8.07 0 12 0 12s0 3.93.501 5.814a3.016 3.016 0 0 0 2.122 2.136c1.872.55 9.377.55 9.377.55s7.505 0 9.377-.55a3.016 3.016 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Integrated Copyright Row -->
+        <div class="container footer-copyright">
+            <span class="copyright-text">2026 GHOSH DHARA. ALL RIGHTS RESERVED.</span>
+        </div>
+    </footer>
+
+
+
+
+     <!-- TOAST SUCCESS MESSAGE -->
+    <div id="cartToast" class="toast-notification">✅ Product successfully added to cart!</div>
+
+    <!-- SLIDE-OUT CART DRAWER -->
+    <div class="cart-overlay" id="cartOverlay"></div>
+    <div class="cart-drawer" id="cartDrawer">
+        <div class="cart-header">
+            <h2 class="font-serif" style="font-size: 1.5rem;">Your Cart</h2>
+            <button class="close-cart" id="closeCart">×</button>
+        </div>
+        <div class="cart-items">
+            <!-- Empty state -->
+            <div style="text-align: center; color: #888; margin-top: 50px;">
+                <p>Your cart is currently empty.</p>
+                <a href="shop.html" class="btn-primary" style="margin-top: 20px;">Continue Shopping</a>
+            </div>
+            
+            <!-- Example of a populated cart item (Hidden for now) -->
+            <!-- 
+            <div style="display: flex; gap: 15px; border-bottom: 1px solid #eee; padding-bottom: 15px; margin-bottom: 15px;">
+                <div style="width: 80px; height: 80px; background: #f9f9f9;"></div>
+                <div style="flex: 1;">
+                    <h4 class="font-serif">[Brand Name] Traditional Ghee</h4>
+                    <p style="font-size: 0.8rem; color: #666;">500g Jar</p>
+                    <p style="font-weight: bold; color: var(--brand-gold);">₹[Price]</p>
+                </div>
+            </div> 
+            -->
+        </div>
+        <div class="cart-footer">
+            <div style="display: flex; justify-content: space-between; margin-bottom: 15px; font-weight: bold; font-size: 1.2rem;">
+                <span>Subtotal</span>
+                <span>₹0.00</span>
+            </div>
+            <p style="font-size: 0.8rem; color: #666; margin-bottom: 15px;">Shipping and taxes calculated at checkout.</p>
+            <button class="checkout-btn">Proceed to Secure Checkout</button>
+            <div style="text-align: center; margin-top: 10px; font-size: 0.8rem; opacity: 0.8;">
+                💳 Cards, UPI & Net Banking Accepted
+            </div>
+        </div>
+    </div>
+
+    <!-- Include Javascript -->
+    <script src="script.js"></script> <!-- Your existing JS -->
+    <script src="ourstory.js"></script> <!-- Specific animations for this page -->
+</body>
+</html>

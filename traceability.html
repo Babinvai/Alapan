@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quality & Traceability - Ghosh Dhara</title>
+    
+    <!-- Google Fonts: Playfair Display (Serif) & Inter (Sans-serif) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="style.css"> <!-- Main global styles -->
+    <link rel="stylesheet" href="quality.css"> <!-- Specific styles for this page -->
+</head>
+<body>
+
+    <!-- ========================================================= -->
+    <!-- HEADER (Sticky)                                           -->
+   <!-- HEADER -->
+  <header>
+    <!-- ========================================================= -->
+    <!-- 1. MOBILE HEADER (Clean Layout: Cart, Logo, Menu)         -->
+    <!-- ========================================================= -->
+    <div class="mobile-header-layout">
+        
+        <!-- LEFT: Cart Icon -->
+        <div class="mobile-header-left">
+            <!-- Note: Removed 'cart-icon-btn' here so JS only updates the badge number, keeping the SVG safe -->
+            <a href="#" class="mobile-cart-btn" onclick="window.openCart(); return false;" aria-label="Open Cart">
+                <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="#174B37" stroke-width="1.5">
+                    <circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle>
+                    <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                </svg>
+                <!-- This span is targeted by your JS to update just the number -->
+                <span class="cart-count">0</span>
+            </a>
+        </div>
+
+        <!-- CENTER: Brand Logo -->
+        <div class="mobile-header-center">
+            <a href="index.html" class="logo">
+                <img src="Logo.png" alt="Ghosh Dhara Logo" class="brand-logo-img">
+            </a>
+        </div>
+
+        <!-- RIGHT: Hamburger Menu -->
+        <div class="mobile-header-right">
+            <button id="mobileMenuBtn" class="hamburger-btn" aria-label="Open Menu">
+                <svg viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="#B86745" stroke-width="2">
+                    <path d="M3 12h18M3 6h18M3 18h18"></path>
+                </svg>
+            </button>
+        </div>
+    </div>
+
+    <!-- ========================================================= -->
+    <!-- 2. DESKTOP HEADER (Automatically hidden on mobile via CSS)-->
+    <!-- ========================================================= -->
+    <div class="container header-inner desktop-nav-only">
+        
+        <!-- Desktop Logo -->
+        <a href="index.html" class="logo">
+            <img src="Logo.png" alt="Ghosh Family Ghee Logo" class="brand-logo-img">
+        </a>
+        
+        <!-- Desktop Nav -->
+        <nav class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="shop.html">Shop</a>
+            <a href="story.html">Our Story</a>
+            <a href="traceability.html">Quality</a>
+            <a href="recipes.html">Recipes</a>
+            <a href="lab-report.html" style="color: #D35400; font-weight: 700;">Lab Report</a>
+            <a href="contact.html">Contact</a>
+        </nav>
+        
+        <!-- Desktop Utilities: Scan, Account Login & Cart -->
+        <!-- Desktop Utilities: Scan, Cart & Account Login -->
+        <div style="display: flex; align-items: center; gap: 20px;">
+            
+            <a href="scan.html" class="header-scan-btn">🔍 Scan Batch</a>
+            
+            <!-- Desktop Cart Icon (Moved BEFORE the account icon) -->
+            <a href="#" class="cart-icon-btn text-brand-green" onclick="window.openCart(); return false;" style="font-weight: bold; text-decoration: none;">🛒 (0)</a>
+            
+            <!-- PREMIUM ACCOUNT LOGIN ICON (Now at the absolute far right!) -->
+            <a href="login.html" class="header-account-btn" aria-label="Sign In or Register">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width: 24px; height: 24px;">
+                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                    <circle cx="12" cy="7" r="4"></circle>
+                </svg>
+            </a>
+            
+        </div>
+    </div>
+</header>
+
+<!-- ========================================================= -->
+<!-- 3. PREMIUM MOBILE SLIDE-OUT DRAWER                        -->
+<!-- ========================================================= -->
+<div id="mobileNavOverlay" class="mobile-nav-overlay"></div>
+<div id="mobileNavDrawer" class="mobile-nav-drawer">
+    
+    <!-- Drawer Header (Logo & Close Button) -->
+    <div class="mobile-nav-header">
+        <img src="Logo.png" alt="Ghosh Dhara" style="max-width: 80px;">
+        <button id="closeMobileNav" class="close-nav-btn">&times;</button>
+    </div>
+    
+    <!-- Animated Nav Links (Merged from your old mobile menu) -->
+    <ul class="mobile-nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="shop.html">Shop Ghee</a></li>
+        <li><a href="story.html">Our Story</a></li>
+        <li><a href="traceability.html">Quality & Traceability</a></li>
+        <li><a href="scan.html" style="color: #D9B12D;">🔍 Scan Your Batch</a></li>
+        <li><a href="recipes.html">Recipes</a></li>
+        <li><a href="lab-report.html">Lab Reports</a></li>
+        <li><a href="faq.html">FAQ</a></li>
+        <li><a href="contact.html">Contact Us</a></li>
+        <li><a href="shipping-returns.html">Shipping & Returns</a></li>
+    </ul>
+
+    <!-- Beautiful Account Section at bottom of drawer -->
+    <div class="mobile-account-section">
+        <h3>My Account</h3>
+        <a href="login.html" class="btn-mobile-login">LOG IN</a>
+        <a href="register.html" class="btn-mobile-register">REGISTER</a>
+    </div>
+</div>
+
+    <main>
+        <!-- ========================================================= -->
+        <!-- 1. HERO SECTION                                           -->
+        <!-- ========================================================= -->
+        <section class="quality-hero">
+            <div class="hero-bg-texture"></div>
+            <div class="container quality-hero-inner">
+                <div class="hero-content reveal-on-scroll">
+                    <span class="eyebrow">QUALITY YOU CAN SEE</span>
+                    <h1>Trust Should Be Visible.</h1>
+                    <p>Ghosh Dhara combines traditional care with clear batch-level information—so you can understand what is in your jar and where to find its quality details.</p>
+                    <div class="hero-actions">
+                        <a href="#batch-scan" class="btn-primary-gold">Scan Your Batch</a>
+                        <a href="#process" class="btn-outline-dark">Explore Our Process</a>
+                    </div>
+                </div>
+                <div class="hero-image-wrapper reveal-on-scroll delay-1">
+                    <img src="Test.jpeg" alt="Ghosh Dhara sealed jar and quality check" class="hero-img">
+                    <div class="floating-info-card">
+                        <span class="card-label">BATCH-LED CLARITY</span>
+                        <p>A code on every jar connects you to its available product information.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========================================================= -->
+        <!-- 2. TRUST STATEMENT STRIP                                  -->
+        <!-- ========================================================= -->
+        <div class="trust-strip">
+            <div class="container trust-strip-inner reveal-on-scroll">
+                <h3>Good food deserves more than a promise. It deserves a process you can understand.</h3>
+                <div class="trust-markers">
+                    <div class="marker">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                        <span>Carefully handled</span>
+                    </div>
+                    <div class="marker">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/></svg>
+                        <span>Clearly labelled</span>
+                    </div>
+                    <div class="marker">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"/></svg>
+                        <span>Batch connected</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        
+
+        <!-- ========================================================= -->
+        <!-- 3. QUALITY COMMITMENTS SECTION                            -->
+        <!-- ========================================================= -->
+        <section id="process" class="commitments-section">
+            <div class="container">
+                <div class="section-header reveal-on-scroll">
+                    <h2>What goes into earning your trust.</h2>
+                    <p>From preparation to packing, every stage should protect the flavour, integrity and traceability of the ghee you bring home.</p>
+                </div>
+                
+                <div class="commitments-grid">
+                    <div class="commitment-card reveal-on-scroll">
+                        <div class="card-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M17 10c0 3.866-2.239 7-5 7s-5-3.134-5-7V5h10v5zM7 5a5 5 0 0110 0M12 17v4m-3 0h6"/></svg>
+                        </div>
+                        <h3>Traditional Preparation</h3>
+                        <p>Our approach respects the familiar methods that give traditional ghee its rich aroma, colour and character—without shortcuts that compromise the product.</p>
+                    </div>
+                    
+                    <div class="commitment-card reveal-on-scroll delay-1">
+                        <div class="card-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M7 7h10v10H7z"/><path d="M7 3v4M17 3v4M3 7h4M17 7h4M3 17h4M17 17h4M7 17v4M17 17v4"/></svg>
+                        </div>
+                        <h3>Batch Numbering</h3>
+                        <p>Every production run is assigned a unique batch code, helping connect the jar in your kitchen to its available production and quality information.</p>
+                    </div>
+                    
+                    <div class="commitment-card reveal-on-scroll">
+                        <div class="card-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>
+                        </div>
+                        <h3>Quality Review</h3>
+                        <p>Selected batches are reviewed through appropriate quality checks, including independent laboratory testing where applicable. Relevant verified reports are linked to the batch.</p>
+                    </div>
+                    
+                    <div class="commitment-card reveal-on-scroll delay-1">
+                        <div class="card-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10zM9 12l2 2 4-4"/></svg>
+                        </div>
+                        <h3>Tamper-Evident Packing</h3>
+                        <p>Each jar is securely sealed to help protect the product during storage and delivery, so it reaches your kitchen as intended.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========================================================= -->
+        <!-- 4. JOURNEY OF A JAR SECTION                               -->
+        <!-- ========================================================= -->
+        <section class="journey-section">
+            <div class="journey-bg-texture"></div>
+            <div class="container reveal-on-scroll">
+                <div class="section-header">
+                    <h2>The journey behind one jar.</h2>
+                    <p>A clear path from local dairy roots to your kitchen.</p>
+                </div>
+                
+                <div class="journey-timeline">
+                    <div class="journey-line"></div>
+                    
+                    <div class="journey-step">
+                        <div class="step-icon">1</div>
+                        <h4>Local Dairy Source</h4>
+                        <p>The journey begins with carefully selected dairy from our local network.</p>
+                    </div>
+                    <div class="journey-step">
+                        <div class="step-icon">2</div>
+                        <h4>Preparation</h4>
+                        <p>The ghee is prepared with attention to aroma, texture and traditional character.</p>
+                    </div>
+                    <div class="journey-step">
+                        <div class="step-icon">3</div>
+                        <h4>Batch Assignment</h4>
+                        <p>A unique batch code is created to identify the production run.</p>
+                    </div>
+                    <div class="journey-step">
+                        <div class="step-icon">4</div>
+                        <h4>Quality and Packing</h4>
+                        <p>The batch is reviewed, packed and sealed before it leaves for customers.</p>
+                    </div>
+                    <div class="journey-step">
+                        <div class="step-icon">5</div>
+                        <h4>Scan at Home</h4>
+                        <p>The code on your jar helps you access its available batch information.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========================================================= -->
+        <!-- 5. BATCH SCAN & LOOKUP SECTION                            -->
+        <!-- ========================================================= -->
+        <section id="batch-scan" class="batch-scan-section">
+            <div class="container batch-scan-inner reveal-on-scroll">
+                <div class="scan-panel">
+                    <div class="scan-header">
+                        <h2>Know your jar.</h2>
+                        <p>Scan the QR code on your Ghosh Dhara jar or enter the batch number printed on the label to view available product information.</p>
+                    </div>
+                    
+                    <form id="batchForm" class="batch-form" onsubmit="handleBatchLookup(event)">
+                        <label for="batchInput" class="visually-hidden">Enter Batch Number</label>
+                        <div class="input-group">
+                            <input type="text" id="batchInput" placeholder="Example: GD-YYMM-001" required aria-required="true">
+                            <button type="submit" class="btn-primary-dark">View Batch Details</button>
+                        </div>
+                        <span class="help-text">Your batch number is printed near the packing and best-before details.</span>
+                    </form>
+
+                    <!-- Feedback Container (Hidden by default) -->
+                    <div id="batchFeedback" class="batch-feedback" aria-live="polite">
+                        <!-- JS injects the response here -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- ========================================================= -->
+<!-- QUALITY PAGE MID-SECTION IMAGE (Unblended)                -->
+<!-- ========================================================= -->
+<section class="quality-image-divider">
+    <div class="container text-center">
+        <!-- Replace 'your-new-image.jpg' with your actual image file name! -->
+        <img src="Process.png" alt="Ghosh Dhara Quality Standard" class="standard-divider-img">
+    </div>
+</section>
+
+        <!-- ========================================================= -->
+        <!-- 6. UNDERSTANDING YOUR LABEL                               -->
+        <!-- ========================================================= -->
+        <section class="label-guide-section">
+            <div class="container reveal-on-scroll">
+                <div class="section-header text-center">
+                    <h2>Everything has its place on the label.</h2>
+                    <p>We make it easier to find the information that matters.</p>
+                </div>
+                
+                <div class="label-guide-grid">
+                    <div class="guide-image-col">
+                        <!-- Placeholder using an elegant jar image -->
+                        <img src="Quality.jpeg" alt="Ghosh Dhara jar label guide" class="jar-guide-img">
+                    </div>
+                    <!-- PREMIUM ALIGNED LIST -->
+                    <div class="guide-text-col premium-guide-list">
+                        
+                        <div class="guide-item">
+                            <span class="guide-number">01</span>
+                            <div class="guide-content">
+                                <h4>Batch Number</h4>
+                                <p>Identifies the production run for your jar.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="guide-item">
+                            <span class="guide-number">02</span>
+                            <div class="guide-content">
+                                <h4>Packed On & Best Before</h4>
+                                <p>Shows when the jar was packed and helps you enjoy the product at its best.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="guide-item">
+                            <span class="guide-number">03</span>
+                            <div class="guide-content">
+                                <h4>FSSAI Licence Number</h4>
+                                <p>Displayed only when the final verified number is available.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="guide-item">
+                            <span class="guide-number">04</span>
+                            <div class="guide-content">
+                                <h4>QR Code</h4>
+                                <p>Connects you to available batch information.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="guide-item">
+                            <span class="guide-number">05</span>
+                            <div class="guide-content">
+                                <h4>Tamper Seal</h4>
+                                <p>Check that the seal is intact before use.</p>
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========================================================= -->
+        <!-- 7. QUALITY REPORT PREVIEW                                 -->
+        <!-- ========================================================= -->
+        <section class="report-preview-section">
+            <div class="preview-texture"></div>
+            <div class="container preview-grid">
+                <div class="preview-text reveal-on-scroll">
+                    <h2>Reports should be easy to find.</h2>
+                    <p>Where a verified report is available for a batch, customers can view the relevant document directly through the batch lookup experience.</p>
+                    <div class="preview-actions">
+                        <a href="#batch-scan" class="btn-primary-gold">Scan Your Batch</a>
+                        <a href="lab-report.html" class="btn-outline-cream">Visit Lab Reports</a>
+                    </div>
+                </div>
+                
+                <div class="preview-card-wrapper reveal-on-scroll delay-1">
+                    <div class="sample-report-card">
+                        <div class="card-header">
+                            <span class="status">Verified Report Preview</span>
+                            <span class="status-sub">Available only for applicable batches</span>
+                        </div>
+                        <div class="card-body">
+                            <div class="data-row">
+                                <span class="label">Batch Code</span>
+                                <span class="value">[Sample Batch]</span>
+                            </div>
+                            <div class="data-row">
+                                <span class="label">Report Date</span>
+                                <span class="value">[Verification Date]</span>
+                            </div>
+                            <div class="data-row">
+                                <span class="label">Document Status</span>
+                                <span class="value success">✓ Verified</span>
+                            </div>
+                            <button class="btn-download-sample" disabled>[Upload verified report for this batch]</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========================================================= -->
+        <!-- 8. FAQ SECTION                                            -->
+        <!-- ========================================================= -->
+        <section class="faq-section">
+            <div class="container reveal-on-scroll">
+                <div class="section-header text-center">
+                    <h2>Questions, answered clearly.</h2>
+                </div>
+                
+                <div class="faq-accordion">
+                    <article class="faq-item">
+                        <button class="faq-question" aria-expanded="false">
+                            Why does every jar have a batch number?
+                            <span class="icon">+</span>
+                        </button>
+                        <div class="faq-answer">
+                            <p>A batch number helps identify a specific production run. It allows us to organise product information, packing details and available quality documentation more clearly.</p>
+                        </div>
+                    </article>
+                    
+                    <article class="faq-item">
+                        <button class="faq-question" aria-expanded="false">
+                            Where can I find my batch number?
+                            <span class="icon">+</span>
+                        </button>
+                        <div class="faq-answer">
+                            <p>You can find it on the product label near the packing date and best-before details.</p>
+                        </div>
+                    </article>
+                    
+                    <article class="faq-item">
+                        <button class="faq-question" aria-expanded="false">
+                            What should I check before opening my jar?
+                            <span class="icon">+</span>
+                        </button>
+                        <div class="faq-answer">
+                            <p>Please check that the outer packaging and tamper seal are intact. If anything appears damaged or unusual, contact us before use.</p>
+                        </div>
+                    </article>
+                    
+                    <article class="faq-item">
+                        <button class="faq-question" aria-expanded="false">
+                            Can I see a report for my batch?
+                            <span class="icon">+</span>
+                        </button>
+                        <div class="faq-answer">
+                            <p>Where a verified report is available, it can be accessed through the batch lookup page. If you need help locating information for your jar, contact our support team with the batch number.</p>
+                        </div>
+                    </article>
+
+                    <article class="faq-item">
+                        <button class="faq-question" aria-expanded="false">
+                            Why can colour, texture or aroma vary slightly?
+                            <span class="icon">+</span>
+                        </button>
+                        <div class="faq-answer">
+                            <p>Ghee is a natural dairy product, and small variations can occur between batches. We aim for consistency while respecting the natural character of traditionally prepared ghee.</p>
+                        </div>
+                    </article>
+
+                    <article class="faq-item">
+                        <button class="faq-question" aria-expanded="false">
+                            What if my batch number is not found?
+                            <span class="icon">+</span>
+                        </button>
+                        <div class="faq-answer">
+                            <p>Please double-check the number printed on your label. If it still does not appear, contact Ghosh Dhara on WhatsApp or email and share a photo of the label for assistance.</p>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========================================================= -->
+        <!-- 9. FINAL CALL TO ACTION                                   -->
+        <!-- ========================================================= -->
+        <section class="final-trust-cta">
+            <div class="field-lines-texture"></div>
+            <div class="container cta-inner reveal-on-scroll">
+                <div class="cta-content">
+                    <h2>Tradition you can enjoy. Information you can check.</h2>
+                    <p>Bring home ghee that stays connected to the care behind it.</p>
+                    <div class="cta-actions">
+                        <a href="shop.html" class="btn-primary-dark">Shop Ghosh Dhara Ghee</a>
+                        <a href="#batch-scan" class="btn-outline-clay">Scan Your Batch</a>
+                    </div>
+                </div>
+                <div class="cta-image">
+                    <img src="Tradition.jpeg" alt="Spoonful of golden ghee">
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- ========================================================= -->
+    <!-- FOOTER                                                    -->
+    <!-- ========================================================= -->
+   <!-- ========================================================= -->
+    <!-- UNIFIED FOOTER WITH GOLD-ADJUSTED 2D LANDSCAPE            -->
+    <!-- ========================================================= -->
+    <footer class="main-footer">
+        
+        <!-- 2D Ground Landscape with Yellow/Gold Adjustments -->
+        <div class="footer-landscape">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 150" preserveAspectRatio="none" style="width: 100%; height: 100%; display: block;">
+                <!-- Warm Golden-Olive Layer -->
+                <path d="M0,150 L0,100 Q150,70 300,95 T600,65 T900,105 T1200,55 L1200,150 Z" fill="#7A6822" opacity="0.85"></path>
+                <!-- Rich Deep Gold/Terracotta Transition Layer -->
+                <path d="M0,150 L0,125 Q200,95 400,115 T800,85 T1200,115 L1200,150 Z" fill="#5B4A15"></path>
+                <!-- Deep Earthy Base Silhouette -->
+                <path d="M0,150 L0,140 Q250,110 500,135 T1000,120 T1200,140 L1200,150 Z" fill="#382C0C"></path>
+                <!-- Subtle Grass Tufts -->
+                <g fill="#382C0C">
+                    <path d="M120,135 Q123,120 126,135 Z"></path>
+                    <path d="M125,137 Q128,115 130,137 Z"></path>
+                    <path d="M550,130 Q553,115 556,130 Z"></path>
+                    <path d="M555,132 Q560,110 562,132 Z"></path>
+                    <path d="M980,125 Q983,110 986,125 Z"></path>
+                    <path d="M985,127 Q990,105 992,127 Z"></path>
+                </g>
+            </svg>
+        </div>
+
+        <!-- Top Grid Section -->
+        <div class="container footer-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px; position: relative; z-index: 2;">
+            <div>
+                 <a href="index.html">
+                    <!-- You can use the same logo, or a white/light version if your footer is dark -->
+                    <img src="Logo 3.png" alt="Ghosh Family Ghee Logo" class="brand-logo-img-footer">
+                </a>
+                <p style="color: #FAF8F2; opacity: 0.9; font-size: 0.9rem; margin-top: 15px;">Traditional Ghee. Tested with Trust.</p>
+                <p style="color: #D9B12D; font-size: 0.8rem; margin-top: 10px; font-weight: 600;">FSSAI Lic. No. 12345</p>
+            </div>
+            
+            <div>
+                <h4 style="color: #D9B12D; margin-bottom: 15px; font-family: 'Playfair Display', serif;">Explore</h4>
+                <ul style="list-style: none; padding: 0; line-height: 2;">
+                    <li><a href="index.html" style="color: #FAF8F2; text-decoration: none; opacity: 0.8;">Home</a></li>
+                    <li><a href="shop.html" style="color: #FAF8F2; text-decoration: none; opacity: 0.8;">Shop</a></li>
+                    <li><a href="story.html" style="color: #FAF8F2; text-decoration: none; opacity: 0.8;">Our Story</a></li>
+                    <li><a href="traceability.html" style="color: #FAF8F2; text-decoration: none; opacity: 0.8;">Quality</a></li>
+                    <li><a href="recipes.html" style="color: #FAF8F2; text-decoration: none; opacity: 0.8;">Recipes</a></li>
+                </ul>
+            </div>
+            
+            <div>
+                <h4 style="color: #D9B12D; margin-bottom: 15px; font-family: 'Playfair Display', serif;">Customer Care</h4>
+                <ul style="list-style: none; padding: 0; line-height: 2;">
+                    <li><a href="scan.html" style="color: #FAF8F2; text-decoration: none; opacity: 0.8;">Scan Your Batch</a></li>
+                    <li><a href="contact.html" style="color: #FAF8F2; text-decoration: none; opacity: 0.8;">Contact Us</a></li>
+                    <li><a href="faq.html" style="color: #FAF8F2; text-decoration: none; opacity: 0.8;">FAQ</a></li>
+                    <li><a href="shipping-returns.html" style="color: #FAF8F2; text-decoration: none; opacity: 0.8;">Shipping & Returns</a></li>
+                </ul>
+            </div>
+            
+            <div>
+                <h4 style="color: #D9B12D; margin-bottom: 15px; font-family: 'Playfair Display', serif;">Contact</h4>
+                <ul>
+                    <li>WhatsApp: 8653890554</li>
+                    <li>Email: alapanghosh3@gmail.com</li>
+                    <li>Bergoom, Krishnanagar</li>
+                </ul>
+                <!-- Social Media Icons -->
+                <div class="social-icons">
+                    <!-- Facebook -->
+                    <a href="#" aria-label="Facebook">
+                        <svg viewBox="0 0 24 24"><path d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z"/></svg>
+                    </a>
+                    <!-- Instagram -->
+                    <a href="#" aria-label="Instagram">
+                        <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+                    </a>
+                    <!-- YouTube -->
+                    <a href="#" aria-label="YouTube">
+                        <svg viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.5 12 3.5 12 3.5s-7.505 0-9.377.55a3.016 3.016 0 0 0-2.122 2.136C0 8.07 0 12 0 12s0 3.93.501 5.814a3.016 3.016 0 0 0 2.122 2.136c1.872.55 9.377.55 9.377.55s7.505 0 9.377-.55a3.016 3.016 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Integrated Copyright Row -->
+        <div class="container footer-copyright">
+            <span class="copyright-text">2026 GHOSH DHARA. ALL RIGHTS RESERVED.</span>
+        </div>
+    </footer>
+
+ 
+
+   
+    <!-- TOAST SUCCESS MESSAGE -->
+    <div id="cartToast" class="toast-notification">✅ Product successfully added to cart!</div>
+
+    <!-- SLIDE-OUT CART DRAWER -->
+    <div class="cart-overlay" id="cartOverlay"></div>
+    <div class="cart-drawer" id="cartDrawer">
+        <div class="cart-header">
+            <h2 class="font-serif" style="font-size: 1.5rem;">Your Cart</h2>
+            <button class="close-cart" id="closeCart">×</button>
+        </div>
+        <div class="cart-items">
+            <!-- Empty state -->
+            <div style="text-align: center; color: #888; margin-top: 50px;">
+                <p>Your cart is currently empty.</p>
+                <a href="shop.html" class="btn-primary" style="margin-top: 20px;">Continue Shopping</a>
+            </div>
+            
+            <!-- Example of a populated cart item (Hidden for now) -->
+            <!-- 
+            <div style="display: flex; gap: 15px; border-bottom: 1px solid #eee; padding-bottom: 15px; margin-bottom: 15px;">
+                <div style="width: 80px; height: 80px; background: #f9f9f9;"></div>
+                <div style="flex: 1;">
+                    <h4 class="font-serif">[Brand Name] Traditional Ghee</h4>
+                    <p style="font-size: 0.8rem; color: #666;">500g Jar</p>
+                    <p style="font-weight: bold; color: var(--brand-gold);">₹[Price]</p>
+                </div>
+            </div> 
+            -->
+        </div>
+        <div class="cart-footer">
+            <div style="display: flex; justify-content: space-between; margin-bottom: 15px; font-weight: bold; font-size: 1.2rem;">
+                <span>Subtotal</span>
+                <span>₹0.00</span>
+            </div>
+            <p style="font-size: 0.8rem; color: #666; margin-bottom: 15px;">Shipping and taxes calculated at checkout.</p>
+            <button class="checkout-btn">Proceed to Secure Checkout</button>
+            <div style="text-align: center; margin-top: 10px; font-size: 0.8rem; opacity: 0.8;">
+                💳 Cards, UPI & Net Banking Accepted
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Include Javascript -->
+    <script src="script.js"></script> 
+    <script src="quality.js"></script> 
+</body>
+</html>

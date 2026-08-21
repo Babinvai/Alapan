@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scan Your Batch - Ghosh Dhara</title>
+    <meta name="description" content="Every jar has a story. Your batch code helps you see it. Scan or enter your Ghosh Dhara batch number to view available product information.">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&display=swap" rel="stylesheet">
+    
+    <!-- External QR Scanner Library (Optional but recommended for actual scanning) -->
+    <script src="https://unpkg.com/html5-qrcode" defer></script>
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="scan-batch.css">
+</head>
+<body>
+
+       <!-- HEADER -->
+        <header>
+            <!-- ========================================================= -->
+            <!-- 1. MOBILE HEADER (Clean Layout: Cart, Logo, Menu)         -->
+            <!-- ========================================================= -->
+            <div class="mobile-header-layout">
+
+                <!-- LEFT: Cart Icon -->
+                <div class="mobile-header-left">
+                    <!-- Note: Removed 'cart-icon-btn' here so JS only updates the badge number, keeping the SVG safe -->
+                    <a href="#" class="mobile-cart-btn" onclick="window.openCart(); return false;"
+                        aria-label="Open Cart">
+                        <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="#174B37" stroke-width="1.5">
+                            <circle cx="9" cy="21" r="1"></circle>
+                            <circle cx="20" cy="21" r="1"></circle>
+                            <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                        </svg>
+                        <!-- This span is targeted by your JS to update just the number -->
+                        <span class="cart-count">0</span>
+                    </a>
+                </div>
+
+                <!-- CENTER: Brand Logo -->
+                <div class="mobile-header-center">
+                    <a href="index.html" class="logo">
+                        <img src="Logo.png" alt="Ghosh Dhara Logo" class="brand-logo-img">
+                    </a>
+                </div>
+
+                <!-- RIGHT: Hamburger Menu -->
+                <div class="mobile-header-right">
+                    <button id="mobileMenuBtn" class="hamburger-btn" aria-label="Open Menu">
+                        <svg viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="#B86745" stroke-width="2">
+                            <path d="M3 12h18M3 6h18M3 18h18"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+
+            <!-- ========================================================= -->
+            <!-- 2. DESKTOP HEADER (Automatically hidden on mobile via CSS)-->
+            <!-- ========================================================= -->
+            <div class="container header-inner desktop-nav-only">
+
+                <!-- Desktop Logo -->
+                <a href="index.html" class="logo">
+                    <img src="Logo.png" alt="Ghosh Family Ghee Logo" class="brand-logo-img">
+                </a>
+
+                <!-- Desktop Nav -->
+                <nav class="nav-links">
+                    <a href="index.html">Home</a>
+                    <a href="shop.html">Shop</a>
+                    <a href="story.html">Our Story</a>
+                    <a href="traceability.html">Quality</a>
+                    <a href="recipes.html">Recipes</a>
+                    <a href="lab-report.html" style="color: #D35400; font-weight: 700;">Lab Report</a>
+                    <a href="contact.html">Contact</a>
+                </nav>
+
+                <!-- Desktop Utilities: Scan, Account Login & Cart -->
+                <!-- Desktop Utilities: Scan, Cart & Account Login -->
+                <div style="display: flex; align-items: center; gap: 20px;">
+
+                    <a href="scan.html" class="header-scan-btn">🔍 Scan Batch</a>
+
+                    <!-- Desktop Cart Icon (Moved BEFORE the account icon) -->
+                    <a href="#" class="cart-icon-btn text-brand-green" onclick="window.openCart(); return false;"
+                        style="font-weight: bold; text-decoration: none;">🛒 (0)</a>
+
+                    <!-- PREMIUM ACCOUNT LOGIN ICON (Now at the absolute far right!) -->
+                    <a href="login.html" class="header-account-btn" aria-label="Sign In or Register">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round" style="width: 24px; height: 24px;">
+                            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                            <circle cx="12" cy="7" r="4"></circle>
+                        </svg>
+                    </a>
+
+                </div>
+            </div>
+        </header>
+
+        <!-- ========================================================= -->
+        <!-- 3. PREMIUM MOBILE SLIDE-OUT DRAWER                        -->
+        <!-- ========================================================= -->
+        <div id="mobileNavOverlay" class="mobile-nav-overlay"></div>
+        <div id="mobileNavDrawer" class="mobile-nav-drawer">
+
+            <!-- Drawer Header (Logo & Close Button) -->
+            <div class="mobile-nav-header">
+                <img src="Logo.png" alt="Ghosh Dhara" style="max-width: 80px;">
+                <button id="closeMobileNav" class="close-nav-btn">&times;</button>
+            </div>
+
+            <!-- Animated Nav Links (Merged from your old mobile menu) -->
+            <ul class="mobile-nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="shop.html">Shop Ghee</a></li>
+                <li><a href="story.html">Our Story</a></li>
+                <li><a href="traceability.html">Quality & Traceability</a></li>
+                <li><a href="scan.html" style="color: #D9B12D;">🔍 Scan Your Batch</a></li>
+                <li><a href="recipes.html">Recipes</a></li>
+                <li><a href="lab-report.html">Lab Reports</a></li>
+                <li><a href="faq.html">FAQ</a></li>
+                <li><a href="contact.html">Contact Us</a></li>
+                <li><a href="shipping-returns.html">Shipping & Returns</a></li>
+            </ul>
+
+            <!-- Beautiful Account Section at bottom of drawer -->
+            <div class="mobile-account-section">
+                <h3>My Account</h3>
+                <a href="login.html" class="btn-mobile-login">LOG IN</a>
+                <a href="register.html" class="btn-mobile-register">REGISTER</a>
+            </div>
+        </div>
+
+    <main>
+       <!-- Premium Scan Hero Section -->
+<section class="scan-hero premium-scan-hero relative overflow-hidden">
+    <!-- Animated Background Elements -->
+    <div class="dynamic-glow"></div>
+    <div class="scan-grid-bg"></div>
+
+    <div class="container hero-grid">
+        <div class="hero-content reveal-on-scroll">
+            <span class="eyebrow glow-text">BATCH TRANSPARENCY</span>
+            <h1>Know Your Jar.</h1>
+            <p class="subtitle">Scan the QR code or enter the batch number printed on your Ghosh Dhara jar to view the product information available for that batch.</p>
+            
+            <div class="hero-buttons">
+                <button class="btn btn-primary-gold" id="btnScrollToScan">Scan QR Code</button>
+                <button class="btn btn-outline-green" id="btnScrollToManual">Enter Batch Number</button>
+            </div>
+            
+            <p class="trust-note">Your batch number is usually printed near the packing and best-before details.</p>
+        </div>
+        
+       <div class="hero-visual reveal-on-scroll delay-1 relative"> <!-- Added 'relative' class here if it isn't there -->
+    
+    <!-- THE IMAGE AND LASER WRAPPER -->
+    <div class="premium-image-wrapper">
+        <div class="scanner-laser"></div>
+        <img src="Scan.png" alt="Scanning Jar" class="hero-scan-image">
+    </div>
+    <!-- End of image wrapper -->
+    
+    <!-- THE CARD MOVED OUTSIDE THE WRAPPER -->
+    <div class="floating-card glass-card">
+        <span class="card-eyebrow">CONNECTED TO YOUR JAR</span>
+        <p>Scan. Check. Cook with greater clarity.</p>
+    </div>
+
+</div>
+    </div>
+</section>
+
+        <!-- Main Scanning Panel -->
+        <section id="lookupSection" class="lookup-section bg-forest-green">
+            <div class="bg-illustration subtle-qr-pattern"></div>
+            <div class="container lookup-container reveal-on-scroll">
+                
+                <!-- The Search Interface -->
+                <div class="lookup-interface" id="lookupInterface">
+                    <h2 class="text-gold">Find your batch information.</h2>
+                    <p class="text-ivory">Use the QR code on your jar, or type the batch number exactly as it appears on the label.</p>
+                    
+                    <div class="lookup-tabs">
+                        <button class="tab-btn active" data-target="qrTab">Scan QR Code</button>
+                        <button class="tab-btn" data-target="manualTab">Enter Batch Number</button>
+                    </div>
+
+                    <!-- QR Scanner Tab -->
+                    <div class="tab-content active" id="qrTab">
+                        <div class="scanner-wrapper">
+                            <div id="qrReader" class="qr-reader-container">
+                                <div class="scanner-overlay">
+                                    <p>Camera is off.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="scanner-actions">
+                            <button id="btnOpenCamera" class="btn btn-primary-gold">Open Camera</button>
+                            <button id="btnUploadQR" class="btn btn-outline-ivory">Upload QR Image</button>
+                        </div>
+                        <p class="scanner-fallback" id="scannerMessage" aria-live="polite"></p>
+                    </div>
+
+                    <!-- Manual Entry Tab -->
+                    <div class="tab-content" id="manualTab">
+                        <form id="manualBatchForm" class="manual-form">
+                            <div class="form-group">
+                                <label for="batchInput" class="text-ivory">Batch Number</label>
+                                <input type="text" id="batchInput" name="batchInput" placeholder="Example: GD-YYMM-001" autocomplete="off">
+                                <p class="input-helper">Enter the code exactly as printed on your jar label.</p>
+                            </div>
+                            <button type="submit" class="btn btn-primary-gold btn-full-width">Check Batch</button>
+                        </form>
+                    </div>
+
+                    <!-- Help Trigger -->
+                    <button class="help-link text-gold" id="btnOpenHelpModal">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
+                        Where do I find my batch number?
+                    </button>
+                </div>
+
+                <!-- DYNAMIC RESULTS AREA (Hidden by default) -->
+                <div class="lookup-results hidden" id="lookupResults" aria-live="polite">
+                    
+                    <!-- Loading State -->
+                    <div id="stateLoading" class="result-state hidden">
+                        <div class="loader-ghee-drop"></div>
+                        <h3 class="text-ivory">Looking up available batch information…</h3>
+                    </div>
+
+                    <!-- Valid Batch Found State -->
+                    <div id="stateFound" class="result-state hidden">
+                        <div class="status-badge success">Batch Information Found</div>
+                        <h3 class="text-gold">Your Jar Snapshot</h3>
+                        <p class="text-ivory">Here is the information currently available for this production batch.</p>
+                        
+                        <div class="batch-data-card bg-warm-ivory">
+                            <div class="data-grid">
+                                <div class="data-group">
+                                    <span class="data-label">Product Name</span>
+                                    <span class="data-value" id="resProduct">-</span>
+                                </div>
+                                <div class="data-group">
+                                    <span class="data-label">Batch Number</span>
+                                    <span class="data-value" id="resBatch">-</span>
+                                </div>
+                                <div class="data-group">
+                                    <span class="data-label">Net Quantity</span>
+                                    <span class="data-value" id="resQuantity">-</span>
+                                </div>
+                                <div class="data-group">
+                                    <span class="data-label">Packed On Date</span>
+                                    <span class="data-value" id="resPackDate">-</span>
+                                </div>
+                                <div class="data-group">
+                                    <span class="data-label">Best Before Date</span>
+                                    <span class="data-value" id="resBestBefore">-</span>
+                                </div>
+                                <div class="data-group">
+                                    <span class="data-label">Report Status</span>
+                                    <span class="data-value badge-neutral" id="resReportStatus">-</span>
+                                </div>
+                            </div>
+                            
+                            <div class="data-group full-width border-top">
+                                <span class="data-label">Ingredient Statement</span>
+                                <span class="data-value" id="resIngredients">-</span>
+                            </div>
+                            <div class="data-group full-width">
+                                <span class="data-label">Storage Guidance</span>
+                                <span class="data-value" id="resStorage">-</span>
+                            </div>
+
+                            <div class="result-actions">
+                                <a href="#" id="resReportLink" class="btn btn-outline-green hidden" target="_blank" rel="noopener noreferrer">View Lab Report</a>
+                                <a href="traceability.html" class="btn btn-outline-green">View Quality & Traceability</a>
+                            </div>
+                            <p class="disclaimer-note">Information may vary by batch. Always refer to the product label for ingredient, date and storage information.</p>
+                        </div>
+                        
+                        <div class="action-row">
+                            <button class="btn btn-outline-ivory btnResetLookup">Scan Another Jar</button>
+                            <a href="shop.html" class="btn btn-primary-gold">Shop Ghosh Dhara Ghee</a>
+                        </div>
+                    </div>
+
+                    <!-- Not Found State -->
+                    <div id="stateNotFound" class="result-state hidden">
+                        <div class="icon-warning">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="var(--ghee-gold)" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+                        </div>
+                        <h3 class="text-gold">We could not find that batch number.</h3>
+                        <p class="text-ivory">Please check the code on your label and try again. If you still need help, send us a photo of the label on WhatsApp.</p>
+                        <div class="action-row">
+                            <button class="btn btn-primary-gold btnResetLookup">Try Again</button>
+                            <a href="https://wa.me/[Verified WhatsApp Number]" target="_blank" class="btn btn-outline-ivory">Chat on WhatsApp</a>
+                        </div>
+                    </div>
+
+                    <!-- Pending / Setup State (Honest State) -->
+                    <div id="statePending" class="result-state hidden">
+                        <div class="icon-info">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="var(--ghee-gold)" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+                        </div>
+                        <h3 class="text-gold">Batch lookup is being prepared.</h3>
+                        <p class="text-ivory">Detailed digital information for this batch is not currently published. Please contact support if you need assistance with your jar.</p>
+                        <div class="action-row">
+                            <button class="btn btn-outline-ivory btnResetLookup">Go Back</button>
+                            <a href="contact.html" class="btn btn-primary-gold">Contact Support</a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- "How this works" Section -->
+        <section class="how-it-works-section bg-soft-cream">
+            <div class="container">
+                <div class="section-header text-center reveal-on-scroll">
+                    <h2>A clear path from our batch to your kitchen.</h2>
+                    <p>The code on your jar helps make product information easier to find and understand.</p>
+                </div>
+                
+                <div class="steps-grid">
+                    <!-- Step 1 -->
+                    <article class="step-card reveal-on-scroll">
+                        <div class="step-number">1</div>
+                        <div class="step-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><line x1="7" y1="8" x2="17" y2="8"></line><line x1="7" y1="12" x2="17" y2="12"></line><line x1="7" y1="16" x2="13" y2="16"></line></svg>
+                        </div>
+                        <h3>Find the Code</h3>
+                        <p>Locate the QR code or batch number printed on your Ghosh Dhara jar.</p>
+                    </article>
+
+                    <!-- Step 2 -->
+                    <article class="step-card reveal-on-scroll delay-1">
+                        <div class="step-number">2</div>
+                        <div class="step-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 7V5a2 2 0 0 1 2-2h2"></path><path d="M17 3h2a2 2 0 0 1 2 2v2"></path><path d="M21 17v2a2 2 0 0 1-2 2h-2"></path><path d="M7 21H5a2 2 0 0 1-2-2v-2"></path><line x1="7" y1="12" x2="17" y2="12"></line></svg>
+                        </div>
+                        <h3>Scan or Enter</h3>
+                        <p>Scan the QR code with your phone, or type the batch number into the lookup tool.</p>
+                    </article>
+
+                    <!-- Step 3 -->
+                    <article class="step-card reveal-on-scroll delay-2">
+                        <div class="step-number">3</div>
+                        <div class="step-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+                        </div>
+                        <h3>View Available Details</h3>
+                        <p>See the product information and report status connected to that batch.</p>
+                    </article>
+                    
+                    <!-- Step 4 -->
+                    <article class="step-card reveal-on-scroll delay-3">
+                        <div class="step-number">4</div>
+                        <div class="step-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2v20"></path><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
+                        </div>
+                        <h3>Cook with Confidence</h3>
+                        <p>Enjoy the familiar flavour of traditional ghee with greater clarity about the jar you chose.</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- Why Batch Information Matters -->
+        <section class="why-matters-section bg-forest-green text-ivory relative overflow-hidden">
+            
+            <div class="container">
+                <div class="section-header text-center reveal-on-scroll">
+                    <h2 class="text-gold">Trust should not stop at the label.</h2>
+                    <p>For Ghosh Dhara, batch information is one way to keep the journey from careful preparation to your kitchen more visible.</p>
+                </div>
+                
+                <div class="values-grid">
+                    <article class="value-card reveal-on-scroll">
+                        <div class="value-icon text-gold">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+                        </div>
+                        <h3>Clarity</h3>
+                        <p>Information should be easy to locate when customers need it.</p>
+                    </article>
+
+                    <article class="value-card reveal-on-scroll delay-1">
+                        <div class="value-icon text-gold">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7.01" y2="7"></line></svg>
+                        </div>
+                        <h3>Accountability</h3>
+                        <p>A batch code helps connect production records, packaging and available reports.</p>
+                    </article>
+
+                    <article class="value-card reveal-on-scroll delay-2">
+                        <div class="value-icon text-gold">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+                        </div>
+                        <h3>Care</h3>
+                        <p>Thoughtful product handling includes making support easier when questions arise.</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- Need Help Panel -->
+        <section class="support-panel-section bg-warm-ivory">
+            <div class="container">
+                <div class="support-card reveal-on-scroll">
+                    <div class="support-content">
+                        <h2>Can’t scan your jar? We can help.</h2>
+                        <p>Send us a clear photo of the product label, including the batch number, and our team can guide you.</p>
+                        <div class="support-actions">
+                            <a href="https://wa.me/[Verified WhatsApp Number]" target="_blank" class="btn btn-primary-gold">Chat on WhatsApp</a>
+                            <a href="contact.html" class="btn btn-outline-green">Contact Ghosh Dhara</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ Section -->
+        <section class="faq-section bg-soft-cream">
+            <div class="container faq-container">
+                <div class="section-header text-center reveal-on-scroll">
+                    <h2>Batch scanning, made simple.</h2>
+                </div>
+                
+                <div class="accordion">
+                    <div class="accordion-item reveal-on-scroll">
+                        <button class="accordion-header" aria-expanded="false">
+                            Where can I find the batch number?
+                            <span class="accordion-icon"></span>
+                        </button>
+                        <div class="accordion-content">
+                            <p>You can usually find the batch number on your product label near the packing and best-before details.</p>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item reveal-on-scroll">
+                        <button class="accordion-header" aria-expanded="false">
+                            Can I scan the QR code with any phone?
+                            <span class="accordion-icon"></span>
+                        </button>
+                        <div class="accordion-content">
+                            <p>Most modern smartphones can scan QR codes through the camera or through this page’s scanner. If scanning does not work, you can enter the batch number manually.</p>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item reveal-on-scroll">
+                        <button class="accordion-header" aria-expanded="false">
+                            What information will I see after scanning?
+                            <span class="accordion-icon"></span>
+                        </button>
+                        <div class="accordion-content">
+                            <p>Where available, you may see product details, packing information, storage guidance and the status of relevant batch documents.</p>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item reveal-on-scroll">
+                        <button class="accordion-header" aria-expanded="false">
+                            Why is my batch not found?
+                            <span class="accordion-icon"></span>
+                        </button>
+                        <div class="accordion-content">
+                            <p>Please double-check the code on your label. If it is still not found, contact Ghosh Dhara support and share a photo of the jar label.</p>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item reveal-on-scroll">
+                        <button class="accordion-header" aria-expanded="false">
+                            Does finding a batch code confirm product authenticity?
+                            <span class="accordion-icon"></span>
+                        </button>
+                        <div class="accordion-content">
+                            <p>A batch lookup connects the code to available product information. A full authenticity guarantee requires a secure, unique code system for each individual jar.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="accordion-item reveal-on-scroll">
+                        <button class="accordion-header" aria-expanded="false">
+                            Can I see a lab report for my batch?
+                            <span class="accordion-icon"></span>
+                        </button>
+                        <div class="accordion-content">
+                            <p>Where a verified report is published for a batch, it will be linked from the batch information page. Availability may vary by batch.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Final CTA -->
+        <section class="final-cta text-center relative overflow-hidden bg-warm-ivory">
+            <div class="bg-illustration grass-paddy"></div>
+            <div class="container reveal-on-scroll">
+                <h2>A small code. A clearer connection.</h2>
+                <p>Scan your jar, see the information available for its batch and bring Ghosh Dhara home with confidence.</p>
+                <div class="cta-actions">
+                    <button class="btn btn-primary-gold" onclick="window.scrollTo({top:0, behavior:'smooth'})">Scan Your Batch</button>
+                    <a href="shop.html" class="btn btn-outline-green">Shop Ghee</a>
+                </div>
+            </div>
+        </section>
+    </main>
+ <!-- UNIFIED FOOTER WITH GOLD-ADJUSTED 2D LANDSCAPE            -->
+        <!-- ========================================================= -->
+        <footer class="main-footer">
+        
+        <!-- 2D Ground Landscape with Yellow/Gold Adjustments -->
+        <div class="footer-landscape">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 150" preserveAspectRatio="none" style="width: 100%; height: 100%; display: block;">
+                <!-- Warm Golden-Olive Layer -->
+                <path d="M0,150 L0,100 Q150,70 300,95 T600,65 T900,105 T1200,55 L1200,150 Z" fill="#7A6822" opacity="0.85"></path>
+                <!-- Rich Deep Gold/Terracotta Transition Layer -->
+                <path d="M0,150 L0,125 Q200,95 400,115 T800,85 T1200,115 L1200,150 Z" fill="#5B4A15"></path>
+                <!-- Deep Earthy Base Silhouette -->
+                <path d="M0,150 L0,140 Q250,110 500,135 T1000,120 T1200,140 L1200,150 Z" fill="#382C0C"></path>
+                <!-- Subtle Grass Tufts -->
+                <g fill="#382C0C">
+                    <path d="M120,135 Q123,120 126,135 Z"></path>
+                    <path d="M125,137 Q128,115 130,137 Z"></path>
+                    <path d="M550,130 Q553,115 556,130 Z"></path>
+                    <path d="M555,132 Q560,110 562,132 Z"></path>
+                    <path d="M980,125 Q983,110 986,125 Z"></path>
+                    <path d="M985,127 Q990,105 992,127 Z"></path>
+                </g>
+            </svg>
+        </div>
+
+        <!-- Top Grid Section -->
+        <div class="container footer-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px; position: relative; z-index: 2;">
+            <div>
+                 <a href="index.html">
+                    <!-- You can use the same logo, or a white/light version if your footer is dark -->
+                    <img src="Logo 3.png" alt="Ghosh Family Ghee Logo" class="brand-logo-img-footer">
+                </a>
+                <p style="color: #FAF8F2; opacity: 0.9; font-size: 0.9rem; margin-top: 15px;">Traditional Ghee. Tested with Trust.</p>
+                <p style="color: #D9B12D; font-size: 0.8rem; margin-top: 10px; font-weight: 600;">FSSAI Lic. No. 12345</p>
+            </div>
+            
+            <div>
+                <h4 style="color: #D9B12D; margin-bottom: 15px; font-family: 'Playfair Display', serif;">Explore</h4>
+                <ul style="list-style: none; padding: 0; line-height: 2;">
+                    <li><a href="index.html" style="color: #FAF8F2; text-decoration: none; opacity: 0.8;">Home</a></li>
+                    <li><a href="shop.html" style="color: #FAF8F2; text-decoration: none; opacity: 0.8;">Shop</a></li>
+                    <li><a href="story.html" style="color: #FAF8F2; text-decoration: none; opacity: 0.8;">Our Story</a></li>
+                    <li><a href="traceability.html" style="color: #FAF8F2; text-decoration: none; opacity: 0.8;">Quality</a></li>
+                    <li><a href="recipes.html" style="color: #FAF8F2; text-decoration: none; opacity: 0.8;">Recipes</a></li>
+                </ul>
+            </div>
+            
+            <div>
+                <h4 style="color: #D9B12D; margin-bottom: 15px; font-family: 'Playfair Display', serif;">Customer Care</h4>
+                <ul style="list-style: none; padding: 0; line-height: 2;">
+                    <li><a href="scan.html" style="color: #FAF8F2; text-decoration: none; opacity: 0.8;">Scan Your Batch</a></li>
+                    <li><a href="contact.html" style="color: #FAF8F2; text-decoration: none; opacity: 0.8;">Contact Us</a></li>
+                    <li><a href="faq.html" style="color: #FAF8F2; text-decoration: none; opacity: 0.8;">FAQ</a></li>
+                    <li><a href="shipping-returns.html" style="color: #FAF8F2; text-decoration: none; opacity: 0.8;">Shipping & Returns</a></li>
+                </ul>
+            </div>
+            
+            <div>
+                <h4 style="color: #D9B12D; margin-bottom: 15px; font-family: 'Playfair Display', serif;">Contact</h4>
+                <ul>
+                    <li>WhatsApp: 8653890554</li>
+                    <li>Email: alapanghosh3@gmail.com</li>
+                    <li>Bergoom, Krishnanagar</li>
+                </ul>
+                <!-- Social Media Icons -->
+                <div class="social-icons">
+                    <!-- Facebook -->
+                    <a href="#" aria-label="Facebook">
+                        <svg viewBox="0 0 24 24"><path d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z"/></svg>
+                    </a>
+                    <!-- Instagram -->
+                    <a href="#" aria-label="Instagram">
+                        <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+                    </a>
+                    <!-- YouTube -->
+                    <a href="#" aria-label="YouTube">
+                        <svg viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.5 12 3.5 12 3.5s-7.505 0-9.377.55a3.016 3.016 0 0 0-2.122 2.136C0 8.07 0 12 0 12s0 3.93.501 5.814a3.016 3.016 0 0 0 2.122 2.136c1.872.55 9.377.55 9.377.55s7.505 0 9.377-.55a3.016 3.016 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Integrated Copyright Row -->
+        <div class="container footer-copyright">
+            <span class="copyright-text">2026 GHOSH DHARA. ALL RIGHTS RESERVED.</span>
+        </div>
+    </footer>
+
+
+
+
+
+
+
+        <!-- TOAST SUCCESS MESSAGE -->
+        <div id="cartToast" class="toast-notification">✅ Product successfully added to cart!</div>
+
+        <!-- SLIDE-OUT CART DRAWER -->
+        <div class="cart-overlay" id="cartOverlay"></div>
+        <div class="cart-drawer" id="cartDrawer">
+            <div class="cart-header">
+                <h2 class="font-serif" style="font-size: 1.5rem;">Your Cart</h2>
+                <button class="close-cart" id="closeCart">×</button>
+            </div>
+            <div class="cart-items">
+                <!-- Empty state -->
+                <div style="text-align: center; color: #888; margin-top: 50px;">
+                    <p>Your cart is currently empty.</p>
+                    <a href="shop.html" class="btn-primary" style="margin-top: 20px;">Continue Shopping</a>
+                </div>
+
+                <!-- Example of a populated cart item (Hidden for now) -->
+                <!-- 
+            <div style="display: flex; gap: 15px; border-bottom: 1px solid #eee; padding-bottom: 15px; margin-bottom: 15px;">
+                <div style="width: 80px; height: 80px; background: #f9f9f9;"></div>
+                <div style="flex: 1;">
+                    <h4 class="font-serif">[Brand Name] Traditional Ghee</h4>
+                    <p style="font-size: 0.8rem; color: #666;">500g Jar</p>
+                    <p style="font-weight: bold; color: var(--brand-gold);">₹[Price]</p>
+                </div>
+            </div> 
+            -->
+            </div>
+            <div class="cart-footer">
+                <div
+                    style="display: flex; justify-content: space-between; margin-bottom: 15px; font-weight: bold; font-size: 1.2rem;">
+                    <span>Subtotal</span>
+                    <span>₹0.00</span>
+                </div>
+                <p style="font-size: 0.8rem; color: #666; margin-bottom: 15px;">Shipping and taxes calculated at
+                    checkout.</p>
+                <button class="checkout-btn">Proceed to Secure Checkout</button>
+                <div style="text-align: center; margin-top: 10px; font-size: 0.8rem; opacity: 0.8;">
+                    💳 Cards, UPI & Net Banking Accepted
+                </div>
+            </div>
+        </div>
+
+
+    <!-- Help Modal: Where to find Batch Number -->
+    <dialog id="helpModal" class="help-modal">
+        <div class="modal-content">
+            <button class="close-modal" aria-label="Close modal">&times;</button>
+            <h3>Where is my batch number?</h3>
+            <p>Your batch number and QR code are printed directly on the label of your jar, usually near the dates and nutritional information.</p>
+            <div class="modal-image-placeholder">
+                <span>[ Refined illustration or verified label image showing Batch Number location ]</span>
+            </div>
+            <button class="btn btn-outline-green btn-full-width close-modal-btn">Got it</button>
+        </div>
+    </dialog>
+
+    <script src="script.js"></script>
+    <script src="scan-batch.js"></script>
+</body>
+</html>

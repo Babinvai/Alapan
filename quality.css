@@ -1,0 +1,551 @@
+/* =========================================================
+   GHOSH DHARA - QUALITY & TRACEABILITY STYLES
+========================================================= */
+
+:root {
+    --forest-green: #174B37;
+    --ghee-gold: #D9B12D;
+    --ivory-bg: #FAF8F2;
+    --dairy-cream: #F3EBDD;
+    --clay-terracotta: #B86745;
+    --muted-sage: #A6B59B;
+    --text-green: #214938;
+    
+    --font-serif: 'Playfair Display', serif;
+    --font-sans: 'Inter', sans-serif;
+}
+
+body {
+    background-color: var(--ivory-bg);
+    color: var(--text-green);
+    font-family: var(--font-sans);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+h1, h2, h3, h4 {
+    font-family: var(--font-serif);
+    color: var(--forest-green);
+    margin-bottom: 1rem;
+}
+
+.eyebrow {
+    display: block;
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    color: var(--clay-terracotta);
+    text-transform: uppercase;
+    margin-bottom: 15px;
+}
+
+/* =========================================================
+   STICKY HEADER EFFECTS
+========================================================= */
+header { transition: all 0.4s ease; width: 100%; z-index: 1000; }
+header.scrolled {
+    position: fixed; top: 0;
+    background: rgba(250, 248, 242, 0.95) !important;
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--ghee-gold);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+}
+a.active-nav {
+    color: var(--ghee-gold) !important;
+    font-weight: 700 !important;
+    position: relative;
+}
+a.active-nav::after {
+    content: ''; position: absolute; bottom: -6px; left: 0;
+    width: 100%; height: 2px; background-color: var(--ghee-gold); border-radius: 2px;
+}
+
+/* =========================================================
+   1. HERO SECTION
+========================================================= */
+.quality-hero {
+    position: relative;
+    background-color: var(--ivory-bg);
+    padding: 80px 0 60px;
+    border-bottom: 1px solid rgba(217, 177, 45, 0.3);
+}
+.hero-bg-texture {
+    position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+    background-image: url("data:image/svg+xml,%3Csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 50 Q 250 150 500 50 T 1000 50' fill='none' stroke='%23D9B12D' stroke-width='1' stroke-opacity='0.3'/%3E%3Cpath d='M0 150 Q 250 250 500 150 T 1000 150' fill='none' stroke='%23D9B12D' stroke-width='1' stroke-opacity='0.2'/%3E%3C/svg%3E");
+    background-size: cover; z-index: 1; pointer-events: none;
+}
+.quality-hero-inner {
+    position: relative; z-index: 2;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center;
+}
+.hero-content h1 { font-size: 3.5rem; line-height: 1.1; margin-bottom: 20px; }
+.hero-content p { font-size: 1.1rem; opacity: 0.9; margin-bottom: 30px; max-width: 90%; }
+.hero-actions { display: flex; gap: 20px; align-items: center; }
+
+.btn-primary-gold {
+    background: var(--ghee-gold); color: var(--forest-green);
+    padding: 14px 28px; border-radius: 4px; text-decoration: none; font-weight: 600;
+    transition: transform 0.3s, box-shadow 0.3s; display: inline-block;
+}
+.btn-primary-gold:hover { transform: translateY(-2px); box-shadow: 0 5px 15px rgba(217, 177, 45, 0.3); }
+
+.btn-outline-dark {
+    border: 1px solid var(--forest-green); color: var(--forest-green);
+    padding: 13px 28px; border-radius: 4px; text-decoration: none; font-weight: 600;
+    transition: background 0.3s, color 0.3s; display: inline-block;
+}
+.btn-outline-dark:hover { background: var(--forest-green); color: #fff; }
+
+.hero-image-wrapper { position: relative; }
+.hero-img { width: 100%; height: 500px; object-fit: cover; border-radius: 4px; }
+.floating-info-card {
+    position: absolute; bottom: 30px; left: -40px;
+    background: var(--ivory-bg); padding: 25px; border-radius: 4px;
+    box-shadow: 0 15px 40px rgba(23,75,55,0.1); border-left: 3px solid var(--ghee-gold);
+    max-width: 280px; z-index: 3;
+}
+.floating-info-card .card-label { font-size: 0.75rem; font-weight: 700; letter-spacing: 0.1em; color: var(--clay-terracotta); margin-bottom: 8px; display: block; }
+.floating-info-card p { font-size: 0.9rem; margin: 0; line-height: 1.4; color: var(--forest-green); font-weight: 500; }
+
+/* =========================================================
+   2. TRUST STATEMENT STRIP
+========================================================= */
+.trust-strip { background: var(--forest-green); padding: 40px 0; color: var(--dairy-cream); }
+.trust-strip-inner { display: flex; justify-content: space-between; align-items: center; }
+.trust-strip h3 { color: var(--dairy-cream); font-size: 1.3rem; margin: 0; max-width: 50%; line-height: 1.4; }
+.trust-markers { display: flex; gap: 30px; }
+.marker { display: flex; align-items: center; gap: 10px; font-weight: 500; font-size: 0.95rem; }
+.marker svg { color: var(--ghee-gold); width: 24px; height: 24px; }
+
+/* =========================================================
+   3. COMMITMENTS SECTION
+========================================================= */
+.commitments-section { padding: 100px 0; }
+.section-header { text-align: center; max-width: 700px; margin: 0 auto 60px; }
+.section-header h2 { font-size: 2.8rem; }
+.commitments-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 40px; }
+.commitment-card {
+    background: #fff; padding: 40px; border-radius: 8px;
+    border: 1px solid rgba(23,75,55,0.05);
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+.commitment-card:hover {
+    transform: translateY(-5px); box-shadow: 0 15px 30px rgba(23,75,55,0.08);
+}
+.commitment-card .card-icon {
+    width: 50px; height: 50px; border-radius: 50%;
+    background: var(--dairy-cream); display: flex; align-items: center; justify-content: center;
+    margin-bottom: 20px; color: var(--clay-terracotta);
+}
+
+/* =========================================================
+   4. JOURNEY OF A JAR
+========================================================= */
+.journey-section { padding: 100px 0; background: var(--dairy-cream); position: relative; overflow: hidden; }
+.journey-bg-texture {
+    position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+    background-image: radial-gradient(var(--muted-sage) 1px, transparent 1px);
+    background-size: 25px 25px; opacity: 0.15; z-index: 1; pointer-events: none;
+}
+.journey-section .container { position: relative; z-index: 2; }
+.journey-timeline {
+    display: flex; justify-content: space-between; align-items: flex-start;
+    margin-top: 80px; position: relative;
+}
+.journey-line {
+    position: absolute; top: 25px; left: 5%; width: 90%; height: 2px;
+    background: rgba(217, 177, 45, 0.4); z-index: 1;
+}
+.journey-step { width: 18%; text-align: center; position: relative; z-index: 2; }
+.step-icon {
+    width: 50px; height: 50px; background: var(--forest-green); color: var(--ghee-gold);
+    border-radius: 50%; display: flex; align-items: center; justify-content: center;
+    margin: 0 auto 20px; font-family: var(--font-serif); font-size: 1.2rem;
+    border: 4px solid var(--dairy-cream);
+}
+.journey-step h4 { font-family: var(--font-sans); font-size: 1.05rem; margin-bottom: 10px; }
+.journey-step p { font-size: 0.9rem; opacity: 0.8; }
+
+/* =========================================================
+   5. BATCH SCAN LOOKUP
+========================================================= */
+.batch-scan-section { padding: 100px 0; background: var(--ivory-bg); }
+.scan-panel {
+    background: #fff; max-width: 800px; margin: 0 auto; padding: 60px;
+    border-radius: 8px; border: 2px solid var(--forest-green);
+    box-shadow: 0 20px 50px rgba(23,75,55,0.08); text-align: center;
+}
+.scan-header h2 { font-size: 2.5rem; margin-bottom: 15px; }
+.scan-header p { font-size: 1.1rem; opacity: 0.9; margin-bottom: 40px; }
+
+.batch-form { display: flex; flex-direction: column; align-items: center; }
+.input-group { display: flex; width: 100%; max-width: 500px; margin-bottom: 15px; }
+.input-group input {
+    flex-grow: 1; padding: 16px 20px; font-size: 1rem;
+    border: 1px solid var(--muted-sage); border-right: none;
+    border-radius: 4px 0 0 4px; outline: none; font-family: var(--font-sans);
+}
+.input-group input:focus { border-color: var(--forest-green); }
+.btn-primary-dark {
+    background: var(--forest-green); color: #fff; border: none;
+    padding: 0 30px; border-radius: 0 4px 4px 0; font-weight: 600;
+    cursor: pointer; transition: background 0.3s;
+}
+.btn-primary-dark:hover { background: #113628; }
+.help-text { font-size: 0.85rem; color: var(--muted-sage); }
+.visually-hidden { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); border: 0; }
+
+.batch-feedback { margin-top: 30px; text-align: left; display: none; }
+.batch-feedback.active { display: block; }
+.feedback-box { padding: 20px; border-radius: 4px; font-size: 0.95rem; }
+.feedback-box.error { background: #FDE8E8; color: #9B1C1C; border-left: 4px solid #F05252; }
+.feedback-box.info { background: var(--dairy-cream); color: var(--forest-green); border-left: 4px solid var(--ghee-gold); }
+
+/* =========================================================
+   6. LABEL GUIDE (Premium Numbered Layout)
+========================================================= */
+.label-guide-section { padding: 100px 0; }
+.label-guide-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; margin-top: 60px; }
+.jar-guide-img { width: 100%; border-radius: 8px; border: 1px solid rgba(23,75,55,0.1); }
+
+/* The New Premium Editorial List Structure */
+.premium-guide-list {
+    display: flex;
+    flex-direction: column;
+    border-top: 1px solid rgba(23, 75, 55, 0.15); /* Elegant top boundary line */
+}
+
+/* 1. The Breathable Row */
+.guide-item {
+    display: flex;
+    align-items: flex-start;
+    padding: 25px 15px;
+    background: transparent;
+    border-bottom: 1px solid rgba(23, 75, 55, 0.15); /* Delicate separator */
+    transition: background-color 0.4s ease;
+}
+
+.guide-item:hover {
+    background: rgba(217, 177, 45, 0.08); /* Very faint, warm gold glow on hover */
+}
+
+/* 2. Large, Elegant Serif Numbers (No bulky circles) */
+.guide-number {
+    font-family: var(--font-serif);
+    font-size: 2.2rem;
+    font-weight: 400;
+    color: var(--clay-terracotta); /* Beautiful warm clay accent */
+    min-width: 55px;
+    line-height: 1;
+    margin-right: 25px;
+    margin-top: -2px; /* Aligns the top of the number with the top of the text */
+    opacity: 0.9;
+    transition: color 0.4s ease;
+}
+
+.guide-item:hover .guide-number {
+    color: var(--ghee-gold); /* The number lights up in Ghee Gold when hovered */
+    opacity: 1;
+}
+
+/* 3. The Perfectly Aligned Text */
+.guide-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.guide-content h4 { 
+    font-family: var(--font-sans); 
+    font-size: 1.05rem; 
+    color: var(--forest-green);
+    margin-bottom: 8px; 
+    font-weight: 700;
+    text-transform: uppercase; /* Adds a structured, premium touch */
+    letter-spacing: 0.05em;
+}
+
+.guide-content p { 
+    font-size: 0.95rem; 
+    color: var(--text-green);
+    opacity: 0.85; 
+    margin: 0; 
+    line-height: 1.6;
+}
+
+/* =========================================================
+   7. REPORT PREVIEW
+========================================================= */
+.report-preview-section { background: var(--forest-green); color: #fff; padding: 100px 0; position: relative; overflow: hidden; }
+.preview-texture {
+    position: absolute; right: -5%; bottom: -10%; width: 50%; height: 120%;
+    background-image: url("data:image/svg+xml,%3Csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 50 Q 250 150 500 50 T 1000 50' fill='none' stroke='%23D9B12D' stroke-width='1' stroke-opacity='0.05'/%3E%3C/svg%3E");
+    background-size: cover; pointer-events: none;
+}
+.preview-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; position: relative; z-index: 2; }
+.preview-text h2 { color: var(--ghee-gold); font-size: 2.5rem; }
+.preview-text p { font-size: 1.1rem; opacity: 0.9; margin-bottom: 40px; }
+.preview-actions { display: flex; gap: 20px; }
+.btn-outline-cream { border: 1px solid var(--ivory-bg); color: var(--ivory-bg); padding: 13px 28px; border-radius: 4px; text-decoration: none; font-weight: 600; transition: all 0.3s; display: inline-block; }
+.btn-outline-cream:hover { background: var(--ivory-bg); color: var(--forest-green); }
+
+.sample-report-card { background: var(--ivory-bg); border-radius: 8px; color: var(--forest-green); overflow: hidden; box-shadow: 0 20px 40px rgba(0,0,0,0.2); }
+.card-header { background: var(--dairy-cream); padding: 20px; border-bottom: 1px solid rgba(23,75,55,0.1); }
+.card-header .status { display: block; font-weight: 700; font-size: 1.1rem; }
+.card-header .status-sub { font-size: 0.8rem; opacity: 0.7; }
+.card-body { padding: 30px; }
+.data-row { display: flex; justify-content: space-between; border-bottom: 1px solid rgba(23,75,55,0.1); padding: 15px 0; font-size: 0.95rem; }
+.data-row .label { font-weight: 600; opacity: 0.8; }
+.data-row .value.success { color: #0E9F6E; font-weight: 700; }
+.btn-download-sample { width: 100%; margin-top: 25px; background: rgba(23,75,55,0.05); border: 1px dashed var(--muted-sage); padding: 15px; color: var(--muted-sage); font-family: var(--font-sans); font-size: 0.9rem; cursor: not-allowed; border-radius: 4px; }
+
+/* =========================================================
+   8. FAQ
+========================================================= */
+.faq-section { padding: 100px 0; }
+.faq-accordion { max-width: 800px; margin: 0 auto; }
+.faq-item { border-bottom: 1px solid rgba(23,75,55,0.1); }
+.faq-question {
+    width: 100%; background: none; border: none; text-align: left;
+    padding: 25px 0; font-family: var(--font-sans); font-size: 1.1rem;
+    font-weight: 600; color: var(--forest-green); cursor: pointer;
+    display: flex; justify-content: space-between; align-items: center;
+}
+.faq-question .icon { font-size: 1.5rem; color: var(--clay-terracotta); transition: transform 0.3s; }
+.faq-question[aria-expanded="true"] .icon { transform: rotate(45deg); }
+.faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.4s ease; }
+.faq-answer p { padding-bottom: 25px; opacity: 0.8; font-size: 0.95rem; margin: 0; }
+
+/* =========================================================
+   9. FINAL CTA
+=/* =========================================================
+   9. FINAL CTA (Premium Floating Card Layout)
+========================================================= */
+.final-trust-cta { 
+    padding: 100px 0; 
+    background: var(--ivory-bg); 
+    position: relative; 
+    overflow: hidden; 
+}
+
+.field-lines-texture { 
+    position: absolute; top: 0; left: 0; width: 100%; height: 100%; 
+    background-image: radial-gradient(var(--muted-sage) 1px, transparent 1px); 
+    background-size: 20px 20px; opacity: 0.2; pointer-events: none; 
+}
+
+/* 1. The Floating Card Container */
+.cta-inner {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 60px;
+    max-width: 1000px;
+    margin: 0 auto;
+    background: #fff;
+    padding: 50px 60px;
+    border-radius: 12px;
+    box-shadow: 0 20px 50px rgba(23, 75, 55, 0.08);
+    border: 1px solid rgba(217, 177, 45, 0.2);
+}
+
+/* 2. Text on the Left */
+.cta-content {
+    flex: 1;
+    text-align: left;
+}
+.cta-content h2 { font-size: 2.5rem; margin-bottom: 20px; }
+.cta-content p { font-size: 1.1rem; opacity: 0.9; margin-bottom: 35px; }
+.cta-actions { display: flex; gap: 20px; align-items: center; }
+
+/* Button Styles for the Card */
+.cta-actions .btn-primary-dark {
+    background: var(--forest-green); color: #fff; padding: 13px 28px; 
+    border-radius: 4px; text-decoration: none; font-weight: 600; 
+    transition: background 0.3s; display: inline-block;
+}
+.cta-actions .btn-primary-dark:hover { background: #113628; }
+
+.btn-outline-clay { 
+    border: 1px solid var(--clay-terracotta); color: var(--clay-terracotta); 
+    padding: 13px 28px; border-radius: 4px; text-decoration: none; 
+    font-weight: 600; transition: all 0.3s; display: inline-block; 
+}
+.btn-outline-clay:hover { background: var(--clay-terracotta); color: #fff; }
+
+/* 3. The Perfectly Sized Image on the Right */
+.cta-image {
+    flex: 0 0 40%; /* Forces the image to take up exactly 40% of the card */
+}
+.cta-image img {
+    width: 100%;
+    height: 320px; /* Locks the height so it never gets too massive */
+    object-fit: cover;
+    border-radius: 8px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+}
+
+
+
+
+/* =========================================================
+   ANIMATIONS & RESPONSIVE DESIGN (Mobile & Tablet)
+========================================================= */
+.reveal-on-scroll { opacity: 0; transform: translateY(30px); transition: opacity 0.8s ease-out, transform 0.8s ease-out; }
+.reveal-on-scroll.visible { opacity: 1; transform: translateY(0); }
+.delay-1 { transition-delay: 0.2s; }
+@media (prefers-reduced-motion: reduce) { .reveal-on-scroll { transition: none; opacity: 1; transform: none; } }
+
+/* TABLET ADJUSTMENTS */
+@media (max-width: 992px) {
+    .quality-hero-inner, .preview-grid, .label-guide-grid { grid-template-columns: 1fr; gap: 40px; text-align: center; }
+    .hero-actions, .preview-actions { justify-content: center; }
+    .floating-info-card { bottom: -20px; left: 50%; transform: translateX(-50%); width: 90%; }
+    .trust-strip-inner { flex-direction: column; text-align: center; gap: 30px; }
+    .trust-strip h3 { max-width: 100%; }
+    .journey-timeline { flex-direction: column; align-items: flex-start; padding-left: 20px; }
+    .journey-line { width: 2px; height: 100%; left: 45px; top: 0; }
+   /* Replace your old mobile .journey-step rules with this CSS Grid layout */
+    
+    .journey-step { 
+        width: 100%; 
+        text-align: left; 
+        display: grid; 
+        grid-template-columns: 50px 1fr; /* 50px column for the icon, remaining space for text */
+        grid-template-rows: auto auto;   /* Two rows: one for heading, one for paragraph */
+        column-gap: 25px; 
+        margin-bottom: 45px; 
+    }
+    
+    .journey-step .step-icon { 
+        grid-column: 1 / 2; 
+        grid-row: 1 / 3; /* Forces the icon to span down across both text rows */
+        margin: 0; 
+    }
+    
+    .journey-step h4 { 
+        grid-column: 2 / 3; 
+        grid-row: 1 / 2; 
+        margin-top: 4px; /* Perfectly aligns the heading with the top of the circular icon */
+        margin-bottom: 6px; 
+    }
+    
+    .journey-step p { 
+        grid-column: 2 / 3; 
+        grid-row: 2 / 3; 
+        margin: 0; 
+    }
+    
+    /* Final CTA Card Mobile Fixes */
+    .cta-inner { flex-direction: column; text-align: center; padding: 40px 30px; gap: 40px; }
+    .cta-content { text-align: center; }
+    .cta-actions { justify-content: center; }
+    .cta-image { width: 100%; }
+    .cta-image img { height: auto; aspect-ratio: 16/9; }
+}
+
+/* MOBILE PHONE ADJUSTMENTS */
+@media (max-width: 768px) {
+    .commitments-grid { grid-template-columns: 1fr; }
+    .scan-panel { padding: 40px 20px; }
+    .input-group { flex-direction: column; }
+    .input-group input { border-radius: 4px; border-right: 1px solid var(--muted-sage); margin-bottom: 10px; }
+    .btn-primary-dark { border-radius: 4px; padding: 15px; }
+    
+    /* Stacks the CTA buttons on mobile phones */
+    .cta-actions { flex-direction: column; width: 100%; }
+    .cta-actions a { width: 100%; }
+}
+
+
+
+
+
+
+/* =========================================================
+   FORCE ACTIVE NAVIGATION HIGHLIGHT (Story Page Only)
+========================================================= */
+header a[href="traceability.html"],
+.desktop-nav a[href="traceability.html"],
+.nav-links a[href="traceability.htmll"] {
+    color: #D4AF37 !important;
+    font-weight: 800 !important;
+    position: relative !important;
+}
+
+header a[href="traceability.html"]::after,
+.desktop-nav a[href="traceability.html"]::after,
+.nav-links a[href="traceability.html"]::after {
+    content: '' !important;
+    position: absolute !important;
+    bottom: -6px !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: 2px !important;
+    background-color: #D4AF37 !important;
+    border-radius: 2px !important;
+    display: block !important;
+}
+
+
+
+/* =========================================================
+   QUALITY PAGE MID-SECTION IMAGE
+========================================================= */
+/* =========================================================
+   QUALITY PAGE MID-SECTION IMAGE (Spacing Fix)
+========================================================= */
+.quality-image-divider {
+    width: 100%;
+    
+    /* THE FIX: Using negative margins to overlap the empty space in the image file */
+    margin-top: -80px;    /* Pulls the image UP towards the scan box */
+    margin-bottom: -80px; /* Pulls the "Everything has its place" text UP towards the image */
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    /* Ensures the image doesn't accidentally block you from clicking anything above/below it */
+    pointer-events: none; 
+}
+
+/* =========================================================
+   QUALITY PAGE MID-SECTION IMAGE (Greyscale & Blended)
+========================================================= */
+.standard-divider-img {
+    max-width: 100%; 
+    height: auto;
+    display: block;
+    margin: 0 auto;
+    
+    /* THE GREYSCALE & BLENDING MAGIC */
+    mix-blend-mode: multiply; /* This makes the light background transparent and keeps the dark lines */
+    filter: grayscale(100%) contrast(1.2) brightness(1.05); /* Removes the yellow and makes the lines pop */
+    
+    /* (Optional) You can remove the box-shadow/border-radius we added earlier 
+       since the background is now transparent, those might look a bit weird on just lines! */
+}
+/* Restricts the maximum width on large desktop screens so it doesn't get ridiculously huge */
+@media (min-width: 992px) {
+    .standard-divider-img {
+        max-width: 1000px; /* You can change this number to make the image wider or narrower */
+    }
+}
+
+
+
+/* =========================================================
+   MOBILE RESPONSIVENESS (Spacing Fix)
+========================================================= */
+@media (max-width: 768px) {
+    .quality-image-divider {
+        /* THE FIX: Negative margins for mobile screens */
+        margin-top: -50px;    /* Pulls the image UP on phones */
+        margin-bottom: -50px; /* Pulls the text below UP on phones */
+        
+        padding: 0 15px; /* Keeps the image from touching the phone edges */
+    }
+}

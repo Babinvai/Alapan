@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Ghosh Dhara</title>
+    <meta name="description" content="Good food begins with trust. Good service begins with a conversation. Contact Ghosh Dhara for orders, wholesale, or batch questions.">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="contact.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+       <!-- HEADER -->
+        <header>
+            <!-- ========================================================= -->
+            <!-- 1. MOBILE HEADER (Clean Layout: Cart, Logo, Menu)         -->
+            <!-- ========================================================= -->
+            <div class="mobile-header-layout">
+
+                <!-- LEFT: Cart Icon -->
+                <div class="mobile-header-left">
+                    <!-- Note: Removed 'cart-icon-btn' here so JS only updates the badge number, keeping the SVG safe -->
+                    <a href="#" class="mobile-cart-btn" onclick="window.openCart(); return false;"
+                        aria-label="Open Cart">
+                        <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="#174B37" stroke-width="1.5">
+                            <circle cx="9" cy="21" r="1"></circle>
+                            <circle cx="20" cy="21" r="1"></circle>
+                            <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                        </svg>
+                        <!-- This span is targeted by your JS to update just the number -->
+                        <span class="cart-count">0</span>
+                    </a>
+                </div>
+
+                <!-- CENTER: Brand Logo -->
+                <div class="mobile-header-center">
+                    <a href="index.html" class="logo">
+                        <img src="Logo.png" alt="Ghosh Dhara Logo" class="brand-logo-img">
+                    </a>
+                </div>
+
+                <!-- RIGHT: Hamburger Menu -->
+                <div class="mobile-header-right">
+                    <button id="mobileMenuBtn" class="hamburger-btn" aria-label="Open Menu">
+                        <svg viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="#B86745" stroke-width="2">
+                            <path d="M3 12h18M3 6h18M3 18h18"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+
+            <!-- ========================================================= -->
+            <!-- 2. DESKTOP HEADER (Automatically hidden on mobile via CSS)-->
+            <!-- ========================================================= -->
+            <div class="container header-inner desktop-nav-only">
+
+                <!-- Desktop Logo -->
+                <a href="index.html" class="logo">
+                    <img src="Logo.png" alt="Ghosh Family Ghee Logo" class="brand-logo-img">
+                </a>
+
+                <!-- Desktop Nav -->
+                <nav class="nav-links">
+                    <a href="index.html">Home</a>
+                    <a href="shop.html">Shop</a>
+                    <a href="story.html">Our Story</a>
+                    <a href="traceability.html">Quality</a>
+                    <a href="recipes.html">Recipes</a>
+                    <a href="lab-report.html" style="color: #D35400; font-weight: 700;">Lab Report</a>
+                    <a href="contact.html">Contact</a>
+                </nav>
+
+                <!-- Desktop Utilities: Scan, Account Login & Cart -->
+                <!-- Desktop Utilities: Scan, Cart & Account Login -->
+                <div style="display: flex; align-items: center; gap: 20px;">
+
+                    <a href="scan.html" class="header-scan-btn">🔍 Scan Batch</a>
+
+                    <!-- Desktop Cart Icon (Moved BEFORE the account icon) -->
+                    <a href="#" class="cart-icon-btn text-brand-green" onclick="window.openCart(); return false;"
+                        style="font-weight: bold; text-decoration: none;">🛒 (0)</a>
+
+                    <!-- PREMIUM ACCOUNT LOGIN ICON (Now at the absolute far right!) -->
+                    <a href="login.html" class="header-account-btn" aria-label="Sign In or Register">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round" style="width: 24px; height: 24px;">
+                            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                            <circle cx="12" cy="7" r="4"></circle>
+                        </svg>
+                    </a>
+
+                </div>
+            </div>
+        </header>
+
+        <!-- ========================================================= -->
+        <!-- 3. PREMIUM MOBILE SLIDE-OUT DRAWER                        -->
+        <!-- ========================================================= -->
+        <div id="mobileNavOverlay" class="mobile-nav-overlay"></div>
+        <div id="mobileNavDrawer" class="mobile-nav-drawer">
+
+            <!-- Drawer Header (Logo & Close Button) -->
+            <div class="mobile-nav-header">
+                <img src="Logo.png" alt="Ghosh Dhara" style="max-width: 80px;">
+                <button id="closeMobileNav" class="close-nav-btn">&times;</button>
+            </div>
+
+            <!-- Animated Nav Links (Merged from your old mobile menu) -->
+            <ul class="mobile-nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="shop.html">Shop Ghee</a></li>
+                <li><a href="story.html">Our Story</a></li>
+                <li><a href="traceability.html">Quality & Traceability</a></li>
+                <li><a href="scan.html" style="color: #D9B12D;">🔍 Scan Your Batch</a></li>
+                <li><a href="recipes.html">Recipes</a></li>
+                <li><a href="lab-report.html">Lab Reports</a></li>
+                <li><a href="faq.html">FAQ</a></li>
+                <li><a href="contact.html">Contact Us</a></li>
+                <li><a href="shipping-returns.html">Shipping & Returns</a></li>
+            </ul>
+
+            <!-- Beautiful Account Section at bottom of drawer -->
+            <div class="mobile-account-section">
+                <h3>My Account</h3>
+                <a href="login.html" class="btn-mobile-login">LOG IN</a>
+                <a href="register.html" class="btn-mobile-register">REGISTER</a>
+            </div>
+        </div>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="contact-hero relative overflow-hidden">
+            <div class="bg-illustration village-path"></div>
+            <div class="container hero-grid">
+                <div class="hero-content reveal-on-scroll">
+                    <span class="eyebrow">WE’RE HERE TO HELP</span>
+                    <h1>Let’s keep the conversation close to home.</h1>
+                    <p class="subtitle">Have a question about Ghosh Dhara, your order, a batch number or wholesale? Reach out—we would be glad to help.</p>
+                    
+                    <div class="hero-buttons">
+                        <a href="https://wa.me/[Verified WhatsApp Number]" target="_blank" rel="noopener noreferrer" class="btn btn-primary-gold">Chat on WhatsApp</a>
+                        <a href="#contactFormSection" class="btn btn-outline-green">Send a Message</a>
+                    </div>
+                    
+                    <p class="trust-note">Clear answers. Thoughtful support. No automated runaround.</p>
+                </div>
+                
+                <div class="hero-visual reveal-on-scroll delay-1">
+                    <div class="image-wrapper">
+                        <div class="placeholder-image">
+                            <img src="Contact.jpeg" alt="Ghosh Dhara Verified Lab Report" class="hero-report-image">
+                        </div>
+                        <div class="floating-card cream-card">
+                            <span class="card-eyebrow">GHOSH DHARA SUPPORT</span>
+                            <p>For orders, batch details, product questions and wholesale enquiries.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Quick Contact Options -->
+        <section class="quick-contact bg-soft-cream">
+            <div class="container quick-contact-grid">
+                
+                <article class="contact-card reveal-on-scroll">
+                    <div class="icon-wrapper">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
+                    </div>
+                    <h3>WhatsApp Us</h3>
+                    <p>For quick questions about products, orders or delivery.</p>
+                    <a href="https://wa.me/[Verified WhatsApp Number]" target="_blank" rel="noopener noreferrer" class="text-link">Start WhatsApp Chat &rarr;</a>
+                </article>
+
+                <article class="contact-card reveal-on-scroll delay-1">
+                    <div class="icon-wrapper">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                    </div>
+                    <h3>Email Us</h3>
+                    <p>For detailed questions, partnerships or documents.</p>
+                    <a href="mailto:[Verified Email Address]" class="text-link">[Verified Email Address] &rarr;</a>
+                </article>
+
+                <article class="contact-card reveal-on-scroll delay-2">
+                    <div class="icon-wrapper">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="16.5" y1="9.4" x2="7.5" y2="4.21"></line><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg>
+                    </div>
+                    <h3>Order Help</h3>
+                    <p>Need help with an existing order? Keep your order number ready.</p>
+                    <button type="button" class="text-link scroll-to-form" data-reason="Order Support">Get Order Support &rarr;</button>
+                </article>
+
+                <article class="contact-card reveal-on-scroll delay-3">
+                    <div class="icon-wrapper">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20.42 4.58a5.4 5.4 0 0 0-7.65 0l-.77.78-.77-.78a5.4 5.4 0 0 0-7.65 0C1.46 6.7 1.33 10.28 4 13l8 8 8-8c2.67-2.72 2.54-6.3.42-8.42z"></path></svg>
+                    </div>
+                    <h3>Wholesale & Partnerships</h3>
+                    <p>Interested in stocking Ghosh Dhara or working with us?</p>
+                    <button type="button" class="text-link scroll-to-form" data-reason="Wholesale / Partnership">Make a Business Enquiry &rarr;</button>
+                </article>
+
+            </div>
+        </section>
+
+      <!-- Main Contact Section -->
+<section id="contactFormSection" class="main-contact-section">
+    <div class="container main-contact-grid">
+        
+        <!-- Left Information Panel -->
+        <div class="contact-info-panel reveal-on-scroll">
+            <div class="bg-illustration brass-vessel"></div>
+            <h2>Speak with Ghosh Dhara.</h2>
+            <p>Whether you are choosing your first jar, checking an order or asking about a batch, we are happy to guide you.</p>
+            
+            <address class="contact-details">
+                <div class="detail-item">
+                    <span class="detail-label">WhatsApp / Phone</span>
+                    <span class="detail-value">[Verified WhatsApp Number]</span>
+                </div>
+                <div class="detail-item">
+                    <span class="detail-label">Email</span>
+                    <span class="detail-value">[Verified Email Address]</span>
+                </div>
+                <div class="detail-item">
+                    <span class="detail-label">Business Hours</span>
+                    <span class="detail-value">[Verified Business Hours]</span>
+                </div>
+                <div class="detail-item">
+                    <span class="detail-label">Location</span>
+                    <span class="detail-value">[Verified Business Address or Region]</span>
+                </div>
+            </address>
+
+            <div class="support-note">
+                <p>For faster order support, please include your order number and the phone number used at checkout.</p>
+            </div>
+
+            <div class="panel-actions">
+                <!-- Stacked buttons look much more premium here -->
+                <a href="https://wa.me/[Verified WhatsApp Number]" target="_blank" rel="noopener noreferrer" class="btn btn-outline-ivory">Chat on WhatsApp</a>
+                <a href="[Verified Instagram Link]" target="_blank" rel="noopener noreferrer" class="btn btn-outline-ivory">Follow on Instagram</a>
+            </div>
+        </div>
+
+        <!-- Right Form Panel -->
+        <div class="contact-form-panel reveal-on-scroll delay-1">
+            <h2>Send us a message.</h2>
+            <p class="form-subtitle">Tell us how we can help, and share your order or batch number if relevant.</p>
+
+            <form id="ghoshDharaContactForm" class="contact-form" novalidate>
+                <!-- Honeypot -->
+                <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="fullName">Full Name <span class="required">*</span></label>
+                        <input type="text" id="fullName" name="fullName" required>
+                        <span class="error-message" aria-live="polite">Please enter your name.</span>
+                    </div>
+                    <div class="form-group">
+                        <label for="emailAddress">Email Address <span class="required">*</span></label>
+                        <input type="email" id="emailAddress" name="emailAddress" required>
+                        <span class="error-message" aria-live="polite">Please enter a valid email address.</span>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="phoneNumber">Phone / WhatsApp Number</label>
+                        <input type="tel" id="phoneNumber" name="phoneNumber">
+                    </div>
+                    <div class="form-group">
+                        <label for="contactReason">Reason for Contact <span class="required">*</span></label>
+                        <div class="select-wrapper">
+                            <select id="contactReason" name="contactReason" required>
+                                <option value="" disabled selected>Select an option</option>
+                                <option value="Product Question">Product Question</option>
+                                <option value="Order Support">Order Support</option>
+                                <option value="Batch / Lab Report Question">Batch / Lab Report Question</option>
+                                <option value="Delivery Question">Delivery Question</option>
+                                <option value="Wholesale / Partnership">Wholesale / Partnership</option>
+                                <option value="Feedback">Feedback</option>
+                                <option value="Other">Other</option>
+                            </select>
+                        </div>
+                        <span class="error-message" aria-live="polite">Please select a reason.</span>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="orderNumber">Order Number</label>
+                        <input type="text" id="orderNumber" name="orderNumber">
+                    </div>
+                    <div class="form-group">
+                        <label for="batchNumber">Batch Number</label>
+                        <input type="text" id="batchNumber" name="batchNumber">
+                    </div>
+                </div>
+
+                <div class="form-group full-width">
+                    <label for="message">Message <span class="required">*</span></label>
+                    <!-- Perfected visual balance at 4 rows -->
+                    <textarea id="message" name="message" rows="4" required></textarea>
+                    <span class="error-message" aria-live="polite">Please enter your message.</span>
+                </div>
+
+                <div class="form-group checkbox-group full-width">
+                    <input type="checkbox" id="consent" name="consent" required>
+                    <label for="consent">I agree that Ghosh Dhara may use my details to respond to this enquiry. <span class="required">*</span></label>
+                    <span class="error-message" aria-live="polite">You must agree to send a message.</span>
+                </div>
+
+                <div class="form-submit full-width">
+                    <button type="submit" class="btn btn-primary-green btn-full-width" id="submitBtn">Send Message</button>
+                    <p class="privacy-note">We use your contact details only to respond to your enquiry. Read our <a href="#">Privacy Policy</a>.</p>
+                </div>
+                
+                <!-- Form Status Messages -->
+                <div id="formSuccess" class="form-status success hidden" aria-live="polite">
+                    Thank you—your message has been received. We will respond through the contact details you provided.
+                </div>
+                <div id="formError" class="form-status error hidden" aria-live="polite">
+                    Your message could not be sent right now. Please try again or contact us directly on WhatsApp.
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
+
+        <!-- "How we can help" Section -->
+        <section class="help-topics-section bg-warm-ivory">
+            <div class="container">
+                <div class="section-header text-center reveal-on-scroll">
+                    <h2>A little help goes a long way.</h2>
+                </div>
+                
+                <div class="help-grid">
+                    <article class="help-card reveal-on-scroll">
+                        <div class="help-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M18 8h1a4 4 0 0 1 0 8h-1"></path><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"></path><line x1="6" y1="1" x2="6" y2="4"></line><line x1="10" y1="1" x2="10" y2="4"></line><line x1="14" y1="1" x2="14" y2="4"></line></svg>
+                        </div>
+                        <h3>Choosing Your Jar</h3>
+                        <p>Not sure which size is right for your home? We can help you choose between 250 g, 500 g and 1 kg packs.</p>
+                    </article>
+
+                    <article class="help-card reveal-on-scroll delay-1">
+                        <div class="help-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><rect x="7" y="7" width="3" height="3"></rect><rect x="14" y="7" width="3" height="3"></rect><rect x="7" y="14" width="3" height="3"></rect><rect x="14" y="14" width="3" height="3"></rect></svg>
+                        </div>
+                        <h3>Checking Your Batch</h3>
+                        <p>Need help finding your batch number or understanding available product information? Send us a photo of your label.</p>
+                    </article>
+
+                    <article class="help-card reveal-on-scroll delay-2">
+                        <div class="help-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+                        </div>
+                        <h3>Ordering for Business</h3>
+                        <p>For retail, gifting, cafés, restaurants or other business enquiries, tell us about your requirement and we will guide you.</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- Rooted Area Section -->
+        <!-- ========================================================= -->
+<!-- ROOTED AREA SECTION (WITH MAP)                            -->
+<!-- ========================================================= -->
+<section class="rooted-section relative overflow-hidden">
+    <div class="bg-illustration rice-fields"></div>
+    
+    <div class="container text-center reveal-on-scroll">
+        <h2>Rooted in [Region]. Here for your kitchen.</h2>
+        <p class="rooted-subtitle">Ghosh Dhara is rooted in [Region], West Bengal. For orders and support, reach us directly on WhatsApp or through the form above.</p>
+
+        <!-- The Map Container -->
+        <div class="map-container">
+            <!-- REPLACE THE src="..." LINK BELOW WITH YOUR GOOGLE MAPS LINK -->
+            <iframe 
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d117466.97444265691!2d88.4239853965561!3d23.400583307616196!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39f8e434f593bd65%3A0xcda6b054bcce18b4!2sKrishnanagar%2C%20West%20Bengal!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin" 
+                width="100%" 
+                height="450" 
+                style="border:0;" 
+                allowfullscreen="" 
+                loading="lazy" 
+                referrerpolicy="no-referrer-when-downgrade">
+            </iframe>
+        </div>
+    </div>
+</section>
+        <!-- FAQ Section -->
+        <section class="faq-section bg-soft-cream">
+            <div class="container faq-container">
+                <div class="section-header text-center reveal-on-scroll">
+                    <h2>Before you write to us.</h2>
+                </div>
+                
+                <div class="accordion">
+                    <div class="accordion-item reveal-on-scroll">
+                        <button class="accordion-header" aria-expanded="false">
+                            How can I contact Ghosh Dhara quickly?
+                            <span class="accordion-icon"></span>
+                        </button>
+                        <div class="accordion-content">
+                            <p>WhatsApp is the quickest way to reach us for general product, order and delivery questions. You can also send us a message through the form on this page.</p>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item reveal-on-scroll">
+                        <button class="accordion-header" aria-expanded="false">
+                            What should I share for order support?
+                            <span class="accordion-icon"></span>
+                        </button>
+                        <div class="accordion-content">
+                            <p>Please include your order number, the phone number used for the order and a short description of the issue.</p>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item reveal-on-scroll">
+                        <button class="accordion-header" aria-expanded="false">
+                            How can I ask about a batch or lab report?
+                            <span class="accordion-icon"></span>
+                        </button>
+                        <div class="accordion-content">
+                            <p>Share the batch number printed on your jar label. A clear photo of the label can also help us guide you faster.</p>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item reveal-on-scroll">
+                        <button class="accordion-header" aria-expanded="false">
+                            Can I contact you for wholesale or gifting?
+                            <span class="accordion-icon"></span>
+                        </button>
+                        <div class="accordion-content">
+                            <p>Yes. Choose “Wholesale / Partnership” in the contact form and include your business name, city and approximate requirement.</p>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item reveal-on-scroll">
+                        <button class="accordion-header" aria-expanded="false">
+                            What if my jar arrives damaged?
+                            <span class="accordion-icon"></span>
+                        </button>
+                        <div class="accordion-content">
+                            <p>Please contact us promptly with your order number and clear photos of the packaging and product. Our support team will guide you.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Final Trust CTA -->
+        <section class="final-cta text-center relative overflow-hidden">
+            <div class="bg-illustration dotted-route"></div>
+            <div class="container reveal-on-scroll">
+                <h2>From our roots to your table, we stay within reach.</h2>
+                <p>Explore Ghosh Dhara, scan your batch or simply message us before you choose your jar.</p>
+                <div class="cta-actions">
+                    <a href="shop.html" class="btn btn-primary-green">Shop Ghee</a>
+                    <a href="scan.html" class="btn btn-outline-green">Scan Your Batch</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- ========================================================= -->
+        <!-- FOOTER                                                    -->
+        <!-- ========================================================= -->
+        <!-- ========================================================= -->
+        <!-- UNIFIED FOOTER WITH GOLD-ADJUSTED 2D LANDSCAPE            -->
+        <!-- ========================================================= -->
+        <footer class="main-footer">
+        
+        <!-- 2D Ground Landscape with Yellow/Gold Adjustments -->
+        <div class="footer-landscape">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 150" preserveAspectRatio="none" style="width: 100%; height: 100%; display: block;">
+                <!-- Warm Golden-Olive Layer -->
+                <path d="M0,150 L0,100 Q150,70 300,95 T600,65 T900,105 T1200,55 L1200,150 Z" fill="#7A6822" opacity="0.85"></path>
+                <!-- Rich Deep Gold/Terracotta Transition Layer -->
+                <path d="M0,150 L0,125 Q200,95 400,115 T800,85 T1200,115 L1200,150 Z" fill="#5B4A15"></path>
+                <!-- Deep Earthy Base Silhouette -->
+                <path d="M0,150 L0,140 Q250,110 500,135 T1000,120 T1200,140 L1200,150 Z" fill="#382C0C"></path>
+                <!-- Subtle Grass Tufts -->
+                <g fill="#382C0C">
+                    <path d="M120,135 Q123,120 126,135 Z"></path>
+                    <path d="M125,137 Q128,115 130,137 Z"></path>
+                    <path d="M550,130 Q553,115 556,130 Z"></path>
+                    <path d="M555,132 Q560,110 562,132 Z"></path>
+                    <path d="M980,125 Q983,110 986,125 Z"></path>
+                    <path d="M985,127 Q990,105 992,127 Z"></path>
+                </g>
+            </svg>
+        </div>
+
+        <!-- Top Grid Section -->
+        <div class="container footer-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px; position: relative; z-index: 2;">
+            <div>
+                 <a href="index.html">
+                    <!-- You can use the same logo, or a white/light version if your footer is dark -->
+                    <img src="Logo 3.png" alt="Ghosh Family Ghee Logo" class="brand-logo-img-footer">
+                </a>
+                <p style="color: #FAF8F2; opacity: 0.9; font-size: 0.9rem; margin-top: 15px;">Traditional Ghee. Tested with Trust.</p>
+                <p style="color: #D9B12D; font-size: 0.8rem; margin-top: 10px; font-weight: 600;">FSSAI Lic. No. 12345</p>
+            </div>
+            
+            <div>
+                <h4 style="color: #D9B12D; margin-bottom: 15px; font-family: 'Playfair Display', serif;">Explore</h4>
+                <ul style="list-style: none; padding: 0; line-height: 2;">
+                    <li><a href="index.html" style="color: #FAF8F2; text-decoration: none; opacity: 0.8;">Home</a></li>
+                    <li><a href="shop.html" style="color: #FAF8F2; text-decoration: none; opacity: 0.8;">Shop</a></li>
+                    <li><a href="story.html" style="color: #FAF8F2; text-decoration: none; opacity: 0.8;">Our Story</a></li>
+                    <li><a href="traceability.html" style="color: #FAF8F2; text-decoration: none; opacity: 0.8;">Quality</a></li>
+                    <li><a href="recipes.html" style="color: #FAF8F2; text-decoration: none; opacity: 0.8;">Recipes</a></li>
+                </ul>
+            </div>
+            
+            <div>
+                <h4 style="color: #D9B12D; margin-bottom: 15px; font-family: 'Playfair Display', serif;">Customer Care</h4>
+                <ul style="list-style: none; padding: 0; line-height: 2;">
+                    <li><a href="scan.html" style="color: #FAF8F2; text-decoration: none; opacity: 0.8;">Scan Your Batch</a></li>
+                    <li><a href="contact.html" style="color: #FAF8F2; text-decoration: none; opacity: 0.8;">Contact Us</a></li>
+                    <li><a href="faq.html" style="color: #FAF8F2; text-decoration: none; opacity: 0.8;">FAQ</a></li>
+                    <li><a href="shipping-returns.html" style="color: #FAF8F2; text-decoration: none; opacity: 0.8;">Shipping & Returns</a></li>
+                </ul>
+            </div>
+            
+            <div>
+                <h4 style="color: #D9B12D; margin-bottom: 15px; font-family: 'Playfair Display', serif;">Contact</h4>
+                <ul>
+                    <li>WhatsApp: 8653890554</li>
+                    <li>Email: alapanghosh3@gmail.com</li>
+                    <li>Bergoom, Krishnanagar</li>
+                </ul>
+                <!-- Social Media Icons -->
+                <div class="social-icons">
+                    <!-- Facebook -->
+                    <a href="#" aria-label="Facebook">
+                        <svg viewBox="0 0 24 24"><path d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z"/></svg>
+                    </a>
+                    <!-- Instagram -->
+                    <a href="#" aria-label="Instagram">
+                        <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+                    </a>
+                    <!-- YouTube -->
+                    <a href="#" aria-label="YouTube">
+                        <svg viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.5 12 3.5 12 3.5s-7.505 0-9.377.55a3.016 3.016 0 0 0-2.122 2.136C0 8.07 0 12 0 12s0 3.93.501 5.814a3.016 3.016 0 0 0 2.122 2.136c1.872.55 9.377.55 9.377.55s7.505 0 9.377-.55a3.016 3.016 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Integrated Copyright Row -->
+        <div class="container footer-copyright">
+            <span class="copyright-text">2026 GHOSH DHARA. ALL RIGHTS RESERVED.</span>
+        </div>
+    </footer>
+
+
+
+
+
+
+
+        <!-- TOAST SUCCESS MESSAGE -->
+        <div id="cartToast" class="toast-notification">✅ Product successfully added to cart!</div>
+
+        <!-- SLIDE-OUT CART DRAWER -->
+        <div class="cart-overlay" id="cartOverlay"></div>
+        <div class="cart-drawer" id="cartDrawer">
+            <div class="cart-header">
+                <h2 class="font-serif" style="font-size: 1.5rem;">Your Cart</h2>
+                <button class="close-cart" id="closeCart">×</button>
+            </div>
+            <div class="cart-items">
+                <!-- Empty state -->
+                <div style="text-align: center; color: #888; margin-top: 50px;">
+                    <p>Your cart is currently empty.</p>
+                    <a href="shop.html" class="btn-primary" style="margin-top: 20px;">Continue Shopping</a>
+                </div>
+
+                <!-- Example of a populated cart item (Hidden for now) -->
+                <!-- 
+            <div style="display: flex; gap: 15px; border-bottom: 1px solid #eee; padding-bottom: 15px; margin-bottom: 15px;">
+                <div style="width: 80px; height: 80px; background: #f9f9f9;"></div>
+                <div style="flex: 1;">
+                    <h4 class="font-serif">[Brand Name] Traditional Ghee</h4>
+                    <p style="font-size: 0.8rem; color: #666;">500g Jar</p>
+                    <p style="font-weight: bold; color: var(--brand-gold);">₹[Price]</p>
+                </div>
+            </div> 
+            -->
+            </div>
+            <div class="cart-footer">
+                <div
+                    style="display: flex; justify-content: space-between; margin-bottom: 15px; font-weight: bold; font-size: 1.2rem;">
+                    <span>Subtotal</span>
+                    <span>₹0.00</span>
+                </div>
+                <p style="font-size: 0.8rem; color: #666; margin-bottom: 15px;">Shipping and taxes calculated at
+                    checkout.</p>
+                <button class="checkout-btn">Proceed to Secure Checkout</button>
+                <div style="text-align: center; margin-top: 10px; font-size: 0.8rem; opacity: 0.8;">
+                    💳 Cards, UPI & Net Banking Accepted
+                </div>
+            </div>
+        </div>
+
+    </body>
+
+    <script src="script.js"></script>
+
+    <script src="contact.js"></script>
+</body>
+</html>

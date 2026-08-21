@@ -1,0 +1,842 @@
+/* =========================================================
+   GHOSH DHARA - SHOP SPECIFIC STYLES
+========================================================= */
+:root {
+    --forest-green: #174B37;
+    --ghee-gold: #D9B12D;
+    --ivory-bg: #FAF8F2;
+    --dairy-cream: #F3EBDD;
+    --clay-terracotta: #B86745;
+    --muted-sage: #A6B59B;
+    --text-green: #214938;
+    
+    --font-serif: 'Playfair Display', serif;
+    --font-sans: 'Inter', sans-serif;
+}
+
+body {
+    background-color: var(--ivory-bg);
+    color: var(--text-green);
+    font-family: var(--font-sans);
+    line-height: 1.6;
+    overflow-x: hidden;
+    margin: 0;
+}
+
+h1, h2, h3, h4 { font-family: var(--font-serif); color: var(--forest-green); margin-bottom: 1rem; }
+img { max-width: 100%; display: block; }
+button { font-family: var(--font-sans); cursor: pointer; }
+
+/* =========================================================
+   STICKY HEADER & ACTIVE NAV
+========================================================= */
+header { transition: all 0.4s ease; width: 100%; z-index: 1000; }
+header.scrolled {
+    position: fixed; top: 0;
+    background: rgba(250, 248, 242, 0.95) !important;
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--ghee-gold);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+}
+
+/* Force Active Highlight for Shop Page */
+header a[href="shop.html"], .desktop-nav a[href="shop.html"], .nav-links a[href="shop.html"] {
+    color: #D4AF37 !important;
+    font-weight: 800 !important;
+    position: relative !important;
+}
+header a[href="shop.html"]::after, .desktop-nav a[href="shop.html"]::after, .nav-links a[href="shop.html"]::after {
+    content: '' !important; position: absolute !important;
+    bottom: -6px !important; left: 0 !important;
+    width: 100% !important; height: 2px !important;
+    background-color: #D4AF37 !important; border-radius: 2px !important;
+    display: block !important;
+}
+
+/* =========================================================
+   1. SHOP HERO
+========================================================= */
+/* =========================================================
+   1. SHOP HERO
+========================================================= */
+.shop-hero { 
+    position: relative; 
+    padding: 130px 0 60px; /* Changed the top padding from 60px to 130px */
+    background: var(--ivory-bg); 
+}
+.shop-hero-texture {
+    position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+    background-image: radial-gradient(var(--muted-sage) 1px, transparent 3.5px);
+    background-size: 25px 25px; opacity: 0.15; z-index: 1; pointer-events: none;
+}
+.shop-hero-inner { position: relative; z-index: 2; display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+.hero-content .eyebrow { display: block; font-size: 0.85rem; font-weight: 700; letter-spacing: 0.1em; color: var(--clay-terracotta); text-transform: uppercase; margin-bottom: 15px; }
+.hero-content h1 { font-size: 3.2rem; line-height: 1.1; margin-bottom: 20px; }
+.hero-content p { font-size: 1.1rem; opacity: 0.9; margin-bottom: 20px; max-width: 95%; }
+.trust-line { display: block; font-family: var(--font-serif); font-size: 1.2rem; font-style: italic; color: var(--ghee-gold); margin-bottom: 30px; }
+.hero-actions { display: flex; gap: 15px; align-items: center; }
+
+.btn-primary-gold { background: var(--ghee-gold); color: var(--forest-green); padding: 14px 28px; border-radius: 4px; text-decoration: none; font-weight: 600; transition: transform 0.3s; display: inline-block; border: none; font-size: 1rem;}
+.btn-primary-gold:hover { transform: translateY(-2px); box-shadow: 0 5px 15px rgba(217, 177, 45, 0.3); }
+.btn-outline-green { border: 1px solid var(--forest-green); color: var(--forest-green); padding: 13px 28px; border-radius: 4px; text-decoration: none; font-weight: 600; transition: background 0.3s; display: inline-block; }
+.btn-outline-green:hover { background: var(--forest-green); color: #fff; }
+
+.hero-image-wrapper { position: relative; }
+.hero-img { width: 100%; height: 450px; object-fit: cover; border-radius: 8px; position: relative; z-index: 2; box-shadow: 0 10px 30px rgba(0,0,0,0.08);}
+.village-path-bg {
+    position: absolute; top: -20px; right: -20px; width: 80%; height: 100%;
+    border: 2px dashed rgba(217,177,45,0.4); border-radius: 50% 50% 0 0; z-index: 1;
+}
+.floating-mini-card {
+    position: absolute; bottom: 20px; left: -30px; background: #fff; padding: 20px;
+    border-radius: 6px; box-shadow: 0 10px 25px rgba(23,75,55,0.1); z-index: 3;
+    max-width: 240px; border-left: 3px solid var(--forest-green);
+}
+.floating-mini-card .card-label { font-size: 0.75rem; font-weight: 700; color: var(--muted-sage); display: block; margin-bottom: 5px; }
+.floating-mini-card p { font-size: 0.9rem; margin: 0; color: var(--forest-green); font-weight: 500; line-height: 1.4; }
+
+/* =========================================================
+   2. QUICK TRUST STRIP
+========================================================= */
+.quick-trust-strip { background: var(--forest-green); padding: 15px 0; border-bottom: 1px solid rgba(255,255,255,0.1); }
+.trust-strip-inner { display: flex; justify-content: center; gap: 40px; flex-wrap: wrap; }
+.trust-item { color: var(--dairy-cream); font-size: 0.9rem; font-weight: 500; display: flex; align-items: center; gap: 8px; }
+.trust-item .icon { color: var(--ghee-gold); font-size: 1.1rem; }
+
+/* =========================================================
+   3. PRODUCT SHOWCASE (Sticky Layout)
+========================================================= */
+.product-showcase { padding: 60px 0 100px; background: #fff; }
+.product-grid { 
+    display: grid; 
+    grid-template-columns: 1fr 1fr; 
+    gap: 60px; 
+    align-items: stretch; /* CHANGED FROM 'start': This forces the left column to be exactly as tall as the right column! */
+}
+
+.product-gallery { 
+    display: flex; 
+    flex-direction: column; 
+    gap: 20px; 
+    
+    /* THE FIX: This stops the long scrolling thumbnail track from blowing out the width of the column */
+    min-width: 0; 
+    width: 100%;
+}
+
+/* Ensures the right side still allows the sticky panel to slide perfectly */
+.product-details {
+    height: 100%;
+}
+
+
+
+
+/* =========================================================
+   VILLAGE SKETCH FILLER (Edge-to-Edge Seamless Blend)
+========================================================= */
+.village-sketch-filler {
+    flex-grow: 1; 
+    background-image: url('Drawing 1.jpeg'); 
+    
+    /* THE FIX: 'cover' forces the image to stretch all the way to the invisible edges, 
+       so the straight borders of the JPEG can never be seen! */
+    background-size: cover; 
+    background-position: center center; 
+    background-repeat: no-repeat;
+    
+    opacity: 1; 
+    mix-blend-mode: multiply; 
+    filter: grayscale(100%) contrast(1.2) brightness(1.05);
+    
+    /* Using a perfect 'circle' fade instead of an ellipse to guarantee smooth edges on all sides */
+    -webkit-mask-image: radial-gradient(circle at center, rgba(0,0,0,1) 30%, rgba(0,0,0,0) 75%);
+    mask-image: radial-gradient(circle at center, rgba(0,0,0,1) 30%, rgba(0,0,0,0) 75%);
+    
+    min-height: 450px;
+    margin-top: 30px;
+}
+
+/* The Studio Backdrop */
+.main-image-container {
+    border-radius: 16px;
+    background: radial-gradient(circle at center, #ffffff 0%, var(--dairy-cream) 100%);
+    border: 1px solid rgba(217, 177, 45, 0.2);
+    box-shadow: inset 0 0 40px rgba(255,255,255,0.6), 0 15px 35px rgba(23, 75, 55, 0.08);
+    padding: 40px 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.main-image-container img {
+    width: 100%;
+    height: auto;
+    max-height: 550px;
+    object-fit: contain;
+    /* Adds realistic 3D depth to the jar */
+    filter: drop-shadow(0 20px 25px rgba(0,0,0,0.2)); 
+    transition: opacity 0.4s ease;
+}
+
+/* =========================================================
+   DYNAMIC DISCOUNT BADGE
+========================================================= */
+.discount-badge {
+    position: absolute;
+    top: 25px;
+    right: 25px;
+    width: 65px;
+    height: 65px;
+    background: var(--clay-terracotta); /* Earthy terracotta for a premium pop */
+    color: #fff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    font-family: var(--font-sans);
+    font-weight: 800;
+    font-size: 1.1rem;
+    line-height: 1;
+    text-align: center;
+    box-shadow: 0 8px 20px rgba(184, 103, 69, 0.4);
+    z-index: 10;
+    /* A slight tilt makes it feel like a sticker */
+    transform: rotate(12deg); 
+    border: 2px solid var(--ivory-bg);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.discount-badge span {
+    font-size: 0.65rem;
+    text-transform: uppercase;
+    font-weight: 700;
+    opacity: 0.9;
+    margin-top: 2px;
+}
+
+
+/* Cyclic Thumbnail Track */
+.thumbnail-wrapper {
+    width: 100%;
+    overflow: hidden;
+    padding: 15px 0;
+    position: relative;
+    /* Added this to keep it perfectly contained */
+    box-sizing: border-box; 
+}
+
+/* Soft fading gradients on the left and right edges */
+.thumbnail-wrapper::before,
+.thumbnail-wrapper::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    width: 50px;
+    height: 100%;
+    z-index: 2;
+    pointer-events: none;
+}
+.thumbnail-wrapper::before {
+    left: 0;
+    /* Changed from ivory to pure white to match the section background */
+    background: linear-gradient(to right, #ffffff, transparent); 
+}
+.thumbnail-wrapper::after {
+    right: 0;
+    /* Changed from ivory to pure white */
+    background: linear-gradient(to left, #ffffff, transparent); 
+}
+
+.thumbnail-row {
+    display: flex;
+    gap: 15px;
+    width: max-content;
+    /* The continuous scrolling animation */
+    animation: cyclicScroll 20s linear infinite;
+}
+
+/* Pause the rotation when the customer wants to click an image */
+.thumbnail-row:hover {
+    animation-play-state: paused;
+}
+
+@keyframes cyclicScroll {
+    0% { transform: translateX(0); }
+    /* Scrolls exactly halfway, then seamlessly loops back to 0 */
+    100% { transform: translateX(calc(-50% - 7.5px)); } 
+}
+
+/* Cinematic Focus on Thumbnails */
+.thumb-btn {
+    flex: 0 0 95px;
+    height: 95px;
+    background: #fff;
+    border: 2px solid transparent;
+    padding: 3px;
+    border-radius: 12px;
+    overflow: hidden;
+    opacity: 0.4; /* Dims inactive images */
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    cursor: pointer;
+}
+
+.thumb-btn img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.thumb-btn.active, .thumb-btn:hover {
+    border-color: var(--ghee-gold);
+    opacity: 1; /* Highlights active image */
+    transform: scale(1.08);
+    box-shadow: 0 10px 25px rgba(217, 177, 45, 0.3);
+    z-index: 5;
+}
+
+/* Product Details / Sticky Panel */
+.sticky-panel { position: sticky; top: 100px; }
+.product-title { font-size: 2.2rem; margin-bottom: 10px; }
+.product-short-desc { font-size: 1.1rem; opacity: 0.9; margin-bottom: 15px; }
+.product-ingredients, .product-availability { font-size: 0.9rem; color: var(--text-green); margin-bottom: 5px; opacity: 0.8; }
+.price-display { margin: 25px 0; display: flex; align-items: baseline; gap: 15px; border-bottom: 1px solid rgba(23,75,55,0.1); padding-bottom: 20px; }
+.price-display #currentPrice { font-size: 2rem; font-weight: 700; color: var(--forest-green); }
+.price-display #unitPrice { font-size: 1rem; color: var(--muted-sage); }
+
+/* Size Selector */
+.size-selector { margin-bottom: 30px; }
+.selector-label { font-family: var(--font-sans); font-size: 0.95rem; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 15px; color: var(--muted-sage); }
+.size-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; }
+.size-card { background: var(--ivory-bg); border: 1px solid rgba(23,75,55,0.1); border-radius: 6px; padding: 15px 10px; text-align: center; position: relative; transition: all 0.2s; }
+.size-card:hover { border-color: var(--muted-sage); }
+.size-card.active { border: 2px solid var(--forest-green); background: rgba(217, 177, 45, 0.05); }
+.size-card .weight { display: block; font-weight: 700; font-size: 1.1rem; color: var(--forest-green); margin-bottom: 5px; }
+.size-card .size-note { display: block; font-size: 0.75rem; color: var(--text-green); opacity: 0.8; line-height: 1.2; }
+.badge-loved { position: absolute; top: -10px; left: 50%; transform: translateX(-50%); background: var(--clay-terracotta); color: #fff; font-size: 0.7rem; padding: 2px 8px; border-radius: 12px; font-weight: 600; white-space: nowrap; }
+
+/* Actions */
+.purchase-actions { display: flex; gap: 20px; margin-bottom: 15px; }
+.quantity-control { display: flex; border: 1px solid rgba(23,75,55,0.2); border-radius: 4px; height: 50px; }
+.quantity-control button { background: none; border: none; width: 45px; font-size: 1.2rem; color: var(--forest-green); transition: background 0.2s; }
+.quantity-control button:hover { background: rgba(23,75,55,0.05); }
+.quantity-control input { width: 50px; border: none; border-left: 1px solid rgba(23,75,55,0.2); border-right: 1px solid rgba(23,75,55,0.2); text-align: center; font-family: var(--font-sans); font-weight: 600; font-size: 1rem; color: var(--forest-green); -moz-appearance: textfield; }
+.quantity-control input::-webkit-outer-spin-button, .quantity-control input::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
+
+.action-buttons { display: flex; gap: 15px; flex-grow: 1; }
+.btn-add-cart { flex: 1; background: var(--ghee-gold); color: var(--forest-green); border: none; border-radius: 4px; font-weight: 700; font-size: 1rem; transition: background 0.3s; }
+.btn-add-cart:hover { background: #C5A028; }
+.btn-buy-now { flex: 1; background: var(--forest-green); color: #fff; border: none; border-radius: 4px; font-weight: 600; font-size: 1rem; transition: background 0.3s; }
+.btn-buy-now:hover { background: #113628; }
+.purchase-promises { font-size: 0.85rem; color: var(--muted-sage); margin-bottom: 40px; }
+.purchase-promises a { color: var(--forest-green); text-decoration: underline; }
+
+
+
+/* =========================================================
+   DELIVERY AVAILABILITY CHECKER
+========================================================= */
+.delivery-checker-wrapper {
+    margin: 30px 0;
+    padding: 22px;
+    background: rgba(23, 75, 55, 0.03); /* Very soft green tint */
+    border: 1px solid rgba(23, 75, 55, 0.1);
+    border-radius: 8px;
+}
+
+.delivery-title {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-family: var(--font-sans);
+    font-size: 0.95rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--forest-green);
+    margin-bottom: 15px;
+}
+
+.truck-icon {
+    width: 20px;
+    height: 20px;
+    color: var(--clay-terracotta);
+}
+
+.delivery-input-group {
+    display: flex;
+    background: #fff;
+    border: 1px solid rgba(23, 75, 55, 0.2);
+    border-radius: 4px;
+    overflow: hidden;
+    height: 45px;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.delivery-input-group:focus-within {
+    border-color: var(--forest-green);
+    box-shadow: 0 0 0 3px rgba(23, 75, 55, 0.08);
+}
+
+.delivery-input-group input {
+    flex: 1;
+    border: none;
+    padding: 10px 15px;
+    font-family: var(--font-sans);
+    font-size: 0.95rem;
+    outline: none;
+    color: var(--forest-green);
+    background: transparent;
+}
+
+.delivery-input-group input::placeholder {
+    color: var(--muted-sage);
+}
+
+.delivery-input-group button {
+    background: var(--dairy-cream);
+    color: var(--forest-green);
+    border: none;
+    border-left: 1px solid rgba(23, 75, 55, 0.2);
+    padding: 0 25px;
+    font-weight: 700;
+    font-size: 0.95rem;
+    transition: background 0.3s, color 0.3s;
+}
+
+.delivery-input-group button:hover {
+    background: var(--forest-green);
+    color: #fff;
+}
+
+.pincode-msg {
+    margin: 12px 0 0 0;
+    font-size: 0.85rem;
+    font-weight: 500;
+    display: none;
+}
+.pincode-msg.success { display: block; color: #0E9F6E; } /* Trustworthy Green */
+.pincode-msg.error { display: block; color: #D35400; } /* Alert Orange */
+
+/* Product Confidence Accordion */
+.confidence-accordion { border-top: 1px solid rgba(23,75,55,0.1); }
+.conf-item { border-bottom: 1px solid rgba(23,75,55,0.1); }
+.conf-question { width: 100%; background: none; border: none; text-align: left; padding: 20px 0; font-family: var(--font-sans); font-size: 1rem; font-weight: 600; color: var(--forest-green); display: flex; justify-content: space-between; align-items: center; }
+.conf-question .icon { color: var(--clay-terracotta); transition: transform 0.3s; }
+.conf-question[aria-expanded="true"] .icon { transform: rotate(45deg); }
+.conf-answer { max-height: 0; overflow: hidden; transition: max-height 0.4s ease; }
+.conf-answer p { padding-bottom: 20px; font-size: 0.95rem; margin: 0; opacity: 0.9; }
+
+/* =========================================================
+   4. WHY GHOSH DHARA
+========================================================= */
+.why-ghosh-dhara { padding: 100px 0; background: var(--dairy-cream); position: relative; }
+.village-pattern-bg { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-image: url("data:image/svg+xml,%3Csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 50 Q 250 150 500 50 T 1000 50' fill='none' stroke='%23A6B59B' stroke-width='1' stroke-opacity='0.2'/%3E%3C/svg%3E"); pointer-events: none; }
+.trust-cards-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; margin-top: 50px; position: relative; z-index: 2; }
+.trust-box { background: #fff; padding: 40px; border-radius: 8px; text-align: center; border: 1px solid rgba(23,75,55,0.05); }
+.trust-icon { color: var(--clay-terracotta); width: 48px; height: 48px; margin: 0 auto 20px; }
+.trust-box h3 { font-size: 1.4rem; margin-bottom: 15px; }
+
+/* =========================================================
+   5. KITCHEN USES
+========================================================= */
+.kitchen-uses { padding: 100px 0; background: var(--ivory-bg); }
+.uses-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 25px; margin-top: 50px; }
+.use-card { display: block; text-decoration: none; color: inherit; border-radius: 8px; overflow: hidden; background: #fff; transition: transform 0.3s; box-shadow: 0 4px 15px rgba(0,0,0,0.05); border: 1px solid rgba(23,75,55,0.05); }
+.use-card:hover { transform: translateY(-5px); }
+.use-card img { width: 100%; height: 200px; object-fit: cover; }
+.use-text { padding: 20px; }
+.use-text h4 { font-family: var(--font-sans); font-size: 1.05rem; margin-bottom: 8px; }
+.use-text p { font-size: 0.9rem; opacity: 0.8; margin: 0; }
+
+/* =========================================================
+   6. QUALITY CTA
+========================================================= */
+.quality-cta { background: var(--forest-green); color: var(--dairy-cream); padding: 80px 0; text-align: center; position: relative; overflow: hidden; }
+.quality-cta-inner { position: relative; z-index: 2; max-width: 700px; margin: 0 auto; }
+.quality-cta h2 { color: var(--ghee-gold); font-size: 2.5rem; }
+.quality-cta p { font-size: 1.1rem; margin-bottom: 30px; }
+.proof-points { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; margin-bottom: 40px; font-weight: 500; }
+.quality-actions { display: flex; gap: 20px; justify-content: center; }
+.btn-outline-cream { border: 1px solid var(--ivory-bg); color: var(--ivory-bg); padding: 13px 28px; border-radius: 4px; text-decoration: none; font-weight: 600; transition: all 0.3s; display: inline-block; }
+.btn-outline-cream:hover { background: var(--ivory-bg); color: var(--forest-green); }
+
+/* =========================================================
+   7. COMMUNITY / FAQ / FINAL CTA
+========================================================= */
+.community-section { padding: 80px 0; background: #fff; border-bottom: 1px solid rgba(23,75,55,0.1); }
+.btn-outline-dark { border: 1px solid var(--forest-green); color: var(--forest-green); padding: 12px 28px; border-radius: 4px; text-decoration: none; font-weight: 600; display: inline-block; margin-top: 20px; }
+.btn-outline-dark:hover { background: var(--forest-green); color: #fff; }
+
+.faq-section { padding: 100px 0; background: var(--ivory-bg); }
+.faq-accordion { max-width: 800px; margin: 0 auto; }
+.faq-item { border-bottom: 1px solid rgba(23,75,55,0.1); }
+.faq-question { width: 100%; background: none; border: none; text-align: left; padding: 25px 0; font-family: var(--font-sans); font-size: 1.1rem; font-weight: 600; color: var(--forest-green); display: flex; justify-content: space-between; align-items: center; }
+.faq-question .icon { color: var(--clay-terracotta); transition: transform 0.3s; }
+.faq-question[aria-expanded="true"] .icon { transform: rotate(45deg); }
+.faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.4s ease; }
+.faq-answer p { padding-bottom: 25px; opacity: 0.8; font-size: 0.95rem; margin: 0; }
+
+.final-conversion { padding: 100px 0; background: var(--dairy-cream); position: relative; }
+.field-grass-bg { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-image: radial-gradient(var(--muted-sage) 1px, transparent 1px); background-size: 20px 20px; opacity: 0.2; pointer-events: none; }
+.final-cta-inner { position: relative; z-index: 2; display: flex; align-items: center; justify-content: space-between; gap: 60px; max-width: 1000px; margin: 0 auto; background: #fff; padding: 50px 60px; border-radius: 12px; box-shadow: 0 20px 50px rgba(23,75,55,0.08); }
+.cta-text { flex: 1; text-align: left; }
+.cta-text h2 { font-size: 2.5rem; margin-bottom: 20px; }
+.cta-text p { font-size: 1.1rem; opacity: 0.9; margin-bottom: 35px; }
+.cta-actions { display: flex; gap: 20px; align-items: center; }
+.btn-primary-dark { background: var(--forest-green); color: #fff; padding: 13px 28px; border-radius: 4px; text-decoration: none; font-weight: 600; transition: background 0.3s; display: inline-block; border: none; font-size: 1rem; }
+.btn-outline-clay { border: 1px solid var(--clay-terracotta); color: var(--clay-terracotta); padding: 13px 28px; border-radius: 4px; text-decoration: none; font-weight: 600; transition: all 0.3s; display: inline-block; }
+.btn-outline-clay:hover { background: var(--clay-terracotta); color: #fff; }
+.cta-image { flex: 0 0 40%; }
+.cta-image img { width: 100%; height: 280px; object-fit: cover; border-radius: 8px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); }
+
+/* =========================================================
+   CART DRAWER & TOAST NOTIFICATION
+========================================================= */
+.cart-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); z-index: 99998; transition: opacity 0.3s ease; }
+.cart-drawer { position: fixed; top: 0; width: 100%; max-width: 400px; height: 100%; background: #FAF8F2; z-index: 99999; box-shadow: -5px 0 25px rgba(0,0,0,0.15); transition: right 0.3s cubic-bezier(0.4, 0, 0.2, 1); display: flex; flex-direction: column; }
+.cart-header { padding: 20px 25px; border-bottom: 1px solid rgba(23,75,55,0.1); display: flex; justify-content: space-between; align-items: center; background: #fff; }
+.cart-header h2 { margin: 0; font-size: 1.5rem; }
+.close-cart-btn { background: none; border: none; font-size: 28px; color: var(--forest-green); }
+.cart-items { padding: 25px; flex-grow: 1; overflow-y: auto; }
+.cart-item { display: flex; gap: 15px; margin-bottom: 20px; padding-bottom: 20px; border-bottom: 1px solid rgba(23,75,55,0.1); }
+.cart-item img { width: 70px; height: 70px; object-fit: cover; border-radius: 4px; }
+.item-details { flex-grow: 1; }
+.item-details h4 { font-family: var(--font-sans); font-size: 0.95rem; margin: 0 0 5px 0; }
+.item-details p { font-size: 0.85rem; color: var(--muted-sage); margin: 0 0 10px 0; }
+.item-controls { display: flex; justify-content: space-between; align-items: center; }
+.item-price { font-weight: 700; color: var(--forest-green); }
+.remove-item { color: #D35400; font-size: 0.8rem; cursor: pointer; text-decoration: underline; background: none; border: none; padding: 0;}
+.empty-cart-msg { text-align: center; color: var(--muted-sage); margin-top: 50px; }
+.cart-footer { padding: 25px; border-top: 1px solid rgba(23,75,55,0.1); background: #fff; }
+.cart-subtotal { display: flex; justify-content: space-between; font-weight: 700; font-size: 1.2rem; margin-bottom: 20px; color: var(--forest-green); }
+.btn-checkout { width: 100%; background: var(--forest-green); color: #fff; padding: 15px; border: none; border-radius: 4px; font-weight: 600; font-size: 1rem; transition: background 0.3s; }
+.btn-checkout:hover { background: #113628; }
+
+.cart-toast { position: fixed; bottom: -100px; left: 50%; transform: translateX(-50%); background: var(--forest-green); color: #fff; padding: 14px 24px; border-radius: 30px; transition: bottom 0.3s cubic-bezier(0.4, 0, 0.2, 1); z-index: 100000; font-weight: 500; box-shadow: 0 10px 25px rgba(0,0,0,0.2); display: flex; gap: 15px; align-items: center; font-family: var(--font-sans); font-size: 0.9rem;}
+.cart-toast.show { bottom: 30px; }
+.cart-toast a { color: var(--ghee-gold); text-decoration: none; font-weight: 700; }
+
+/* Mobile Sticky Bar */
+.mobile-sticky-cart { position: fixed; bottom: 0; left: 0; width: 100%; background: #fff; padding: 15px 20px; box-shadow: 0 -5px 20px rgba(0,0,0,0.1); z-index: 990; display: flex; justify-content: space-between; align-items: center; border-top: 1px solid rgba(23,75,55,0.1); transform: translateY(100%); transition: transform 0.3s ease; }
+.mobile-sticky-cart.visible { transform: translateY(0); }
+.sticky-cart-info { display: flex; flex-direction: column; }
+.sticky-price { font-weight: 700; font-size: 1.2rem; color: var(--forest-green); }
+.sticky-size { font-size: 0.8rem; color: var(--muted-sage); }
+.mobile-sticky-cart button { padding: 10px 25px; }
+
+/* =========================================================
+   ANIMATIONS & RESPONSIVE
+========================================================= */
+.reveal-on-scroll { opacity: 0; transform: translateY(30px); transition: opacity 0.8s ease-out, transform 0.8s ease-out; }
+.reveal-on-scroll.visible { opacity: 1; transform: translateY(0); }
+.delay-1 { transition-delay: 0.2s; }
+@media (prefers-reduced-motion: reduce) { .reveal-on-scroll { transition: none; opacity: 1; transform: none; } }
+
+@media (max-width: 992px) {
+    .shop-hero-inner, .product-grid, .final-cta-inner { grid-template-columns: 1fr; gap: 40px; text-align: center; }
+    .hero-actions, .quality-actions, .cta-actions { justify-content: center; }
+    .trust-strip-inner { gap: 20px; }
+    .floating-mini-card { bottom: -20px; left: 50%; transform: translateX(-50%); width: 80%; }
+    .uses-grid { grid-template-columns: repeat(2, 1fr); }
+    .trust-cards-grid { grid-template-columns: 1fr; gap: 30px; }
+    .cta-text { text-align: center; }
+    
+    /* Product adjustments */
+    .sticky-panel { position: relative; top: 0; }
+    .thumbnail-row { gap: 10px; }
+    .price-display { justify-content: center; }
+    .action-buttons { flex-direction: column; }
+    
+    /* Mobile Sticky Cart activation */
+    .mobile-sticky-cart { display: flex; }
+}
+
+@media (max-width: 768px) {
+    .shop-hero h1 { font-size: 2.5rem; }
+    .size-cards { grid-template-columns: 1fr; gap: 10px; }
+    .uses-grid { grid-template-columns: 1fr; }
+    .purchase-actions { flex-direction: column; }
+    .quantity-control { width: 100%; justify-content: center; margin-bottom: 10px;}
+    .hero-actions { flex-direction: column; width: 100%; }
+    .hero-actions a { width: 100%; }
+    .cta-actions { flex-direction: column; width: 100%; }
+    .cta-actions button, .cta-actions a { width: 100%; }
+}
+
+
+
+
+/* =========================================================
+   CLARITY SECTION HEADER & BLENDED SKETCH
+========================================================= */
+
+/* Creates the two-column layout */
+.clarity-header-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 50px;
+    margin-bottom: 60px;
+}
+
+/* Forces the text to the left and restricts its width */
+.clarity-text {
+    flex: 1;
+    max-width: 50%;
+    text-align: left; /* Overrides previous center alignment */
+}
+
+.clarity-text h2 {
+    margin-bottom: 15px;
+}
+
+/* The Seamless Blended Sketch */
+.clarity-sketch-filler {
+    flex: 1;
+    min-height: 220px; 
+    
+    /* ADD YOUR IMAGE FILE NAME HERE */
+    background-image: url('Shop_faq.png'); 
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    
+    /* The Blending Magic */
+    opacity: 1;
+    mix-blend-mode: multiply;
+    
+    
+    /* The soft vignette mask to melt the edges into the background */
+    -webkit-mask-image: radial-gradient(ellipse at center, rgba(0,0,0,1) 30%, rgba(0,0,0,0) 75%);
+    mask-image: radial-gradient(ellipse at center, rgba(0,0,0,1) 30%, rgba(0,0,0,0) 75%);
+}
+
+/* =========================================================
+   MOBILE RESPONSIVENESS (Stacked Layout)
+========================================================= */
+@media (max-width: 768px) {
+    .clarity-header-row {
+        flex-direction: column; /* Stacks the text and image vertically */
+        text-align: center;
+        gap: 30px; /* Adds nice breathing room between text and image */
+        margin-bottom: 40px;
+    }
+    
+    .clarity-text {
+        max-width: 100%;
+        text-align: center; /* Centers the text perfectly on small screens */
+    }
+    
+    /* Brings the sketch back and sizes it perfectly for phones */
+    .clarity-sketch-filler {
+        display: block; 
+        width: 100%; 
+        min-height: 180px; /* Slightly shorter for mobile so it doesn't take up the whole screen */
+    }
+}
+
+
+
+/* =========================================================
+   KITCHEN USES HEADER & BLENDED SKETCH
+========================================================= */
+
+/* Desktop: Creates the two-column side-by-side layout */
+.kitchen-header-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 50px;
+    margin-bottom: 50px;
+}
+
+/* Forces the text to the left and restricts its width on desktop */
+.kitchen-text {
+    flex: 1;
+    max-width: 50%;
+    text-align: left; /* Overrides previous center alignment */
+}
+
+.kitchen-text h2 {
+    margin-bottom: 15px;
+}
+
+/* The Seamless Blended Sketch (Right Side) */
+.kitchen-sketch-filler {
+    flex: 1;
+    min-height: 220px; 
+    
+    /* ADD YOUR SPECIFIC IMAGE FILE NAME HERE */
+    background-image: url('Shop_food.png'); 
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    
+    /* The Blending Magic */
+    opacity: 1;
+    mix-blend-mode: multiply;
+    
+    
+    /* The soft vignette mask to melt the edges into the background */
+    -webkit-mask-image: radial-gradient(ellipse at center, rgba(0,0,0,1) 30%, rgba(0,0,0,0) 75%);
+    mask-image: radial-gradient(ellipse at center, rgba(0,0,0,1) 30%, rgba(0,0,0,0) 75%);
+}
+
+/* =========================================================
+   MOBILE RESPONSIVENESS (Stacked Layout)
+========================================================= */
+@media (max-width: 768px) {
+    .kitchen-header-row {
+        flex-direction: column; /* Stacks the text and image vertically */
+        text-align: center;
+        gap: 30px; /* Adds nice breathing room between text and image */
+        margin-bottom: 40px;
+    }
+    
+    .kitchen-text {
+        max-width: 100%;
+        text-align: center; /* Centers the text perfectly on small screens */
+    }
+    
+    /* Keeps the sketch visible, sized perfectly for phones */
+    .kitchen-sketch-filler {
+        display: block; 
+        width: 100%; 
+        min-height: 180px; 
+    }
+}
+
+
+
+/* =========================================================
+   COMMUNITY SECTION & BLENDED SKETCH
+========================================================= */
+
+/* Desktop: Creates the two-column side-by-side layout */
+.community-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 50px;
+}
+
+/* Left Side: Restricts width and aligns text */
+.community-text {
+    flex: 1;
+    max-width: 50%;
+    text-align: left;
+}
+
+.community-text h2 {
+    margin-bottom: 15px;
+}
+
+.community-text p {
+    margin-bottom: 30px; /* Gives nice breathing room before the button */
+}
+
+
+
+
+/* Right Side: The Seamless Blended Sketch */
+.community-sketch-filler {
+    flex: 1;
+    min-height: 250px; 
+    
+    background-image: url('Share_exp.png'); 
+    
+    /* 1. Zoom in slightly so we have room to slide the image around */
+    background-size: 130%; 
+    
+    /* 2. Slide the image to bring the right-side drawing into the center. 
+       (Try changing 80% to 100% if it needs to move even more, or 60% if it moved too much) */
+    background-position: 80% center; 
+    
+    background-repeat: no-repeat;
+    opacity: 1;
+    mix-blend-mode: multiply;
+    
+    /* 3. Keep the mask perfectly centered in the box so it acts like a spotlight */
+    -webkit-mask-image: radial-gradient(ellipse at center, rgba(0,0,0,1) 30%, rgba(0,0,0,0) 75%);
+    mask-image: radial-gradient(ellipse at center, rgba(0,0,0,1) 30%, rgba(0,0,0,0) 75%);
+}
+
+/* =========================================================
+   MOBILE RESPONSIVENESS (Stacked Layout)
+========================================================= */
+@media (max-width: 768px) {
+    .community-row {
+        flex-direction: column; /* Stacks the text and image vertically */
+        text-align: center;
+        gap: 40px; /* Adds spacing between the button and the image */
+    }
+    
+    .community-text {
+        max-width: 100%;
+        text-align: center; /* Centers the text on small screens */
+    }
+    
+    /* Keeps the sketch visible, sized perfectly for phones */
+    .community-sketch-filler {
+        display: block; 
+        width: 100%; 
+        min-height: 200px; 
+    }
+}
+
+
+
+/* =========================================================
+   REDUCE TOP SPACING FOR KITCHEN USES SECTION
+========================================================= */
+.kitchen-uses {
+    /* Most sections have 80px to 100px of padding by default. 
+       Dropping this to 40px (or even 20px) will pull the content up nicely! */
+    padding-top: 40px !important; 
+}
+
+
+/* =========================================================
+   TRACEABILITY SECTION SUBTITLE
+========================================================= */
+.traceability-subtitle {
+    font-size: 1.15rem; /* Slightly larger and more legible */
+    line-height: 1.7; /* Extra breathing room between lines */
+    color: rgba(255, 255, 255, 0.85); /* A soft off-white so it doesn't compete with the heading */
+    font-weight: 300; /* A lighter, more elegant weight */
+    max-width: 650px; /* Prevents the line from stretching too wide on desktop */
+    margin: 0 auto 30px auto; /* Centers it and adds space below */
+    letter-spacing: 0.02em; 
+}
+
+/* The Golden Highlight Effect */
+.traceability-subtitle .text-highlight {
+    color: #F4C430; /* Matches your golden button/heading color */
+    font-weight: 500; /* Bolder to stand out */
+    font-style: italic; /* Adds a sophisticated touch */
+    border-bottom: 1px dashed rgba(244, 196, 48, 0.5); /* Optional: A subtle underline to suggest it is a key interactive element */
+    padding-bottom: 2px;
+}
+
+/* Mobile Adjustments */
+@media (max-width: 768px) {
+    .traceability-subtitle {
+        font-size: 1.05rem;
+        padding: 0 15px; /* Ensures it doesn't touch the edges of the phone screen */
+    }
+}
+
+
+/* =========================================================
+   CENTER FAQ HEADING
+========================================================= */
+.faq-main-heading {
+    text-align: center !important;
+    width: 100%;
+    margin-bottom: 40px; /* Adjust this number to increase/decrease space below the heading */
+}

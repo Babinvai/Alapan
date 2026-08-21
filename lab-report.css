@@ -1,0 +1,1467 @@
+/* =========================================================
+   GHOSH DHARA - LAB REPORT SPECIFIC STYLES
+========================================================= */
+
+:root {
+    --forest-green: #174B37;
+    --ghee-gold: #D9B12D;
+    --ivory-bg: #FAF8F2;
+    --dairy-cream: #F3EBDD;
+    --clay-terracotta: #B86745;
+    --muted-sage: #A6B59B;
+    --text-green: #214938;
+
+    --font-serif: 'Playfair Display', serif;
+    --font-sans: 'Inter', sans-serif;
+}
+
+body {
+    background-color: var(--ivory-bg);
+    color: var(--text-green);
+    font-family: var(--font-sans);
+    line-height: 1.6;
+    margin: 0;
+    overflow-x: hidden;
+}
+
+h1,
+h2,
+h3,
+h4 {
+    font-family: var(--font-serif);
+    color: var(--forest-green);
+    margin-bottom: 1rem;
+}
+
+a {
+    text-decoration: none;
+}
+
+button {
+    font-family: var(--font-sans);
+    cursor: pointer;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* =========================================================
+   BACKGROUND PATTERNS (Subtle 2D motifs)
+========================================================= */
+.bg-pattern {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.05;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+/* Abstract village/traceability contour lines */
+.pattern-hero {
+    background-image: radial-gradient(circle at 80% 20%, var(--forest-green) 1px, transparent 1px);
+    background-size: 30px 30px;
+}
+
+.pattern-finder {
+    background-image: repeating-linear-gradient(45deg, var(--ghee-gold) 0, var(--ghee-gold) 1px, transparent 0, transparent 50%);
+    opacity: 0.03;
+}
+
+.pattern-cta {
+    background-image: radial-gradient(var(--muted-sage) 1px, transparent 1px);
+    background-size: 20px 20px;
+}
+
+/* =========================================================
+   HEADER STYLES
+========================================================= */
+header {
+    transition: all 0.4s ease;
+    width: 100%;
+    z-index: 1000;
+    position: absolute;
+}
+
+header.scrolled {
+    position: fixed;
+    top: 0;
+    background: rgba(250, 248, 242, 0.95);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid rgba(217, 177, 45, 0.3);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+}
+
+.active-nav {
+    color: var(--ghee-gold) !important;
+    font-weight: 700 !important;
+    border-bottom: 2px solid var(--ghee-gold);
+}
+
+/* Buttons */
+.btn-primary-gold {
+    background: var(--ghee-gold);
+    color: var(--forest-green);
+    padding: 14px 28px;
+    border-radius: 4px;
+    font-weight: 600;
+    display: inline-block;
+    border: none;
+    transition: transform 0.3s;
+}
+
+.btn-primary-gold:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(217, 177, 45, 0.3);
+}
+
+.btn-primary-dark {
+    background: var(--forest-green);
+    color: var(--ivory-bg);
+    padding: 14px 28px;
+    border-radius: 4px;
+    font-weight: 600;
+    display: inline-block;
+    border: none;
+    transition: background 0.3s;
+}
+
+.btn-primary-dark:hover {
+    background: #113628;
+}
+
+.btn-outline-green {
+    border: 1px solid var(--forest-green);
+    color: var(--forest-green);
+    padding: 13px 28px;
+    border-radius: 4px;
+    font-weight: 600;
+    display: inline-block;
+    transition: background 0.3s;
+}
+
+.btn-outline-green:hover {
+    background: var(--forest-green);
+    color: #fff;
+}
+
+.btn-outline-cream {
+    border: 1px solid var(--dairy-cream);
+    color: var(--dairy-cream);
+    padding: 10px 20px;
+    border-radius: 4px;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: transparent;
+    transition: all 0.3s;
+}
+
+.btn-outline-cream:hover {
+    background: var(--dairy-cream);
+    color: var(--forest-green);
+}
+
+.btn-outline-clay {
+    border: 1px solid var(--clay-terracotta);
+    color: var(--clay-terracotta);
+    padding: 13px 28px;
+    border-radius: 4px;
+    font-weight: 600;
+    display: inline-block;
+    transition: background 0.3s;
+}
+
+.btn-outline-clay:hover {
+    background: var(--clay-terracotta);
+    color: #fff;
+}
+
+/* =========================================================
+   1. HERO SECTION
+========================================================= */
+.report-hero {
+    position: relative;
+    padding: 150px 0 80px;
+    background-color: var(--ivory-bg);
+
+    /* 3-Layer Premium Background Effect */
+    background-image:
+        /* Layer 1: A richer golden glow near the text (Left) */
+        radial-gradient(circle at 10% 20%, rgba(217, 177, 45, 0.15) 0%, transparent 55%),
+
+        /* Layer 2: A soft forest green glow near the image box (Right) */
+        radial-gradient(circle at 90% 80%, rgba(23, 75, 55, 0.08) 0%, transparent 55%),
+
+        /* Layer 3: A faint, technical "Lab" dot grid pattern for texture */
+        radial-gradient(rgba(0, 0, 0, 0.04) 1.5px, transparent 1.5px);
+
+    /* Ensures the glows stretch across the screen, while the dots repeat in a 24px grid */
+    background-size: 100% 100%, 100% 100%, 24px 24px;
+    background-position: 0 0, 0 0, 12px 12px;
+
+    overflow: hidden;
+}
+
+.hero-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+    position: relative;
+    z-index: 2;
+}
+
+.hero-content .eyebrow {
+    display: block;
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    color: var(--clay-terracotta);
+    text-transform: uppercase;
+    margin-bottom: 15px;
+}
+
+.hero-content h1 {
+    font-size: 3.5rem;
+    line-height: 1.1;
+    margin-bottom: 20px;
+}
+
+.hero-content p {
+    font-size: 1.1rem;
+    opacity: 0.9;
+    margin-bottom: 20px;
+    max-width: 90%;
+}
+
+.trust-note {
+    font-family: var(--font-serif);
+    font-style: italic;
+    color: var(--muted-sage);
+    font-size: 1.1rem;
+    margin-bottom: 30px;
+    display: block;
+}
+
+.hero-actions {
+    display: flex;
+    gap: 15px;
+}
+
+.image-wrapper {
+    position: relative;
+}
+
+.placeholder-image {
+    width: 100%;
+    height: 450px;
+    background: var(--dairy-cream);
+    border: 1px dashed var(--muted-sage);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 40px;
+    border-radius: 8px;
+    color: var(--forest-green);
+    font-weight: 500;
+    font-size: 0.9rem;
+}
+
+.floating-card {
+    position: absolute;
+    bottom: -20px;
+    left: -30px;
+    background: #fff;
+    padding: 25px;
+    border-radius: 6px;
+    box-shadow: 0 15px 35px rgba(23, 75, 55, 0.08);
+    max-width: 260px;
+    border-top: 4px solid var(--ghee-gold);
+}
+
+.floating-card .card-eyebrow {
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--muted-sage);
+    margin-bottom: 5px;
+    display: block;
+}
+
+.floating-card p {
+    margin: 0;
+    font-weight: 600;
+    color: var(--forest-green);
+    font-size: 0.95rem;
+    line-height: 1.4;
+}
+
+.hero-divider {
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--ghee-gold), transparent);
+    margin-top: 80px;
+    opacity: 0.3;
+}
+
+/* =========================================================
+   2. WHAT A LAB REPORT MEANS
+========================================================= */
+.report-meaning {
+    padding: 100px 0;
+    background: #fff;
+}
+
+/* =========================================================
+   CENTER 'WHAT WE SHARE' SECTION HEADER
+========================================================= */
+.section-header {
+    text-align: center !important;
+    /* Forces the H2 and paragraph text to center */
+    width: 100%;
+    margin-bottom: 50px;
+    /* Adds breathing room between the text and the 3 cards below */
+}
+
+/* Update your existing h2 rule to ensure it centers and has a little space below it */
+.section-header h2 {
+    font-size: 2.5rem;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.section-header p {
+    font-size: 1.1rem;
+    max-width: 600px;
+    margin: 0 auto;
+    opacity: 0.9;
+}
+
+.meaning-cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+    margin-top: 60px;
+}
+
+.meaning-card {
+    background: var(--ivory-bg);
+    padding: 40px 30px;
+    border-radius: 8px;
+    border: 1px solid rgba(23, 75, 55, 0.05);
+    text-align: center;
+    transition: transform 0.3s;
+}
+
+.meaning-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+}
+
+.card-icon {
+    color: var(--clay-terracotta);
+    width: 40px;
+    height: 40px;
+    margin: 0 auto 20px;
+}
+
+.meaning-card h3 {
+    font-size: 1.3rem;
+    margin-bottom: 15px;
+}
+
+.meaning-card p {
+    font-size: 0.95rem;
+    opacity: 0.8;
+    margin: 0;
+}
+
+/* =========================================================
+   3. BATCH REPORT FINDER
+========================================================= */
+.batch-finder-section {
+    padding: 100px 0;
+    background: var(--forest-green);
+    position: relative;
+    overflow: hidden;
+}
+
+.finder-panel {
+    max-width: 700px;
+    margin: 0 auto;
+    text-align: center;
+    position: relative;
+    z-index: 2;
+    background: rgba(255, 255, 255, 0.03);
+    padding: 50px;
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.finder-header h2 {
+    color: var(--ghee-gold);
+    font-size: 2.5rem;
+}
+
+.finder-header p {
+    color: var(--dairy-cream);
+    font-size: 1.1rem;
+    margin-bottom: 40px;
+    opacity: 0.9;
+}
+
+.finder-form {
+    margin-bottom: 20px;
+}
+
+.input-group {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 15px;
+}
+
+.input-wrapper {
+    flex: 1;
+    position: relative;
+    display: flex;
+    align-items: center;
+    background: #fff;
+    border-radius: 4px;
+    padding: 0 20px;
+}
+
+.search-icon {
+    width: 20px;
+    height: 20px;
+    color: var(--muted-sage);
+    margin-right: 10px;
+}
+
+.input-wrapper input {
+    width: 100%;
+    border: none;
+    outline: none;
+    padding: 18px 0;
+    font-family: var(--font-sans);
+    font-size: 1.1rem;
+    color: var(--forest-green);
+    background: transparent;
+}
+
+.btn-primary-gold {
+    /* Replace with your actual button class if different */
+    display: inline-flex;
+    align-items: center;
+    /* Forces vertical centering */
+    justify-content: center;
+    /* Forces horizontal centering */
+    padding: 14px 28px;
+    /* Ensure the padding is balanced */
+    line-height: 1.2;
+    /* Prevents tall line-heights from pushing text down */
+    text-align: center;
+    margin: 0;
+    /* Removes any hidden margins pushing the text */
+}
+
+.finder-help {
+    color: var(--muted-sage);
+    font-size: 0.9rem;
+}
+
+.finder-help a {
+    color: var(--ghee-gold);
+    text-decoration: underline;
+}
+
+.search-message {
+    margin-top: 30px;
+    padding: 20px;
+    border-radius: 4px;
+    font-weight: 500;
+    font-size: 1rem;
+    text-align: left;
+    line-height: 1.5;
+}
+
+.search-message.error {
+    background: rgba(184, 103, 69, 0.1);
+    border: 1px solid var(--clay-terracotta);
+    color: #F3EBDD;
+}
+
+.search-message.info {
+    background: rgba(217, 177, 45, 0.1);
+    border: 1px solid var(--ghee-gold);
+    color: #F3EBDD;
+}
+
+.whatsapp-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--ghee-gold);
+    margin-top: 15px;
+    font-weight: 700;
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.3s;
+}
+
+.whatsapp-btn:hover {
+    border-color: var(--ghee-gold);
+}
+
+/* =========================================================
+   4. BATCH REPORT RESULT UI
+========================================================= */
+.result-panel {
+    margin-top: 60px;
+    background: var(--ivory-bg);
+    border-radius: 12px;
+    overflow: hidden;
+    text-align: left;
+    position: relative;
+    z-index: 2;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
+}
+
+.result-header {
+    background: #fff;
+    padding: 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    border-bottom: 1px solid rgba(23, 75, 55, 0.1);
+}
+
+.status-badge {
+    display: inline-block;
+    background: rgba(23, 75, 55, 0.1);
+    color: var(--forest-green);
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 15px;
+}
+
+.result-meta h3 {
+    font-size: 1.8rem;
+    margin: 0 0 5px 0;
+}
+
+.batch-id {
+    font-family: var(--font-sans);
+    color: var(--muted-sage);
+    margin: 0;
+    font-size: 1rem;
+}
+
+.btn-outline-cream {
+    border-color: var(--forest-green);
+    color: var(--forest-green);
+}
+
+.btn-outline-cream:hover {
+    background: var(--forest-green);
+    color: #fff;
+}
+
+.result-details-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    padding: 30px 40px;
+    background: var(--dairy-cream);
+    border-bottom: 1px solid rgba(23, 75, 55, 0.1);
+}
+
+.detail-item {
+    display: flex;
+    flex-direction: column;
+}
+
+.detail-item .label {
+    font-size: 0.8rem;
+    color: var(--muted-sage);
+    text-transform: uppercase;
+    font-weight: 700;
+    margin-bottom: 5px;
+}
+
+.detail-item .value {
+    font-weight: 600;
+    color: var(--forest-green);
+    font-size: 1rem;
+}
+
+.table-tabs {
+    display: flex;
+    padding: 0 40px;
+    border-bottom: 1px solid rgba(23, 75, 55, 0.1);
+    background: #fff;
+}
+
+.tab-btn {
+    background: none;
+    border: none;
+    padding: 20px 30px;
+    font-weight: 600;
+    font-size: 1rem;
+    color: var(--muted-sage);
+    cursor: pointer;
+    border-bottom: 2px solid transparent;
+    transition: all 0.3s;
+}
+
+.tab-btn.active {
+    color: var(--forest-green);
+    border-bottom-color: var(--forest-green);
+}
+
+.table-container {
+    display: none;
+    padding: 40px;
+    background: #fff;
+}
+
+.table-container.active {
+    display: block;
+}
+
+.report-table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+}
+
+.report-table th {
+    padding: 15px;
+    background: var(--dairy-cream);
+    color: var(--forest-green);
+    font-weight: 700;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    border-bottom: 2px solid rgba(23, 75, 55, 0.1);
+}
+
+.report-table td {
+    padding: 20px 15px;
+    border-bottom: 1px solid rgba(23, 75, 55, 0.1);
+    font-size: 0.95rem;
+    color: var(--text-green);
+    vertical-align: top;
+}
+
+.table-disclaimer {
+    margin-top: 20px;
+    font-size: 0.85rem;
+    color: var(--muted-sage);
+    font-style: italic;
+}
+
+/* =========================================================
+   5. HOW WE TEST (Timeline)
+========================================================= */
+.report-workflow {
+    padding: 100px 0;
+    background: var(--ivory-bg);
+}
+
+.workflow-timeline {
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    margin-top: 80px;
+}
+
+.workflow-timeline::before {
+    content: '';
+    position: absolute;
+    top: 24px;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: rgba(217, 177, 45, 0.3);
+    z-index: 1;
+}
+
+.timeline-step {
+    flex: 1;
+    text-align: center;
+    position: relative;
+    z-index: 2;
+    padding: 0 15px;
+}
+
+.step-icon {
+    width: 50px;
+    height: 50px;
+    background: #fff;
+    border: 2px solid var(--ghee-gold);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 20px;
+    color: var(--forest-green);
+}
+
+.step-content h4 {
+    font-size: 1.1rem;
+    margin-bottom: 10px;
+}
+
+.step-content p {
+    font-size: 0.9rem;
+    opacity: 0.8;
+}
+
+/* =========================================================
+   6. LABEL GUIDE
+========================================================= */
+.label-guide-section {
+    padding: 100px 0;
+    background: #fff;
+}
+
+.label-diagram-wrapper {
+    position: relative;
+    max-width: 800px;
+    margin: 60px auto 0;
+    height: 600px;
+    border: 1px dashed var(--muted-sage);
+    border-radius: 8px;
+    background: var(--dairy-cream);
+}
+
+.diagram-placeholder {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: var(--forest-green);
+    font-weight: 500;
+    font-size: 1.2rem;
+    text-align: center;
+}
+
+.annotation {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    width: 250px;
+}
+
+.anno-dot {
+    width: 12px;
+    height: 12px;
+    background: var(--clay-terracotta);
+    border-radius: 50%;
+    box-shadow: 0 0 0 4px rgba(184, 103, 69, 0.2);
+    flex-shrink: 0;
+}
+
+.anno-text h4 {
+    font-family: var(--font-sans);
+    font-size: 0.95rem;
+    margin: 0 0 5px 0;
+    color: var(--forest-green);
+}
+
+.anno-text p {
+    font-size: 0.85rem;
+    margin: 0;
+    color: var(--muted-sage);
+    line-height: 1.4;
+}
+
+/* =========================================================
+   7. QUALITY STATEMENT
+========================================================= */
+.quality-statement-section {
+    padding: 60px 0;
+    background: var(--ivory-bg);
+}
+
+.statement-panel {
+    background: var(--dairy-cream);
+    border: 1px solid var(--ghee-gold);
+    padding: 60px;
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+    border-radius: 8px;
+    box-shadow: 0 10px 30px rgba(217, 177, 45, 0.1);
+}
+
+.statement-panel h2 {
+    font-size: 2.2rem;
+    margin-bottom: 20px;
+}
+
+.statement-panel p {
+    font-size: 1.1rem;
+    opacity: 0.9;
+    margin-bottom: 20px;
+}
+
+.statement-note {
+    font-family: var(--font-serif);
+    font-style: italic;
+    color: var(--clay-terracotta);
+    font-weight: 600;
+}
+
+/* =========================================================
+   8. FAQ
+========================================================= */
+.faq-section {
+    padding: 100px 0;
+    background: #fff;
+}
+
+.faq-accordion {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.faq-item {
+    border-bottom: 1px solid rgba(23, 75, 55, 0.1);
+}
+
+.faq-question {
+    width: 100%;
+    background: none;
+    border: none;
+    text-align: left;
+    padding: 25px 0;
+    font-family: var(--font-sans);
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--forest-green);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.faq-question .icon {
+    color: var(--clay-terracotta);
+    transition: transform 0.3s;
+}
+
+.faq-question[aria-expanded="true"] .icon {
+    transform: rotate(45deg);
+}
+
+.faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease;
+}
+
+.faq-answer p {
+    padding-bottom: 25px;
+    opacity: 0.8;
+    font-size: 0.95rem;
+    margin: 0;
+}
+
+/* =========================================================
+   9. FINAL CTA
+========================================================= */
+.final-cta {
+    padding: 120px 0;
+    background: var(--dairy-cream);
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.final-cta-inner {
+    position: relative;
+    z-index: 2;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.final-cta h2 {
+    font-size: 2.8rem;
+    margin-bottom: 20px;
+}
+
+.final-cta p {
+    font-size: 1.1rem;
+    opacity: 0.9;
+    margin-bottom: 40px;
+}
+
+.cta-actions {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+}
+
+/* =========================================================
+   ANIMATIONS & RESPONSIVE
+========================================================= */
+.reveal-on-scroll {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.reveal-on-scroll.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.delay-1 {
+    transition-delay: 0.2s;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .reveal-on-scroll {
+        transition: none;
+        opacity: 1;
+        transform: none;
+    }
+}
+
+@media (max-width: 992px) {
+
+    .hero-grid,
+    .meaning-cards {
+        grid-template-columns: 1fr;
+        text-align: center;
+        gap: 40px;
+    }
+
+    .hero-actions {
+        justify-content: center;
+    }
+
+    .floating-card {
+        position: relative;
+        bottom: 0;
+        left: 0;
+        margin: -20px auto 0;
+    }
+
+    .workflow-timeline {
+        flex-direction: column;
+        gap: 40px;
+        margin-top: 40px;
+    }
+
+    .workflow-timeline::before {
+        top: 0;
+        bottom: 0;
+        left: 24px;
+        width: 2px;
+        height: auto;
+    }
+
+    .timeline-step {
+        display: flex;
+        text-align: left;
+        align-items: flex-start;
+        gap: 20px;
+    }
+
+    .step-icon {
+        margin: 0;
+        flex-shrink: 0;
+    }
+
+    .result-header {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .result-details-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .input-group {
+        flex-direction: column;
+    }
+
+    .btn-primary-gold {
+        padding: 15px;
+    }
+
+    .label-diagram-wrapper {
+        height: auto;
+        padding-bottom: 400px;
+    }
+
+    .annotation {
+        position: relative !important;
+        top: auto !important;
+        left: auto !important;
+        right: auto !important;
+        width: 100%;
+        margin-top: 20px;
+        padding: 0 20px;
+        text-align: left !important;
+    }
+}
+
+@media (max-width: 768px) {
+    .report-hero h1 {
+        font-size: 2.5rem;
+    }
+
+    .cta-actions {
+        flex-direction: column;
+    }
+
+    .result-details-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .table-tabs {
+        flex-direction: column;
+        padding: 0;
+    }
+
+    .tab-btn {
+        padding: 15px;
+        border-bottom: 1px solid rgba(23, 75, 55, 0.1);
+        border-left: 2px solid transparent;
+    }
+
+    .tab-btn.active {
+        border-bottom-color: rgba(23, 75, 55, 0.1);
+        border-left-color: var(--forest-green);
+    }
+}
+
+
+
+
+
+
+
+
+
+/* =========================================================
+   PREMIUM JAR LABEL STYLES (Upgraded Size & Animation)
+========================================================= */
+
+/* 1. The Grid Layout - Widened the center column for a bigger jar */
+.interactive-label-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 450px 1fr;
+    /* Changed 320px to 450px */
+    gap: 30px;
+    align-items: center;
+    max-width: 1200px;
+    /* Widened the overall container */
+    margin: 80px auto;
+    /* Added a bit more breathing room top and bottom */
+    padding: 0 20px;
+}
+
+.label-jar-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* 2. The Magic Jar Image */
+.jar-blend-image {
+    width: 100%;
+    max-width: 450px;
+    height: auto;
+    display: block;
+
+    /* The Blend Magic */
+    mix-blend-mode: multiply;
+
+    /* THE FIX: We bump the contrast and brightness high enough to force 
+       that pale yellow background block into pure white, making it vanish! */
+    filter: contrast(1.15) brightness(1.08);
+
+    /* If the image file has too much empty space, this zooms it in */
+    transform: scale(1.15);
+
+    /* Adds a beautiful, premium floating effect */
+    animation: floatJar 6s ease-in-out infinite;
+}
+
+/* 3. The Floating Animation Keyframes */
+@keyframes floatJar {
+    0% {
+        transform: scale(1.15) translateY(0px);
+    }
+
+    50% {
+        transform: scale(1.15) translateY(-12px);
+    }
+
+    /* Gently floats up */
+    100% {
+        transform: scale(1.15) translateY(0px);
+    }
+}
+
+/* (Keep your existing .label-column, .label-item, .label-text, and .label-dot CSS here) */
+
+/* =========================================================
+   MOBILE LAYOUT (Properly scaled)
+========================================================= */
+@media (max-width: 900px) {
+    .interactive-label-wrapper {
+        grid-template-columns: 1fr;
+        gap: 50px;
+    }
+
+    .label-jar-center {
+        order: -1;
+        max-width: 320px;
+        /* Keeps the jar a good size on phones */
+        margin: 0 auto;
+    }
+
+    .jar-blend-image {
+        transform: scale(1.1);
+        /* Slightly less zoom on mobile so it doesn't overflow */
+        animation: floatJarMobile 6s ease-in-out infinite;
+    }
+
+    @keyframes floatJarMobile {
+        0% {
+            transform: scale(1.1) translateY(0px);
+        }
+
+        50% {
+            transform: scale(1.1) translateY(-8px);
+        }
+
+        100% {
+            transform: scale(1.1) translateY(0px);
+        }
+    }
+
+    .left-column .label-item,
+    .right-column .label-item {
+        justify-content: center;
+        text-align: center;
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .label-text p {
+        max-width: 100%;
+    }
+
+    .label-dot {
+        display: none;
+    }
+}
+
+
+
+
+
+/* =========================================================
+   PREMIUM GOLD POINTER JAR STYLES
+========================================================= */
+
+/* 1. Update the grid wrapper to give the center column more width */
+.jar-feature-wrapper {
+    display: grid;
+    /* CHANGE THIS LINE: Increased the center from 380px to 440px */
+    grid-template-columns: 1fr 440px 1fr;
+    gap: 15px;
+    align-items: center;
+    max-width: 1200px;
+    margin: 80px auto;
+    padding: 0 20px;
+    overflow: hidden;
+}
+
+/* 2. Update the jar image scale to make it significantly taller and larger */
+.jar-center-img img {
+    width: 100%;
+    display: block;
+    margin: 0 auto;
+    mix-blend-mode: multiply;
+    filter: contrast(1.15) brightness(1.08);
+    /* CHANGE THIS LINE: Increased scale from 1.2 to 1.45 */
+    transform: scale(1.45);
+    position: relative;
+    z-index: 1;
+}
+
+/* 3. Text Columns */
+.jar-col {
+    display: flex;
+    flex-direction: column;
+    gap: 55px;
+    /* Vertical spacing between text blocks */
+    position: relative;
+    z-index: 2;
+}
+
+.feature-row {
+    display: flex;
+    align-items: center;
+}
+
+.left-col .feature-row {
+    justify-content: flex-end;
+    text-align: right;
+}
+
+.right-col .feature-row {
+    justify-content: flex-start;
+    text-align: left;
+}
+
+.feature-text h4 {
+    color: var(--forest-green);
+    font-size: 1.15rem;
+    margin: 0 0 5px 0;
+}
+
+.feature-text p {
+    color: rgba(0, 0, 0, 0.65);
+    font-size: 0.95rem;
+    margin: 0;
+    line-height: 1.4;
+    max-width: 250px;
+}
+
+/* 4. The Gold Pointer System */
+.pointer-box {
+    display: flex;
+    align-items: center;
+    width: 80px;
+    /* Length of the line */
+    position: relative;
+}
+
+/* Pulls the pointers inwards so they overlap the jar */
+.left-col .pointer-box {
+    margin-left: 15px;
+    margin-right: -45px;
+    transform-origin: left center;
+}
+
+.right-col .pointer-box {
+    margin-right: 15px;
+    margin-left: -45px;
+    transform-origin: right center;
+}
+
+/* The Line and Dot Design */
+.ptr-line {
+    height: 2px;
+    background-color: #B58A30;
+    /* Your gold color */
+    flex-grow: 1;
+}
+
+.ptr-dot {
+    width: 12px;
+    height: 12px;
+    background-color: #B58A30;
+    border-radius: 50%;
+    box-shadow: 0 0 0 5px rgba(181, 138, 48, 0.2);
+    flex-shrink: 0;
+}
+
+/* 5. The Pointer Angles */
+.left-top .pointer-box {
+    transform: rotate(24deg);
+}
+
+/* Angles down-right */
+.left-mid .pointer-box {
+    transform: rotate(0deg);
+}
+
+/* Straight */
+.left-bot .pointer-box {
+    transform: rotate(-24deg);
+}
+
+/* Angles up-right */
+
+.right-top .pointer-box {
+    transform: rotate(0deg);
+}
+
+/* Straight */
+.right-mid .pointer-box {
+    transform: rotate(0deg);
+}
+
+/* Straight */
+.right-bot .pointer-box {
+    transform: rotate(24deg);
+}
+
+/* Angles up-left */
+
+
+/* =========================================================
+   MOBILE RESPONSIVENESS (Phones)
+========================================================= */
+@media (max-width: 650px) {
+    .jar-feature-wrapper {
+        /* Increased the center from 130px to 145px */
+        grid-template-columns: 1fr 145px 1fr;
+        gap: 5px;
+        padding: 0 5px;
+    }
+
+    /* Increased the vertical gap slightly so the taller jar has breathing room */
+    .jar-col {
+        gap: 45px;
+    }
+
+    .jar-center-img img {
+        /* CHANGE THIS LINE: Massively increased the scale from 1.25 to 1.75 */
+        transform: scale(1.75);
+        margin-top: 10px;
+    }
+
+    .pointer-box {
+        width: 25px;
+    }
+
+    .left-col .pointer-box {
+        margin-right: -10px;
+        margin-left: 5px;
+    }
+
+    .right-col .pointer-box {
+        margin-left: -10px;
+        margin-right: 5px;
+    }
+
+    .ptr-dot {
+        width: 8px;
+        height: 8px;
+        box-shadow: 0 0 0 3px rgba(181, 138, 48, 0.2);
+    }
+
+    .feature-text h4 {
+        font-size: 0.75rem;
+        margin-bottom: 2px;
+    }
+
+    .feature-text p {
+        font-size: 0.65rem;
+        line-height: 1.2;
+    }
+}
+
+
+
+.hero-report-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    /* Ensures the image fills the box without stretching weirdly */
+    border-radius: 8px;
+    /* Matches the rounded corners of your previous placeholder */
+    display: block;
+}
+
+
+
+
+/* =========================================================
+   FORCE ACTIVE NAVIGATION UNDERLINE (Recipes Page Only)
+========================================================= */
+header a[href="lab-report.html"],
+.desktop-nav a[href="lab-report.html"],
+.nav-links a[href="lab-report.html"] {
+    color: #D4AF37 !important;
+    font-weight: 800 !important;
+    position: relative !important;
+}
+
+header a[href="lab-report.html"]::after,
+.desktop-nav a[href="lab-report.html"]::after,
+.nav-links a[href="lab-report.html"]::after {
+    content: '' !important;
+    position: absolute !important;
+    bottom: -6px !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: 2px !important;
+    background-color: #D4AF37 !important;
+    border-radius: 2px !important;
+    display: block !important;
+}
+
+
+
+
+/* =========================================================
+   FOOTER LANDSCAPE OVERLAP FIX
+========================================================= */
+
+/* 1. Makes sure the footer acts as the anchor point */
+.main-footer {
+    position: relative;
+    padding-top: 60px;
+    /* Gives nice breathing room at the top */
+    background-color: #174b37;
+    /* Replace with your exact dark green if needed */
+}
+
+/* 2. Pins the SVG landscape strictly to the absolute bottom */
+.footer-landscape {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1;
+    pointer-events: none;
+    /* Prevents the invisible parts of the SVG from blocking link clicks */
+}
+
+.footer-landscape svg {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+
+/* 3. THE MAGIC FIX: Pushes the text columns up away from the yellow hills */
+.footer-grid {
+    position: relative;
+    z-index: 2;
+    padding-bottom: 140px !important;
+    /* Forces the text to stay in the green zone */
+}
+
+/* 4. Keeps the copyright perfectly positioned on the dark brown ground */
+.footer-copyright {
+    position: relative;
+    z-index: 3;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding-bottom: 2px; /* Lowered from 25px to push it further down */
+    padding-left: 20px; /* Aligns nicely with container */
+}

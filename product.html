@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>[Brand Name] Traditional [Cow/Buffalo] Ghee – 500g</title>
+    <link rel="stylesheet" href="style.css">
+
+
+
+    <!-- Google Analytics Placeholder -->
+    <!-- <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-XXXXXXXXXX');
+    </script> -->
+
+    <!-- Meta Pixel Code Placeholder -->
+    <!-- <script>
+      !function(f,b,e,v,n,t,s){...}(window, document,'script','https://connect.facebook.net/en_US/fbevents.js');
+      fbq('init', 'XXXXXXXXXXXXXXX');
+      fbq('track', 'PageView');
+    </script> -->
+
+    <!-- JSON-LD Schema Markup for Local Business & Product SEO -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FoodEstablishment",
+      "name": "[Brand Name]",
+      "image": "URL_TO_YOUR_LOGO",
+      "@id": "",
+      "url": "YOUR_WEBSITE_URL",
+      "telephone": "[Phone]",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "[Address]",
+        "addressLocality": "[Village/Town]",
+        "addressRegion": "[State]",
+        "addressCountry": "IN"
+      },
+      "slogan": "Traditional Ghee. Tested with Trust."
+    }
+    </script>
+</head>
+<body>
+
+    <!-- PASTE YOUR HEADER FROM index.html HERE -->
+
+      <header>
+        <div class="container header-inner">
+            <a href="index.html" class="logo">
+                <!-- Replace 'logo.png' with the actual file name of your logo -->
+                <img src="Logo.png" alt="Ghosh Family Ghee Logo" class="brand-logo-img">
+            </a>
+            
+            <!-- Desktop Nav -->
+            <nav class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="shop.html">Shop</a>
+                <a href="story.html">Our Story</a>
+                <a href="traceability.html">Quality</a>
+                <a href="recipes.html">Recipes</a>
+                <a href="lab-report.html" style="color: #D4AF37; font-weight: 700;">Lab Report</a>
+                <a href="contact.html">Contact</a>
+            </nav>
+            
+            <!-- Utilities: Scan, Cart & Mobile Menu -->
+            <div style="display: flex; align-items: center; gap: 20px;">
+                <a href="scan.html" class="header-scan-btn">🔍 Scan Batch</a>
+                <a href="#" class="cart-icon-btn text-brand-green" style="font-weight: bold;">🛒 (0)</a>
+                <button id="mobileMenuBtn" class="mobile-menu-btn">☰</button>
+            </div>
+        </div>
+
+        <!-- Mobile Nav (Hidden on Desktop) -->
+        <div id="mobileNav" class="mobile-nav">
+            <a href="index.html">Home</a>
+            <a href="shop.html">Shop Ghee</a>
+            <a href="story.html">Our Story</a>
+            <a href="traceability.html">Quality & Traceability</a>
+            <a href="scan.html" style="color: var(--brand-gold);">🔍 Scan Your Batch</a>
+            <a href="recipes.html">Recipes</a>
+            <a href="faq.html">FAQ</a>
+            <a href="contact.html">Contact Us</a>
+            <a href="shipping-returns.html">Shipping & Returns</a>
+        </div>
+    </header>
+
+    <div class="product-detail-wrapper container">
+        
+        <!-- Top Section: Gallery and Add to Cart -->
+        <div class="product-main">
+            <!-- Left: Gallery -->
+            <div class="product-gallery">
+                <div class="main-image">[Large Product Image Placeholder]</div>
+                <div class="thumbnail-strip">
+                    <div class="thumb">[Thumb 1]</div>
+                    <div class="thumb">[Thumb 2]</div>
+                    <div class="thumb">[Texture Close up]</div>
+                    <div class="thumb">[Nutrition Label]</div>
+                </div>
+            </div>
+
+            <!-- Right: Product Info -->
+            <div class="product-info">
+                <h1 class="font-serif">[Brand Name] Traditional [Cow/Buffalo] Ghee – 500g</h1>
+                <p style="opacity: 0.8; margin-bottom: 20px;">Rich aroma and granular texture, crafted with care for everyday Indian cooking.</p>
+                
+                <div class="product-price">₹[Price]</div>
+                <p style="font-size: 0.85rem; opacity: 0.7;">Inclusive of all taxes.</p>
+
+                <!-- Pincode Checker -->
+                <div class="pincode-checker mt-4">
+                    <p style="font-weight: 600; font-size: 0.9rem;">Check Delivery Availability</p>
+                    <div class="pincode-input-group">
+                        <input type="text" id="pincodeInput" placeholder="Enter 6-digit PIN code" maxlength="6">
+                        <button id="checkPincodeBtn">Check</button>
+                    </div>
+                    <p id="pincodeMessage" style="font-size: 0.85rem; margin-top: 10px;"></p>
+                </div>
+
+                <!-- Add to Cart Actions -->
+                <div class="action-row">
+                    <div class="qty-selector">
+                        <button class="qty-btn" id="decreaseQty">-</button>
+                        <input type="text" id="qtyInput" class="qty-input" value="1" readonly>
+                        <button class="qty-btn" id="increaseQty">+</button>
+                    </div>
+                    <button class="btn-primary" style="flex: 1; margin: 0; text-align: center;">Add to Cart</button>
+                    <button class="btn-buy-now">Buy Now</button>
+                </div>
+
+                <!-- Trust Badges -->
+                <div style="display: flex; gap: 15px; margin-bottom: 30px; font-size: 0.8rem; opacity: 0.8;">
+                    <span>🔒 Secure Checkout</span>
+                    <span>💳 UPI & Cards Accepted</span>
+                    <span>📦 Tamper-evident Packaging</span>
+                </div>
+
+                <!-- Technical Details -->
+                <div style="background: var(--brand-ivory); padding: 15px; border-radius: 4px; font-size: 0.9rem;">
+                    <p><strong>Ingredients:</strong> Ghee / Milk Fat</p>
+                    <p><strong>Allergen Warning:</strong> Contains Milk</p>
+                    <p><strong>Storage:</strong> Store in a cool, dry place. Keep away from direct sunlight.</p>
+                    <p><strong>Best Before:</strong> [Placeholder: e.g., 9 months from date of packing]</p>
+                    <p><strong>FSSAI License:</strong> [FSSAI Number Placeholder]</p>
+                </div>
+            </div>
+        </div>
+
+        <hr style="border: 0; border-top: 1px solid #eee; margin: 40px 0;">
+
+        <!-- Middle Section: Traceability & Speciality -->
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; margin-bottom: 60px;">
+            <div>
+                <h2 class="font-serif" style="margin-bottom: 20px;">What Makes It Special</h2>
+                <ul style="list-style-type: disc; margin-left: 20px; line-height: 1.8;">
+                    <li><strong>Carefully Selected:</strong> Sourced from trusted local dairy partners in [Region].</li>
+                    <li><strong>Consistently Prepared:</strong> Using traditional methods balanced with modern hygiene standards.</li>
+                    <li><strong>Honest Quality:</strong> Granular texture and authentic aroma, naturally occurring without artificial additives.</li>
+                </ul>
+            </div>
+            <div style="background: var(--brand-ivory); padding: 30px; border-radius: 8px; border: 1px solid var(--brand-gold);">
+                <h2 class="font-serif text-brand-green" style="margin-bottom: 15px;">Batch-Level Traceability</h2>
+                <p style="margin-bottom: 15px;">Every jar has a story. We believe you have the right to know exactly what you are eating.</p>
+                <p style="margin-bottom: 20px;">Scan the QR code on your jar or enter the batch number on our website to view the exact packing date, source details, and independent quality test reports for your specific jar.</p>
+                <a href="scan.html" class="btn-secondary">Learn About Our Process</a>
+            </div>
+        </div>
+
+        <!-- Accordion Sections (FAQ & Nutrition) -->
+        <div style="max-width: 800px; margin: 0 auto 60px auto;">
+            <div class="accordion-item">
+                <button class="accordion-header">
+                    Nutritional Information <span class="icon">+</span>
+                </button>
+                <div class="accordion-content">
+                    <p style="font-size: 0.9rem; opacity: 0.8; margin-bottom: 15px;">*Final values to be confirmed from approved label/lab report.</p>
+                    <table style="width: 100%; border-collapse: collapse; text-align: left;">
+                        <tr style="border-bottom: 1px solid #eee;">
+                            <th style="padding: 10px;">Parameters</th>
+                            <th style="padding: 10px;">Per 100g (Approx.)</th>
+                        </tr>
+                        <tr style="border-bottom: 1px solid #eee;">
+                            <td style="padding: 10px;">Energy</td>
+                            <td style="padding: 10px;">[Placeholder] kcal</td>
+                        </tr>
+                        <tr style="border-bottom: 1px solid #eee;">
+                            <td style="padding: 10px;">Total Fat</td>
+                            <td style="padding: 10px;">[Placeholder] g</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <button class="accordion-header">
+                    Why can ghee sometimes become grainy? <span class="icon">+</span>
+                </button>
+                <div class="accordion-content">
+                    <p>Graininess (Danedar texture) is a natural characteristic of traditional ghee. It happens due to the slow cooling process where different fatty acids solidify at different temperatures. It is a sign of authenticity and does not affect the quality or taste.</p>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <button class="accordion-header">
+                    Does ghee need refrigeration? <span class="icon">+</span>
+                </button>
+                <div class="accordion-content">
+                    <p>No, pure ghee does not require refrigeration. It is shelf-stable at room temperature. Simply store it in a cool, dry place away from direct sunlight, and always use a clean, dry spoon to prevent moisture contamination.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Reviews Placeholder -->
+        <div style="text-align: center; padding: 40px; background: #f9f9f9; border-radius: 8px;">
+            <h2 class="font-serif" style="margin-bottom: 15px;">Customer Reviews</h2>
+            <p style="opacity: 0.7; font-style: italic;">Genuine customer reviews for this product will appear here.</p>
+        </div>
+
+    </div>
+
+    <!-- PASTE YOUR FOOTER FROM index.html HERE -->
+
+    <!-- FOOTER -->
+    <footer class="main-footer">
+        
+        <!-- 2D Ground Landscape with Yellow/Gold Adjustments -->
+        <div class="footer-landscape">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 150" preserveAspectRatio="none" style="width: 100%; height: 100%; display: block;">
+                <!-- Warm Golden-Olive Layer -->
+                <path d="M0,150 L0,100 Q150,70 300,95 T600,65 T900,105 T1200,55 L1200,150 Z" fill="#7A6822" opacity="0.85"></path>
+                <!-- Rich Deep Gold/Terracotta Transition Layer -->
+                <path d="M0,150 L0,125 Q200,95 400,115 T800,85 T1200,115 L1200,150 Z" fill="#5B4A15"></path>
+                <!-- Deep Earthy Base Silhouette -->
+                <path d="M0,150 L0,140 Q250,110 500,135 T1000,120 T1200,140 L1200,150 Z" fill="#382C0C"></path>
+                <!-- Subtle Grass Tufts -->
+                <g fill="#382C0C">
+                    <path d="M120,135 Q123,120 126,135 Z"></path>
+                    <path d="M125,137 Q128,115 130,137 Z"></path>
+                    <path d="M550,130 Q553,115 556,130 Z"></path>
+                    <path d="M555,132 Q560,110 562,132 Z"></path>
+                    <path d="M980,125 Q983,110 986,125 Z"></path>
+                    <path d="M985,127 Q990,105 992,127 Z"></path>
+                </g>
+            </svg>
+        </div>
+
+        <!-- Top Grid Section -->
+        <div class="container footer-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px; position: relative; z-index: 2;">
+            <div>
+                 <a href="index.html">
+                    <!-- You can use the same logo, or a white/light version if your footer is dark -->
+                    <img src="Logo 3.png" alt="Ghosh Family Ghee Logo" class="brand-logo-img-footer">
+                </a>
+                <p style="color: #FAF8F2; opacity: 0.9; font-size: 0.9rem; margin-top: 15px;">Traditional Ghee. Tested with Trust.</p>
+                <p style="color: #D9B12D; font-size: 0.8rem; margin-top: 10px; font-weight: 600;">FSSAI Lic. No. 12345</p>
+            </div>
+            
+            <div>
+                <h4 style="color: #D9B12D; margin-bottom: 15px; font-family: 'Playfair Display', serif;">Explore</h4>
+                <ul style="list-style: none; padding: 0; line-height: 2;">
+                    <li><a href="index.html" style="color: #FAF8F2; text-decoration: none; opacity: 0.8;">Home</a></li>
+                    <li><a href="shop.html" style="color: #FAF8F2; text-decoration: none; opacity: 0.8;">Shop</a></li>
+                    <li><a href="story.html" style="color: #FAF8F2; text-decoration: none; opacity: 0.8;">Our Story</a></li>
+                    <li><a href="traceability.html" style="color: #FAF8F2; text-decoration: none; opacity: 0.8;">Quality</a></li>
+                    <li><a href="recipes.html" style="color: #FAF8F2; text-decoration: none; opacity: 0.8;">Recipes</a></li>
+                </ul>
+            </div>
+            
+            <div>
+                <h4 style="color: #D9B12D; margin-bottom: 15px; font-family: 'Playfair Display', serif;">Customer Care</h4>
+                <ul style="list-style: none; padding: 0; line-height: 2;">
+                    <li><a href="scan.html" style="color: #FAF8F2; text-decoration: none; opacity: 0.8;">Scan Your Batch</a></li>
+                    <li><a href="contact.html" style="color: #FAF8F2; text-decoration: none; opacity: 0.8;">Contact Us</a></li>
+                    <li><a href="faq.html" style="color: #FAF8F2; text-decoration: none; opacity: 0.8;">FAQ</a></li>
+                    <li><a href="shipping-returns.html" style="color: #FAF8F2; text-decoration: none; opacity: 0.8;">Shipping & Returns</a></li>
+                </ul>
+            </div>
+            
+            <div>
+                <h4 style="color: #D9B12D; margin-bottom: 15px; font-family: 'Playfair Display', serif;">Contact</h4>
+                <ul>
+                    <li>WhatsApp: 8653890554</li>
+                    <li>Email: alapanghosh3@gmail.com</li>
+                    <li>Bergoom, Krishnanagar</li>
+                </ul>
+                <!-- Social Media Icons -->
+                <div class="social-icons">
+                    <!-- Facebook -->
+                    <a href="#" aria-label="Facebook">
+                        <svg viewBox="0 0 24 24"><path d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z"/></svg>
+                    </a>
+                    <!-- Instagram -->
+                    <a href="#" aria-label="Instagram">
+                        <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+                    </a>
+                    <!-- YouTube -->
+                    <a href="#" aria-label="YouTube">
+                        <svg viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.5 12 3.5 12 3.5s-7.505 0-9.377.55a3.016 3.016 0 0 0-2.122 2.136C0 8.07 0 12 0 12s0 3.93.501 5.814a3.016 3.016 0 0 0 2.122 2.136c1.872.55 9.377.55 9.377.55s7.505 0 9.377-.55a3.016 3.016 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Integrated Copyright Row -->
+        <div class="container footer-copyright">
+            <span class="copyright-text">2026 GHOSH DHARA. ALL RIGHTS RESERVED.</span>
+        </div>
+    </footer>
+
+    <!-- SLIDE-OUT CART DRAWER -->
+    <div class="cart-overlay" id="cartOverlay"></div>
+    <div class="cart-drawer" id="cartDrawer">
+        <div class="cart-header">
+            <h2 class="font-serif" style="font-size: 1.5rem;">Your Cart</h2>
+            <button class="close-cart" id="closeCart">×</button>
+        </div>
+        <div class="cart-items">
+            <!-- Empty state -->
+            <div style="text-align: center; color: #888; margin-top: 50px;">
+                <p>Your cart is currently empty.</p>
+                <a href="shop.html" class="btn-primary" style="margin-top: 20px;">Continue Shopping</a>
+            </div>
+            
+            <!-- Example of a populated cart item (Hidden for now) -->
+            <!-- 
+            <div style="display: flex; gap: 15px; border-bottom: 1px solid #eee; padding-bottom: 15px; margin-bottom: 15px;">
+                <div style="width: 80px; height: 80px; background: #f9f9f9;"></div>
+                <div style="flex: 1;">
+                    <h4 class="font-serif">[Brand Name] Traditional Ghee</h4>
+                    <p style="font-size: 0.8rem; color: #666;">500g Jar</p>
+                    <p style="font-weight: bold; color: var(--brand-gold);">₹[Price]</p>
+                </div>
+            </div> 
+            -->
+        </div>
+        <div class="cart-footer">
+            <div style="display: flex; justify-content: space-between; margin-bottom: 15px; font-weight: bold; font-size: 1.2rem;">
+                <span>Subtotal</span>
+                <span>₹0.00</span>
+            </div>
+            <p style="font-size: 0.8rem; color: #666; margin-bottom: 15px;">Shipping and taxes calculated at checkout.</p>
+            <button class="checkout-btn">Proceed to Secure Checkout</button>
+            <div style="text-align: center; margin-top: 10px; font-size: 0.8rem; opacity: 0.8;">
+                💳 Cards, UPI & Net Banking Accepted
+            </div>
+        </div>
+    </div>
+
+    
+    <script src="script.js"></script>
+</body>
+</html>
