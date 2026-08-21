@@ -789,6 +789,31 @@ p { margin-bottom: 15px; }
     .premium-scan-hero { 
         padding-top: 10px !important; /* Reduced from 100px. Decrease this number if you want it even tighter! */
     }
+}
 
+/* =========================================================
+   FOOTER MOBILE ALIGNMENT FIXES (PERFECT ALIGNMENT)
+========================================================= */
+@media (max-width: 768px) {
+    .footer-grid {
+        grid-template-columns: 1fr !important;
+        text-align: center !important;
+        gap: 30px !important;
+        margin-bottom: 30px !important;
+    }
+    
+    .brand-logo-img-footer {
+        margin: 0 auto 15px !important;
+        display: block !important;
+    }
+    
+    .social-icons {
+        justify-content: center !important;
+        margin-top: 10px !important;
+    }
+    
+    .footer-landscape {
+        height: 120px !important;
+    }
 }
 
