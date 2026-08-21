@@ -796,23 +796,17 @@ p { margin-bottom: 15px; }
 ========================================================= */
 @media (max-width: 768px) {
     .footer-grid {
-        grid-template-columns: 1fr 1fr !important;
-        text-align: center !important;
-        gap: 30px 20px !important;
+        grid-template-columns: auto auto !important;
+        justify-content: center !important;
+        text-align: left !important;
+        gap: 30px 40px !important;
         margin-bottom: 30px !important;
     }
     
     .footer-grid > div:nth-child(1),
     .footer-grid > div:nth-child(4) {
         grid-column: 1 / -1 !important;
-    }
-    
-    .footer-grid > div:nth-child(2) {
-        justify-self: end !important;
-    }
-    
-    .footer-grid > div:nth-child(3) {
-        justify-self: start !important;
+        text-align: center !important;
     }
     
     .brand-logo-img-footer {
