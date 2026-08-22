@@ -1036,6 +1036,11 @@ textarea {
 }
 
 @media (max-width: 768px) {
+    .contact-hero {
+        padding-top: 80px; /* Move hero section up on mobile */
+        padding-bottom: 60px;
+    }
+
     .hero-grid {
         grid-template-columns: 1fr;
         text-align: center;
@@ -1045,6 +1050,12 @@ textarea {
     .hero-buttons {
         justify-content: center;
         flex-direction: column;
+        margin-bottom: 25px; /* Ensure space below buttons */
+    }
+
+    .trust-note {
+        margin-top: 20px; /* Add space above trust note */
+        padding: 0 15px; /* Add slight padding on sides for better readability */
     }
 
     .floating-card {
