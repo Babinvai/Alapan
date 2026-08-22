@@ -950,6 +950,11 @@ header.scrolled {
         gap: 40px;
     }
 
+    .hero-content p {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
     .hero-actions {
         justify-content: center;
     }
@@ -1022,6 +1027,11 @@ header.scrolled {
 }
 
 @media (max-width: 768px) {
+    .report-hero {
+        padding-top: 100px;
+        padding-bottom: 60px;
+    }
+
     .report-hero h1 {
         font-size: 2.5rem;
     }
