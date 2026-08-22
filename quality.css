@@ -551,7 +551,7 @@ header a[href="traceability.html"]::after,
     }
 
     .standard-divider-img {
-        transform: scale(1.2);
+        transform: scale(1.6);
         transform-origin: center center;
     }
 }
