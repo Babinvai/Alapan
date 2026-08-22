@@ -318,42 +318,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    const btnUploadQR = document.getElementById('btnUploadQR');
-    const qrInputFile = document.getElementById('qrInputFile');
-
-    if (btnUploadQR && qrInputFile) {
-        btnUploadQR.addEventListener('click', () => {
-            qrInputFile.click();
-        });
-
-        qrInputFile.addEventListener('change', (e) => {
-            if (e.target.files.length === 0) return;
-            const imageFile = e.target.files[0];
-            
-            if (typeof Html5Qrcode === 'undefined') {
-                scannerMessage.textContent = "Scanner library not loaded.";
-                return;
-            }
-            if (!html5QrCode) {
-                html5QrCode = new Html5Qrcode("qrReader");
-            }
-            
-            if (isScanning) {
-                stopScanner();
-            }
-
-            scannerMessage.textContent = "Scanning image...";
-            html5QrCode.scanFile(imageFile, true)
-                .then(decodedText => {
-                    onScanSuccess(decodedText);
-                    qrInputFile.value = ''; // reset
-                })
-                .catch(err => {
-                    scannerMessage.textContent = "Could not find a valid QR code in this image.";
-                    qrInputFile.value = ''; // reset
-                });
-        });
-    }
 
     /* =========================================================
        9. FOOLPROOF FAQ ACCORDION (Class Toggle)
@@ -380,4 +344,5 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
 });
+
 
