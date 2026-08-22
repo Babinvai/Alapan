@@ -2632,9 +2632,9 @@ body.no-scroll {
     color: #FAF8F2;
 }
 
-.footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 40px; margin-bottom: 60px; }
-.footer-logo { max-width: 120px; margin-bottom: 20px; filter: brightness(0) invert(1); }
-.brand-logo-img-footer { max-width: 120px; filter: brightness(0) invert(1); }
+.footer-grid { display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 40px; margin-bottom: 60px; }
+.footer-logo { max-width: 120px; margin-bottom: 20px; }
+.brand-logo-img-footer { max-width: 120px; }
 .footer-tagline { opacity: 0.8; margin-bottom: 10px; }
 .fssai-number { color: #D9B12D; font-size: 0.85rem; font-weight: 600; }
 .footer-heading { color: #D9B12D; margin-bottom: 20px; font-family: 'Playfair Display', serif; }
@@ -2656,11 +2656,11 @@ body.no-scroll {
     }
     
     .footer-grid > div:nth-child(1) {
-        padding-right: 30px;
+        /* Removed padding-right to align correctly with other columns */
     }
     
     .brand-logo-img-footer {
-        transform: translateX(-8px);
+        /* Removed transform: translateX(-8px) to align properly */
     }
 }
 

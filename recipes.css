@@ -192,7 +192,7 @@ h2 { font-size: clamp(2rem, 4vw, 3rem); line-height: 1.2; margin-bottom: 1rem; }
 
 /* Footer */
 .site-footer { background-color: var(--dark-green); color: var(--white); padding: 4rem 5% 2rem; }
-.footer-container { max-width: 1400px; margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 3rem; margin-bottom: 3rem; }
+.footer-container { max-width: 1400px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 3rem; margin-bottom: 3rem; }
 .footer-logo { font-size: 1.8rem; color: var(--gold); margin-bottom: 1rem; }
 .footer-brand p { opacity: 0.8; }
 .footer-links h4, .footer-contact h4 { font-family: var(--font-serif); color: var(--gold); margin-bottom: 1.2rem; font-size: 1.2rem; }

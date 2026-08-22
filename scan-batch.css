@@ -246,7 +246,7 @@ p { margin-bottom: 15px; }
 .cta-actions { display: flex; justify-content: center; align-items: stretch; gap: 15px; flex-wrap: wrap; }
 
 .site-footer { padding: 80px 0 30px; color: var(--warm-ivory); border-top: 1px solid rgba(250, 248, 242, 0.1); }
-.footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 40px; margin-bottom: 60px; }
+.footer-grid { display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 40px; margin-bottom: 60px; }
 .footer-logo { max-width: 120px; margin-bottom: 20px; filter: brightness(0) invert(1); }
 .footer-tagline { opacity: 0.8; margin-bottom: 10px; }
 .fssai-number { color: var(--ghee-gold); font-size: 0.85rem; font-weight: 600; }
@@ -788,57 +788,6 @@ p { margin-bottom: 15px; }
     /* STEP 1: Reduce the gap between header and hero section */
     .premium-scan-hero { 
         padding-top: 10px !important; /* Reduced from 100px. Decrease this number if you want it even tighter! */
-    }
-}
-
-/* =========================================================
-   FOOTER DESKTOP ALIGNMENT FIXES (PERFECT ALIGNMENT)
-========================================================= */
-@media (min-width: 769px) {
-    .footer-grid {
-        margin-bottom: 140px !important; /* Pushes the grid up so the 250px landscape doesn't overlap the social icons */
-        gap: 50px !important; /* Better spacing between columns */
-    }
-    
-    .footer-grid > div:nth-child(1) {
-        padding-right: 30px;
-    }
-    
-    .brand-logo-img-footer {
-        transform: translateX(-8px); /* Visually aligns the logo perfectly with the paragraph text below it */
-    }
-}
-
-/* =========================================================
-   FOOTER MOBILE ALIGNMENT FIXES (PERFECT ALIGNMENT)
-========================================================= */
-@media (max-width: 768px) {
-    .footer-grid {
-        grid-template-columns: auto auto !important;
-        justify-content: center !important;
-        text-align: left !important;
-        gap: 30px 110px !important;
-        margin-bottom: 30px !important;
-    }
-    
-    .footer-grid > div:nth-child(1),
-    .footer-grid > div:nth-child(4) {
-        grid-column: 1 / -1 !important;
-        text-align: center !important;
-    }
-    
-    .brand-logo-img-footer {
-        margin: 0 auto 15px !important;
-        display: block !important;
-    }
-    
-    .social-icons {
-        justify-content: center !important;
-        margin-top: 10px !important;
-    }
-    
-    .footer-landscape {
-        height: 120px !important;
     }
 }
 
