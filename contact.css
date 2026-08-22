@@ -1326,7 +1326,7 @@ header a[href="contact.html"],
 
 header a[href="contact.html"]::after,
 .desktop-nav a[href="contact.html"]::after,
-.nav-links a[href="contac.html"]::after {
+.nav-links a[href="contact.html"]::after {
     content: '' !important;
     position: absolute !important;
     bottom: -6px !important;
@@ -1336,4 +1336,77 @@ header a[href="contact.html"]::after,
     background-color: #D4AF37 !important;
     border-radius: 2px !important;
     display: block !important;
+}
+
+/* =========================================================
+   PRIVACY POLICY MODAL
+========================================================= */
+.privacy-modal-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 9999;
+    align-items: center;
+    justify-content: center;
+}
+
+.privacy-modal-overlay.active {
+    display: flex;
+}
+
+.privacy-modal {
+    background: var(--warm-ivory);
+    width: 90%;
+    max-width: 600px;
+    max-height: 80vh;
+    border-radius: 8px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    animation: modalFadeIn 0.3s ease;
+}
+
+@keyframes modalFadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.privacy-modal-header {
+    padding: 20px 30px;
+    border-bottom: 1px solid rgba(23,75,55,0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #fff;
+}
+
+.close-privacy-modal {
+    background: none;
+    border: none;
+    font-size: 1.8rem;
+    cursor: pointer;
+    color: var(--muted-sage);
+    transition: color 0.3s ease;
+}
+
+.close-privacy-modal:hover {
+    color: var(--dark-green);
+}
+
+.privacy-modal-content {
+    padding: 30px;
+    overflow-y: auto;
+    color: #333;
+    line-height: 1.6;
+    background: var(--warm-ivory);
+}
+
+.privacy-modal-content p {
+    margin-bottom: 15px;
+    font-size: 0.95rem;
 }

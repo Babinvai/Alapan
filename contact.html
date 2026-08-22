@@ -175,7 +175,7 @@
                     </div>
                     <h3>WhatsApp Us</h3>
                     <p>For quick questions about products, orders or delivery.</p>
-                    <a href="https://wa.me/[Verified WhatsApp Number]" target="_blank" rel="noopener noreferrer" class="text-link">Start WhatsApp Chat &rarr;</a>
+                    <a href="https://wa.me/8653890554" target="_blank" rel="noopener noreferrer" class="text-link">Start WhatsApp Chat &rarr;</a>
                 </article>
 
                 <article class="contact-card reveal-on-scroll delay-1">
@@ -184,7 +184,7 @@
                     </div>
                     <h3>Email Us</h3>
                     <p>For detailed questions, partnerships or documents.</p>
-                    <a href="mailto:[Verified Email Address]" class="text-link">[Verified Email Address] &rarr;</a>
+                    <a href="mailto:alapanghosh3@gmail.com" class="text-link">Verified Email Address &rarr;</a>
                 </article>
 
                 <article class="contact-card reveal-on-scroll delay-2">
@@ -221,19 +221,19 @@
             <address class="contact-details">
                 <div class="detail-item">
                     <span class="detail-label">WhatsApp / Phone</span>
-                    <span class="detail-value">[Verified WhatsApp Number]</span>
+                    <span class="detail-value">8653890554</span>
                 </div>
                 <div class="detail-item">
                     <span class="detail-label">Email</span>
-                    <span class="detail-value">[Verified Email Address]</span>
+                    <span class="detail-value">alapanghosh3@gmail.com</span>
                 </div>
                 <div class="detail-item">
                     <span class="detail-label">Business Hours</span>
-                    <span class="detail-value">[Verified Business Hours]</span>
+                    <span class="detail-value">9 am - 5 pm</span>
                 </div>
                 <div class="detail-item">
                     <span class="detail-label">Location</span>
-                    <span class="detail-value">[Verified Business Address or Region]</span>
+                    <span class="detail-value">Krishnanagar, Bergoom, North 24 Parganas, West Bengal, 743263</span>
                 </div>
             </address>
 
@@ -243,8 +243,8 @@
 
             <div class="panel-actions">
                 <!-- Stacked buttons look much more premium here -->
-                <a href="https://wa.me/[Verified WhatsApp Number]" target="_blank" rel="noopener noreferrer" class="btn btn-outline-ivory">Chat on WhatsApp</a>
-                <a href="[Verified Instagram Link]" target="_blank" rel="noopener noreferrer" class="btn btn-outline-ivory">Follow on Instagram</a>
+                <a href="https://wa.me/8653890554" target="_blank" rel="noopener noreferrer" class="btn btn-outline-ivory">Chat on WhatsApp</a>
+                <a href="https://www.instagram.com/alapan.g/?hl=en" target="_blank" rel="noopener noreferrer" class="btn btn-outline-ivory">Follow on Instagram</a>
             </div>
         </div>
 
@@ -319,7 +319,7 @@
 
                 <div class="form-submit full-width">
                     <button type="submit" class="btn btn-primary-green btn-full-width" id="submitBtn">Send Message</button>
-                    <p class="privacy-note">We use your contact details only to respond to your enquiry. Read our <a href="#">Privacy Policy</a>.</p>
+                    <p class="privacy-note">We use your contact details only to respond to your enquiry. Read our <a href="#" onclick="openPrivacyModal(event)">Privacy Policy</a>.</p>
                 </div>
                 
                 <!-- Form Status Messages -->
@@ -617,5 +617,37 @@
     <script src="script.js"></script>
 
     <script src="contact.js"></script>
+    <!-- Privacy Policy Modal -->
+    <div id="privacyModal" class="privacy-modal-overlay">
+        <div class="privacy-modal">
+            <div class="privacy-modal-header">
+                <h2 class="font-serif" style="margin: 0; font-size: 1.5rem; color: var(--dark-green);">Privacy Policy</h2>
+                <button class="close-privacy-modal" onclick="closePrivacyModal()">&times;</button>
+            </div>
+            <div class="privacy-modal-content">
+                <p><strong>1. Information We Collect</strong><br>We collect information you provide directly to us, such as when you fill out a form or communicate with us.</p>
+                <p><strong>2. How We Use Information</strong><br>We use the information we collect primarily to provide, maintain, and improve our services, and to respond to your inquiries.</p>
+                <p><strong>3. Information Sharing</strong><br>We do not share your personal information with third parties without your consent, except as required by law.</p>
+                <p><strong>4. Data Security</strong><br>We take reasonable measures to help protect your personal information from loss, theft, misuse, and unauthorized access.</p>
+                <p><strong>5. Contact Us</strong><br>If you have any questions about this Privacy Policy, please contact us at alapanghosh3@gmail.com.</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function openPrivacyModal(e) {
+            if(e) e.preventDefault();
+            document.getElementById('privacyModal').classList.add('active');
+        }
+        function closePrivacyModal() {
+            document.getElementById('privacyModal').classList.remove('active');
+        }
+        window.addEventListener('click', function(e) {
+            const modal = document.getElementById('privacyModal');
+            if (e.target === modal) {
+                closePrivacyModal();
+            }
+        });
+    </script>
 </body>
 </html>
