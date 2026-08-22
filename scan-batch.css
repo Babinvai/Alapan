@@ -792,6 +792,24 @@ p { margin-bottom: 15px; }
 }
 
 /* =========================================================
+   FOOTER DESKTOP ALIGNMENT FIXES (PERFECT ALIGNMENT)
+========================================================= */
+@media (min-width: 769px) {
+    .footer-grid {
+        margin-bottom: 140px !important; /* Pushes the grid up so the 250px landscape doesn't overlap the social icons */
+        gap: 50px !important; /* Better spacing between columns */
+    }
+    
+    .footer-grid > div:nth-child(1) {
+        padding-right: 30px;
+    }
+    
+    .brand-logo-img-footer {
+        transform: translateX(-8px); /* Visually aligns the logo perfectly with the paragraph text below it */
+    }
+}
+
+/* =========================================================
    FOOTER MOBILE ALIGNMENT FIXES (PERFECT ALIGNMENT)
 ========================================================= */
 @media (max-width: 768px) {
