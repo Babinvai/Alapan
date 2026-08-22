@@ -547,6 +547,11 @@ header a[href="traceability.html"]::after,
         margin-top: -50px;    /* Pulls the image UP on phones */
         margin-bottom: -50px; /* Pulls the text below UP on phones */
         
-        padding: 0 15px; /* Keeps the image from touching the phone edges */
+        padding: 0; /* Removing padding to allow image to stretch */
+    }
+
+    .standard-divider-img {
+        transform: scale(1.2);
+        transform-origin: center center;
     }
 }
