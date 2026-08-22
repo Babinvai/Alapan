@@ -491,20 +491,29 @@ p {
 }
 
 .contact-info-panel {
-    background: var(--forest-green);
+    background: linear-gradient(145deg, #1A3C34 0%, #11251E 100%);
     color: var(--warm-ivory);
     padding: 80px 60px;
     position: relative;
     overflow: hidden;
+    box-shadow: inset 0 0 40px rgba(0,0,0,0.15);
 }
 
 .contact-info-panel h2 {
     color: var(--ghee-gold);
+    font-family: var(--font-serif);
+    font-size: 2.2rem;
 }
 
 .contact-info-panel p {
-    color: rgba(250, 248, 242, 0.85);
+    color: rgba(250, 248, 242, 0.9);
     margin-bottom: 40px;
+    font-size: 1.05rem;
+    line-height: 1.6;
+}
+
+.contact-details {
+    font-style: normal;
 }
 
 .detail-item {
@@ -514,23 +523,27 @@ p {
 .detail-label {
     display: block;
     font-size: 0.85rem;
-    color: var(--muted-sage);
+    color: #D9B12D;
     text-transform: uppercase;
-    letter-spacing: 0.05em;
+    letter-spacing: 0.1em;
     margin-bottom: 5px;
+    font-weight: 600;
 }
 
 .detail-value {
     font-weight: 500;
-    font-size: 1.1rem;
+    font-size: 1.15rem;
+    color: #FFFFFF;
 }
 
 .support-note {
-    background: rgba(250, 248, 242, 0.05);
+    background: rgba(255, 255, 255, 0.08);
     padding: 20px;
-    border-left: 3px solid var(--ghee-gold);
+    border-left: 4px solid var(--ghee-gold);
+    border-radius: 4px;
     margin-bottom: 40px;
-    font-size: 0.9rem;
+    font-size: 0.95rem;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
 }
 
 .panel-actions {
@@ -614,10 +627,41 @@ textarea {
 }
 
 .checkbox-group input {
+    appearance: none;
+    -webkit-appearance: none;
+    background-color: transparent;
+    margin-top: 2px;
+    color: currentColor;
     width: 20px;
     height: 20px;
-    margin-top: 2px;
-    accent-color: var(--forest-green);
+    border: 2px solid var(--forest-green);
+    border-radius: 4px;
+    display: grid;
+    place-content: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    flex-shrink: 0;
+}
+
+.checkbox-group input::before {
+    content: "";
+    width: 10px;
+    height: 10px;
+    transform: scale(0);
+    transition: 120ms transform ease-in-out;
+    box-shadow: inset 1em 1em white;
+    background-color: white;
+    transform-origin: center;
+    clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);
+}
+
+.checkbox-group input:checked {
+    background-color: var(--forest-green);
+    border-color: var(--forest-green);
+}
+
+.checkbox-group input:checked::before {
+    transform: scale(1);
 }
 
 .checkbox-group label {
@@ -1148,10 +1192,7 @@ textarea {
 
 /* --- Left Panel (Info) --- */
 .contact-info-panel {
-    background: var(--forest-green);
-    color: var(--warm-ivory);
     padding: 60px 50px;
-    position: relative;
 }
 
 .contact-info-panel h2 {
@@ -1169,23 +1210,16 @@ textarea {
 }
 
 .detail-label {
-    display: block;
     font-size: 0.8rem;
-    color: var(--muted-sage);
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
     margin-bottom: 4px;
 }
 
 .detail-value {
-    font-weight: 500;
     font-size: 1.05rem;
 }
 
 .support-note {
-    background: rgba(250, 248, 242, 0.05);
     padding: 15px 20px;
-    border-left: 3px solid var(--ghee-gold);
     margin-bottom: 35px;
     font-size: 0.85rem;
     line-height: 1.5;
