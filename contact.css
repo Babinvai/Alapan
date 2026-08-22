@@ -1037,7 +1037,7 @@ textarea {
 
 @media (max-width: 768px) {
     .contact-hero {
-        padding-top: 80px; /* Move hero section up on mobile */
+        padding-top: 100px; /* Move hero section up on mobile */
         padding-bottom: 60px;
     }
 
@@ -1050,7 +1050,15 @@ textarea {
     .hero-buttons {
         justify-content: center;
         flex-direction: column;
+        align-items: center;
+        gap: 15px;
         margin-bottom: 25px; /* Ensure space below buttons */
+    }
+
+    .hero-buttons a {
+        width: 100%;
+        max-width: 280px;
+        box-sizing: border-box;
     }
 
     .trust-note {
