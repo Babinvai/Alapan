@@ -1461,8 +1461,8 @@ header a[href="lab-report.html"]::after,
 .footer-grid {
     position: relative;
     z-index: 2;
-    padding-bottom: 140px !important;
-    /* Forces the text to stay in the green zone */
+    padding-bottom: 50px !important;
+    /* Forces the text to stay in the green zone but reduces ugly empty space */
 }
 
 /* 4. Keeps the copyright perfectly positioned on the dark brown ground */
