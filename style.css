@@ -2622,3 +2622,77 @@ body.no-scroll {
 
 
 
+
+/* =========================================================
+   FOOTER ALIGNMENT & STRUCTURE (Global)
+========================================================= */
+.main-footer {
+    background-color: #174B37 !important;
+    border-top: 1px solid rgba(250, 248, 242, 0.1);
+    color: #FAF8F2;
+}
+
+.footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 40px; margin-bottom: 60px; }
+.footer-logo { max-width: 120px; margin-bottom: 20px; filter: brightness(0) invert(1); }
+.brand-logo-img-footer { max-width: 120px; filter: brightness(0) invert(1); }
+.footer-tagline { opacity: 0.8; margin-bottom: 10px; }
+.fssai-number { color: #D9B12D; font-size: 0.85rem; font-weight: 600; }
+.footer-heading { color: #D9B12D; margin-bottom: 20px; font-family: 'Playfair Display', serif; }
+.footer-links ul, .contact-list { list-style: none; }
+.footer-links li, .contact-list li { margin-bottom: 12px; opacity: 0.8; font-size: 0.95rem; }
+.footer-links a:hover { color: var(--ghee-gold); opacity: 1; }
+.social-icons { display: flex; gap: 15px; margin-top: 20px; }
+.social-icons a { width: 32px; height: 32px; color: var(--warm-ivory); opacity: 0.8; }
+.social-icons a:hover { color: var(--ghee-gold); opacity: 1; }
+.footer-copyright { text-align: center; padding-top: 30px; border-top: 1px solid rgba(250, 248, 242, 0.1); font-size: 0.85rem; opacity: 0.6; }
+
+/* =========================================================
+   FOOTER DESKTOP ALIGNMENT FIXES (PERFECT ALIGNMENT)
+========================================================= */
+@media (min-width: 769px) {
+    .footer-grid {
+        margin-bottom: 140px !important; 
+        gap: 50px !important; 
+    }
+    
+    .footer-grid > div:nth-child(1) {
+        padding-right: 30px;
+    }
+    
+    .brand-logo-img-footer {
+        transform: translateX(-8px);
+    }
+}
+
+/* =========================================================
+   FOOTER MOBILE ALIGNMENT FIXES (PERFECT ALIGNMENT)
+========================================================= */
+@media (max-width: 768px) {
+    .footer-grid {
+        grid-template-columns: auto auto !important;
+        justify-content: center !important;
+        text-align: left !important;
+        gap: 30px 110px !important;
+        margin-bottom: 30px !important;
+    }
+    
+    .footer-grid > div:nth-child(1),
+    .footer-grid > div:nth-child(4) {
+        grid-column: 1 / -1 !important;
+        text-align: center !important;
+    }
+    
+    .brand-logo-img-footer {
+        margin: 0 auto 15px !important;
+        display: block !important;
+    }
+    
+    .social-icons {
+        justify-content: center !important;
+        margin-top: 10px !important;
+    }
+    
+    .footer-landscape {
+        height: 120px !important;
+    }
+}
