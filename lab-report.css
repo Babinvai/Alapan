@@ -1032,6 +1032,10 @@ header.scrolled {
         padding-bottom: 60px;
     }
 
+    .footer-grid {
+        padding-bottom: 20px !important;
+    }
+
     .report-hero h1 {
         font-size: 2.5rem;
     }
