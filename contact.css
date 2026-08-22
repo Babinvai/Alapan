@@ -497,6 +497,9 @@ p {
     position: relative;
     overflow: hidden;
     box-shadow: inset 0 0 40px rgba(0,0,0,0.15);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .contact-info-panel h2 {
@@ -626,49 +629,65 @@ textarea {
     gap: 10px;
 }
 
-.checkbox-group input {
-    appearance: none;
-    -webkit-appearance: none;
-    background-color: transparent;
-    margin-top: 2px;
-    color: currentColor;
-    width: 20px;
-    height: 20px;
-    border: 2px solid var(--forest-green);
-    border-radius: 4px;
-    display: grid;
-    place-content: center;
-    cursor: pointer;
-    transition: all 0.2s ease;
-    flex-shrink: 0;
-}
-
-.checkbox-group input::before {
-    content: "";
-    width: 10px;
-    height: 10px;
-    transform: scale(0);
-    transition: 120ms transform ease-in-out;
-    box-shadow: inset 1em 1em white;
-    background-color: white;
-    transform-origin: center;
-    clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);
-}
-
-.checkbox-group input:checked {
-    background-color: var(--forest-green);
-    border-color: var(--forest-green);
-}
-
-.checkbox-group input:checked::before {
-    transform: scale(1);
+.checkbox-group input[type="checkbox"] {
+    position: absolute !important;
+    opacity: 0 !important;
+    width: 0 !important;
+    height: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
 }
 
 .checkbox-group label {
+    position: relative;
+    padding-left: 32px;
+    cursor: pointer;
+    display: inline-block;
+    line-height: 1.4;
+    user-select: none;
     font-weight: 400;
     font-size: 0.9rem;
     color: rgba(33, 73, 56, 0.8);
 }
+
+.checkbox-group label::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 20px;
+    height: 20px;
+    border: 2px solid var(--forest-green);
+    border-radius: 4px;
+    background-color: transparent;
+    transition: all 0.2s ease;
+    box-sizing: border-box;
+}
+
+.checkbox-group input[type="checkbox"]:checked + label::before {
+    background-color: var(--forest-green);
+    border-color: var(--forest-green);
+}
+
+.checkbox-group label::after {
+    content: "";
+    position: absolute;
+    left: 7px;
+    top: 3px;
+    width: 5px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg) scale(0);
+    transition: transform 0.2s ease;
+    box-sizing: border-box;
+}
+
+.checkbox-group input[type="checkbox"]:checked + label::after {
+    transform: rotate(45deg) scale(1);
+}
+
+
 
 .error-message {
     color: var(--error-red);
