@@ -205,7 +205,7 @@ document.addEventListener('DOMContentLoaded', () => {
             time: "20 min",
             difficulty: "Easy",
             servings: "4",
-            img: "Jeera rice.png",
+            img: "jeera rice.png",
             desc: "Fragrant basmati, crackling cumin and warm ghee for a simple side that never feels ordinary.",
             ingredients: [
                 "1 cup Long-grain Basmati rice, soaked for 20 mins",
@@ -260,7 +260,7 @@ document.addEventListener('DOMContentLoaded', () => {
             time: "40 min",
             difficulty: "Hard",
             servings: "4",
-            img: "sukto.png",
+            img: "Sukto.png",
             desc: "A delicate, milk-based vegetable medley with a hint of bitterness, traditionally served as the palate-cleansing first course.",
             ingredients: [
                 "Mixed chopped veggies: Bitter gourd (Korola), Raw banana, Sweet potato, Drumsticks",
@@ -291,7 +291,7 @@ document.addEventListener('DOMContentLoaded', () => {
             time: "45 min",
             difficulty: "Medium",
             servings: "12 Ladoos",
-            img: "laddu.png",
+            img: "Laddu.png",
             desc: "Slow-roasted besan, golden ghee and cardamom come together in a timeless festive favourite.",
             ingredients: [
                 "2 cups Gram flour (Besan), coarse preferred",
