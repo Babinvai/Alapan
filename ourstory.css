@@ -22,6 +22,12 @@ body {
     overflow-x: hidden;
 }
 
+/* =========================================================
+   UTILITIES
+========================================================= */
+.text-center { text-align: center !important; }
+.section-header { margin-bottom: 50px; }
+
 h1, h2, h3, h4 {
     font-family: var(--font-serif);
     color: var(--forest-green);
@@ -322,6 +328,121 @@ a.active-nav::after {
 .cta-image img { width: 120px; height: 120px; border-radius: 50%; object-fit: cover; border: 3px solid var(--ghee-gold); }
 
 /* =========================================================
+   NEW: MEET THE FOUNDERS
+========================================================= */
+.meet-founders-section { padding: 20px 0 100px 0; background: var(--ivory-bg); position: relative; }
+.founders-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; margin-top: 50px; }
+.founder-card { 
+    background: #fff; 
+    border-radius: 12px; 
+    padding: 40px; 
+    text-align: center;
+    box-shadow: 0 15px 35px rgba(23,75,55,0.05);
+    border: 1px solid rgba(23,75,55,0.05);
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+.founder-card:hover { transform: translateY(-8px); box-shadow: 0 25px 45px rgba(23,75,55,0.1); }
+.founder-avatar-wrapper { 
+    width: 150px; height: 150px; 
+    margin: 0 auto 30px; 
+    border-radius: 50%; 
+    padding: 8px; 
+    border: 2px dashed var(--ghee-gold); 
+}
+.founder-avatar { width: 100%; height: 100%; border-radius: 50%; overflow: hidden; }
+.founder-avatar img { width: 100%; height: 100%; object-fit: cover; object-position: center top; }
+.founder-info h3 { font-size: 1.8rem; margin-bottom: 5px; color: var(--forest-green); }
+.founder-role { display: block; font-size: 0.95rem; font-weight: 700; color: var(--terracotta); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 20px; }
+.founder-info p { font-size: 1.05rem; font-style: italic; opacity: 0.85; line-height: 1.6; }
+
+/* =========================================================
+   NEW: OUR INSPIRATIONS
+========================================================= */
+.inspirations-section { 
+    padding: 120px 0; 
+    background: var(--forest-green); 
+    color: #fff; 
+    position: relative; 
+    overflow: hidden; 
+}
+.inspirations-bg-overlay {
+    position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+    background-image: radial-gradient(circle at 50% 50%, rgba(217,177,45,0.15) 0%, transparent 60%);
+    pointer-events: none;
+}
+.inspirations-inner { position: relative; z-index: 2; }
+.light-text { color: var(--ivory-bg) !important; }
+
+/* The new 2-column grid for grandparents */
+.person-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; margin-top: 60px; max-width: 900px; margin-left: auto; margin-right: auto; }
+
+.inspiration-person { text-align: center; }
+
+.vintage-frame {
+    position: relative;
+    width: 260px;
+    height: 380px;
+    margin: 0 auto 30px;
+    border-radius: 100px 100px 12px 12px; /* Flatter arch to prevent top cropping */
+    overflow: hidden;
+    border: 4px solid var(--ghee-gold);
+    box-shadow: 0 15px 40px rgba(0,0,0,0.4), 0 0 0 8px rgba(217,177,45,0.05); /* Outer glow */
+    background: #1A2F25;
+    transition: transform 0.5s ease;
+}
+
+/* Decorative fine inner border for a premium vintage look */
+.vintage-frame::before {
+    content: '';
+    position: absolute;
+    top: 6px; left: 6px; right: 6px; bottom: 6px;
+    border: 1px solid rgba(217,177,45,0.8);
+    border-radius: 94px 94px 6px 6px;
+    z-index: 10;
+    pointer-events: none;
+}
+
+.inspiration-person:hover .vintage-frame {
+    transform: translateY(-10px) scale(1.02);
+}
+
+.vintage-frame img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 25px; /* Shifts the photo down to create headroom at the top */
+    transition: filter 0.5s ease, transform 0.5s ease;
+}
+
+.inspiration-person:hover .vintage-frame img {
+    /* Slight brightness bump on hover to draw the eye, but keeping natural colors */
+    filter: brightness(1.1); 
+}
+
+/* Adds a soft, vignette-style overlay to make the photo look aged and premium */
+.vintage-overlay {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: radial-gradient(ellipse at center, transparent 30%, rgba(26,47,37,0.6) 100%);
+    pointer-events: none;
+}
+
+.inspiration-person h3 {
+    color: var(--ghee-gold);
+    font-size: 1.8rem;
+    margin-bottom: 15px;
+    font-family: var(--font-serif);
+    letter-spacing: 0.05em;
+}
+
+.inspiration-person p {
+    opacity: 0.9;
+    font-size: 1.05rem;
+    line-height: 1.6;
+    color: rgba(255,255,255,0.85);
+}
+
+/* =========================================================
    REVEAL ANIMATIONS
 ========================================================= */
 .reveal-on-scroll { opacity: 0; transform: translateY(30px); transition: opacity 0.8s ease-out, transform 0.8s ease-out; }
@@ -334,7 +455,9 @@ a.active-nav::after {
    RESPONSIVE DESIGN
 ========================================================= */
 @media (max-width: 992px) {
-    .story-hero-inner, .founder-grid, .rooted-inner, .trust-grid { grid-template-columns: 1fr; gap: 40px; text-align: center; }
+    .story-hero-inner, .founder-grid, .rooted-inner, .trust-grid, .founders-grid, .person-grid { grid-template-columns: 1fr; gap: 40px; text-align: center; }
+    .founders-grid { max-width: 500px; margin-left: auto; margin-right: auto; }
+    .person-grid { max-width: 400px; gap: 60px; }
     .story-hero-content p { margin: 0 auto 30px; }
     .hero-actions, .trust-actions { justify-content: center; }
     .floating-card { bottom: 20px; left: 50%; transform: translateX(-50%); width: 80%; }
@@ -495,3 +618,100 @@ header a[href="story.html"]::after,
     color: rgba(0, 0, 0, 0.7); /* Softens the text color slightly */
 }
 
+/* =========================================================
+   RESPECTFUL TRIBUTES (PRADIPS & PETALS)
+========================================================= */
+.inspiration-person { position: relative; } /* Ensure absolute positioning works */
+
+.pradip-wrapper {
+    position: absolute;
+    bottom: 40px;
+    z-index: 5;
+    pointer-events: none;
+    filter: drop-shadow(0 10px 10px rgba(0,0,0,0.5));
+}
+
+.pradip-left {
+    left: -110px;
+    transform-origin: bottom center;
+    animation: leanRight 4s ease-in-out infinite alternate;
+}
+
+.pradip-right {
+    right: -110px;
+    transform-origin: bottom center;
+    animation: leanLeft 4s ease-in-out infinite alternate;
+}
+
+@keyframes leanRight {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(8deg); } /* Leaning towards grandfather */
+}
+
+@keyframes leanLeft {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(-8deg); } /* Leaning towards grandmother */
+}
+
+/* Flame animation */
+@keyframes flicker {
+    0%, 100% { transform: scaleY(1) rotate(0deg); opacity: 0.9; }
+    50% { transform: scaleY(1.15) rotate(3deg); opacity: 1; filter: brightness(1.2); }
+    25%, 75% { transform: scaleY(0.9) rotate(-3deg); opacity: 0.8; }
+}
+
+.pradip-svg .flame {
+    animation: flicker 1.2s infinite ease-in-out;
+    transform-origin: 50px 135px;
+}
+
+.pradip-svg .flame-inner {
+    animation: flicker 0.9s infinite reverse ease-in-out;
+    transform-origin: 50px 130px;
+}
+
+/* Glowing Aura */
+.pradip-glow {
+    position: absolute;
+    top: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 80px;
+    background: radial-gradient(circle, rgba(255,165,0,0.4) 0%, rgba(255,140,0,0) 70%);
+    border-radius: 50%;
+    animation: pulseGlow 2s infinite alternate;
+    pointer-events: none;
+}
+
+@keyframes pulseGlow {
+    0% { opacity: 0.5; transform: translateX(-50%) scale(0.8); }
+    100% { opacity: 1; transform: translateX(-50%) scale(1.3); }
+}
+
+/* Falling Petals Effect */
+.falling-petals {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    pointer-events: none;
+    z-index: 1;
+    overflow: hidden;
+    /* Soft, respectful petal patterns */
+    background-image: 
+        radial-gradient(circle at 20% 10%, rgba(255,200,200,0.15) 2px, transparent 3px),
+        radial-gradient(circle at 80% 30%, rgba(255,200,200,0.15) 3px, transparent 4px),
+        radial-gradient(circle at 40% 60%, rgba(255,200,200,0.2) 2px, transparent 3px),
+        radial-gradient(circle at 70% 80%, rgba(255,200,200,0.15) 3px, transparent 4px);
+    background-size: 200px 200px;
+    animation: fall 25s linear infinite;
+}
+
+@keyframes fall {
+    0% { background-position: 0 0, 0 0, 0 0, 0 0; }
+    100% { background-position: 200px 400px, -200px 400px, 100px 400px, -100px 400px; }
+}
+
+/* Hide pradips on very small screens to avoid horizontal overflow */
+@media (max-width: 768px) {
+    .pradip-wrapper { display: none; }
+}
