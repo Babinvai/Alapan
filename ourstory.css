@@ -465,6 +465,7 @@ a.active-nav::after {
     .highlight-callout { border-left: none; border-top: 2px solid var(--terracotta); padding: 20px 0 0 0; }
     
     .courtyard-texture { top: 0; left: 2%; width: 96%; height: 100%; }
+    .rooted-panel { margin-bottom: 60px; }
     .rooted-inner { padding: 40px 20px; gap: 40px; }
     
     .process-flow { flex-direction: column; align-items: center; }
