@@ -627,31 +627,33 @@ header a[href="story.html"]::after,
 .pradip-wrapper {
     position: absolute;
     bottom: 40px;
+    left: 50%;
+    right: auto;
     z-index: 5;
     pointer-events: none;
     filter: drop-shadow(0 10px 10px rgba(0,0,0,0.5));
 }
 
 .pradip-left {
-    left: -110px;
+    margin-left: -190px;
     transform-origin: bottom center;
     animation: leanRight 4s ease-in-out infinite alternate;
 }
 
 .pradip-right {
-    right: -110px;
+    margin-left: 190px;
     transform-origin: bottom center;
     animation: leanLeft 4s ease-in-out infinite alternate;
 }
 
 @keyframes leanRight {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(8deg); } /* Leaning towards grandfather */
+    0% { transform: translateX(-50%) rotate(0deg); }
+    100% { transform: translateX(-50%) rotate(8deg); } /* Leaning towards grandfather */
 }
 
 @keyframes leanLeft {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(-8deg); } /* Leaning towards grandmother */
+    0% { transform: translateX(-50%) rotate(0deg); }
+    100% { transform: translateX(-50%) rotate(-8deg); } /* Leaning towards grandmother */
 }
 
 /* Flame animation */
