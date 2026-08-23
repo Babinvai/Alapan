@@ -711,7 +711,19 @@ header a[href="story.html"]::after,
     100% { background-position: 200px 400px, -200px 400px, 100px 400px, -100px 400px; }
 }
 
-/* Hide pradips on very small screens to avoid horizontal overflow */
+/* Scale and position pradips for mobile view instead of hiding them */
 @media (max-width: 768px) {
-    .pradip-wrapper { display: none; }
+    .pradip-wrapper { bottom: -10px; }
+    .pradip-left { left: -40px; animation: leanRightMobile 4s ease-in-out infinite alternate; }
+    .pradip-right { right: -40px; animation: leanLeftMobile 4s ease-in-out infinite alternate; }
+}
+
+@keyframes leanRightMobile {
+    0% { transform: scale(0.6) rotate(0deg); }
+    100% { transform: scale(0.6) rotate(8deg); }
+}
+
+@keyframes leanLeftMobile {
+    0% { transform: scale(0.6) rotate(0deg); }
+    100% { transform: scale(0.6) rotate(-8deg); }
 }
