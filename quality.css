@@ -406,6 +406,7 @@ a.active-nav::after {
     .floating-info-card { bottom: -20px; left: 50%; transform: translateX(-50%); width: 90%; }
     .trust-strip-inner { flex-direction: column; text-align: center; gap: 30px; }
     .trust-strip h3 { max-width: 100%; }
+    .trust-markers { flex-wrap: wrap; justify-content: center; }
     .journey-timeline { flex-direction: column; align-items: flex-start; padding-left: 20px; }
     .journey-line { width: 2px; height: 100%; left: 45px; top: 0; }
    /* Replace your old mobile .journey-step rules with this CSS Grid layout */
@@ -449,15 +450,24 @@ a.active-nav::after {
 
 /* MOBILE PHONE ADJUSTMENTS */
 @media (max-width: 768px) {
+    .hero-content h1 { font-size: 2.5rem; }
+    .hero-actions { flex-direction: column; gap: 15px; width: 100%; }
+    .hero-actions a { width: 100%; text-align: center; box-sizing: border-box; }
+
+    .trust-markers { flex-direction: column; align-items: center; gap: 15px; width: 100%; }
+
     .commitments-grid { grid-template-columns: 1fr; }
     .scan-panel { padding: 40px 20px; }
     .input-group { flex-direction: column; }
     .input-group input { border-radius: 4px; border-right: 1px solid var(--muted-sage); margin-bottom: 10px; }
     .btn-primary-dark { border-radius: 4px; padding: 15px; }
+
+    .preview-actions { flex-direction: column; gap: 15px; width: 100%; }
+    .preview-actions a { width: 100%; text-align: center; box-sizing: border-box; }
     
     /* Stacks the CTA buttons on mobile phones */
-    .cta-actions { flex-direction: column; width: 100%; }
-    .cta-actions a { width: 100%; }
+    .cta-actions { flex-direction: column; width: 100%; gap: 15px; }
+    .cta-actions a { width: 100%; text-align: center; box-sizing: border-box; }
 }
 
 
