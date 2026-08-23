@@ -347,7 +347,21 @@ a.active-nav::after {
     
     .timeline-line { left: 30px; }
     .timeline-dot { left: 30px; }
-    .timeline-content { width: calc(100% - 60px); padding-left: 30px; margin-left: auto; text-align: left !important; }
+    .timeline-block { flex-direction: column; align-items: flex-start; height: auto; padding-bottom: 20px; }
+    .timeline-content { width: calc(100% - 60px); padding-left: 30px; margin-left: auto; text-align: left !important; order: 1; }
+    .timeline-sketch { 
+        position: relative; 
+        top: 0; 
+        transform: none; 
+        width: calc(100% - 60px); 
+        margin-left: auto; 
+        height: 250px; 
+        order: 2; 
+        margin-top: 20px; 
+        background-size: contain; 
+        opacity: 0.9; 
+        z-index: 1;
+    }
 }
 @media (max-width: 768px) {
     .values-grid { grid-template-columns: 1fr; }
