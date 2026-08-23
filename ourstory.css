@@ -626,7 +626,8 @@ header a[href="story.html"]::after,
 
 .pradip-wrapper {
     position: absolute;
-    bottom: 40px;
+    top: 60px;
+    bottom: auto;
     left: 50%;
     right: auto;
     z-index: 5;
