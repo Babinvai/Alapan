@@ -723,11 +723,11 @@ header a[href="story.html"]::after,
         z-index: 100 !important;
     }
     .pradip-left { 
-        margin-left: -140px !important; 
+        margin-left: -170px !important; 
         animation: leanRightMobile 4s ease-in-out infinite alternate !important; 
     }
     .pradip-right { 
-        margin-left: 140px !important; 
+        margin-left: 170px !important; 
         animation: leanLeftMobile 4s ease-in-out infinite alternate !important; 
     }
 }
