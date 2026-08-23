@@ -714,7 +714,8 @@ header a[href="story.html"]::after,
 /* Scale and position pradips perfectly for mobile and tablet views (1-column layout) */
 @media (max-width: 992px) {
     .pradip-wrapper { 
-        bottom: 20px !important; 
+        top: 150px !important;
+        bottom: auto !important; 
         left: 50% !important; 
         right: auto !important; 
         display: block !important;
