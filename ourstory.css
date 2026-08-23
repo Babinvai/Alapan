@@ -455,9 +455,8 @@ a.active-nav::after {
    RESPONSIVE DESIGN
 ========================================================= */
 @media (max-width: 992px) {
-    .story-hero-inner, .founder-grid, .rooted-inner, .trust-grid, .founders-grid, .person-grid { grid-template-columns: 1fr; gap: 40px; text-align: center; }
+    .story-hero-inner, .founder-grid, .rooted-inner, .trust-grid, .founders-grid { grid-template-columns: 1fr; gap: 40px; text-align: center; }
     .founders-grid { max-width: 500px; margin-left: auto; margin-right: auto; }
-    .person-grid { max-width: 400px; gap: 60px; }
     .story-hero-content p { margin: 0 auto 30px; }
     .hero-actions, .trust-actions { justify-content: center; }
     .floating-card { bottom: 20px; left: 50%; transform: translateX(-50%); width: 80%; }
@@ -491,6 +490,7 @@ a.active-nav::after {
     }
 }
 @media (max-width: 768px) {
+    .person-grid { grid-template-columns: 1fr; max-width: 400px; gap: 60px; margin: 0 auto; text-align: center; }
     .values-grid { grid-template-columns: 1fr; }
     .story-hero h1 { font-size: 2.5rem; }
     .founder-text-col h2, .rooted-header h2, .cta-content h2 { font-size: 2rem; }
@@ -712,8 +712,8 @@ header a[href="story.html"]::after,
     100% { background-position: 200px 400px, -200px 400px, 100px 400px, -100px 400px; }
 }
 
-/* Scale and position pradips perfectly for mobile and tablet views (1-column layout) */
-@media (max-width: 992px) {
+/* Scale and position pradips perfectly for mobile views (1-column layout) */
+@media (max-width: 768px) {
     .pradip-wrapper { 
         top: 150px !important;
         bottom: auto !important; 
