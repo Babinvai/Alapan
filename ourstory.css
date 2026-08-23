@@ -711,19 +711,25 @@ header a[href="story.html"]::after,
     100% { background-position: 200px 400px, -200px 400px, 100px 400px, -100px 400px; }
 }
 
-/* Scale and position pradips for mobile view instead of hiding them */
+/* Scale and position pradips perfectly for mobile view */
 @media (max-width: 768px) {
-    .pradip-wrapper { bottom: -10px; }
-    .pradip-left { left: -40px; animation: leanRightMobile 4s ease-in-out infinite alternate; }
-    .pradip-right { right: -40px; animation: leanLeftMobile 4s ease-in-out infinite alternate; }
+    .pradip-wrapper { bottom: 20px; left: 50%; right: auto; }
+    .pradip-left { 
+        margin-left: -155px; 
+        animation: leanRightMobile 4s ease-in-out infinite alternate; 
+    }
+    .pradip-right { 
+        margin-left: 155px; 
+        animation: leanLeftMobile 4s ease-in-out infinite alternate; 
+    }
 }
 
 @keyframes leanRightMobile {
-    0% { transform: scale(0.6) rotate(0deg); }
-    100% { transform: scale(0.6) rotate(8deg); }
+    0% { transform: translateX(-50%) scale(0.65) rotate(0deg); }
+    100% { transform: translateX(-50%) scale(0.65) rotate(12deg); }
 }
 
 @keyframes leanLeftMobile {
-    0% { transform: scale(0.6) rotate(0deg); }
-    100% { transform: scale(0.6) rotate(-8deg); }
+    0% { transform: translateX(-50%) scale(0.65) rotate(0deg); }
+    100% { transform: translateX(-50%) scale(0.65) rotate(-12deg); }
 }
