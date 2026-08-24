@@ -330,6 +330,25 @@
                     </div>
                 </div>
 
+                <!-- Product 4.5: 3L Container -->
+                <div class="product-card">
+                    <div class="discount-tag">15% OFF</div>
+                    <!-- Assuming 2ltr.jpeg or similar placeholder, as we don't have a 3ltr image -->
+                    <img src="2ltr.jpeg" alt="3L Heritage Dolchi" class="product-actual-img" onerror="this.src='250ml.png'">
+                    <h3 class="font-serif"><span class="brand-name-red">Ghosh Dhara</span> Traditional Ghee</h3>
+                    <p>3L Heritage Dolchi ⭐</p>
+                    <div class="product-rating">
+                        <span class="rating-label">Rating</span> ★★★★★ <span class="rating-text">4.9</span> <span
+                            class="review-count">(165)</span>
+                    </div>
+                    <div class="price font-serif">₹4850</div>
+                    <div class="product-actions">
+                        <button class="btn-primary" onclick="addToCart('3L Heritage Dolchi ⭐', 4850, '2ltr.jpeg')">Add
+                            to Cart</button>
+                        <button class="btn-buy-now" onclick="buyNow('3L Heritage Dolchi ⭐')">Buy Now</button>
+                    </div>
+                </div>
+
                 <!-- Product 5 -->
                 <div class="product-card">
                     <div class="discount-tag">15% OFF</div>
@@ -349,6 +368,67 @@
                 </div>
 
             </div> <!-- The Grid Container cleanly closes here! -->
+        </section>
+
+        <!-- NEW TRADITIONAL PANTRY SECTION -->
+        <section class="products-section container pantry-section">
+            <h2 class="font-serif">Our Traditional Pantry</h2>
+            <p style="text-align: center; max-width: 600px; margin: 0 auto 40px auto; color: #555;">Authentic, hand-crafted village specials beyond our signature ghee. (Currently out of stock as we prepare fresh batches).</p>
+
+            <div class="product-grid">
+                
+                <!-- New Product: Honey (Sold Out) -->
+                <div class="product-card">
+                    <div style="position: relative;">
+                        <img src="honey_jar.png" alt="Pure Sundarban Honey" class="product-actual-img sold-out-overlay" onerror="this.src='250ml.png'">
+                        <div class="sold-out-badge">SOLD OUT</div>
+                    </div>
+                    <h3 class="font-serif"><span class="brand-name-red">Ghosh Dhara</span> Wild Honey</h3>
+                    <p>Pure Sundarban Honey - 500g</p>
+                    <div class="product-rating">
+                        <span class="rating-label">Rating</span> ★★★★★ <span class="rating-text">5.0</span> <span class="review-count">(42)</span>
+                    </div>
+                    <div class="price font-serif" style="color: #888;">₹650</div>
+                    <div class="product-actions">
+                        <button class="btn-sold-out" disabled>Out of Stock</button>
+                    </div>
+                </div>
+
+                <!-- New Product: Bori (Sold Out) -->
+                <div class="product-card">
+                    <div style="position: relative;">
+                        <img src="bengali_bori.png" alt="Traditional Bengali Bori" class="product-actual-img sold-out-overlay" onerror="this.src='Chire bhaja.png'">
+                        <div class="sold-out-badge">SOLD OUT</div>
+                    </div>
+                    <h3 class="font-serif"><span class="brand-name-red">Ghosh Dhara</span> Special Bori</h3>
+                    <p>Traditional Sun-dried Bori - 250g</p>
+                    <div class="product-rating">
+                        <span class="rating-label">Rating</span> ★★★★★ <span class="rating-text">4.8</span> <span class="review-count">(15)</span>
+                    </div>
+                    <div class="price font-serif" style="color: #888;">₹150</div>
+                    <div class="product-actions">
+                        <button class="btn-sold-out" disabled>Out of Stock</button>
+                    </div>
+                </div>
+
+                <!-- New Product: Neem Leaf Dust (Sold Out) -->
+                <div class="product-card">
+                    <div style="position: relative;">
+                        <img src="neem_dust.png" alt="Pure Neem Leaf Dust" class="product-actual-img sold-out-overlay" onerror="this.src='Pure.png'">
+                        <div class="sold-out-badge">SOLD OUT</div>
+                    </div>
+                    <h3 class="font-serif"><span class="brand-name-red">Ghosh Dhara</span> Neem Dust</h3>
+                    <p>Organic Neem Leaf Powder - 100g</p>
+                    <div class="product-rating">
+                        <span class="rating-label">Rating</span> ★★★★★ <span class="rating-text">4.9</span> <span class="review-count">(28)</span>
+                    </div>
+                    <div class="price font-serif" style="color: #888;">₹120</div>
+                    <div class="product-actions">
+                        <button class="btn-sold-out" disabled>Out of Stock</button>
+                    </div>
+                </div>
+
+            </div>
         </section>
 
 
@@ -457,10 +537,10 @@
                 </div>
 
                 <!-- Right Side: Founder's Message -->
-                <div class="founder-card" style="position: relative; overflow: hidden; padding-bottom: 80px;">
+                <div class="founder-card" style="position: relative; overflow: hidden; padding-bottom: 120px;">
                     <!-- ANIMATED CHARACTERS -->
-                    <img src="Dadu.png" alt="Dadu" class="dadu-anim" style="position: absolute; bottom: -20px; left: -20px; width: 150px; opacity: 0.8; z-index: 1;">
-                    <img src="Thamma.png" alt="Thamma" class="thamma-anim" style="position: absolute; bottom: -10px; right: -30px; width: 140px; opacity: 0.8; z-index: 1;">
+                    <img src="Dadu.png" alt="Dadu" class="dadu-anim" style="position: absolute; bottom: -35px; left: -15px; height: 190px; width: auto; opacity: 0.85; z-index: 1;">
+                    <img src="Thamma.png" alt="Thamma" class="thamma-anim" style="position: absolute; bottom: -15px; right: -20px; height: 140px; width: auto; opacity: 0.85; z-index: 1;">
 
                     <div style="position: relative; z-index: 2;">
                         <h2 class="font-serif" style="font-size: 2.5rem; margin-bottom: 20px; color: var(--brand-green);">
@@ -487,6 +567,36 @@
             </div>
         </section>
 
+
+        <!-- TRADITIONAL PROCESS SECTION -->
+        <section class="process-section container">
+            <div style="text-align: center; margin-bottom: 20px;">
+                <h2 class="font-serif" style="color: var(--brand-green); font-size: 2.5rem; margin-bottom: 10px;">The Traditional Process</h2>
+                <div style="height: 3px; width: 60px; background-color: var(--brand-gold); margin: 0 auto;"></div>
+            </div>
+            <p style="text-align: center; max-width: 700px; margin: 0 auto 40px; color: #555; font-size: 1.1rem;">We don't believe in shortcuts. Every jar of Ghosh Dhara ghee is crafted with patience and care to preserve its granular texture, purity, and rich aroma.</p>
+            
+            <div class="process-grid">
+                <!-- Step 1 -->
+                <div class="process-step">
+                    <div class="process-icon">🐄</div>
+                    <h3 class="font-serif">1. Fresh Cow's Milk</h3>
+                    <p>Sourced ethically from well-fed cows on our local village farms in Krishnanagar.</p>
+                </div>
+                <!-- Step 2 -->
+                <div class="process-step">
+                    <div class="process-icon">🥛</div>
+                    <h3 class="font-serif">2. Pure Cream Separation</h3>
+                    <p>Rich, fresh cream (malai) is carefully separated from the milk, ensuring all natural nutrients are retained.</p>
+                </div>
+                <!-- Step 3 -->
+                <div class="process-step">
+                    <div class="process-icon">🔥</div>
+                    <h3 class="font-serif">3. Slow-Cooked to Perfection</h3>
+                    <p>The pure cream is slow-cooked over a gentle flame in small batches until it clarifies into golden, aromatic ghee.</p>
+                </div>
+            </div>
+        </section>
 
         <!-- PREMIUM TESTIMONIAL SECTION -->
         <!-- INTERACTIVE REVIEW MARQUEE SECTION -->
@@ -669,6 +779,66 @@
         <!-- ========================================================= -->
         <!-- UNIFIED FOOTER WITH GOLD-ADJUSTED 2D LANDSCAPE            -->
         <!-- ========================================================= -->
+        <!-- CERTIFICATIONS & LAB TESTING BANNER -->
+        <section class="cert-banner">
+            <div class="cert-grid">
+                <div class="cert-item">
+                    <div class="icon">📜</div>
+                    <h3>FSSAI Certified</h3>
+                    <p>Approved & Licensed by Gov. of India</p>
+                </div>
+                <div class="cert-item">
+                    <div class="icon">🔬</div>
+                    <h3>Lab Tested</h3>
+                    <p>Every batch rigorously tested for purity</p>
+                </div>
+                <div class="cert-item">
+                    <div class="icon">✨</div>
+                    <h3>100% Adulteration Free</h3>
+                    <p>No preservatives, no artificial colors</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ SECTION -->
+        <section class="faq-section">
+            <div style="text-align: center;">
+                <h2 class="font-serif" style="color: var(--brand-green); font-size: 2.2rem; margin-bottom: 10px;">Frequently Asked Questions</h2>
+                <div style="height: 3px; width: 60px; background-color: var(--brand-gold); margin: 0 auto;"></div>
+            </div>
+
+            <div class="faq-container">
+                <!-- Question 1 -->
+                <div class="faq-item">
+                    <div class="faq-question">Why is Ghosh Dhara Ghee granular (danedar)?</div>
+                    <div class="faq-answer">
+                        <p>Our ghee is granular because we carefully slow-cook pure, unadulterated cream over a gentle flame in small batches. The slow crystallization of fats creates that authentic "danedar" texture that is the hallmark of premium quality ghee.</p>
+                    </div>
+                </div>
+                <!-- Question 2 -->
+                <div class="faq-item">
+                    <div class="faq-question">Is this real A2 Milk Ghee?</div>
+                    <div class="faq-answer">
+                        <p>Yes, our ghee is crafted primarily from the milk of indigenous cow breeds which naturally produce A2 milk, ensuring it is easy to digest and packed with healthy fats.</p>
+                    </div>
+                </div>
+                <!-- Question 3 -->
+                <div class="faq-item">
+                    <div class="faq-question">Do you use any preservatives?</div>
+                    <div class="faq-answer">
+                        <p>Absolutely not. Ghosh Dhara ghee is 100% pure and natural. We do not use any preservatives, artificial colors, or synthetic flavors. The rich aroma and golden color come naturally from the high-quality milk and traditional cooking process.</p>
+                    </div>
+                </div>
+                <!-- Question 4 -->
+                <div class="faq-item">
+                    <div class="faq-question">How should I store the ghee?</div>
+                    <div class="faq-answer">
+                        <p>Store your ghee in a cool, dry place away from direct sunlight. There is no need to refrigerate it. Always use a clean, dry spoon to ensure the ghee stays fresh for months.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <footer class="main-footer">
         
         <!-- 2D Ground Landscape with Yellow/Gold Adjustments -->
@@ -805,6 +975,24 @@
             </div>
         </div>
 
+        <script>
+            // FAQ Accordion Logic
+            document.addEventListener('DOMContentLoaded', () => {
+                const faqQuestions = document.querySelectorAll('.faq-question');
+                faqQuestions.forEach(question => {
+                    question.addEventListener('click', () => {
+                        const parent = question.parentElement;
+                        // Toggle current active class
+                        parent.classList.toggle('active');
+                        // Close other items (Optional: uncomment to make it behave like an exclusive accordion)
+                        /*
+                        document.querySelectorAll('.faq-item').forEach(item => {
+                            if (item !== parent) item.classList.remove('active');
+                        });
+                        */
+                    });
+                });
+            });
+        </script>
     </body>
-
 </html>

@@ -1137,13 +1137,12 @@ footer {
 /* --- ACTUAL PRODUCT IMAGES --- */
 .product-actual-img {
   width: 100%;
-  height: auto; /* Removes the fixed height restriction */
-  aspect-ratio: 3 / 4; /* Perfect ratio for tall portrait packaging */
-  object-fit: cover; /* Fills the frame beautifully */
+  height: 280px; /* Slightly taller for a better showcase */
+  object-fit: cover; /* Fill the frame edge-to-edge completely */
   object-position: center; 
   margin-bottom: 25px;
   border-radius: 8px; 
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08); 
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05); 
   transition: transform 0.5s ease, box-shadow 0.5s ease;
 }
 
@@ -2897,3 +2896,228 @@ body.no-scroll {
     100% { transform: translateY(-8px) translateX(-5px) rotate(-1deg); }
 }
 
+/* ========================================================= */
+/* TRADITIONAL PANTRY & SOLD OUT STYLING                     */
+/* ========================================================= */
+.pantry-section {
+    background-color: rgba(212, 175, 55, 0.03); /* Very subtle warm tint */
+    border-top: 1px solid rgba(212, 175, 55, 0.1);
+    padding-top: 40px;
+    margin-top: 0px;
+}
+
+.sold-out-overlay {
+    filter: grayscale(80%) opacity(0.8);
+}
+
+.sold-out-badge {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(198, 40, 40, 0.9);
+    color: white;
+    padding: 10px 25px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    border-radius: 4px;
+    z-index: 10;
+    font-size: 1.1rem;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+
+.btn-sold-out {
+    background-color: #e0e0e0;
+    color: #888;
+    cursor: not-allowed;
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 4px;
+    font-weight: 600;
+}
+
+/* ========================================================= */
+/* TRADITIONAL PROCESS SECTION                               */
+/* ========================================================= */
+.process-section {
+    background-color: #ffffff;
+    padding: 80px 20px;
+    text-align: center;
+}
+
+.process-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    max-width: 1000px;
+    margin: 40px auto 0;
+    position: relative;
+}
+
+@media (min-width: 768px) {
+    .process-grid {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+    
+    /* Connecting Line */
+    .process-grid::before {
+        content: '';
+        position: absolute;
+        top: 60px;
+        left: 10%;
+        right: 10%;
+        height: 2px;
+        background: repeating-linear-gradient(90deg, var(--brand-gold) 0, var(--brand-gold) 10px, transparent 10px, transparent 20px);
+        z-index: 0;
+    }
+}
+
+.process-step {
+    flex: 1;
+    position: relative;
+    z-index: 1;
+    background: #ffffff;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+    border: 1px solid rgba(212, 175, 55, 0.2);
+    transition: transform 0.3s ease;
+}
+
+.process-step:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(0,0,0,0.06);
+}
+
+.process-icon {
+    width: 80px;
+    height: 80px;
+    background: var(--brand-green);
+    color: var(--brand-gold);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    margin: 0 auto 20px;
+    border: 4px solid #fff;
+    box-shadow: 0 0 0 2px var(--brand-gold);
+}
+
+.process-step h3 {
+    color: var(--brand-green);
+    font-size: 1.4rem;
+    margin-bottom: 10px;
+}
+
+/* ========================================================= */
+/* CERTIFICATION BANNER                                      */
+/* ========================================================= */
+.cert-banner {
+    background-color: var(--brand-green);
+    color: #fff;
+    padding: 60px 20px;
+}
+
+.cert-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    justify-content: center;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.cert-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    flex: 1;
+    min-width: 250px;
+}
+
+.cert-item .icon {
+    font-size: 3rem;
+    margin-bottom: 15px;
+    color: var(--brand-gold);
+}
+
+.cert-item h3 {
+    font-size: 1.2rem;
+    font-family: 'Playfair Display', serif;
+    letter-spacing: 1px;
+    margin-bottom: 5px;
+}
+
+.cert-item p {
+    font-size: 0.95rem;
+    opacity: 0.8;
+}
+
+/* ========================================================= */
+/* FAQ SECTION                                               */
+/* ========================================================= */
+.faq-section {
+    padding: 80px 20px;
+    background-color: rgba(250, 250, 245, 0.6);
+}
+
+.faq-container {
+    max-width: 800px;
+    margin: 40px auto 0;
+}
+
+.faq-item {
+    background: #fff;
+    border: 1px solid rgba(212, 175, 55, 0.3);
+    border-radius: 8px;
+    margin-bottom: 15px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.faq-question {
+    padding: 20px;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: 600;
+    color: var(--brand-green);
+    font-size: 1.1rem;
+    background-color: #fff;
+}
+
+.faq-question:hover {
+    background-color: rgba(212, 175, 55, 0.05);
+}
+
+.faq-question::after {
+    content: '+';
+    font-size: 1.5rem;
+    color: var(--brand-gold);
+    transition: transform 0.3s ease;
+}
+
+.faq-item.active .faq-question::after {
+    transform: rotate(45deg);
+}
+
+.faq-answer {
+    padding: 0 20px;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease, padding 0.4s ease;
+    background-color: #fafafa;
+    color: #555;
+    line-height: 1.6;
+}
+
+.faq-item.active .faq-answer {
+    padding: 20px;
+    max-height: 300px; /* Arbitrary large height to allow content to expand */
+    border-top: 1px solid rgba(212, 175, 55, 0.1);
+}
