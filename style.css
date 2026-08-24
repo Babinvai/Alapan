@@ -1165,16 +1165,59 @@ footer {
 /* --- PREMIUM CALLIGRAPHY BENGALI TAGLINE --- */
 .bengali-tagline {
   font-family: 'Galada', cursive;
-  font-size: 2.8rem; /* Larger size to highlight the brush strokes */
-  color: #C62828; /* Premium Sindoor Red */
-  margin-bottom: 15px;
+  font-size: 2.8rem;
+  color: #C62828; 
+  margin-bottom: 25px;
   line-height: 1.2;
-  letter-spacing: 1px;
+  letter-spacing: 2px;
+  position: relative;
+  display: inline-block; 
+  padding: 10px 20px;
   
-  /* Creates a crisp white outline with a soft red glow behind it for a luxury 3D effect */
+  /* Text Shadow to ensure readability against background */
   text-shadow: 
-    2px 2px 0px rgba(255, 255, 255, 0.8),
-    4px 4px 20px rgba(198, 40, 40, 0.25);
+    2px 2px 0px rgba(255, 255, 255, 0.9),
+    0px 0px 20px rgba(255, 255, 255, 0.8);
+    
+  /* Unique Floating Animation */
+  animation: gentleFloatTagline 4s infinite alternate ease-in-out;
+}
+
+/* Animated Golden Glow Underline */
+.bengali-tagline::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 80%;
+  height: 4px;
+  background: linear-gradient(90deg, transparent, #D4AF37, #FF9933, #D4AF37, transparent);
+  transform: translateX(-50%);
+  border-radius: 50%;
+  animation: shimmerLineTagline 3s infinite ease-in-out;
+  box-shadow: 0 0 15px #D4AF37;
+}
+
+/* Ensure no rogue pseudo-elements mess up alignment */
+.bengali-tagline::before {
+  display: none;
+}
+
+@keyframes gentleFloatTagline {
+  0% { 
+    transform: translateY(0px); 
+    text-shadow: 2px 2px 0px rgba(255, 255, 255, 1), 0 0 15px rgba(198, 40, 40, 0.3); 
+  }
+  100% { 
+    transform: translateY(-5px); 
+    text-shadow: 2px 2px 0px rgba(255, 255, 255, 1), 0 5px 25px rgba(212, 175, 55, 0.8); 
+  }
+}
+
+@keyframes shimmerLineTagline {
+  0% { width: 40%; opacity: 0.5; }
+  50% { width: 100%; opacity: 1; }
+  100% { width: 40%; opacity: 0.5; }
 }
 
 /* Mobile adjustment to keep it looking perfect on phones */
@@ -2696,3 +2739,161 @@ body.no-scroll {
         height: 120px !important;
     }
 }
+
+/* ========================================================= */
+/* ANIMATED VILLAGE HOMEPAGE ADDITIONS                       */
+/* ========================================================= */
+
+/* SUNBEAMS */
+.sunbeam {
+    position: absolute;
+    top: -50%;
+    left: -20%;
+    width: 150%;
+    height: 200%;
+    background: linear-gradient(to bottom, rgba(255, 245, 200, 0.4) 0%, rgba(255, 255, 255, 0) 60%);
+    transform: rotate(35deg);
+    pointer-events: none;
+    z-index: 1;
+    animation: sunbeamSway 15s infinite alternate ease-in-out;
+}
+.sunbeam-2 {
+    left: 20%;
+    background: linear-gradient(to bottom, rgba(255, 225, 150, 0.25) 0%, rgba(255, 255, 255, 0) 50%);
+    transform: rotate(-25deg);
+    animation: sunbeamSway 20s infinite alternate-reverse ease-in-out;
+}
+@keyframes sunbeamSway {
+    0% { transform: rotate(35deg) translateX(0); opacity: 0.6; }
+    100% { transform: rotate(45deg) translateX(5%); opacity: 0.9; }
+}
+
+/* FIREFLIES / DUST MOTES */
+.fireflies {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    pointer-events: none;
+    z-index: 1;
+    overflow: hidden;
+}
+.firefly {
+    position: absolute;
+    width: 6px; height: 6px;
+    background-color: #ffeba1;
+    border-radius: 50%;
+    box-shadow: 0 0 10px #ffeba1, 0 0 20px #ffeba1;
+    animation: fireflyFloat 10s infinite linear;
+    opacity: 0;
+}
+.firefly:nth-child(1) { left: 10%; top: 80%; animation-duration: 12s; animation-delay: 0s; }
+.firefly:nth-child(2) { left: 25%; top: 60%; animation-duration: 15s; animation-delay: 2s; }
+.firefly:nth-child(3) { left: 50%; top: 70%; animation-duration: 9s; animation-delay: 5s; }
+.firefly:nth-child(4) { left: 75%; top: 90%; animation-duration: 14s; animation-delay: 1s; }
+.firefly:nth-child(5) { left: 85%; top: 50%; animation-duration: 11s; animation-delay: 4s; }
+.firefly:nth-child(6) { left: 40%; top: 40%; animation-duration: 16s; animation-delay: 3s; }
+
+@keyframes fireflyFloat {
+    0% { transform: translateY(0) translateX(0); opacity: 0; }
+    20% { opacity: 1; }
+    80% { opacity: 1; }
+    100% { transform: translateY(-100px) translateX(50px); opacity: 0; }
+}
+
+/* TEXT GLOW AND FLOAT */
+.glow-text {
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.8), 0 0 20px var(--brand-gold);
+    animation: pulseGlow 3s infinite alternate;
+}
+@keyframes pulseGlow {
+    from { text-shadow: 0 0 10px rgba(255, 255, 255, 0.5), 0 0 15px var(--brand-gold); }
+    to { text-shadow: 0 0 15px rgba(255, 255, 255, 1), 0 0 30px var(--brand-gold); }
+}
+
+.animated-title {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: floatUp 1.2s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+}
+.float-up-delay {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: floatUp 1.2s cubic-bezier(0.2, 0.8, 0.2, 1) forwards 0.4s;
+}
+.float-up-delay-2 {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: floatUp 1.2s cubic-bezier(0.2, 0.8, 0.2, 1) forwards 0.8s;
+}
+@keyframes floatUp {
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* BUTTON ENHANCEMENTS */
+.liquid-btn {
+    position: relative;
+    overflow: hidden;
+    transition: all 0.4s;
+}
+.liquid-btn::after {
+    content: '';
+    position: absolute;
+    top: -50%; left: -50%; width: 200%; height: 200%;
+    background: linear-gradient(to right, transparent, rgba(255,255,255,0.3), transparent);
+    transform: rotate(45deg);
+    transition: all 0.5s;
+    opacity: 0;
+}
+.liquid-btn:hover::after {
+    animation: liquidShimmer 1.5s infinite;
+}
+@keyframes liquidShimmer {
+    0% { left: -50%; opacity: 1; }
+    100% { left: 150%; opacity: 0; }
+}
+
+.glow-btn {
+    transition: all 0.4s;
+}
+.glow-btn:hover {
+    box-shadow: 0 0 15px var(--brand-gold);
+    background-color: rgba(212, 175, 55, 0.1);
+}
+
+/* 3D PRODUCT CARD HOVER */
+.product-card {
+    transition: transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.5s;
+    transform-style: preserve-3d;
+    perspective: 1000px;
+}
+.product-card:hover {
+    transform: translateY(-15px) rotateX(5deg) rotateY(-2deg) scale(1.02);
+    box-shadow: -10px 20px 40px rgba(26, 67, 49, 0.15), 0 0 20px rgba(212, 175, 55, 0.3);
+}
+
+/* FOOTER ANIMATION */
+.footer-landscape svg {
+    animation: breathe 6s infinite alternate ease-in-out;
+}
+@keyframes breathe {
+    0% { transform: scaleY(1); }
+    100% { transform: scaleY(1.03); }
+}
+
+/* STORY SECTION CHARACTER ANIMATIONS */
+.dadu-anim {
+    animation: daduFloat 8s infinite alternate ease-in-out;
+}
+.thamma-anim {
+    animation: thammaFloat 9s infinite alternate ease-in-out;
+}
+
+@keyframes daduFloat {
+    0% { transform: translateY(0) translateX(0) rotate(-2deg); }
+    100% { transform: translateY(-10px) translateX(5px) rotate(1deg); }
+}
+
+@keyframes thammaFloat {
+    0% { transform: translateY(0) translateX(0) rotate(2deg); }
+    100% { transform: translateY(-8px) translateX(-5px) rotate(-1deg); }
+}
+
