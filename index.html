@@ -50,13 +50,6 @@
 
 <body>
 
-
-    <body>
-        <!-- NEW: The Village Side Background -->
-        <div class="village-side-bg"></div>
-
-        <!-- Your existing header starts here... -->`
-
         <!-- HEADER -->
         <header>
             <!-- ========================================================= -->
@@ -179,7 +172,8 @@
         <!-- HERO SECTION (ANIMATED VILLAGE VIBE) -->
         <section class="hero"
             style="background-image: url('Image 3.png'); background-size: cover; background-position: center; position: relative; overflow: hidden;">
-            
+
+
             <!-- ANIMATED OVERLAYS -->
             <div class="sunbeam sunbeam-1"></div>
             <div class="sunbeam sunbeam-2"></div>
@@ -189,7 +183,122 @@
             </div>
 
             <div class="hero-mobile-overlay"></div>
-            <div class="container hero-content-animated" style="position: relative; z-index: 2;">
+
+            <!-- BIRDS & LEAVES ANIMATION STYLES -->
+            <style>
+                .birds-container {
+                    position: absolute; top: 0; left: 0; width: 100%; height: 60%; pointer-events: none; z-index: 1;
+                }
+                .bird {
+                    position: absolute; background-size: contain; background-repeat: no-repeat; opacity: 0.75;
+                    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath d='M 10 45 Q 30 25 50 45 Q 70 25 90 45 Q 70 35 50 52 Q 30 35 10 45 Z' fill='%23111' /%3E%3C/svg%3E");
+                    animation: fly linear infinite, flap 0.5s ease-in-out infinite alternate;
+                    transform-origin: center center;
+                }
+                .bird-1 { top: 10%; left: -10%; width: 38px; height: 38px; animation-duration: 25s, 0.4s; animation-delay: -5s, 0s; }
+                .bird-2 { top: 25%; left: -10%; width: 30px; height: 30px; animation-duration: 32s, 0.5s; animation-delay: -18s, 0.1s; }
+                .bird-3 { top: 15%; left: -10%; width: 34px; height: 34px; animation-duration: 21s, 0.3s; animation-delay: -10s, 0.2s; }
+                .bird-4 { top: 35%; left: -10%; width: 32px; height: 32px; animation-duration: 28s, 0.6s; animation-delay: -22s, 0.3s; }
+                .bird-5 { top: 5%; left: -10%; width: 26px; height: 26px; animation-duration: 35s, 0.45s; animation-delay: -3s, 0.1s; }
+                .bird-6 { top: 40%; left: -10%; width: 33px; height: 33px; animation-duration: 23s, 0.35s; animation-delay: -14s, 0.4s; }
+                .bird-7 { top: 20%; left: -10%; width: 42px; height: 42px; animation-duration: 19s, 0.4s; animation-delay: -8s, 0.2s; }
+                .bird-8 { top: 45%; left: -10%; width: 28px; height: 28px; animation-duration: 30s, 0.55s; animation-delay: -25s, 0.1s; }
+                .bird-9 { top: 30%; left: -10%; width: 32px; height: 32px; animation-duration: 26s, 0.5s; animation-delay: -12s, 0.3s; }
+                .bird-10 { top: 12%; left: -10%; width: 31px; height: 31px; animation-duration: 29s, 0.45s; animation-delay: -20s, 0.5s; }
+                .bird-11 { top: 8%; left: -10%; width: 24px; height: 24px; animation-duration: 38s, 0.38s; animation-delay: -30s, 0.2s; }
+                .bird-12 { top: 38%; left: -10%; width: 36px; height: 36px; animation-duration: 24s, 0.42s; animation-delay: -16s, 0.6s; }
+
+                @keyframes fly {
+                    0% { left: -10%; margin-top: 0px; }
+                    25% { margin-top: -20px; }
+                    50% { margin-top: 15px; }
+                    75% { margin-top: -10px; }
+                    100% { left: 110%; margin-top: 0px; }
+                }
+                @keyframes flap {
+                    0%, 100% { transform: scaleY(1) rotate(-2deg); }
+                    50% { transform: scaleY(0.1) rotate(2deg); }
+                }
+
+                .leaves-container {
+                    position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 1; overflow: hidden;
+                }
+                .leaf {
+                    position: absolute; top: -50px; background-size: contain; background-repeat: no-repeat; opacity: 0.7;
+                    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='%234CAF50' d='M17,8C8,10 5.9,16.17 3.82,21.34L5.71,22L6.66,19.7C7.14,19.87 7.64,20 8,20C19,20 22,3 22,3C21,5 14,5.25 9,6.25C4,7.25 2,11.5 2,13.5C2,15.5 3.75,17.25 3.75,17.25C7,8 17,8 17,8Z'/%3E%3C/svg%3E");
+                    animation: fall linear infinite;
+                }
+                .leaf-1 { left: 10%; width: 24px; height: 24px; animation-duration: 10s; animation-delay: 0s; }
+                .leaf-2 { left: 25%; width: 16px; height: 16px; animation-duration: 14s; animation-delay: 2s; }
+                .leaf-3 { left: 45%; width: 20px; height: 20px; animation-duration: 12s; animation-delay: 4s; }
+                .leaf-4 { left: 60%; width: 18px; height: 18px; animation-duration: 16s; animation-delay: 1s; }
+                .leaf-5 { left: 75%; width: 22px; height: 22px; animation-duration: 11s; animation-delay: 5s; }
+                .leaf-6 { left: 90%; width: 14px; height: 14px; animation-duration: 15s; animation-delay: 3s; }
+                .leaf-7 { left: 35%; width: 26px; height: 26px; animation-duration: 13s; animation-delay: 6s; }
+                .leaf-8 { left: 80%; width: 17px; height: 17px; animation-duration: 17s; animation-delay: 7s; }
+
+                @keyframes fall {
+                    0% { top: -50px; margin-left: 0px; transform: rotate(0deg); }
+                    20% { margin-left: -20px; transform: rotate(45deg); }
+                    40% { margin-left: 20px; transform: rotate(90deg); }
+                    60% { margin-left: -20px; transform: rotate(135deg); }
+                    80% { margin-left: 20px; transform: rotate(180deg); }
+                    100% { top: 110%; margin-left: -20px; transform: rotate(225deg); }
+                }
+
+                .grass-container {
+                    position: absolute; bottom: -2px; left: 0; width: 200%; height: 150px; pointer-events: none; z-index: 2;
+                    display: flex;
+                    animation: scroll-grass 25s linear infinite;
+                }
+                .grass-layer {
+                    width: 50%; height: 100%;
+                    background-image: url('grass.svg');
+                    background-size: cover;
+                    background-position: bottom left;
+                    background-repeat: repeat-x;
+                }
+                @keyframes scroll-grass {
+                    0% { transform: translateX(0); }
+                    100% { transform: translateX(-50%); }
+                }
+            </style>
+
+            <!-- BIRDS ANIMATION -->
+            <div class="birds-container">
+                <div class="bird bird-1"></div>
+                <div class="bird bird-2"></div>
+                <div class="bird bird-3"></div>
+                <div class="bird bird-4"></div>
+                <div class="bird bird-5"></div>
+                <div class="bird bird-6"></div>
+                <div class="bird bird-7"></div>
+                <div class="bird bird-8"></div>
+                <div class="bird bird-9"></div>
+                <div class="bird bird-10"></div>
+                <div class="bird bird-11"></div>
+                <div class="bird bird-12"></div>
+            </div>
+
+            <!-- FALLING LEAVES ANIMATION -->
+            <div class="leaves-container">
+                <div class="leaf leaf-1"></div>
+                <div class="leaf leaf-2"></div>
+                <div class="leaf leaf-3"></div>
+                <div class="leaf leaf-4"></div>
+                <div class="leaf leaf-5"></div>
+                <div class="leaf leaf-6"></div>
+                <div class="leaf leaf-7"></div>
+                <div class="leaf leaf-8"></div>
+            </div>
+
+            <!-- SCROLLING GRASS & FLOWERS ANIMATION -->
+            <div class="grass-container">
+                <div class="grass-layer"></div>
+                <div class="grass-layer"></div>
+            </div>
+
+            <div class="container hero-content-animated" style="position: relative; z-index: 2; padding-bottom: 110px;">
                 <!-- NEW ATTRACTIVE BENGALI TAGLINE -->
                 <div class="bengali-tagline glow-text">প্রতিটি ফোঁটায় খাঁটি ঐতিহ্যের স্পর্শ</div>
 
@@ -431,6 +540,434 @@
             </div>
         </section>
 
+        <!-- PURE VILLAGE VIBES: GREEN AGRICULTURAL SCENERY DIVIDER -->
+        <style>
+            .village-agri-scene {
+                position: relative;
+                width: 100%;
+                height: 400px;
+                overflow: hidden;
+                background: linear-gradient(to bottom, rgba(135, 206, 235, 0) 0%, #87ceeb 40%, #e0f6ff 100%);
+                margin-top: 40px;
+                margin-bottom: 40px;
+                -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 40%, black 80%, transparent 100%);
+                mask-image: linear-gradient(to bottom, transparent 0%, black 40%, black 80%, transparent 100%);
+            }
+            .agri-sun {
+                position: absolute;
+                top: 40px;
+                left: 20%;
+                width: 100px;
+                height: 100px;
+                background: radial-gradient(circle, #fffdf0 0%, #ffe96b 40%, transparent 70%);
+                border-radius: 50%;
+                box-shadow: 0 0 60px rgba(255, 233, 107, 0.8);
+                animation: sun-glow 5s infinite alternate;
+            }
+            @keyframes sun-glow {
+                0% { transform: scale(0.95); opacity: 0.9; }
+                100% { transform: scale(1.05); opacity: 1; }
+            }
+            .agri-clouds svg {
+                position: absolute;
+                fill: #ffffff;
+                opacity: 0.8;
+                filter: drop-shadow(0 5px 5px rgba(0,0,0,0.05));
+            }
+            @keyframes floatCloud {
+                0% { transform: translateX(-20vw); }
+                100% { transform: translateX(120vw); }
+            }
+            .agri-birds svg {
+                position: absolute;
+                stroke: #444;
+                stroke-width: 2;
+                fill: none;
+                stroke-linecap: round;
+            }
+            @keyframes flyBirds {
+                0% { transform: translateX(-10vw) translateY(0) scale(0.8); }
+                50% { transform: translateX(50vw) translateY(-30px) scale(0.9); }
+                100% { transform: translateX(120vw) translateY(-10px) scale(0.8); }
+            }
+            .agri-hills {
+                position: absolute;
+                bottom: 120px;
+                width: 100%;
+                height: 150px;
+                background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1000 150' preserveAspectRatio='none'%3E%3Cpath d='M0,150 C200,80 300,100 500,60 C700,20 850,50 1000,150 L1000,150 L0,150 Z' fill='%236bbd45'/%3E%3Cpath d='M0,150 C150,110 250,50 400,90 C550,130 650,40 800,70 C950,100 1000,150 1000,150 L0,150 Z' fill='%235aa835' opacity='0.8'/%3E%3C!-- Pond --%3E%3Cellipse cx='380' cy='95' rx='60' ry='12' fill='%236baed6'/%3E%3Cellipse cx='380' cy='95' rx='50' ry='8' fill='%239ecae1'/%3E%3C!-- Hut --%3E%3Cpath d='M200,95 L220,75 L240,95 Z' fill='%23d19b45'/%3E%3Crect x='205' y='95' width='30' height='20' fill='%23e8dac1'/%3E%3Crect x='215' y='100' width='10' height='15' fill='%235c3a21'/%3E%3C!-- Haystack --%3E%3Cpath d='M260,95 Q270,70 280,95 Z' fill='%23d4aa37'/%3E%3Cpath d='M265,95 Q270,80 275,95 Z' fill='%23b8860b' opacity='0.5'/%3E%3C!-- Trees --%3E%3Ccircle cx='150' cy='80' r='20' fill='%232a5c11'/%3E%3Ccircle cx='165' cy='90' r='15' fill='%23387819'/%3E%3Crect x='155' y='100' width='5' height='15' fill='%235c3a21'/%3E%3C/svg%3E");
+                background-size: 1500px 100%;
+                animation: pan-hills 180s linear infinite;
+            }
+            @keyframes pan-hills {
+                0% { background-position: 0 bottom; }
+                100% { background-position: -1500px bottom; }
+            }
+            
+            .agri-paddy-mid {
+                position: absolute;
+                bottom: 60px;
+                width: 100%;
+                height: 100px;
+                background: linear-gradient(to bottom, #75c942 0%, #469c1a 100%);
+                border-top: 2px solid #5aa835;
+            }
+            
+            .flowers-layer {
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 100'%3E%3C!-- White Flowers --%3E%3Ccircle cx='20' cy='30' r='1.5' fill='%23fff'/%3E%3Ccircle cx='20' cy='30' r='0.5' fill='%23ffcc00'/%3E%3Ccircle cx='60' cy='50' r='2' fill='%23fff'/%3E%3Ccircle cx='60' cy='50' r='1' fill='%23ffcc00'/%3E%3Ccircle cx='120' cy='20' r='1.5' fill='%23fff'/%3E%3Ccircle cx='120' cy='20' r='0.5' fill='%23ffcc00'/%3E%3Ccircle cx='170' cy='60' r='2' fill='%23fff'/%3E%3Ccircle cx='170' cy='60' r='1' fill='%23ffcc00'/%3E%3C!-- Yellow/Orange Flowers --%3E%3Ccircle cx='40' cy='70' r='1.5' fill='%23ffcc00'/%3E%3Ccircle cx='90' cy='30' r='2' fill='%23ffa500'/%3E%3Ccircle cx='150' cy='80' r='1.5' fill='%23ffcc00'/%3E%3Ccircle cx='190' cy='40' r='2' fill='%23ffa500'/%3E%3C!-- Blueish Wildflowers --%3E%3Ccircle cx='80' cy='80' r='1.5' fill='%23a2c4c9'/%3E%3Ccircle cx='140' cy='30' r='1.5' fill='%23a2c4c9'/%3E%3C/svg%3E");
+                background-size: 200px 100px;
+            }
+
+            .butterfly {
+                position: absolute;
+                bottom: 30px;
+                left: -10%;
+                width: 15px;
+                height: 15px;
+                animation: flutter 25s ease-in-out infinite;
+                z-index: 5;
+            }
+            .butterfly2 {
+                bottom: 50px;
+                left: -20%;
+                animation-delay: 5s;
+                animation-duration: 30s;
+            }
+            .butterfly-wing {
+                fill: #ffeb3b;
+                animation: flap 0.15s linear infinite alternate;
+                transform-origin: center;
+            }
+            .butterfly2 .butterfly-wing {
+                fill: #ff4081;
+                animation: flap 0.1s linear infinite alternate;
+            }
+            @keyframes flutter {
+                0% { transform: translate(0, 0) scale(0.8); }
+                20% { transform: translate(30vw, -40px) scale(1); }
+                40% { transform: translate(60vw, 10px) scale(0.8); }
+                60% { transform: translate(90vw, -30px) scale(1); }
+                80% { transform: translate(110vw, 20px) scale(0.9); }
+                100% { transform: translate(130vw, -10px) scale(0.8); }
+            }
+            @keyframes flap {
+                0% { transform: scaleX(1); }
+                100% { transform: scaleX(0.1); }
+            }
+
+            /* Cows grazing */
+            .cows-group {
+                position: absolute;
+                bottom: 70px;
+                left: 30%;
+                width: 80px;
+                height: 40px;
+            }
+            .cow-svg {
+                fill: #f5f5f5;
+                stroke: #333;
+                stroke-width: 1;
+            }
+            .cow-spots { fill: #333; }
+            .cow-head { transform-origin: 15px 15px; animation: graze 4s ease-in-out infinite alternate; }
+            @keyframes graze {
+                0%, 20% { transform: rotate(0deg) translateY(0); }
+                80%, 100% { transform: rotate(30deg) translateY(8px); }
+            }
+            
+            .agri-paddy-front {
+                position: absolute;
+                bottom: 0;
+                width: 100%;
+                height: 80px;
+                background: linear-gradient(to bottom, #5cb823 0%, #30750c 100%);
+                background-image: repeating-linear-gradient(45deg, transparent, transparent 10px, rgba(0,0,0,0.05) 10px, rgba(0,0,0,0.05) 20px);
+            }
+            
+            /* The Cart */
+            .agri-cart {
+                position: absolute;
+                bottom: 30px;
+                left: -20%;
+                width: 300px;
+                height: 120px;
+                animation: cart-move 45s linear infinite;
+                animation-delay: -35s;
+                z-index: 3;
+            }
+            @keyframes cart-move {
+                0% { left: -350px; }
+                100% { left: 100%; }
+            }
+            .cart-group {
+                width: 100%;
+                height: 100%;
+                animation: plow-bob 2s ease-in-out infinite alternate;
+            }
+            .cart-wheel {
+                transform-origin: 120px 95px;
+                animation: wheel-spin 3s linear infinite;
+            }
+            @keyframes wheel-spin {
+                100% { transform: rotate(360deg); }
+            }
+            
+            .agri-plowing {
+                position: absolute;
+                bottom: 20px;
+                left: -20%;
+                width: 350px;
+                height: 120px;
+                animation: plow-move 45s linear infinite;
+                animation-delay: -15s;
+            }
+            @keyframes plow-move {
+                0% { left: -350px; }
+                100% { left: 100%; }
+            }
+            
+            .farmer-group {
+                width: 100%;
+                height: 100%;
+                animation: plow-bob 2s ease-in-out infinite alternate;
+            }
+            @keyframes plow-bob {
+                0% { transform: translateY(0); }
+                100% { transform: translateY(3px); }
+            }
+            .plow-svg {
+                width: 100%;
+                height: 100%;
+                display: block;
+                filter: drop-shadow(0 5px 3px rgba(0,0,0,0.4));
+            }
+            .bull-leg-front { transform-origin: 220px 80px; animation: walk 1s infinite alternate; }
+            .bull-leg-back { transform-origin: 190px 80px; animation: walk 1s infinite alternate-reverse; }
+            @keyframes walk {
+                0% { transform: rotate(-15deg); }
+                100% { transform: rotate(15deg); }
+            }
+        </style>
+        <section class="village-agri-scene">
+            <div class="agri-sky">
+                <div class="agri-sun"></div>
+                <div class="agri-birds">
+                    <svg viewBox="0 0 100 50" style="top: 10%; left: 0; width: 60px; animation: flyBirds 40s linear infinite;">
+                        <!-- Bird V Formation -->
+                        <path d="M10,25 Q15,20 20,25 Q25,20 30,25"/>
+                        <path d="M5,15 Q10,10 15,15 Q20,10 25,15"/>
+                        <path d="M15,15 Q20,10 25,15 Q30,10 35,15"/>
+                        <path d="M0,5 Q5,0 10,5 Q15,0 20,5"/>
+                        <path d="M20,5 Q25,0 30,5 Q35,0 40,5"/>
+                    </svg>
+                </div>
+                <div class="agri-clouds">
+                    <svg viewBox="0 0 100 50" style="top: 20%; left: 0; width: 120px; animation: floatCloud 40s linear infinite;">
+                        <path d="M 30,30 Q 30,15 45,15 Q 55,5 70,15 Q 85,15 85,30 Z"/>
+                    </svg>
+                    <svg viewBox="0 0 100 50" style="top: 40%; left: 0; width: 180px; animation: floatCloud 60s linear infinite; animation-delay: 15s;">
+                        <path d="M 20,35 Q 20,20 35,20 Q 45,10 65,20 Q 80,10 90,25 Q 100,25 100,35 Z"/>
+                    </svg>
+                </div>
+            </div>
+            
+            <div class="agri-hills"></div>
+            
+            <div class="agri-paddy-mid">
+                <div class="flowers-layer"></div>
+                
+                <!-- Butterflies -->
+                <div class="butterfly">
+                    <svg viewBox="0 0 20 20">
+                        <path class="butterfly-wing" d="M10,10 C5,0 0,5 10,10 C20,5 15,0 10,10 C0,15 5,20 10,10 C15,20 20,15 10,10 Z"/>
+                    </svg>
+                </div>
+                <div class="butterfly butterfly2">
+                    <svg viewBox="0 0 20 20">
+                        <path class="butterfly-wing" d="M10,10 C5,0 0,5 10,10 C20,5 15,0 10,10 C0,15 5,20 10,10 C15,20 20,15 10,10 Z"/>
+                    </svg>
+                </div>
+                
+                <!-- Grazing Cows -->
+                <!-- Grazing Cows Herd -->
+                <div class="cows-group" style="left: 20%;">
+                    <svg viewBox="0 0 100 60" style="width: 100%; height: 100%;">
+                        <g transform="translate(0, 10)">
+                            <rect x="25" y="20" width="40" height="20" rx="10" class="cow-svg"/>
+                            <rect x="30" y="35" width="4" height="15" class="cow-svg"/>
+                            <rect x="38" y="35" width="4" height="15" class="cow-svg"/>
+                            <rect x="55" y="35" width="4" height="15" class="cow-svg"/>
+                            <rect x="63" y="35" width="4" height="15" class="cow-svg"/>
+                            <path d="M 35,20 Q 40,25 45,20 Z" class="cow-spots"/>
+                            <g class="cow-head">
+                                <ellipse cx="20" cy="15" rx="8" ry="12" class="cow-svg"/>
+                                <circle cx="17" cy="12" r="1" fill="#000"/>
+                                <path d="M 23,8 Q 28,3 30,5" fill="none" stroke="#666" stroke-width="1.5"/>
+                            </g>
+                            <path d="M 65,25 Q 70,35 68,45" fill="none" stroke="#333" stroke-width="1"/>
+                        </g>
+                    </svg>
+                </div>
+                
+                <!-- Cow 2 (Facing right) -->
+                <div class="cows-group" style="left: 45%; bottom: 65px; transform: scale(-0.9, 0.9);">
+                    <svg viewBox="0 0 100 60" style="width: 100%; height: 100%;">
+                        <g transform="translate(0, 10)">
+                            <rect x="25" y="20" width="40" height="20" rx="10" class="cow-svg" style="fill: #e8d8c3;"/>
+                            <rect x="30" y="35" width="4" height="15" class="cow-svg" style="fill: #e8d8c3;"/>
+                            <rect x="38" y="35" width="4" height="15" class="cow-svg" style="fill: #e8d8c3;"/>
+                            <rect x="55" y="35" width="4" height="15" class="cow-svg" style="fill: #e8d8c3;"/>
+                            <rect x="63" y="35" width="4" height="15" class="cow-svg" style="fill: #e8d8c3;"/>
+                            <path d="M 45,20 Q 50,25 55,20 Z" class="cow-spots" style="fill: #8c6b54;"/>
+                            <g class="cow-head" style="animation-delay: -1.5s;">
+                                <ellipse cx="20" cy="15" rx="8" ry="12" class="cow-svg" style="fill: #e8d8c3;"/>
+                                <circle cx="17" cy="12" r="1" fill="#000"/>
+                                <path d="M 23,8 Q 28,3 30,5" fill="none" stroke="#666" stroke-width="1.5"/>
+                            </g>
+                            <path d="M 65,25 Q 70,35 68,45" fill="none" stroke="#333" stroke-width="1"/>
+                        </g>
+                    </svg>
+                </div>
+
+                <!-- Cow 3 -->
+                <div class="cows-group" style="left: 65%; bottom: 75px; transform: scale(0.85, 0.85);">
+                    <svg viewBox="0 0 100 60" style="width: 100%; height: 100%;">
+                        <g transform="translate(0, 10)">
+                            <rect x="25" y="20" width="40" height="20" rx="10" class="cow-svg"/>
+                            <rect x="30" y="35" width="4" height="15" class="cow-svg"/>
+                            <rect x="38" y="35" width="4" height="15" class="cow-svg"/>
+                            <rect x="55" y="35" width="4" height="15" class="cow-svg"/>
+                            <rect x="63" y="35" width="4" height="15" class="cow-svg"/>
+                            <path d="M 30,20 Q 35,30 40,20 Z" class="cow-spots"/>
+                            <path d="M 50,20 Q 55,25 60,20 Z" class="cow-spots"/>
+                            <g class="cow-head" style="animation-delay: -3s;">
+                                <ellipse cx="20" cy="15" rx="8" ry="12" class="cow-svg"/>
+                                <circle cx="17" cy="12" r="1" fill="#000"/>
+                                <path d="M 23,8 Q 28,3 30,5" fill="none" stroke="#666" stroke-width="1.5"/>
+                            </g>
+                            <path d="M 65,25 Q 70,35 68,45" fill="none" stroke="#333" stroke-width="1"/>
+                        </g>
+                    </svg>
+                </div>
+                
+                <!-- Little Calf -->
+                <div class="cows-group" style="left: 28%; bottom: 65px; transform: scale(-0.6, 0.6);">
+                    <svg viewBox="0 0 100 60" style="width: 100%; height: 100%;">
+                        <g transform="translate(0, 10)">
+                            <rect x="25" y="20" width="40" height="20" rx="10" class="cow-svg"/>
+                            <rect x="30" y="35" width="4" height="15" class="cow-svg"/>
+                            <rect x="38" y="35" width="4" height="15" class="cow-svg"/>
+                            <rect x="55" y="35" width="4" height="15" class="cow-svg"/>
+                            <rect x="63" y="35" width="4" height="15" class="cow-svg"/>
+                            <g class="cow-head" style="animation-delay: -0.5s;">
+                                <ellipse cx="20" cy="15" rx="8" ry="12" class="cow-svg"/>
+                                <circle cx="17" cy="12" r="1" fill="#000"/>
+                            </g>
+                            <path d="M 65,25 Q 70,35 68,45" fill="none" stroke="#333" stroke-width="1"/>
+                        </g>
+                    </svg>
+                </div>
+            </div>
+            
+            <div class="agri-paddy-front"></div>
+            
+            <div class="agri-cart">
+                <div class="cart-group">
+                    <svg class="cart-svg" viewBox="0 0 300 120" style="width: 100%; height: 100%; filter: drop-shadow(0 5px 3px rgba(0,0,0,0.4));">
+                        
+                        <!-- Crops/Hay -->
+                        <path d="M 50,70 Q 70,30 110,40 Q 140,20 170,50 Q 190,40 190,70 Z" fill="#d4aa37"/>
+                        <path d="M 60,70 Q 80,40 120,50 Q 150,30 180,60 L 180,70 Z" fill="#b8860b" opacity="0.6"/>
+
+                        <!-- Cart Body -->
+                        <rect x="50" y="70" width="140" height="20" fill="#5c3f22"/>
+                        <rect x="40" y="65" width="160" height="5" fill="#4a2e15"/>
+                        <rect x="40" y="85" width="160" height="5" fill="#4a2e15"/>
+                        <line x1="60" y1="65" x2="60" y2="90" stroke="#33200e" stroke-width="3"/>
+                        <line x1="100" y1="65" x2="100" y2="90" stroke="#33200e" stroke-width="3"/>
+                        <line x1="140" y1="65" x2="140" y2="90" stroke="#33200e" stroke-width="3"/>
+                        <line x1="180" y1="65" x2="180" y2="90" stroke="#33200e" stroke-width="3"/>
+
+                        <!-- Wooden Pole connecting to bullocks -->
+                        <line x1="190" y1="80" x2="250" y2="80" stroke="#5c3f22" stroke-width="6"/>
+                        <path d="M 230,70 L 235,90 L 225,90 Z" fill="#5c3f22"/>
+
+                        <!-- Driver -->
+                        <path d="M 195,75 L 185,50 L 205,60 Z" fill="#fff" opacity="0.9"/>
+                        <circle cx="195" cy="40" r="9" fill="#8c5a35"/>
+                        <path d="M 185,35 Q 195,25 205,35 Z" fill="#d9534f"/>
+                        <path d="M 185,80 L 195,80 L 190,50 Z" fill="#111"/>
+                        <line x1="195" y1="60" x2="230" y2="70" stroke="#8c5a35" stroke-width="3"/>
+
+                        <!-- Bullock 1 (Back) -->
+                        <path d="M 220,60 Q 250,55 270,60 Q 280,80 270,90 L 220,90 Z" fill="#e8d8c3"/>
+                        <path class="bull-leg-back" d="M 230,90 L 225,110" stroke="#e8d8c3" stroke-width="4"/>
+                        <path class="bull-leg-front" d="M 260,90 L 265,110" stroke="#e8d8c3" stroke-width="4"/>
+                        <circle cx="275" cy="55" r="11" fill="#e8d8c3"/>
+                        
+                        <!-- Bullock 2 (Front) -->
+                        <path d="M 230,65 Q 260,60 280,65 Q 290,85 280,95 L 230,95 Z" fill="#fff"/>
+                        <path class="bull-leg-back" d="M 240,95 L 235,115" stroke="#fff" stroke-width="5"/>
+                        <path class="bull-leg-front" d="M 270,95 L 275,115" stroke="#fff" stroke-width="5"/>
+                        <circle cx="285" cy="60" r="12" fill="#fff"/>
+                        <!-- Horns -->
+                        <path d="M 290,50 Q 295,45 300,50" fill="none" stroke="#333" stroke-width="2"/>
+                        <path d="M 280,48 Q 285,40 290,45" fill="none" stroke="#333" stroke-width="2"/>
+
+                        <!-- Wheel (Front) -->
+                        <g class="cart-wheel">
+                            <circle cx="120" cy="95" r="22" fill="none" stroke="#33200e" stroke-width="4"/>
+                            <circle cx="120" cy="95" r="5" fill="#33200e"/>
+                            <line x1="120" y1="73" x2="120" y2="117" stroke="#33200e" stroke-width="2"/>
+                            <line x1="98" y1="95" x2="142" y2="95" stroke="#33200e" stroke-width="2"/>
+                            <line x1="104" y1="79" x2="136" y2="111" stroke="#33200e" stroke-width="2"/>
+                            <line x1="104" y1="111" x2="136" y2="79" stroke="#33200e" stroke-width="2"/>
+                        </g>
+
+                    </svg>
+                </div>
+            </div>
+            
+            <div class="agri-plowing">
+                <div class="farmer-group">
+                    <svg class="plow-svg" viewBox="0 0 350 150">
+                        <path d="M 120,110 L 170,120 L 220,110" fill="none" stroke="#4a2e15" stroke-width="4"/>
+                        <line x1="220" y1="90" x2="220" y2="120" stroke="#4a2e15" stroke-width="5"/>
+                        
+                        <!-- Bullock 1 (Back) -->
+                        <path d="M 190,85 Q 230,80 260,85 Q 270,105 260,115 L 190,115 Z" fill="#6b4c3a"/>
+                        <path class="bull-leg-back" d="M 200,115 L 195,140" stroke="#6b4c3a" stroke-width="4"/>
+                        <path class="bull-leg-front" d="M 240,115 L 245,140" stroke="#6b4c3a" stroke-width="4"/>
+                        <circle cx="265" cy="80" r="12" fill="#6b4c3a"/>
+                        
+                        <!-- Bullock 2 (Front) -->
+                        <path d="M 200,90 Q 240,85 270,90 Q 280,110 270,120 L 200,120 Z" fill="#8c6b54"/>
+                        <path class="bull-leg-back" d="M 210,120 L 205,145" stroke="#8c6b54" stroke-width="5"/>
+                        <path class="bull-leg-front" d="M 250,120 L 255,145" stroke="#8c6b54" stroke-width="5"/>
+                        <circle cx="275" cy="85" r="13" fill="#8c6b54"/>
+                        <path d="M 280,75 Q 295,65 300,70" fill="none" stroke="#eee" stroke-width="2"/>
+                        <path d="M 270,70 Q 275,60 280,62" fill="none" stroke="#eee" stroke-width="2"/>
+                        
+                        <!-- Farmer -->
+                        <path d="M 90,80 L 110,115 L 80,115 Z" fill="#111"/>
+                        <path d="M 90,80 L 100,50 L 80,50 Z" fill="#fff" opacity="0.9"/>
+                        <circle cx="90" cy="40" r="10" fill="#4a2e15"/>
+                        <path d="M 80,35 Q 90,25 100,35 Z" fill="#d9534f"/>
+                        <line x1="85" y1="115" x2="80" y2="140" stroke="#4a2e15" stroke-width="4"/>
+                        <line x1="105" y1="115" x2="110" y2="140" stroke="#4a2e15" stroke-width="4"/>
+                        <line x1="95" y1="60" x2="130" y2="95" stroke="#4a2e15" stroke-width="3"/>
+                        <line x1="100" y1="65" x2="140" y2="85" stroke="#4a2e15" stroke-width="3"/>
+                        
+                        <!-- The Plow -->
+                        <path d="M 125,90 L 120,135 L 140,140 Z" fill="#33200e"/>
+                        <path d="M 130,135 Q 110,130 90,140" fill="none" stroke="#5c3f22" stroke-width="4" opacity="0.6"/>
+                    </svg>
+                </div>
+            </div>
+        </section>
 
         <!-- PREMIUM TRUST STAMPS SECTION -->
         <section class="trust-stamps-section container">
@@ -810,30 +1347,44 @@
             <div class="faq-container">
                 <!-- Question 1 -->
                 <div class="faq-item">
-                    <div class="faq-question">Why is Ghosh Dhara Ghee granular (danedar)?</div>
+                    <div class="faq-question">What is the difference between cow ghee and buffalo ghee?</div>
                     <div class="faq-answer">
-                        <p>Our ghee is granular because we carefully slow-cook pure, unadulterated cream over a gentle flame in small batches. The slow crystallization of fats creates that authentic "danedar" texture that is the hallmark of premium quality ghee.</p>
+                        <p>Cow ghee is typically golden yellow, lighter in texture, and easier to digest, making it ideal for daily consumption and Ayurvedic uses. Buffalo ghee is white, thicker, and often preferred for deep frying or making heavy sweets.</p>
                     </div>
                 </div>
                 <!-- Question 2 -->
                 <div class="faq-item">
-                    <div class="faq-question">Is this real A2 Milk Ghee?</div>
+                    <div class="faq-question">How should I store ghee? Does it need refrigeration?</div>
                     <div class="faq-answer">
-                        <p>Yes, our ghee is crafted primarily from the milk of indigenous cow breeds which naturally produce A2 milk, ensuring it is easy to digest and packed with healthy fats.</p>
+                        <p>Store your ghee in a cool, dark, and dry place away from direct sunlight. There is absolutely no need to refrigerate it! Always use a clean, dry spoon to ensure the ghee stays fresh for months.</p>
                     </div>
                 </div>
                 <!-- Question 3 -->
                 <div class="faq-item">
-                    <div class="faq-question">Do you use any preservatives?</div>
+                    <div class="faq-question">Why can ghee sometimes become grainy (danedar)?</div>
                     <div class="faq-answer">
-                        <p>Absolutely not. Ghosh Dhara ghee is 100% pure and natural. We do not use any preservatives, artificial colors, or synthetic flavors. The rich aroma and golden color come naturally from the high-quality milk and traditional cooking process.</p>
+                        <p>Our ghee is naturally grainy because we carefully slow-cook pure cream over a gentle flame. The slow crystallization of fats creates that authentic "danedar" texture that is the hallmark of premium quality ghee.</p>
                     </div>
                 </div>
                 <!-- Question 4 -->
                 <div class="faq-item">
-                    <div class="faq-question">How should I store the ghee?</div>
+                    <div class="faq-question">Are your other pantry items (Honey, Bori, Neem Dust) also pure?</div>
                     <div class="faq-answer">
-                        <p>Store your ghee in a cool, dry place away from direct sunlight. There is no need to refrigerate it. Always use a clean, dry spoon to ensure the ghee stays fresh for months.</p>
+                        <p>Yes! Just like our ghee, our Sundarban Honey, sun-dried Bori, and Neem Leaf Dust are 100% natural, sourced directly from trusted villages, and completely free of any artificial preservatives or chemicals.</p>
+                    </div>
+                </div>
+                <!-- Question 5 -->
+                <div class="faq-item">
+                    <div class="faq-question">How do I check my batch details?</div>
+                    <div class="faq-answer">
+                        <p>Every jar of Ghosh Dhara ghee comes with a unique batch number printed on the back label. You can use this number to trace the production date and verify the independent lab testing results for your specific jar.</p>
+                    </div>
+                </div>
+                <!-- Question 6 -->
+                <div class="faq-item">
+                    <div class="faq-question">What should I do if my jar is damaged or leaking?</div>
+                    <div class="faq-answer">
+                        <p>We pack every jar with extreme care, but if your jar arrives damaged or leaking during transit, simply reach out to us within 24 hours with a photo. We will immediately arrange a replacement for you, no questions asked.</p>
                     </div>
                 </div>
             </div>

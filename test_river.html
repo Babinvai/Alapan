@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body { margin: 0; background: #eee; font-family: sans-serif; }
+        .twilight-river-divider {
+            position: relative;
+            width: 100%;
+            height: 400px;
+            overflow: hidden;
+            background: linear-gradient(to bottom, #ff7b54, #ffb26b);
+        }
+        .twilight-sun {
+            position: absolute;
+            bottom: 100px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 140px;
+            height: 140px;
+            background: radial-gradient(circle, #fff7c0 0%, #ffdf00 40%, transparent 70%);
+            border-radius: 50%;
+            box-shadow: 0 0 60px #ffcc00, 0 0 100px #ff6600;
+            animation: sun-pulse 4s infinite alternate;
+        }
+        @keyframes sun-pulse {
+            0% { opacity: 0.8; transform: translateX(-50%) scale(0.95); }
+            100% { opacity: 1; transform: translateX(-50%) scale(1.05); }
+        }
+        .twilight-birds svg {
+            position: absolute;
+            opacity: 0.6;
+        }
+        @keyframes flyRight {
+            0% { transform: translateX(-20vw) translateY(0); }
+            50% { transform: translateX(50vw) translateY(-20px); }
+            100% { transform: translateX(120vw) translateY(0); }
+        }
+        .river-bank-back {
+            position: absolute;
+            bottom: 110px;
+            width: 100%;
+            height: 100px;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1000 100' preserveAspectRatio='none'%3E%3Cpath d='M0,100 C150,60 250,20 400,50 C550,80 650,-10 800,30 C950,70 1000,100 1000,100 L0,100 Z' fill='%23381a10'/%3E%3Cpath d='M0,100 C200,40 300,60 500,20 C700,-10 800,50 1000,10 L1000,100 L0,100 Z' fill='%231f0d07' opacity='0.8'/%3E%3C/svg%3E");
+            background-size: 1500px 100%;
+            animation: pan-bg 120s linear infinite;
+        }
+        @keyframes pan-bg {
+            0% { background-position: 0 bottom; }
+            100% { background-position: -1500px bottom; }
+        }
+        .river-water {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            height: 130px;
+            background: linear-gradient(to bottom, #d66442 0%, #521c0f 50%, #170703 100%);
+            overflow: hidden;
+        }
+        .sun-reflection {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 150px;
+            height: 100%;
+            background: linear-gradient(to bottom, rgba(255, 230, 150, 0.6), rgba(255, 100, 0, 0));
+            filter: blur(5px);
+        }
+        .water-ripple {
+            position: absolute;
+            width: 200%;
+            height: 2px;
+            background: rgba(255, 200, 100, 0.4);
+            border-radius: 50%;
+            animation: ripple-move linear infinite;
+        }
+        .ripple-1 { top: 20px; animation-duration: 8s; left: -50%; }
+        .ripple-2 { top: 50px; animation-duration: 12s; background: rgba(255, 150, 50, 0.3); height: 3px; left: -20%; }
+        .ripple-3 { top: 80px; animation-duration: 6s; background: rgba(255, 100, 50, 0.2); height: 4px; left: -70%;}
+        @keyframes ripple-move {
+            0% { transform: translateX(0); opacity: 0; }
+            50% { opacity: 1; }
+            100% { transform: translateX(-100px); opacity: 0; }
+        }
+        .nouka-wrapper {
+            position: absolute;
+            bottom: 40px;
+            left: -20%;
+            width: 400px;
+            animation: boat-sail 40s linear infinite;
+        }
+        .nouka-inner {
+            animation: boat-bob 3s ease-in-out infinite alternate;
+        }
+        @keyframes boat-sail {
+            0% { left: -30%; }
+            100% { left: 110%; }
+        }
+        @keyframes boat-bob {
+            0% { transform: translateY(0px) rotate(-1deg); }
+            100% { transform: translateY(10px) rotate(2deg); }
+        }
+        .nouka-svg {
+            width: 100%;
+            display: block;
+            filter: drop-shadow(0 15px 10px rgba(0,0,0,0.6));
+        }
+        .oar-anim {
+            animation: oar-row 2s ease-in-out infinite alternate;
+            transform-origin: 155px 70px;
+        }
+        @keyframes oar-row {
+            0% { transform: rotate(-25deg); }
+            100% { transform: rotate(15deg); }
+        }
+        .river-bank-front {
+            position: absolute;
+            bottom: -5px;
+            width: 100%;
+            height: 40px;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1000 40' preserveAspectRatio='none'%3E%3Cpath d='M0,40 C300,-10 600,20 1000,-10 L1000,40 L0,40 Z' fill='%23080200'/%3E%3C/svg%3E");
+            background-size: 1200px 100%;
+            z-index: 5;
+        }
+    </style>
+</head>
+<body>
+
+    <section class="twilight-river-divider">
+        <div class="twilight-sky">
+            <div class="twilight-sun"></div>
+            <div class="twilight-birds">
+                <!-- Distant flying birds silhouette -->
+                <svg viewBox="0 0 100 50" style="position: absolute; top: 15%; left: 30%; width: 60px; animation: flyRight 30s linear infinite;"><path d="M 10 25 Q 25 15 40 25 Q 55 15 70 25 Q 55 20 40 30 Q 25 20 10 25 Z" fill="#3a1b10"/></svg>
+                <svg viewBox="0 0 100 50" style="position: absolute; top: 25%; left: 10%; width: 45px; animation: flyRight 25s linear infinite; animation-delay: 5s;"><path d="M 10 25 Q 25 15 40 25 Q 55 15 70 25 Q 55 20 40 30 Q 25 20 10 25 Z" fill="#3a1b10"/></svg>
+                <svg viewBox="0 0 100 50" style="position: absolute; top: 10%; left: 50%; width: 35px; animation: flyRight 40s linear infinite; animation-delay: 15s;"><path d="M 10 25 Q 25 15 40 25 Q 55 15 70 25 Q 55 20 40 30 Q 25 20 10 25 Z" fill="#3a1b10"/></svg>
+            </div>
+        </div>
+        
+        <div class="river-bank-back"></div>
+        
+        <div class="river-water">
+            <div class="sun-reflection"></div>
+            <div class="water-ripple ripple-1"></div>
+            <div class="water-ripple ripple-2"></div>
+            <div class="water-ripple ripple-3"></div>
+        </div>
+        
+        <div class="nouka-wrapper">
+            <div class="nouka-inner">
+                <svg class="nouka-svg" viewBox="0 0 200 100">
+                    <path d="M 10,70 Q 100,100 190,70 L 170,80 Q 100,110 30,80 Z" fill="#150804"/>
+                    <path d="M 20,70 Q 100,95 180,70 L 190,70 Q 100,100 10,70 Z" fill="#0a0301"/>
+                    
+                    <path d="M 60,70 Q 100,20 140,70" fill="none" stroke="#0a0301" stroke-width="6"/>
+                    <path d="M 65,70 Q 100,25 135,70" fill="none" stroke="#150804" stroke-width="3"/>
+                    <path d="M 75,70 Q 100,30 125,70" fill="none" stroke="#150804" stroke-width="3"/>
+                    
+                    <path d="M 155,70 L 160,50 L 165,70 Z" fill="#0a0301"/>
+                    <circle cx="160" cy="45" r="6" fill="#0a0301"/>
+                    <!-- Oar Pivot and Handle -->
+                    <g class="oar-anim">
+                        <line x1="140" y1="40" x2="185" y2="90" stroke="#0a0301" stroke-width="2"/>
+                        <path d="M 180,85 L 190,95 L 185,98 L 175,88 Z" fill="#0a0301"/>
+                    </g>
+                </svg>
+            </div>
+        </div>
+        
+        <div class="river-bank-front"></div>
+    </section>
+
+</body>
+</html>
