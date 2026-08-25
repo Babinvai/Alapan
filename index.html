@@ -262,7 +262,89 @@
                     0% { transform: translateX(0); }
                     100% { transform: translateX(-50%); }
                 }
+
+                .bug-container {
+                    position: absolute;
+                    top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 3;
+                }
+                .hero-bug {
+                    position: absolute;
+                    animation-timing-function: ease-in-out;
+                    animation-iteration-count: infinite;
+                }
+                /* Bee */
+                .hero-bee svg { width: 25px; height: 25px; filter: drop-shadow(0 2px 2px rgba(0,0,0,0.3)); }
+                .bee-wing { animation: flap 0.05s infinite alternate; transform-origin: top; }
+                
+                /* Butterfly */
+                .hero-butterfly svg { width: 35px; height: 35px; filter: drop-shadow(0 2px 2px rgba(0,0,0,0.3)); }
+                .hero-butterfly .butterfly-wing { fill: #ff4081; animation: flap 0.15s infinite alternate; transform-origin: center; }
+
+                .bug-1 { top: -50px; left: -10vw; animation-name: bug-visit-1; animation-duration: 20s; animation-delay: 1s; }
+                .bug-2 { top: -50px; left: 110vw; animation-name: bug-visit-2; animation-duration: 25s; animation-delay: 8s; }
+                .bug-3 { top: -50px; left: -10vw; animation-name: bug-visit-3; animation-duration: 22s; animation-delay: 15s; }
+
+                @keyframes bug-visit-1 {
+                    0% { transform: translate(0, 0) rotate(20deg); }
+                    15% { transform: translate(30vw, 75vh) rotate(-10deg); }
+                    20% { transform: translate(31vw, 74vh) rotate(5deg); }
+                    25% { transform: translate(33vw, 76vh) rotate(-5deg); }
+                    30% { transform: translate(32vw, 75vh) rotate(10deg); }
+                    45% { transform: translate(120vw, 10vh) rotate(0deg); }
+                    100% { transform: translate(120vw, 10vh); }
+                }
+
+                @keyframes bug-visit-2 {
+                    0% { transform: translate(0, 0) scaleX(-1) rotate(20deg); }
+                    20% { transform: translate(-35vw, 70vh) scaleX(-1) rotate(-10deg); }
+                    25% { transform: translate(-36vw, 72vh) scaleX(-1) rotate(5deg); }
+                    30% { transform: translate(-38vw, 70vh) scaleX(-1) rotate(-5deg); }
+                    35% { transform: translate(-37vw, 71vh) scaleX(-1) rotate(10deg); }
+                    55% { transform: translate(-120vw, 20vh) scaleX(-1) rotate(0deg); }
+                    100% { transform: translate(-120vw, 20vh) scaleX(-1); }
+                }
+                
+                @keyframes bug-visit-3 {
+                    0% { transform: translate(0, 0) rotate(10deg); }
+                    18% { transform: translate(60vw, 78vh) rotate(-5deg); }
+                    23% { transform: translate(62vw, 76vh) rotate(10deg); }
+                    28% { transform: translate(59vw, 77vh) rotate(-5deg); }
+                    33% { transform: translate(61vw, 78vh) rotate(5deg); }
+                    50% { transform: translate(120vw, 5vh) rotate(-10deg); }
+                    100% { transform: translate(120vw, 5vh); }
+                }
             </style>
+
+            <!-- BEES & BUTTERFLIES ANIMATION -->
+            <div class="bug-container">
+                <div class="hero-bug bug-1 hero-bee">
+                    <svg viewBox="0 0 30 30">
+                        <ellipse cx="15" cy="15" rx="8" ry="12" fill="#ffcc00" transform="rotate(90 15 15)"/>
+                        <path d="M 11,7 L 11,23 M 15,7 L 15,23 M 19,7 L 19,23" stroke="#333" stroke-width="2"/>
+                        <circle cx="23" cy="15" r="3" fill="#333"/>
+                        <path d="M 7,15 L 4,15 L 7,13 Z" fill="#333"/>
+                        <ellipse cx="15" cy="8" rx="4" ry="7" fill="#fff" opacity="0.8" class="bee-wing"/>
+                        <ellipse cx="18" cy="8" rx="3" ry="6" fill="#fff" opacity="0.8" class="bee-wing" style="animation-delay: -0.05s;"/>
+                    </svg>
+                </div>
+                
+                <div class="hero-bug bug-2 hero-butterfly">
+                    <svg viewBox="0 0 20 20">
+                        <path class="butterfly-wing" d="M10,10 C5,0 0,5 10,10 C20,5 15,0 10,10 C0,15 5,20 10,10 C15,20 20,15 10,10 Z"/>
+                    </svg>
+                </div>
+                
+                <div class="hero-bug bug-3 hero-bee">
+                    <svg viewBox="0 0 30 30">
+                        <ellipse cx="15" cy="15" rx="8" ry="12" fill="#ffcc00" transform="rotate(90 15 15)"/>
+                        <path d="M 11,7 L 11,23 M 15,7 L 15,23 M 19,7 L 19,23" stroke="#333" stroke-width="2"/>
+                        <circle cx="23" cy="15" r="3" fill="#333"/>
+                        <path d="M 7,15 L 4,15 L 7,13 Z" fill="#333"/>
+                        <ellipse cx="15" cy="8" rx="4" ry="7" fill="#fff" opacity="0.8" class="bee-wing"/>
+                        <ellipse cx="18" cy="8" rx="3" ry="6" fill="#fff" opacity="0.8" class="bee-wing" style="animation-delay: -0.05s;"/>
+                    </svg>
+                </div>
+            </div>
 
             <!-- BIRDS ANIMATION -->
             <div class="birds-container">
@@ -548,7 +630,7 @@
                 height: 400px;
                 overflow: hidden;
                 background: linear-gradient(to bottom, rgba(135, 206, 235, 0) 0%, #87ceeb 40%, #e0f6ff 100%);
-                margin-top: 40px;
+                margin-top: -60px;
                 margin-bottom: 40px;
                 -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 40%, black 80%, transparent 100%);
                 mask-image: linear-gradient(to bottom, transparent 0%, black 40%, black 80%, transparent 100%);
@@ -619,6 +701,48 @@
                 height: 100%;
                 background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 100'%3E%3C!-- White Flowers --%3E%3Ccircle cx='20' cy='30' r='1.5' fill='%23fff'/%3E%3Ccircle cx='20' cy='30' r='0.5' fill='%23ffcc00'/%3E%3Ccircle cx='60' cy='50' r='2' fill='%23fff'/%3E%3Ccircle cx='60' cy='50' r='1' fill='%23ffcc00'/%3E%3Ccircle cx='120' cy='20' r='1.5' fill='%23fff'/%3E%3Ccircle cx='120' cy='20' r='0.5' fill='%23ffcc00'/%3E%3Ccircle cx='170' cy='60' r='2' fill='%23fff'/%3E%3Ccircle cx='170' cy='60' r='1' fill='%23ffcc00'/%3E%3C!-- Yellow/Orange Flowers --%3E%3Ccircle cx='40' cy='70' r='1.5' fill='%23ffcc00'/%3E%3Ccircle cx='90' cy='30' r='2' fill='%23ffa500'/%3E%3Ccircle cx='150' cy='80' r='1.5' fill='%23ffcc00'/%3E%3Ccircle cx='190' cy='40' r='2' fill='%23ffa500'/%3E%3C!-- Blueish Wildflowers --%3E%3Ccircle cx='80' cy='80' r='1.5' fill='%23a2c4c9'/%3E%3Ccircle cx='140' cy='30' r='1.5' fill='%23a2c4c9'/%3E%3C/svg%3E");
                 background-size: 200px 100px;
+            }
+
+            .placard {
+                position: absolute;
+                width: 75px;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                z-index: 2;
+                transform-origin: bottom center;
+                transition: transform 0.3s ease;
+                cursor: pointer;
+            }
+            .placard:hover {
+                transform: scale(1.2) rotate(-5deg) !important;
+                z-index: 10;
+            }
+            .placard-board {
+                background: #fffdf0;
+                border: 2px solid #8c6b54;
+                border-radius: 4px;
+                padding: 6px;
+                box-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+                text-align: center;
+                position: relative;
+            }
+            .placard-text {
+                font-family: serif;
+                font-size: 11px;
+                font-weight: bold;
+                color: #5c3f22;
+                line-height: 1.2;
+                margin: 0;
+                text-transform: uppercase;
+                letter-spacing: 0.5px;
+            }
+            .placard-stick {
+                width: 6px;
+                height: 30px;
+                background: linear-gradient(to right, #5c3f22, #8c6b54, #5c3f22);
+                border-radius: 0 0 2px 2px;
+                box-shadow: 2px 2px 3px rgba(0,0,0,0.2);
             }
 
             .butterfly {
@@ -750,6 +874,31 @@
                 0% { transform: rotate(-15deg); }
                 100% { transform: rotate(15deg); }
             }
+            
+            /* Windmill */
+            .windmill-container {
+                position: absolute;
+                bottom: 145px;
+                left: 80%;
+                width: 80px;
+                height: 120px;
+                z-index: 1;
+            }
+            .windmill-tower { fill: #d4aa37; }
+            .windmill-tower-shadow { fill: #b8860b; }
+            .windmill-roof { fill: #8c2a2a; }
+            .windmill-blades {
+                transform-origin: 40px 40px;
+                animation: spin-blades 12s linear infinite;
+            }
+            .windmill-blade-fabric {
+                fill: #fffdf0;
+                stroke: #8c6b54;
+                stroke-width: 1;
+            }
+            @keyframes spin-blades {
+                100% { transform: rotate(360deg); }
+            }
         </style>
         <section class="village-agri-scene">
             <div class="agri-sky">
@@ -776,8 +925,77 @@
             
             <div class="agri-hills"></div>
             
+            <!-- Windmill -->
+            <div class="windmill-container">
+                <svg viewBox="0 0 80 120" style="width: 100%; height: 100%; filter: drop-shadow(2px 2px 3px rgba(0,0,0,0.3));">
+                    <path class="windmill-tower" d="M 25,120 L 55,120 L 48,40 L 32,40 Z" />
+                    <path class="windmill-tower-shadow" d="M 40,120 L 55,120 L 48,40 L 40,40 Z" />
+                    <rect x="36" y="95" width="8" height="15" rx="4" fill="#4a2e15"/>
+                    <rect x="37" y="70" width="6" height="8" rx="2" fill="#4a2e15"/>
+                    <rect x="38" y="55" width="4" height="6" rx="2" fill="#4a2e15"/>
+                    <rect x="22" y="85" width="36" height="3" fill="#5c3f22"/>
+                    <line x1="22" y1="85" x2="30" y2="105" stroke="#5c3f22" stroke-width="2"/>
+                    <line x1="58" y1="85" x2="50" y2="105" stroke="#5c3f22" stroke-width="2"/>
+                    <path class="windmill-roof" d="M 28,40 L 52,40 Q 40,20 40,15 Q 40,20 28,40 Z" />
+                    <g class="windmill-blades">
+                        <!-- Top Blade -->
+                        <rect class="windmill-blade-fabric" x="41" y="2" width="10" height="35" />
+                        <line x1="40" y1="0" x2="40" y2="40" stroke="#5c3f22" stroke-width="3"/>
+                        <line x1="38" y1="5" x2="52" y2="5" stroke="#5c3f22" stroke-width="1"/>
+                        <line x1="38" y1="15" x2="52" y2="15" stroke="#5c3f22" stroke-width="1"/>
+                        <line x1="38" y1="25" x2="52" y2="25" stroke="#5c3f22" stroke-width="1"/>
+                        <!-- Right Blade -->
+                        <rect class="windmill-blade-fabric" x="43" y="41" width="35" height="10" />
+                        <line x1="40" y1="40" x2="80" y2="40" stroke="#5c3f22" stroke-width="3"/>
+                        <line x1="75" y1="38" x2="75" y2="52" stroke="#5c3f22" stroke-width="1"/>
+                        <line x1="65" y1="38" x2="65" y2="52" stroke="#5c3f22" stroke-width="1"/>
+                        <line x1="55" y1="38" x2="55" y2="52" stroke="#5c3f22" stroke-width="1"/>
+                        <!-- Bottom Blade -->
+                        <rect class="windmill-blade-fabric" x="29" y="43" width="10" height="35" />
+                        <line x1="40" y1="40" x2="40" y2="80" stroke="#5c3f22" stroke-width="3"/>
+                        <line x1="28" y1="75" x2="42" y2="75" stroke="#5c3f22" stroke-width="1"/>
+                        <line x1="28" y1="65" x2="42" y2="65" stroke="#5c3f22" stroke-width="1"/>
+                        <line x1="28" y1="55" x2="42" y2="55" stroke="#5c3f22" stroke-width="1"/>
+                        <!-- Left Blade -->
+                        <rect class="windmill-blade-fabric" x="2" y="29" width="35" height="10" />
+                        <line x1="0" y1="40" x2="40" y2="40" stroke="#5c3f22" stroke-width="3"/>
+                        <line x1="5" y1="28" x2="5" y2="42" stroke="#5c3f22" stroke-width="1"/>
+                        <line x1="15" y1="28" x2="15" y2="42" stroke="#5c3f22" stroke-width="1"/>
+                        <line x1="25" y1="28" x2="25" y2="42" stroke="#5c3f22" stroke-width="1"/>
+                        <!-- Center Hub -->
+                        <circle cx="40" cy="40" r="4" fill="#33200e"/>
+                    </g>
+                </svg>
+            </div>
+            
             <div class="agri-paddy-mid">
                 <div class="flowers-layer"></div>
+                
+                <!-- Placards -->
+                <div class="placard" style="left: 15%; bottom: 60px; transform: scale(0.9) rotate(-2deg);">
+                    <div class="placard-board">
+                        <p class="placard-text">100%<br>Organic</p>
+                    </div>
+                    <div class="placard-stick"></div>
+                </div>
+                <div class="placard" style="left: 35%; bottom: 40px; transform: scale(1.1) rotate(3deg);">
+                    <div class="placard-board">
+                        <p class="placard-text">Farm<br>Fresh</p>
+                    </div>
+                    <div class="placard-stick"></div>
+                </div>
+                <div class="placard" style="left: 60%; bottom: 70px; transform: scale(0.85) rotate(-4deg);">
+                    <div class="placard-board">
+                        <p class="placard-text">Pure<br>Bengali</p>
+                    </div>
+                    <div class="placard-stick"></div>
+                </div>
+                <div class="placard" style="left: 85%; bottom: 50px; transform: scale(1) rotate(2deg);">
+                    <div class="placard-board">
+                        <p class="placard-text">Sun<br>Dried</p>
+                    </div>
+                    <div class="placard-stick"></div>
+                </div>
                 
                 <!-- Butterflies -->
                 <div class="butterfly">
