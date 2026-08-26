@@ -49,6 +49,8 @@
 </head>
 
 <body>
+    <!-- GLOBAL ANIMATED BACKGROUND -->
+    <div class="global-animated-bg"></div>
 
         <!-- HEADER -->
         <header>
@@ -442,9 +444,91 @@
         </section>
 
         <!-- FEATURED PRODUCTS -->
-        <!-- FEATURED PRODUCTS -->
-        <section class="products-section container">
-            <h2 class="font-serif">Carefully Packed for Your Kitchen</h2>
+        <style>
+            .products-section, .interactive-reviews-section, .faq-section {
+                position: relative;
+                overflow: hidden; /* Prevent horizontal scroll from absolute elements */
+            }
+            .village-watermark {
+                position: absolute;
+                top: 10%;
+                width: 350px;
+                height: 600px;
+                opacity: 0.06;
+                color: #555555; /* Grey shade as requested */
+                pointer-events: none;
+                z-index: 0;
+            }
+            .village-watermark.left {
+                left: -80px;
+                transform-origin: bottom center;
+                animation: gentle-sway 6s ease-in-out infinite alternate;
+            }
+            .village-watermark.right {
+                right: 0;
+                top: 20%;
+                transform-origin: top right;
+                animation: gentle-sway-reverse 7s ease-in-out infinite alternate;
+            }
+            @keyframes gentle-sway {
+                0% { transform: rotate(-2deg); }
+                100% { transform: rotate(3deg); }
+            }
+            @keyframes gentle-sway-reverse {
+                0% { transform: rotate(-1deg); }
+                100% { transform: rotate(2deg); }
+            }
+            @media (max-width: 1300px) {
+                .village-watermark { opacity: 0.03; }
+            }
+            @media (max-width: 1024px) {
+                .village-watermark { display: none; }
+            }
+        </style>
+        <section class="products-section">
+            <!-- Left Side: Paddy Stalks Watermark -->
+            <svg class="village-watermark left" viewBox="0 0 200 400" preserveAspectRatio="xMinYMin meet">
+                <!-- Stalk -->
+                <path d="M100,400 Q120,250 80,100 T110,20" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round"/>
+                <!-- Paddy grains -->
+                <path d="M100,60 Q125,50 135,70 Q115,75 100,60 Z" fill="currentColor"/>
+                <path d="M85,80 Q60,70 50,90 Q70,95 85,80 Z" fill="currentColor"/>
+                <path d="M100,100 Q130,90 140,115 Q120,120 100,100 Z" fill="currentColor"/>
+                <path d="M80,120 Q50,110 40,135 Q60,140 80,120 Z" fill="currentColor"/>
+                <path d="M102,145 Q135,135 145,165 Q120,170 102,145 Z" fill="currentColor"/>
+                <path d="M78,170 Q45,160 35,190 Q60,195 78,170 Z" fill="currentColor"/>
+                <!-- Leaves -->
+                <path d="M105,250 Q170,200 190,280 Q130,290 105,250 Z" fill="currentColor"/>
+                <path d="M95,300 Q30,250 10,330 Q70,340 95,300 Z" fill="currentColor"/>
+            </svg>
+
+
+            <!-- Right Side: Bamboo Grove Watermark -->
+            <svg class="village-watermark right" viewBox="0 0 200 400" preserveAspectRatio="xMaxYMin meet">
+                <!-- Main Bamboo Stalk -->
+                <path d="M180,0 L170,100 L165,200 L155,300 L140,400" fill="none" stroke="currentColor" stroke-width="12" stroke-linecap="round"/>
+                <line x1="165" y1="100" x2="185" y2="95" stroke="currentColor" stroke-width="4"/>
+                <line x1="155" y1="200" x2="175" y2="195" stroke="currentColor" stroke-width="4"/>
+                <line x1="145" y1="300" x2="165" y2="295" stroke="currentColor" stroke-width="4"/>
+                <!-- Leaves Main Stalk -->
+                <path d="M175,100 Q140,80 120,110 Q140,110 175,100" fill="currentColor"/>
+                <path d="M175,100 Q130,120 110,150 Q140,140 175,100" fill="currentColor"/>
+                <path d="M165,200 Q120,180 90,200 Q120,210 165,200" fill="currentColor"/>
+                <path d="M165,200 Q110,220 100,260 Q130,240 165,200" fill="currentColor"/>
+                <path d="M155,300 Q100,280 70,300 Q100,310 155,300" fill="currentColor"/>
+                <path d="M155,300 Q90,320 80,360 Q110,340 155,300" fill="currentColor"/>
+                
+                <!-- Secondary Bamboo Stalk -->
+                <path d="M200,50 L195,150 L190,250 L180,350 L175,400" fill="none" stroke="currentColor" stroke-width="6" stroke-linecap="round"/>
+                <line x1="190" y1="150" x2="205" y2="148" stroke="currentColor" stroke-width="2"/>
+                <line x1="185" y1="250" x2="200" y2="248" stroke="currentColor" stroke-width="2"/>
+                <!-- Leaves Secondary Stalk -->
+                <path d="M195,150 Q170,130 160,160 Q180,155 195,150" fill="currentColor"/>
+                <path d="M190,250 Q160,240 140,270 Q170,260 190,250" fill="currentColor"/>
+            </svg>
+
+            <div class="container" style="position: relative; z-index: 1;">
+            <h2 class="font-serif" style="position: relative; z-index: 2;">Carefully Packed for Your Kitchen</h2>
 
             <!-- The Grid Container starts here -->
             <div class="product-grid">
@@ -559,10 +643,47 @@
                 </div>
 
             </div> <!-- The Grid Container cleanly closes here! -->
+            </div>
         </section>
 
         <!-- NEW TRADITIONAL PANTRY SECTION -->
-        <section class="products-section container pantry-section">
+        <section class="products-section pantry-section">
+            <!-- Left Side: Paddy Stalks Watermark -->
+            <svg class="village-watermark left" viewBox="0 0 200 400" preserveAspectRatio="xMinYMin meet">
+                <path d="M100,400 Q120,250 80,100 T110,20" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round"/>
+                <path d="M100,60 Q125,50 135,70 Q115,75 100,60 Z" fill="currentColor"/>
+                <path d="M85,80 Q60,70 50,90 Q70,95 85,80 Z" fill="currentColor"/>
+                <path d="M100,100 Q130,90 140,115 Q120,120 100,100 Z" fill="currentColor"/>
+                <path d="M80,120 Q50,110 40,135 Q60,140 80,120 Z" fill="currentColor"/>
+                <path d="M102,145 Q135,135 145,165 Q120,170 102,145 Z" fill="currentColor"/>
+                <path d="M78,170 Q45,160 35,190 Q60,195 78,170 Z" fill="currentColor"/>
+                <path d="M105,250 Q170,200 190,280 Q130,290 105,250 Z" fill="currentColor"/>
+                <path d="M95,300 Q30,250 10,330 Q70,340 95,300 Z" fill="currentColor"/>
+            </svg>
+            <!-- Right Side: Bamboo Grove Watermark -->
+            <svg class="village-watermark right" viewBox="0 0 200 400" preserveAspectRatio="xMaxYMin meet">
+                <!-- Main Bamboo Stalk -->
+                <path d="M180,0 L170,100 L165,200 L155,300 L140,400" fill="none" stroke="currentColor" stroke-width="12" stroke-linecap="round"/>
+                <line x1="165" y1="100" x2="185" y2="95" stroke="currentColor" stroke-width="4"/>
+                <line x1="155" y1="200" x2="175" y2="195" stroke="currentColor" stroke-width="4"/>
+                <line x1="145" y1="300" x2="165" y2="295" stroke="currentColor" stroke-width="4"/>
+                <!-- Leaves Main Stalk -->
+                <path d="M175,100 Q140,80 120,110 Q140,110 175,100" fill="currentColor"/>
+                <path d="M175,100 Q130,120 110,150 Q140,140 175,100" fill="currentColor"/>
+                <path d="M165,200 Q120,180 90,200 Q120,210 165,200" fill="currentColor"/>
+                <path d="M165,200 Q110,220 100,260 Q130,240 165,200" fill="currentColor"/>
+                <path d="M155,300 Q100,280 70,300 Q100,310 155,300" fill="currentColor"/>
+                <path d="M155,300 Q90,320 80,360 Q110,340 155,300" fill="currentColor"/>
+                
+                <!-- Secondary Bamboo Stalk -->
+                <path d="M200,50 L195,150 L190,250 L180,350 L175,400" fill="none" stroke="currentColor" stroke-width="6" stroke-linecap="round"/>
+                <line x1="190" y1="150" x2="205" y2="148" stroke="currentColor" stroke-width="2"/>
+                <line x1="185" y1="250" x2="200" y2="248" stroke="currentColor" stroke-width="2"/>
+                <!-- Leaves Secondary Stalk -->
+                <path d="M195,150 Q170,130 160,160 Q180,155 195,150" fill="currentColor"/>
+                <path d="M190,250 Q160,240 140,270 Q170,260 190,250" fill="currentColor"/>
+            </svg>
+            <div class="container" style="position: relative; z-index: 1;">
             <h2 class="font-serif">Our Traditional Pantry</h2>
             <p style="text-align: center; max-width: 600px; margin: 0 auto 40px auto; color: #555;">Authentic, hand-crafted village specials beyond our signature ghee. (Currently out of stock as we prepare fresh batches).</p>
 
@@ -619,6 +740,7 @@
                     </div>
                 </div>
 
+            </div>
             </div>
         </section>
 
@@ -904,13 +1026,36 @@
             <div class="agri-sky">
                 <div class="agri-sun"></div>
                 <div class="agri-birds">
-                    <svg viewBox="0 0 100 50" style="top: 10%; left: 0; width: 60px; animation: flyBirds 40s linear infinite;">
-                        <!-- Bird V Formation -->
-                        <path d="M10,25 Q15,20 20,25 Q25,20 30,25"/>
-                        <path d="M5,15 Q10,10 15,15 Q20,10 25,15"/>
-                        <path d="M15,15 Q20,10 25,15 Q30,10 35,15"/>
-                        <path d="M0,5 Q5,0 10,5 Q15,0 20,5"/>
-                        <path d="M20,5 Q25,0 30,5 Q35,0 40,5"/>
+                    <!-- Distant Flock -->
+                    <svg viewBox="-10 -10 90 50" style="position: absolute; top: 20%; left: -20%; width: 60px; opacity: 0.4; animation: flyBirds 50s linear infinite;">
+                        <path stroke="#444" stroke-width="1.5" fill="none" stroke-linecap="round">
+                            <animate attributeName="d" values="M 20,15 Q 25,20 30,25 Q 35,20 40,15; M 20,25 Q 25,25 30,25 Q 35,25 40,25; M 20,30 Q 25,25 30,25 Q 35,25 40,30; M 20,25 Q 25,25 30,25 Q 35,25 40,25; M 20,15 Q 25,20 30,25 Q 35,20 40,15" dur="1s" repeatCount="indefinite" begin="0s" />
+                        </path>
+                        <path stroke="#444" stroke-width="1.5" fill="none" stroke-linecap="round">
+                            <animate attributeName="d" values="M 8,5 Q 13,10 18,15 Q 23,10 28,5; M 8,15 Q 13,15 18,15 Q 23,15 28,15; M 8,20 Q 13,15 18,15 Q 23,15 28,20; M 8,15 Q 13,15 18,15 Q 23,15 28,15; M 8,5 Q 13,10 18,15 Q 23,10 28,5" dur="1s" repeatCount="indefinite" begin="-0.3s" />
+                        </path>
+                        <path stroke="#444" stroke-width="1.5" fill="none" stroke-linecap="round">
+                            <animate attributeName="d" values="M 32,5 Q 37,10 42,15 Q 47,10 52,5; M 32,15 Q 37,15 42,15 Q 47,15 52,15; M 32,20 Q 37,15 42,15 Q 47,15 52,20; M 32,15 Q 37,15 42,15 Q 47,15 52,15; M 32,5 Q 37,10 42,15 Q 47,10 52,5" dur="1s" repeatCount="indefinite" begin="-0.6s" />
+                        </path>
+                    </svg>
+
+                    <!-- Main Flock -->
+                    <svg viewBox="-10 -10 90 50" style="position: absolute; top: 12%; left: -20%; width: 100px; opacity: 0.8; animation: flyBirds 35s linear infinite; animation-delay: 12s;">
+                        <path stroke="#333" stroke-width="1.8" fill="none" stroke-linecap="round">
+                            <animate attributeName="d" values="M 20,15 Q 25,20 30,25 Q 35,20 40,15; M 20,25 Q 25,25 30,25 Q 35,25 40,25; M 20,30 Q 25,25 30,25 Q 35,25 40,30; M 20,25 Q 25,25 30,25 Q 35,25 40,25; M 20,15 Q 25,20 30,25 Q 35,20 40,15" dur="0.8s" repeatCount="indefinite" begin="0s" />
+                        </path>
+                        <path stroke="#333" stroke-width="1.8" fill="none" stroke-linecap="round">
+                            <animate attributeName="d" values="M 8,5 Q 13,10 18,15 Q 23,10 28,5; M 8,15 Q 13,15 18,15 Q 23,15 28,15; M 8,20 Q 13,15 18,15 Q 23,15 28,20; M 8,15 Q 13,15 18,15 Q 23,15 28,15; M 8,5 Q 13,10 18,15 Q 23,10 28,5" dur="0.8s" repeatCount="indefinite" begin="-0.2s" />
+                        </path>
+                        <path stroke="#333" stroke-width="1.8" fill="none" stroke-linecap="round">
+                            <animate attributeName="d" values="M 32,5 Q 37,10 42,15 Q 47,10 52,5; M 32,15 Q 37,15 42,15 Q 47,15 52,15; M 32,20 Q 37,15 42,15 Q 47,15 52,20; M 32,15 Q 37,15 42,15 Q 47,15 52,15; M 32,5 Q 37,10 42,15 Q 47,10 52,5" dur="0.8s" repeatCount="indefinite" begin="-0.4s" />
+                        </path>
+                        <path stroke="#333" stroke-width="1.8" fill="none" stroke-linecap="round">
+                            <animate attributeName="d" values="M -4,-5 Q 1,0 6,5 Q 11,0 16,-5; M -4,5 Q 1,5 6,5 Q 11,5 16,5; M -4,10 Q 1,5 6,5 Q 11,5 16,10; M -4,5 Q 1,5 6,5 Q 11,5 16,5; M -4,-5 Q 1,0 6,5 Q 11,0 16,-5" dur="0.8s" repeatCount="indefinite" begin="-0.6s" />
+                        </path>
+                        <path stroke="#333" stroke-width="1.8" fill="none" stroke-linecap="round">
+                            <animate attributeName="d" values="M 44,-5 Q 49,0 54,5 Q 59,0 64,-5; M 44,5 Q 49,5 54,5 Q 59,5 64,5; M 44,10 Q 49,5 54,5 Q 59,5 64,10; M 44,5 Q 49,5 54,5 Q 59,5 64,5; M 44,-5 Q 49,0 54,5 Q 59,0 64,-5" dur="0.8s" repeatCount="indefinite" begin="-0.1s" />
+                        </path>
                     </svg>
                 </div>
                 <div class="agri-clouds">
@@ -1197,62 +1342,43 @@
                     style="height: 3px; width: 60px; background-color: #D4AF37; margin: 0 auto 40px auto;"></div>
             </div>
 
-            <div class="stamps-grid">
-                <!-- Stamp 1: Purity -->
-                <div class="trust-stamp-card">
-                    <!-- The delay staggers the animations so they hit one after another -->
-                    <div class="stamp-container" style="animation-delay: 0s;">
-                        <!-- The Physical Tool that drops down -->
-                        <div class="stamper-tool">
-                            <div class="stamper-handle"></div>
-                            <div class="stamper-base"></div>
-                        </div>
-                        <!-- The Ink left behind -->
-                        <div class="stamp-ink">
-                            <div class="stamp-inner">
-                                <span class="stamp-icon">🌿</span>
-                            </div>
-                        </div>
+            <div class="promise-cards-wrapper">
+                <!-- Promise Card 1: Purity -->
+                <div class="promise-card">
+                    <div class="promise-icon-ring">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"></path>
+                            <path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"></path>
+                        </svg>
                     </div>
-                    <h3 class="stamp-title">100% Pure & Natural</h3>
-                    <p class="stamp-desc">Sourced directly from our family's dairy heritage in Krishnanagar without any
-                        synthetic shortcuts.</p>
+                    <h3 class="promise-title">100% Pure & Natural</h3>
+                    <p class="promise-desc">Sourced directly from our family's dairy heritage in Krishnanagar without any synthetic shortcuts.</p>
                 </div>
 
-                <!-- Stamp 2: Traceability -->
-                <div class="trust-stamp-card">
-                    <div class="stamp-container" style="animation-delay: 0.3s;">
-                        <div class="stamper-tool">
-                            <div class="stamper-handle"></div>
-                            <div class="stamper-base"></div>
-                        </div>
-                        <div class="stamp-ink">
-                            <div class="stamp-inner">
-                                <span class="stamp-icon">🔍</span>
-                            </div>
-                        </div>
+                <!-- Promise Card 2: Traceability -->
+                <div class="promise-card">
+                    <div class="promise-icon-ring">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="11" cy="11" r="8"></circle>
+                            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                            <path d="M11 8v3l2 2"></path>
+                        </svg>
                     </div>
-                    <h3 class="stamp-title">Batch Traceable</h3>
-                    <p class="stamp-desc">Every single jar is rigorously tested and fully traceable right back to its
-                        traditional churning origins.</p>
+                    <h3 class="promise-title">Batch Traceable</h3>
+                    <p class="promise-desc">Every single jar is rigorously tested and fully traceable right back to its traditional churning origins.</p>
                 </div>
 
-                <!-- Stamp 3: Tradition -->
-                <div class="trust-stamp-card">
-                    <div class="stamp-container" style="animation-delay: 0.6s;">
-                        <div class="stamper-tool">
-                            <div class="stamper-handle"></div>
-                            <div class="stamper-base"></div>
-                        </div>
-                        <div class="stamp-ink">
-                            <div class="stamp-inner">
-                                <span class="stamp-icon">🤲</span>
-                            </div>
-                        </div>
+                <!-- Promise Card 3: Tradition -->
+                <div class="promise-card">
+                    <div class="promise-icon-ring">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                            <path d="M12 8v4"></path>
+                            <path d="M12 16h.01"></path>
+                        </svg>
                     </div>
-                    <h3 class="stamp-title">Rooted In Tradition</h3>
-                    <p class="stamp-desc">Crafted using time-honored methods to preserve that perfect, authentic
-                        granular (danedar) texture.</p>
+                    <h3 class="promise-title">Rooted In Tradition</h3>
+                    <p class="promise-desc">Crafted using time-honored methods to preserve that perfect, authentic granular (danedar) texture.</p>
                 </div>
             </div>
         </section>
@@ -1293,6 +1419,118 @@
 
                 <!-- Right Side: Founder's Message -->
                 <div class="founder-card" style="position: relative; overflow: hidden; padding-bottom: 120px;">
+                    <!-- VILLAGE ANIMATION EFFECTS LAYER -->
+                    <div class="village-fx-layer" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 0; pointer-events: none; overflow: hidden;">
+                        
+                        <!-- Subtle Grey Sky Elements at Top (Animated) -->
+                        <svg viewBox="0 0 1000 200" preserveAspectRatio="none" style="position: absolute; top: 0; left: 0; width: 100%; height: auto; min-height: 150px; opacity: 0.2;">
+                            <defs>
+                                <!-- Beautiful Proper Cloud Shape -->
+                                <g id="proper-cloud">
+                                    <path d="M 30,50 C 10,50 10,30 30,30 C 30,10 60,10 65,25 C 75,15 95,20 95,35 C 110,35 110,50 95,50 Z" />
+                                </g>
+                                <!-- Proper Sun with soft rays -->
+                                <g id="proper-sun">
+                                    <circle cx="50" cy="50" r="22" />
+                                    <circle cx="50" cy="50" r="32" opacity="0.4" />
+                                    <circle cx="50" cy="50" r="45" opacity="0.15" />
+                                </g>
+                            </defs>
+
+                            <!-- Sun (Top Right) -->
+                            <g transform="translate(780, -10)">
+                                <use href="#proper-sun" fill="#777777" style="transform-origin: 50px 50px; animation: grey-sun-pulse 6s ease-in-out infinite alternate;"/>
+                            </g>
+                            
+                            <!-- Clouds -->
+                            <!-- Right Cloud over Sun -->
+                            <g style="animation: grey-cloud-drift-1 30s ease-in-out infinite alternate;">
+                                <g transform="translate(750, 10) scale(1.1)">
+                                    <use href="#proper-cloud" fill="#555555" />
+                                </g>
+                            </g>
+                            <!-- Middle-Right Cloud -->
+                            <g style="animation: grey-cloud-drift-2 35s ease-in-out infinite alternate;">
+                                <g transform="translate(500, 30) scale(0.8)">
+                                    <use href="#proper-cloud" fill="#666666" />
+                                </g>
+                            </g>
+                            <!-- Left Cloud -->
+                            <g style="animation: grey-cloud-drift-1 40s ease-in-out infinite alternate-reverse;">
+                                <g transform="translate(80, 15) scale(1.3)">
+                                    <use href="#proper-cloud" fill="#444444" />
+                                </g>
+                            </g>
+                            
+                            <!-- Animated Flapping Birds -->
+                            <g style="animation: grey-birds-fly 20s linear infinite;">
+                                <path stroke="#555555" stroke-width="2.5" fill="none" stroke-linecap="round">
+                                    <animate attributeName="d" values="M 0,-5 Q 5,0 10,5 Q 15,0 20,-5; M 0,5 Q 5,5 10,5 Q 15,5 20,5; M 0,10 Q 5,5 10,5 Q 15,5 20,10; M 0,5 Q 5,5 10,5 Q 15,5 20,5; M 0,-5 Q 5,0 10,5 Q 15,0 20,-5" dur="1s" repeatCount="indefinite" begin="0s" />
+                                </path>
+                                <path stroke="#555555" stroke-width="2" fill="none" stroke-linecap="round">
+                                    <animate attributeName="d" values="M -15,10 Q -10,15 -5,20 Q 0,15 5,10; M -15,20 Q -10,20 -5,20 Q 0,20 5,20; M -15,25 Q -10,20 -5,20 Q 0,20 5,25; M -15,20 Q -10,20 -5,20 Q 0,20 5,20; M -15,10 Q -10,15 -5,20 Q 0,15 5,10" dur="1s" repeatCount="indefinite" begin="-0.3s" />
+                                </path>
+                                <path stroke="#555555" stroke-width="2" fill="none" stroke-linecap="round">
+                                    <animate attributeName="d" values="M 15,10 Q 20,15 25,20 Q 30,15 35,10; M 15,20 Q 20,20 25,20 Q 30,20 35,20; M 15,25 Q 20,20 25,20 Q 30,20 35,25; M 15,20 Q 20,20 25,20 Q 30,20 35,20; M 15,10 Q 20,15 25,20 Q 30,15 35,10" dur="1s" repeatCount="indefinite" begin="-0.6s" />
+                                </path>
+                            </g>
+                        </svg>
+
+                        <style>
+                            @keyframes grey-sun-pulse {
+                                0% { transform: scale(0.9); opacity: 0.7; }
+                                100% { transform: scale(1.1); opacity: 1; }
+                            }
+                            @keyframes grey-cloud-drift-1 {
+                                0% { transform: translateX(-80px); }
+                                100% { transform: translateX(80px); }
+                            }
+                            @keyframes grey-cloud-drift-2 {
+                                0% { transform: translateX(60px); }
+                                100% { transform: translateX(-60px); }
+                            }
+                            @keyframes grey-birds-fly {
+                                0% { transform: translateX(-50px) translateY(80px); }
+                                100% { transform: translateX(1100px) translateY(20px); }
+                            }
+                        </style>
+
+                        <!-- Subtle Grey Shade Village Scenery Silhouette at Bottom -->
+                        <svg viewBox="0 0 1000 200" preserveAspectRatio="none" style="position: absolute; bottom: 0; left: 0; width: 100%; height: auto; min-height: 180px; opacity: 0.15;">
+                            <defs>
+                                <g id="proper-pine">
+                                    <path d="M47,60 L53,60 L53,90 L47,90 Z" />
+                                    <path d="M 50,10 L 25,40 L 40,40 L 15,70 L 85,70 L 60,40 L 75,40 Z" />
+                                </g>
+                                <g id="proper-tree">
+                                    <path d="M40,90 Q45,60 48,40 L52,40 Q55,60 60,90 Z" />
+                                    <path d="M 50,10 C 20,10 10,30 30,50 C 15,65 40,80 50,70 C 60,80 85,65 70,50 C 90,30 80,10 50,10 Z" />
+                                </g>
+                            </defs>
+                            
+                            <!-- Rolling Hills -->
+                            <path d="M0,150 Q150,100 300,160 T700,120 T1000,160 L1000,200 L0,200 Z" fill="#444444"/>
+                            <path d="M0,180 Q250,120 500,170 T1000,140 L1000,200 L0,200 Z" fill="#777777"/>
+                            
+                            <!-- Central Grove (Proper Trees) -->
+                            <g transform="translate(480, 100) scale(0.85)">
+                                <use href="#proper-pine" fill="#444444" />
+                            </g>
+                            <g transform="translate(560, 80) scale(0.9)">
+                                <use href="#proper-tree" fill="#666666" />
+                            </g>
+                            
+                            <!-- Huts (Shifted to Left-Center) -->
+                            <path d="M300,140 L320,110 L340,140 Z M305,140 L305,160 L335,160 L335,140 Z" fill="#333333"/>
+                            <path d="M360,145 L375,120 L390,145 Z M365,145 L365,165 L385,165 L385,145 Z" fill="#444444"/>
+                            
+                            <!-- Birds in the sky (static silhouettes shifted towards center) -->
+                            <path d="M400,80 Q405,75 410,80 Q415,75 420,80" fill="none" stroke="#666" stroke-width="2"/>
+                            <path d="M500,60 Q503,57 506,60 Q509,57 512,60" fill="none" stroke="#666" stroke-width="1.5"/>
+                            <path d="M600,50 Q605,45 610,50 Q615,45 620,50" fill="none" stroke="#666" stroke-width="2"/>
+                        </svg>
+                    </div>
+
                     <!-- ANIMATED CHARACTERS -->
                     <img src="Dadu.png" alt="Dadu" class="dadu-anim" style="position: absolute; bottom: -35px; left: -15px; height: 190px; width: auto; opacity: 0.85; z-index: 1;">
                     <img src="Thamma.png" alt="Thamma" class="thamma-anim" style="position: absolute; bottom: -15px; right: -20px; height: 140px; width: auto; opacity: 0.85; z-index: 1;">
@@ -1561,7 +1799,42 @@
         <!-- PREMIUM TESTIMONIAL SECTION -->
         <!-- INTERACTIVE REVIEW MARQUEE SECTION -->
         <section class="interactive-reviews-section">
-            <div class="interactive-reviews-header">
+            <!-- Left Side: Paddy Stalks Watermark -->
+            <svg class="village-watermark left" viewBox="0 0 200 400" preserveAspectRatio="xMinYMin meet">
+                <path d="M100,400 Q120,250 80,100 T110,20" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round"/>
+                <path d="M100,60 Q125,50 135,70 Q115,75 100,60 Z" fill="currentColor"/>
+                <path d="M85,80 Q60,70 50,90 Q70,95 85,80 Z" fill="currentColor"/>
+                <path d="M100,100 Q130,90 140,115 Q120,120 100,100 Z" fill="currentColor"/>
+                <path d="M80,120 Q50,110 40,135 Q60,140 80,120 Z" fill="currentColor"/>
+                <path d="M102,145 Q135,135 145,165 Q120,170 102,145 Z" fill="currentColor"/>
+                <path d="M78,170 Q45,160 35,190 Q60,195 78,170 Z" fill="currentColor"/>
+                <path d="M105,250 Q170,200 190,280 Q130,290 105,250 Z" fill="currentColor"/>
+                <path d="M95,300 Q30,250 10,330 Q70,340 95,300 Z" fill="currentColor"/>
+            </svg>
+            <!-- Right Side: Bamboo Grove Watermark -->
+            <svg class="village-watermark right" viewBox="0 0 200 400" preserveAspectRatio="xMaxYMin meet">
+                <!-- Main Bamboo Stalk -->
+                <path d="M180,0 L170,100 L165,200 L155,300 L140,400" fill="none" stroke="currentColor" stroke-width="12" stroke-linecap="round"/>
+                <line x1="165" y1="100" x2="185" y2="95" stroke="currentColor" stroke-width="4"/>
+                <line x1="155" y1="200" x2="175" y2="195" stroke="currentColor" stroke-width="4"/>
+                <line x1="145" y1="300" x2="165" y2="295" stroke="currentColor" stroke-width="4"/>
+                <!-- Leaves Main Stalk -->
+                <path d="M175,100 Q140,80 120,110 Q140,110 175,100" fill="currentColor"/>
+                <path d="M175,100 Q130,120 110,150 Q140,140 175,100" fill="currentColor"/>
+                <path d="M165,200 Q120,180 90,200 Q120,210 165,200" fill="currentColor"/>
+                <path d="M165,200 Q110,220 100,260 Q130,240 165,200" fill="currentColor"/>
+                <path d="M155,300 Q100,280 70,300 Q100,310 155,300" fill="currentColor"/>
+                <path d="M155,300 Q90,320 80,360 Q110,340 155,300" fill="currentColor"/>
+                
+                <!-- Secondary Bamboo Stalk -->
+                <path d="M200,50 L195,150 L190,250 L180,350 L175,400" fill="none" stroke="currentColor" stroke-width="6" stroke-linecap="round"/>
+                <line x1="190" y1="150" x2="205" y2="148" stroke="currentColor" stroke-width="2"/>
+                <line x1="185" y1="250" x2="200" y2="248" stroke="currentColor" stroke-width="2"/>
+                <!-- Leaves Secondary Stalk -->
+                <path d="M195,150 Q170,130 160,160 Q180,155 195,150" fill="currentColor"/>
+                <path d="M190,250 Q160,240 140,270 Q170,260 190,250" fill="currentColor"/>
+            </svg>
+            <div class="interactive-reviews-header" style="position: relative; z-index: 1;">
                 <div
                     style="text-align: center; color: var(--brand-gold); font-weight: 700; letter-spacing: 3px; text-transform: uppercase; font-size: 0.85rem; margin-bottom: 15px;">
                     ✦ Real Customers, Real Taste ✦
@@ -1569,7 +1842,7 @@
                 <h2 class="font-serif">Loved by Families Across India</h2>
             </div>
 
-            <div class="review-marquee-track" id="reviewTrack">
+            <div class="review-marquee-track" id="reviewTrack" style="position: relative; z-index: 1;">
 
                 <!-- BLOCK 1 (8 Reviews) -->
                 <div class="review-marquee-content">
@@ -1743,17 +2016,36 @@
         <section class="cert-banner">
             <div class="cert-grid">
                 <div class="cert-item">
-                    <div class="icon">📜</div>
+                    <div class="icon-wrapper">
+                        <svg class="cert-svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                            <polyline points="14 2 14 8 20 8"></polyline>
+                            <circle cx="12" cy="14" r="3"></circle>
+                            <path d="M12 17v4"></path>
+                            <path d="M10 21h4"></path>
+                        </svg>
+                    </div>
                     <h3>FSSAI Certified</h3>
                     <p>Approved & Licensed by Gov. of India</p>
                 </div>
                 <div class="cert-item">
-                    <div class="icon">🔬</div>
+                    <div class="icon-wrapper">
+                        <svg class="cert-svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M10 2v7.527a2 2 0 0 1-.211.896L4.72 20.55a1 1 0 0 0 .9 1.45h12.76a1 1 0 0 0 .9-1.45l-5.069-10.127A2 2 0 0 1 14 9.527V2"></path>
+                            <path d="M8.5 2h7"></path>
+                            <path d="M14 16H5.5"></path>
+                        </svg>
+                    </div>
                     <h3>Lab Tested</h3>
                     <p>Every batch rigorously tested for purity</p>
                 </div>
                 <div class="cert-item">
-                    <div class="icon">✨</div>
+                    <div class="icon-wrapper">
+                        <svg class="cert-svg-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                            <path d="m9 12 2 2 4-4"></path>
+                        </svg>
+                    </div>
                     <h3>100% Adulteration Free</h3>
                     <p>No preservatives, no artificial colors</p>
                 </div>
@@ -1762,12 +2054,47 @@
 
         <!-- FAQ SECTION -->
         <section class="faq-section">
-            <div style="text-align: center;">
+            <!-- Left Side: Paddy Stalks Watermark -->
+            <svg class="village-watermark left" viewBox="0 0 200 400" preserveAspectRatio="xMinYMin meet">
+                <path d="M100,400 Q120,250 80,100 T110,20" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round"/>
+                <path d="M100,60 Q125,50 135,70 Q115,75 100,60 Z" fill="currentColor"/>
+                <path d="M85,80 Q60,70 50,90 Q70,95 85,80 Z" fill="currentColor"/>
+                <path d="M100,100 Q130,90 140,115 Q120,120 100,100 Z" fill="currentColor"/>
+                <path d="M80,120 Q50,110 40,135 Q60,140 80,120 Z" fill="currentColor"/>
+                <path d="M102,145 Q135,135 145,165 Q120,170 102,145 Z" fill="currentColor"/>
+                <path d="M78,170 Q45,160 35,190 Q60,195 78,170 Z" fill="currentColor"/>
+                <path d="M105,250 Q170,200 190,280 Q130,290 105,250 Z" fill="currentColor"/>
+                <path d="M95,300 Q30,250 10,330 Q70,340 95,300 Z" fill="currentColor"/>
+            </svg>
+            <!-- Right Side: Bamboo Grove Watermark -->
+            <svg class="village-watermark right" viewBox="0 0 200 400" preserveAspectRatio="xMaxYMin meet">
+                <!-- Main Bamboo Stalk -->
+                <path d="M180,0 L170,100 L165,200 L155,300 L140,400" fill="none" stroke="currentColor" stroke-width="12" stroke-linecap="round"/>
+                <line x1="165" y1="100" x2="185" y2="95" stroke="currentColor" stroke-width="4"/>
+                <line x1="155" y1="200" x2="175" y2="195" stroke="currentColor" stroke-width="4"/>
+                <line x1="145" y1="300" x2="165" y2="295" stroke="currentColor" stroke-width="4"/>
+                <!-- Leaves Main Stalk -->
+                <path d="M175,100 Q140,80 120,110 Q140,110 175,100" fill="currentColor"/>
+                <path d="M175,100 Q130,120 110,150 Q140,140 175,100" fill="currentColor"/>
+                <path d="M165,200 Q120,180 90,200 Q120,210 165,200" fill="currentColor"/>
+                <path d="M165,200 Q110,220 100,260 Q130,240 165,200" fill="currentColor"/>
+                <path d="M155,300 Q100,280 70,300 Q100,310 155,300" fill="currentColor"/>
+                <path d="M155,300 Q90,320 80,360 Q110,340 155,300" fill="currentColor"/>
+                
+                <!-- Secondary Bamboo Stalk -->
+                <path d="M200,50 L195,150 L190,250 L180,350 L175,400" fill="none" stroke="currentColor" stroke-width="6" stroke-linecap="round"/>
+                <line x1="190" y1="150" x2="205" y2="148" stroke="currentColor" stroke-width="2"/>
+                <line x1="185" y1="250" x2="200" y2="248" stroke="currentColor" stroke-width="2"/>
+                <!-- Leaves Secondary Stalk -->
+                <path d="M195,150 Q170,130 160,160 Q180,155 195,150" fill="currentColor"/>
+                <path d="M190,250 Q160,240 140,270 Q170,260 190,250" fill="currentColor"/>
+            </svg>
+            <div style="text-align: center; position: relative; z-index: 1;">
                 <h2 class="font-serif" style="color: var(--brand-green); font-size: 2.2rem; margin-bottom: 10px;">Frequently Asked Questions</h2>
                 <div style="height: 3px; width: 60px; background-color: var(--brand-gold); margin: 0 auto;"></div>
             </div>
 
-            <div class="faq-container">
+            <div class="faq-container" style="position: relative; z-index: 1;">
                 <!-- Question 1 -->
                 <div class="faq-item">
                     <div class="faq-question">What is the difference between cow ghee and buffalo ghee?</div>

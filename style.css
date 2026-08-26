@@ -130,24 +130,113 @@ header {
 
 /* --- TRUST BAR --- */
 .trust-bar {
-  background-color: #fff;
-  border-top: 1px solid rgba(212, 175, 55, 0.3);
-  border-bottom: 1px solid rgba(212, 175, 55, 0.3);
-  padding: 20px 0;
+  position: relative;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  border-top: 1px solid rgba(212, 175, 55, 0.4);
+  border-bottom: 1px solid rgba(212, 175, 55, 0.4);
+  padding: 22px 0;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+  overflow: hidden;
+}
+
+.trust-bar::after {
+  content: '';
+  position: absolute;
+  top: 0; left: -100%;
+  width: 50%; height: 100%;
+  background: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.8), rgba(212, 175, 55, 0.1), transparent);
+  animation: whiteBarShine 5s infinite;
+  pointer-events: none;
+}
+
+@keyframes whiteBarShine {
+  0% { left: -100%; }
+  30% { left: 200%; }
+  100% { left: 200%; }
 }
 
 .trust-inner {
+  position: relative;
+  z-index: 1;
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  gap: 40px;
-  font-weight: 500;
-  font-size: 0.9rem;
+  gap: 50px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  letter-spacing: 0.5px;
+  color: var(--brand-green); /* Dark green for contrast on white */
 }
 
-/* --- FEATURED PRODUCTS --- */
+.trust-inner span {
+  display: inline-flex;
+  align-items: center;
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.trust-inner span:hover {
+  transform: translateY(-2px);
+  color: #D4AF37; /* Brand gold on hover */
+}
+
+/* --- GLOBAL VIEWPORT ANIMATED BACKGROUND --- */
+.global-animated-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -2;
+  background: linear-gradient(-45deg, #fdfbfb, #fff8e1, #f3fae8, #fff3e0, #fdfbfb);
+  background-size: 400% 400%;
+  animation: productBgGradient 15s ease infinite;
+  pointer-events: none;
+}
+
+@keyframes productBgGradient {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.global-animated-bg::before,
+.global-animated-bg::after {
+  content: "";
+  position: absolute;
+  width: 40vw;
+  height: 40vw;
+  border-radius: 50%;
+  filter: blur(90px);
+  z-index: -1;
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+.global-animated-bg::before {
+  background: rgba(212, 175, 55, 0.4);
+  top: -10%;
+  left: -10%;
+  animation: floatProductBlobs 14s ease-in-out infinite alternate;
+}
+
+.global-animated-bg::after {
+  background: rgba(76, 175, 80, 0.25);
+  bottom: -10%;
+  right: -10%;
+  animation-delay: -7s;
+  animation: floatProductBlobs 14s ease-in-out infinite alternate-reverse;
+}
+
+@keyframes floatProductBlobs {
+  0% { transform: translate(0, 0) scale(1); }
+  100% { transform: translate(15vw, 15vh) scale(1.2); }
+}
+
 .products-section {
-  padding: 80px 0;
+  padding: 60px 0;
+  position: relative;
+  z-index: 1;
 }
 
 .products-section h2 {
@@ -1463,48 +1552,8 @@ footer {
   padding: 100px 0;
   position: relative;
   overflow: hidden;
-  background: linear-gradient(-45deg, #fdfbfb, #fff8e1, #f3fae8, #fff3e0, #fdfbfb);
-  background-size: 400% 400%;
-  animation: reviewBgGradient 15s ease infinite;
 }
 
-@keyframes reviewBgGradient {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
-}
-
-.interactive-reviews-section::before,
-.interactive-reviews-section::after {
-  content: "";
-  position: absolute;
-  width: 40vw;
-  height: 40vw;
-  border-radius: 50%;
-  filter: blur(90px);
-  z-index: 0;
-  opacity: 0.7;
-  animation: floatReviewBlobs 12s ease-in-out infinite alternate;
-  pointer-events: none;
-}
-
-.interactive-reviews-section::before {
-  background: rgba(212, 175, 55, 0.4); /* Brand Gold */
-  top: -20%;
-  left: -10%;
-}
-
-.interactive-reviews-section::after {
-  background: rgba(76, 175, 80, 0.3); /* Brand Green */
-  bottom: -20%;
-  right: -10%;
-  animation-delay: -6s;
-}
-
-@keyframes floatReviewBlobs {
-  0% { transform: translate(0, 0) scale(1); }
-  100% { transform: translate(15vw, 15vh) scale(1.3); }
-}
 
 .interactive-reviews-header,
 .review-marquee-track {
@@ -1576,17 +1625,39 @@ footer {
 /* Default Card State */
 .interactive-card {
   width: 320px;
-  background: #ffffff;
-  border-radius: 16px;
-  padding: 30px 20px;
+  background: linear-gradient(145deg, #ffffff 0%, #fdfcf7 100%);
+  border-radius: 20px;
+  padding: 35px 20px;
   text-align: center;
-  border: 1px solid rgba(212, 175, 55, 0.3);
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+  border: 1px solid rgba(212, 175, 55, 0.15);
+  box-shadow: 0 12px 25px rgba(26, 67, 49, 0.05), inset 0 2px 10px rgba(255, 255, 255, 1);
   cursor: pointer;
-  transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1); /* Smooth snap transition */
+  transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
   display: flex;
   flex-direction: column;
   align-items: center;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Beautiful Watermark Quote Icon */
+.interactive-card::before {
+  content: '”';
+  position: absolute;
+  top: -15px;
+  right: 25px;
+  font-family: 'Playfair Display', serif;
+  font-size: 140px;
+  color: rgba(212, 175, 55, 0.06);
+  line-height: 1;
+  pointer-events: none;
+  transition: all 0.5s ease;
+  z-index: 0;
+}
+
+.interactive-card:hover::before {
+  color: rgba(212, 175, 55, 0.12);
+  transform: scale(1.1) rotate(5deg);
 }
 
 /* Default Image State (Large Circle) */
@@ -1595,16 +1666,21 @@ footer {
   height: 140px;
   border-radius: 50%;
   object-fit: cover;
-  border: 4px solid var(--brand-gold);
+  border: 4px solid #fff;
+  box-shadow: 0 0 0 3px var(--brand-gold), 0 8px 20px rgba(0,0,0,0.1);
   transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
-  margin-bottom: 15px;
+  margin-bottom: 20px;
+  position: relative;
+  z-index: 2;
 }
 
 .interactive-name {
   font-weight: 700;
   color: var(--brand-green);
-  font-size: 1.2rem;
-  margin-top: 10px;
+  font-size: 1.25rem;
+  margin-top: 15px;
+  position: relative;
+  z-index: 2;
 }
 
 /* Hidden Details State */
@@ -1617,13 +1693,16 @@ footer {
   font-style: italic;
   color: #555;
   line-height: 1.6;
+  position: relative;
+  z-index: 2;
 }
 
 /* --- HOVER EFFECTS (The Magic) --- */
 .interactive-card:hover {
-  transform: translateY(-15px) scale(1.05); /* Lifts and grows the card */
-  box-shadow: 0 25px 50px rgba(26, 67, 49, 0.15);
-  border-color: var(--brand-gold);
+  transform: scale(1.03);
+  box-shadow: 0 30px 60px rgba(26, 67, 49, 0.12), inset 0 2px 10px rgba(255, 255, 255, 1);
+  border-color: rgba(212, 175, 55, 0.4);
+  background: linear-gradient(145deg, #ffffff 0%, #ffffff 100%);
   z-index: 10;
 }
 
@@ -1811,144 +1890,108 @@ footer {
   margin: 0 0 10px 0;
 }
 
-/* Forces the 3 stamps to sit side-by-side */
-.stamps-grid {
+/* --- MODERN PROMISE CARDS --- */
+.promise-cards-wrapper {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 40px;
+  width: 100%;
+  max-width: 1100px;
+  padding: 0 20px;
+  margin: 0 auto;
+}
+
+.promise-card {
+  background: rgba(255, 255, 255, 0.45);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(212, 175, 55, 0.2);
+  border-radius: 24px;
+  padding: 40px 30px;
+  text-align: center;
+  box-shadow: 0 15px 35px rgba(27, 62, 47, 0.04);
+  transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.promise-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, transparent, #D4AF37, transparent);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.promise-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 40px rgba(27, 62, 47, 0.08);
+  border-color: rgba(212, 175, 55, 0.6);
+  background: rgba(255, 255, 255, 0.65);
+}
+
+.promise-card:hover::before {
+  opacity: 1;
+}
+
+.promise-icon-ring {
+  width: 80px;
+  height: 80px;
+  margin: 0 auto 25px auto;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #1B3E2F, #2C5E45);
   display: flex;
-  flex-direction: row; 
+  align-items: center;
   justify-content: center;
-  align-items: flex-start;
-  gap: 60px;
-  width: 100%;
-  max-width: 1200px;
+  box-shadow: 0 10px 20px rgba(27, 62, 47, 0.15), inset 0 0 0 4px rgba(212, 175, 55, 0.2);
+  transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
-/* Forces the text to stay perfectly under the stamp */
-.trust-stamp-card {
-  display: flex;
-  flex-direction: column;
-  align-items: center; 
-  text-align: center; 
-  max-width: 320px;
-  width: 100%;
+.promise-card:hover .promise-icon-ring {
+  transform: scale(1.1) rotate(5deg);
+  box-shadow: 0 12px 25px rgba(27, 62, 47, 0.2), inset 0 0 0 2px #D4AF37;
 }
 
-.stamp-title {
-  font-size: 1.15rem;
+.promise-icon-ring svg {
+  width: 36px;
+  height: 36px;
+  color: #F9E596;
+}
+
+.promise-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.4rem;
   color: #1B3E2F;
   font-weight: 700;
-  margin-bottom: 12px;
-  text-transform: uppercase;
-  letter-spacing: 1px;
+  margin-bottom: 15px;
+  letter-spacing: 0.5px;
 }
 
-.stamp-desc {
-  font-size: 0.95rem;
-  color: #555;
+.promise-desc {
+  font-size: 1rem;
+  color: #4a4a4a;
   line-height: 1.6;
   margin: 0;
 }
 
-
-/* --- 2. ADVANCED PHYSICAL STAMPER ANIMATION --- */
-.stamp-container {
-  position: relative;
-  width: 120px;
-  height: 120px;
-  margin: 0 auto 25px auto;
-}
-
-/* The Ink Seal */
-.stamp-ink {
-  width: 110px;
-  height: 110px;
-  margin: 5px auto;
-  border: 4px solid #1B3E2F;
-  border-radius: 50%;
-  padding: 5px;
-  opacity: 0; 
-  transform: scale(1.1) rotate(-15deg);
-}
-.stamp-ink .stamp-inner {
-  width: 100%;
-  height: 100%;
-  border: 2px dashed #1B3E2F;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.stamp-icon { font-size: 2.5rem; color: #1B3E2F; }
-
-/* The Physical Stamper Tool */
-.stamper-tool {
-  position: absolute;
-  top: -10px;
-  left: 50%;
-  transform: translateX(-50%) translateY(-250px);
-  width: 80px;
-  z-index: 10;
-  opacity: 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  pointer-events: none;
-}
-
-/* 3D Mahogany Wood Handle */
-.stamper-handle {
-  width: 28px;
-  height: 60px;
-  background: linear-gradient(to right, #4a2810, #8b4513 30%, #a0522d 70%, #4a2810);
-  border-radius: 15px 15px 5px 5px;
-  box-shadow: inset -3px 0 5px rgba(0,0,0,0.5), inset 3px 0 5px rgba(255,255,255,0.15);
-}
-
-/* 3D Brass Base with Rubber Pad */
-.stamper-base {
-  width: 76px;
-  height: 22px;
-  background: linear-gradient(to right, #99751e, #d4af37 40%, #f9e596 60%, #99751e);
-  border-radius: 8px 8px 3px 3px;
-  border-bottom: 5px solid #222;
-  box-shadow: 0 15px 20px rgba(0,0,0,0.4);
-  margin-top: -3px;
-}
-
-/* Keyframe Triggers (Staggered by HTML delay) */
-.stamp-container.is-stamped .stamper-tool {
-  animation: slamTool 1.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
-  animation-delay: inherit;
-}
-.stamp-container.is-stamped .stamp-ink {
-  animation: revealInk 1.5s forwards;
-  animation-delay: inherit;
-}
-
-/* Stamper flies down, squishes, and lifts off */
-@keyframes slamTool {
-  0% { transform: translateX(-50%) translateY(-250px) rotate(-15deg); opacity: 0; }
-  15% { transform: translateX(-50%) translateY(0px) rotate(0deg); opacity: 1; }
-  22% { transform: translateX(-50%) translateY(8px) scaleY(0.85); opacity: 1; }
-  35% { transform: translateX(-50%) translateY(-30px) scaleY(1); opacity: 1; }
-  70% { transform: translateX(-50%) translateY(-60px); opacity: 1; }
-  100% { transform: translateX(-50%) translateY(-300px); opacity: 0; }
-}
-
-/* Ink appears exactly at the moment of the squish */
-@keyframes revealInk {
-  0%, 20% { opacity: 0; transform: scale(1.1) rotate(-15deg); filter: blur(2px); }
-  22% { opacity: 1; transform: scale(1) rotate(-5deg); filter: blur(0px); } 
-  100% { opacity: 1; transform: scale(1) rotate(-5deg); filter: blur(0px); }
-}
-
-/* --- 3. MOBILE VIEW FIX --- */
-@media (max-width: 768px) {
-  .stamps-grid {
-    flex-direction: column; /* Safely stacks them on phones */
-    align-items: center;
-    gap: 40px;
+@media (max-width: 900px) {
+  .promise-cards-wrapper {
+    grid-template-columns: repeat(2, 1fr);
   }
 }
+
+@media (max-width: 600px) {
+  .promise-cards-wrapper {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+  .promise-card {
+    padding: 30px 20px;
+  }
+}
+
 
 
 
@@ -3062,19 +3105,36 @@ body.no-scroll {
 /* ========================================================= */
 /* CERTIFICATION BANNER                                      */
 /* ========================================================= */
+/* ========================================================= */
+/* CERTIFICATION BANNER                                      */
+/* ========================================================= */
 .cert-banner {
-    background-color: var(--brand-green);
+    background: linear-gradient(135deg, #1a4331 0%, #112d21 100%);
     color: #fff;
-    padding: 60px 20px;
+    padding: 70px 20px;
+    border-top: 2px solid rgba(212, 175, 55, 0.2);
+    border-bottom: 2px solid rgba(212, 175, 55, 0.2);
+    position: relative;
+    overflow: hidden;
+}
+
+.cert-banner::before {
+    content: '';
+    position: absolute;
+    top: -50%; left: -50%; width: 200%; height: 200%;
+    background: radial-gradient(circle, rgba(212,175,55,0.08) 0%, transparent 60%);
+    pointer-events: none;
 }
 
 .cert-grid {
     display: flex;
     flex-wrap: wrap;
-    gap: 30px;
+    gap: 40px;
     justify-content: center;
-    max-width: 1200px;
+    max-width: 1100px;
     margin: 0 auto;
+    position: relative;
+    z-index: 1;
 }
 
 .cert-item {
@@ -3084,24 +3144,51 @@ body.no-scroll {
     text-align: center;
     flex: 1;
     min-width: 250px;
+    padding: 30px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    transition: transform 0.3s ease, background 0.3s ease;
 }
 
-.cert-item .icon {
-    font-size: 3rem;
-    margin-bottom: 15px;
+.cert-item:hover {
+    transform: translateY(-5px);
+    background: rgba(255, 255, 255, 0.06);
+    border-color: rgba(212, 175, 55, 0.3);
+}
+
+.cert-item .icon-wrapper {
+    width: 80px;
+    height: 80px;
+    background: rgba(212, 175, 55, 0.1);
+    border: 1px solid rgba(212, 175, 55, 0.3);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 25px;
+    box-shadow: 0 0 20px rgba(212, 175, 55, 0.1);
+}
+
+.cert-svg-icon {
+    width: 36px;
+    height: 36px;
     color: var(--brand-gold);
 }
 
 .cert-item h3 {
-    font-size: 1.2rem;
+    font-size: 1.4rem;
     font-family: 'Playfair Display', serif;
     letter-spacing: 1px;
-    margin-bottom: 5px;
+    margin-bottom: 10px;
+    color: var(--brand-gold);
 }
 
 .cert-item p {
-    font-size: 0.95rem;
-    opacity: 0.8;
+    font-size: 1rem;
+    opacity: 0.85;
+    line-height: 1.5;
 }
 
 /* ========================================================= */
