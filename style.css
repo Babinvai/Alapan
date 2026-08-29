@@ -3284,6 +3284,7 @@ body.no-scroll {
 
     /* 2-Column Product Grid for Mobile */
     .product-grid {
+        display: grid !important;
         grid-template-columns: 1fr 1fr !important;
         gap: 12px !important;
         padding-top: 10px;
@@ -3292,7 +3293,9 @@ body.no-scroll {
     /* Product card internal spacing adjustments for 2-column mobile layout */
     .product-card {
         padding: 12px 8px !important;
-        border-width: 2px !important; /* Slightly thinner border for small cards */
+        border-width: 2px !important;
+        width: 100% !important; /* Override desktop fixed width */
+        min-width: 0 !important; /* Crucial: Override the 300px min-width so 2 fit on a phone screen */
     }
 
     /* Scale down product titles and text to fit perfectly */
