@@ -1679,8 +1679,16 @@
         }
         
         @media (max-width: 768px) {
-            .process-section-framed { border-width: 6px; padding-top: 20px; }
-            .process-diorama-stage { height: 250px; }
+            .process-section-framed { 
+                border-width: 6px !important; 
+                padding-top: 25px !important; 
+                margin: 50px 15px !important; /* Adds space above and sides to restore the 'box' look */
+                border-radius: 8px !important;
+                width: auto !important;
+            }
+            .process-text-overlay h2 { font-size: 1.8rem !important; }
+            .process-text-overlay p { font-size: 0.95rem !important; padding: 0 10px; }
+            .process-diorama-stage { height: 140px !important; } /* Restores aspect ratio so the animation isn't cropped */
             .dio-legends { flex-direction: column; padding: 10px; }
             .dio-legend-item { border-right: none; border-bottom: 1px solid rgba(46, 29, 20, 0.2); padding: 10px 0; }
             .dio-legend-item:last-child { border-bottom: none; }
