@@ -1744,6 +1744,13 @@ footer {
     display: none !important;
   }
 
+  /* Hide expensive CSS particle animations on mobile to stop lagging */
+  .birds-container,
+  .leaves-container,
+  .bug-container {
+    display: none !important;
+  }
+
   /* Keep the desktop background (Image 3.png from inline style) and center it */
   .hero {
     position: relative !important;
@@ -1751,7 +1758,8 @@ footer {
     background-size: cover !important;
     background-position: center center !important; 
     background-repeat: no-repeat !important;
-    padding: 60px 15px 40px !important; /* Smaller padding to fit in one frame */
+    /* Increased bottom padding to 140px to push buttons completely above the 150px tall grass */
+    padding: 60px 15px 140px !important; 
     min-height: auto !important;
   }
 
@@ -1792,6 +1800,8 @@ footer {
     justify-content: center !important;
     gap: 10px !important;
     margin-top: 0 !important;
+    position: relative;
+    z-index: 10;
   }
   
   .hero-buttons .btn-primary, 
