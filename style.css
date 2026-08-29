@@ -1744,12 +1744,7 @@ footer {
     display: none !important;
   }
 
-  /* Hide expensive CSS particle animations on mobile to stop lagging */
-  .birds-container,
-  .leaves-container,
-  .bug-container {
-    display: none !important;
-  }
+  /* Animations are now optimized in HTML, so we can display them on mobile */
 
   /* Keep the desktop background (Image 3.png from inline style) and center it */
   .hero {

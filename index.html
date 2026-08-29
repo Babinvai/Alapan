@@ -211,11 +211,11 @@
                 .bird-12 { top: 38%; left: -10%; width: 36px; height: 36px; animation-duration: 24s, 0.42s; animation-delay: -16s, 0.6s; }
 
                 @keyframes fly {
-                    0% { left: -10%; margin-top: 0px; }
-                    25% { margin-top: -20px; }
-                    50% { margin-top: 15px; }
-                    75% { margin-top: -10px; }
-                    100% { left: 110%; margin-top: 0px; }
+                    0% { translate: 0 0px; }
+                    25% { translate: 30vw -20px; }
+                    50% { translate: 60vw 15px; }
+                    75% { translate: 90vw -10px; }
+                    100% { translate: 120vw 0px; }
                 }
                 @keyframes flap {
                     0%, 100% { transform: scaleY(1) rotate(-2deg); }
@@ -240,12 +240,12 @@
                 .leaf-8 { left: 80%; width: 17px; height: 17px; animation-duration: 17s; animation-delay: 7s; }
 
                 @keyframes fall {
-                    0% { top: -50px; margin-left: 0px; transform: rotate(0deg); }
-                    20% { margin-left: -20px; transform: rotate(45deg); }
-                    40% { margin-left: 20px; transform: rotate(90deg); }
-                    60% { margin-left: -20px; transform: rotate(135deg); }
-                    80% { margin-left: 20px; transform: rotate(180deg); }
-                    100% { top: 110%; margin-left: -20px; transform: rotate(225deg); }
+                    0% { translate: 0px 0; transform: rotate(0deg); }
+                    20% { translate: -20px 20vh; transform: rotate(45deg); }
+                    40% { translate: 20px 40vh; transform: rotate(90deg); }
+                    60% { translate: -20px 60vh; transform: rotate(135deg); }
+                    80% { translate: 20px 80vh; transform: rotate(180deg); }
+                    100% { translate: -20px 120vh; transform: rotate(225deg); }
                 }
 
                 .grass-container {
