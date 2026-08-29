@@ -3284,6 +3284,7 @@ body.no-scroll {
 
     /* 2-Column Product Grid for Mobile */
     .product-grid {
+        display: grid !important;
         grid-template-columns: 1fr 1fr !important;
         gap: 12px !important;
         padding-top: 10px;
