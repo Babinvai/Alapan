@@ -3259,6 +3259,22 @@ body.no-scroll {
         padding: 15px 10px !important;
     }
 
+    /* Refine the Trust Bar / Features for a perfect symmetrical mobile grid */
+    .trust-inner {
+        display: grid !important;
+        grid-template-columns: 1fr 1fr !important;
+        gap: 20px 10px !important;
+        justify-items: center;
+        text-align: center;
+        font-size: 0.85rem !important;
+        padding: 0 5px;
+    }
+    
+    /* Center the last item perfectly across the bottom row */
+    .trust-inner span:last-child {
+        grid-column: 1 / -1;
+    }
+
     /* Perfect sizing for section titles to prevent overflow */
     h2, .font-serif h2 {
         font-size: 1.8rem !important;
