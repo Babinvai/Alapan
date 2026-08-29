@@ -3305,6 +3305,12 @@ body.no-scroll {
         width: calc(50% - 6px) !important; /* Exactly matches the width of the other 1fr cards */
     }
 
+    /* Provide appropriate breathing room for the Traceable Heritage badge on mobile */
+    .traceable-badge {
+        margin-top: 45px !important;
+        margin-bottom: 25px !important;
+    }
+
     /* Scale down product titles and text to fit perfectly */
     .product-card h3 {
         font-size: 0.85rem !important;
