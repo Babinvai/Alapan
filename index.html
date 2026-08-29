@@ -2298,61 +2298,74 @@
                         document.querySelectorAll('.faq-item').forEach(item => {
                             if (item !== parent) item.classList.remove('active');
                         });
+                    });
+                });
+
                 // Cinematic Stamper Animation Logic
                 const promiseCards = document.querySelectorAll('.promise-card');
                 const trustSection = document.querySelector('.trust-stamps-section');
                 
-                // Hide cards initially
-                promiseCards.forEach(card => {
-                    card.style.opacity = '0';
-                    card.style.transform = 'scale(0.9) translateY(30px)';
-                    card.style.animation = 'none'; // reset any old animation
-                });
-
                 async function playCinematicStamper() {
+                    if (!trustSection) return;
+                    
                     try {
                         trustSection.style.position = 'relative'; 
 
                         const stamper = document.createElement('div');
                         stamper.id = 'cinematic-stamper-wrapper';
                         stamper.style.position = 'absolute';
+                        stamper.style.top = '0'; // CRITICAL: Sets absolute anchor to top-left of section
+                        stamper.style.left = '0';
                         stamper.style.zIndex = '9999';
                         stamper.style.pointerEvents = 'none';
                         stamper.style.transformOrigin = 'bottom center';
                         stamper.style.opacity = '0';
                         
-                        // High-quality gold and wood stamper SVG
+                        // Extremely realistic looking stamper SVG
                         stamper.innerHTML = `
-                            <svg viewBox="0 0 100 120" width="160" height="180" style="filter: drop-shadow(0px 30px 20px rgba(27,62,47,0.5)); transform-origin: center bottom; display:block;">
+                            <svg viewBox="0 0 100 120" width="160" height="180" style="filter: drop-shadow(0px 40px 25px rgba(0,0,0,0.6)); transform-origin: center bottom; display:block;">
                                 <defs>
                                     <linearGradient id="gold-metal" x1="0%" y1="0%" x2="100%" y2="0%">
-                                        <stop offset="0%" stop-color="#b8860b" />
+                                        <stop offset="0%" stop-color="#9a7109" />
                                         <stop offset="30%" stop-color="#ffd700" />
                                         <stop offset="50%" stop-color="#fff8dc" />
                                         <stop offset="70%" stop-color="#ffd700" />
-                                        <stop offset="100%" stop-color="#b8860b" />
+                                        <stop offset="100%" stop-color="#9a7109" />
                                     </linearGradient>
                                     <linearGradient id="dark-wood" x1="0%" y1="0%" x2="100%" y2="0%">
-                                        <stop offset="0%" stop-color="#3e2723" />
-                                        <stop offset="30%" stop-color="#5d4037" />
-                                        <stop offset="70%" stop-color="#4e342e" />
-                                        <stop offset="100%" stop-color="#3e2723" />
+                                        <stop offset="0%" stop-color="#2a1610" />
+                                        <stop offset="50%" stop-color="#4e342e" />
+                                        <stop offset="100%" stop-color="#2a1610" />
                                     </linearGradient>
                                 </defs>
-                                <ellipse cx="50" cy="15" rx="18" ry="10" fill="url(#gold-metal)" />
-                                <path d="M 32 15 C 32 40, 42 55, 46 75 L 54 75 C 58 55, 68 40, 68 15 Z" fill="url(#dark-wood)" />
-                                <ellipse cx="50" cy="45" rx="14" ry="4" fill="url(#gold-metal)" />
-                                <path d="M 20 85 Q 50 70 80 85 L 85 105 L 15 105 Z" fill="url(#gold-metal)" />
-                                <rect x="18" y="105" width="64" height="6" rx="2" fill="#1b3e2f" />
+                                <!-- Knob Top -->
+                                <ellipse cx="50" cy="12" rx="20" ry="12" fill="url(#gold-metal)" />
+                                <!-- Handle Body -->
+                                <path d="M 30 12 C 30 40, 42 60, 46 80 L 54 80 C 58 60, 70 40, 70 12 Z" fill="url(#dark-wood)" />
+                                <!-- Gold Ring -->
+                                <ellipse cx="50" cy="50" rx="15" ry="5" fill="url(#gold-metal)" />
+                                <!-- Stamp Mount -->
+                                <path d="M 15 90 Q 50 70 85 90 L 90 105 L 10 105 Z" fill="url(#gold-metal)" />
+                                <!-- Rubber Pad -->
+                                <rect x="14" y="105" width="72" height="8" rx="2" fill="#111" />
                             </svg>
                         `;
                         
                         trustSection.appendChild(stamper);
                         
+                        // Hide cards instantly right when animation triggers
+                        promiseCards.forEach(card => {
+                            card.style.opacity = '0';
+                            card.style.transform = 'scale(0.9) translateY(30px)';
+                            card.style.animation = 'none'; // reset any old animation
+                        });
+
+                        // Start off-screen right using dynamic window width to avoid overflow issues
+                        const startX = window.innerWidth;
                         stamper.style.transition = 'none';
-                        stamper.style.transform = 'translate(800px, -200px) rotate(45deg) scale(1.5)';
+                        stamper.style.transform = `translate(${startX}px, -100px) rotate(45deg) scale(1.5)`;
                         
-                        await new Promise(r => requestAnimationFrame(r));
+                        await new Promise(r => setTimeout(r, 50)); // Ensure DOM applies initial transform
                         stamper.style.opacity = '1';
                         
                         for (let i = 0; i < promiseCards.length; i++) {
@@ -2362,41 +2375,50 @@
                             const ringRect = ring.getBoundingClientRect();
                             const sectionRect = trustSection.getBoundingClientRect();
                             
-                            // 80 is half stamper width (160)
+                            // 80 is half stamper width
                             const targetX = ringRect.left - sectionRect.left + (ringRect.width / 2) - 80; 
-                            // 170 positions the base of stamper at center
+                            // 170 positions the rubber pad at the center of the ring
                             const targetY = ringRect.top - sectionRect.top + (ringRect.height / 2) - 170; 
                             
-                            // Swoop in
-                            stamper.style.transition = 'transform 0.4s cubic-bezier(0.25, 1, 0.5, 1)';
-                            stamper.style.transform = `translate(${targetX}px, ${targetY - 100}px) rotate(0deg) scale(1.1)`;
+                            // Swoop in and hover
+                            stamper.style.transition = 'transform 0.45s cubic-bezier(0.25, 1, 0.5, 1)';
+                            stamper.style.transform = `translate(${targetX}px, ${targetY - 100}px) rotate(0deg) scale(1.15)`;
                             await new Promise(r => setTimeout(r, 450));
                             
-                            // SMASH!
-                            stamper.style.transition = 'transform 0.12s cubic-bezier(0.5, 0, 1, 1)';
-                            stamper.style.transform = `translate(${targetX}px, ${targetY + 20}px) rotate(0deg) scale(1) scaleY(0.85)`;
-                            await new Promise(r => setTimeout(r, 120));
+                            // SMASH down
+                            stamper.style.transition = 'transform 0.15s cubic-bezier(0.5, 0, 1, 1)';
+                            stamper.style.transform = `translate(${targetX}px, ${targetY + 25}px) rotate(0deg) scale(1) scaleY(0.8)`;
+                            await new Promise(r => setTimeout(r, 150));
                             
-                            // Pop the card
+                            // CRITICAL FIX: Clear inline styles blocking the CSS animation
+                            promiseCards[i].style.opacity = '';
+                            promiseCards[i].style.transform = '';
+                            promiseCards[i].style.animation = '';
+                            
+                            // Pop the card instantly on impact
                             promiseCards[i].classList.add('stamped-reveal');
                             
-                            // Recoil
-                            stamper.style.transition = 'transform 0.3s cubic-bezier(0.25, 1, 0.5, 1)';
-                            stamper.style.transform = `translate(${targetX}px, ${targetY - 100}px) rotate(0deg) scale(1.15)`;
-                            await new Promise(r => setTimeout(r, 300));
+                            // Recoil up
+                            stamper.style.transition = 'transform 0.35s cubic-bezier(0.25, 1, 0.5, 1)';
+                            stamper.style.transform = `translate(${targetX}px, ${targetY - 100}px) rotate(0deg) scale(1.2)`;
+                            await new Promise(r => setTimeout(r, 350));
                         }
                         
-                        // Fly away
-                        stamper.style.transition = 'transform 0.6s cubic-bezier(0.5, 0, 1, 1), opacity 0.5s ease';
-                        stamper.style.transform = 'translate(-800px, -200px) rotate(-45deg) scale(1.5)';
+                        // Fly away left
+                        stamper.style.transition = 'transform 0.6s cubic-bezier(0.5, 0, 1, 1), opacity 0.6s ease';
+                        stamper.style.transform = 'translate(-400px, -100px) rotate(-45deg) scale(1.5)';
                         stamper.style.opacity = '0';
                         
                         await new Promise(r => setTimeout(r, 600));
                         stamper.remove();
                     } catch (e) {
                         console.error('Stamper animation error:', e);
-                        // Fallback: just reveal the cards if something fails
-                        promiseCards.forEach(c => c.classList.add('stamped-reveal'));
+                        promiseCards.forEach(c => {
+                            c.style.opacity = '';
+                            c.style.transform = '';
+                            c.style.animation = '';
+                            c.classList.add('stamped-reveal');
+                        });
                     }
                 }
 
@@ -2408,11 +2430,13 @@
                         playCinematicStamper();
                         observer.disconnect();
                     }
-                }, { threshold: 0.1 });
+                }, { 
+                    rootMargin: "0px",
+                    threshold: 0.2 
+                });
 
-                // Observe the first card instead of the whole section to ensure it triggers correctly on mobile
                 if (promiseCards.length > 0) {
-                    promiseObserver.observe(promiseCards[0]);
+                    promiseObserver.observe(promiseCards[0]); // Only observe the first card
                 }
             });
         </script>
