@@ -3282,25 +3282,58 @@ body.no-scroll {
         padding: 0 10px;
     }
 
-    /* Ensure product grid cards have enough breathing room */
+    /* 2-Column Product Grid for Mobile */
     .product-grid {
-        gap: 25px !important;
+        grid-template-columns: 1fr 1fr !important;
+        gap: 12px !important;
         padding-top: 10px;
     }
 
-    /* Product card internal spacing adjustments for smaller screens */
+    /* Product card internal spacing adjustments for 2-column mobile layout */
     .product-card {
-        padding: 20px 15px !important;
+        padding: 12px 8px !important;
+        border-width: 2px !important; /* Slightly thinner border for small cards */
     }
 
+    /* Scale down product titles and text to fit perfectly */
+    .product-card h3 {
+        font-size: 0.85rem !important;
+        line-height: 1.2 !important;
+        margin-bottom: 4px !important;
+    }
+
+    .product-card p {
+        font-size: 0.75rem !important;
+        margin-bottom: 8px !important;
+    }
+
+    /* Optimize the rating for narrow cards */
+    .product-rating {
+        font-size: 0.7rem !important;
+        gap: 2px !important;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    
+    .rating-label {
+        display: none !important; /* Hide the word 'Rating' to save space */
+    }
+
+    .price {
+        font-size: 1.1rem !important;
+        margin: 8px 0 !important;
+    }
+
+    /* Ensure buttons stack nicely and fit the small cards */
     .product-actions {
-        flex-direction: column !important; /* Stack buttons on tiny screens for better tap targets */
-        gap: 10px !important;
+        flex-direction: column !important; 
+        gap: 8px !important;
+        margin-top: 5px !important;
     }
 
     .btn-primary, .btn-buy-now {
         width: 100% !important;
-        padding: 12px 0 !important;
-        font-size: 1rem !important;
+        padding: 8px 0 !important;
+        font-size: 0.85rem !important;
     }
 }
