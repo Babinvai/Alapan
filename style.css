@@ -1318,14 +1318,21 @@ footer {
   display: flex;
   flex-direction: column;
   align-items: center;
+  -webkit-transform-origin: 50% -150px;
   transform-origin: 50% -150px;
+  -webkit-animation: pendulumSway 5s infinite alternate ease-in-out;
   animation: pendulumSway 5s infinite alternate ease-in-out;
+  -webkit-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
 }
 
 /* The long rope extending upwards to the header */
 .honey-stick-anim::before, .ghee-spoon-anim::before {
   content: '';
   position: absolute;
+  display: block;
   bottom: 108px; /* Attaches exactly to the knot in the SVG netting */
   left: 50%;
   width: 3px;
@@ -1337,21 +1344,34 @@ footer {
       #8b5a2b 3px,
       #8b5a2b 6px
   );
+  -webkit-transform: translateX(-50%);
   transform: translateX(-50%);
   z-index: 1;
   box-shadow: 1px 0 2px rgba(0,0,0,0.4);
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
 }
 
 @keyframes pendulumSway {
-  0% { transform: rotate(-3deg); }
-  100% { transform: rotate(3deg); }
+  0% { -webkit-transform: rotate(-3deg); transform: rotate(-3deg); }
+  100% { -webkit-transform: rotate(3deg); transform: rotate(3deg); }
+}
+
+@-webkit-keyframes pendulumSway {
+  0% { -webkit-transform: rotate(-3deg); }
+  100% { -webkit-transform: rotate(3deg); }
 }
 
 .tool-and-pot-svg {
+  position: relative;
+  display: block;
   width: 80px;
   height: 120px;
   z-index: 2;
+  -webkit-filter: drop-shadow(0 5px 5px rgba(0,0,0,0.15));
   filter: drop-shadow(0 5px 5px rgba(0,0,0,0.15));
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
 }
 
 .animated-tool {
