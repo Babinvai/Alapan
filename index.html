@@ -1190,6 +1190,28 @@
             @keyframes spin-blades {
                 100% { transform: rotate(360deg); }
             }
+            
+            /* Mobile Optimization for Diorama */
+            @media (max-width: 768px) {
+                .village-agri-scene { height: 280px !important; overflow: hidden; }
+                
+                /* Windmill */
+                .windmill-container { transform: scale(0.65) !important; right: -5% !important; bottom: 85px !important; transform-origin: bottom right; }
+                
+                /* Placards spacing */
+                .agri-paddy-mid .placard:nth-child(2) { left: -2% !important; bottom: 50px !important; transform: scale(0.65) rotate(-2deg) !important; }
+                .agri-paddy-mid .placard:nth-child(3) { left: 24% !important; bottom: 35px !important; transform: scale(0.7) rotate(3deg) !important; }
+                .agri-paddy-mid .placard:nth-child(4) { left: 50% !important; bottom: 60px !important; transform: scale(0.65) rotate(-4deg) !important; }
+                .agri-paddy-mid .placard:nth-child(5) { left: 76% !important; bottom: 45px !important; transform: scale(0.7) rotate(2deg) !important; }
+                
+                /* Farmer and Cart */
+                .agri-plowing { transform: scale(0.6) !important; left: -10% !important; transform-origin: left bottom; }
+                .agri-cart { transform: scale(0.6) !important; right: -10% !important; transform-origin: right bottom; }
+                
+                /* Cows */
+                .cows-group { transform: scale(0.6) !important; }
+                .agri-paddy-mid .cows-group { transform: scale(0.5) !important; }
+            }
         </style>
         <section class="village-agri-scene">
             <div class="agri-sky">
