@@ -2305,9 +2305,24 @@
                 const promiseCards = document.querySelectorAll('.promise-card');
                 const trustSection = document.querySelector('.trust-stamps-section');
                 
-                async function playCinematicStamper() {
-                    if (!trustSection) return;
+                // Pre-hide all cards so they don't flash before stamping
+                promiseCards.forEach(card => {
+                    card.style.opacity = '0';
+                    card.style.transform = 'scale(0.9) translateY(30px)';
+                });
+
+                let stamperIsRunning = false;
+                let stampQueue = [];
+
+                async function processStampQueue() {
+                    if (stampQueue.length === 0) {
+                        stamperIsRunning = false;
+                        return;
+                    }
+                    stamperIsRunning = true;
                     
+                    if (!trustSection) return;
+
                     try {
                         trustSection.style.position = 'relative'; 
 
@@ -2353,13 +2368,6 @@
                         
                         trustSection.appendChild(stamper);
                         
-                        // Hide cards instantly right when animation triggers
-                        promiseCards.forEach(card => {
-                            card.style.opacity = '0';
-                            card.style.transform = 'scale(0.9) translateY(30px)';
-                            card.style.animation = 'none'; // reset any old animation
-                        });
-
                         // Start off-screen right using dynamic window width to avoid overflow issues
                         const startX = window.innerWidth;
                         stamper.style.transition = 'none';
@@ -2368,9 +2376,17 @@
                         await new Promise(r => setTimeout(r, 50)); // Ensure DOM applies initial transform
                         stamper.style.opacity = '1';
                         
-                        for (let i = 0; i < promiseCards.length; i++) {
-                            const ring = promiseCards[i].querySelector('.promise-icon-ring');
-                            if (!ring) continue;
+                        while (stampQueue.length > 0) {
+                            const card = stampQueue.shift();
+                            const ring = card.querySelector('.promise-icon-ring');
+                            
+                            if (!ring) {
+                                card.style.opacity = '';
+                                card.style.transform = '';
+                                card.style.animation = '';
+                                card.classList.add('stamped-reveal');
+                                continue;
+                            }
                             
                             const ringRect = ring.getBoundingClientRect();
                             const sectionRect = trustSection.getBoundingClientRect();
@@ -2391,12 +2407,12 @@
                             await new Promise(r => setTimeout(r, 150));
                             
                             // CRITICAL FIX: Clear inline styles blocking the CSS animation
-                            promiseCards[i].style.opacity = '';
-                            promiseCards[i].style.transform = '';
-                            promiseCards[i].style.animation = '';
+                            card.style.opacity = '';
+                            card.style.transform = '';
+                            card.style.animation = '';
                             
                             // Pop the card instantly on impact
-                            promiseCards[i].classList.add('stamped-reveal');
+                            card.classList.add('stamped-reveal');
                             
                             // Recoil up
                             stamper.style.transition = 'transform 0.35s cubic-bezier(0.25, 1, 0.5, 1)';
@@ -2411,8 +2427,16 @@
                         
                         await new Promise(r => setTimeout(r, 600));
                         stamper.remove();
+                        
+                        stamperIsRunning = false;
+                        
+                        // Just in case queue received new items while flying away
+                        if (stampQueue.length > 0) {
+                            processStampQueue();
+                        }
                     } catch (e) {
                         console.error('Stamper animation error:', e);
+                        stamperIsRunning = false;
                         promiseCards.forEach(c => {
                             c.style.opacity = '';
                             c.style.transform = '';
@@ -2422,22 +2446,27 @@
                     }
                 }
 
-                let stamperTriggered = false;
                 const promiseObserver = new IntersectionObserver((entries, observer) => {
-                    const entry = entries.find(e => e.isIntersecting);
-                    if (entry && !stamperTriggered) {
-                        stamperTriggered = true;
-                        playCinematicStamper();
-                        observer.disconnect();
+                    let newIntersections = false;
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            stampQueue.push(entry.target);
+                            observer.unobserve(entry.target);
+                            newIntersections = true;
+                        }
+                    });
+                    
+                    if (newIntersections && !stamperIsRunning) {
+                        processStampQueue();
                     }
                 }, { 
                     rootMargin: "0px",
                     threshold: 0.2 
                 });
 
-                if (promiseCards.length > 0) {
-                    promiseObserver.observe(promiseCards[0]); // Only observe the first card
-                }
+                promiseCards.forEach(card => {
+                    promiseObserver.observe(card);
+                });
             });
         </script>
     </body>
