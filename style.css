@@ -283,11 +283,16 @@ header {
   letter-spacing: 0.5px;
 }
 
-/* Forces each card to maintain exactly the right width */
 .product-card {
-    width: calc(33.333% - 20px);
-    min-width: 300px; /* Prevents them from shrinking too much on phones */
+    width: calc(25% - 23px);
+    min-width: 250px; /* Prevents them from shrinking too much on phones */
     /* ... keep your existing background, border-radius, padding, etc. here ... */
+}
+
+/* Modifier for sections that should remain 3 columns on desktop */
+.product-grid.grid-3-col .product-card {
+    width: calc(33.333% - 20px);
+    min-width: 300px;
 }
 
 /* The elegant inner gold frame */
