@@ -1146,6 +1146,12 @@ footer {
   margin-top: 20px;
 }
 
+@media (max-width: 768px) {
+  .founder-signature {
+    margin-bottom: 50px;
+  }
+}
+
 /* --- SOCIAL ICONS --- */
 .social-icons {
   display: flex;
