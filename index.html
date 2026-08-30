@@ -384,7 +384,155 @@
 
             <div class="container hero-content-animated" style="position: relative; z-index: 2; padding-bottom: 110px;">
                 <!-- NEW ATTRACTIVE BENGALI TAGLINE -->
-                <div class="bengali-tagline glow-text">প্রতিটি ফোঁটায় খাঁটি ঐতিহ্যের স্পর্শ</div>
+                <div class="tagline-anim-wrapper">
+                    <!-- Left: Realistic Honey Pot & Stick -->
+                    <div class="honey-stick-anim">
+                        <svg viewBox="0 0 100 150" class="tool-and-pot-svg realistic">
+                            <defs>
+                                <radialGradient id="clay-grad-real" cx="30%" cy="30%" r="70%">
+                                    <stop offset="0%" stop-color="#e69c67"/>
+                                    <stop offset="30%" stop-color="#c6763f"/>
+                                    <stop offset="80%" stop-color="#693718"/>
+                                    <stop offset="100%" stop-color="#3d1d09"/>
+                                </radialGradient>
+                                <linearGradient id="rim-shadow" x1="0%" y1="0%" x2="0%" y2="100%">
+                                    <stop offset="0%" stop-color="#2a1407"/>
+                                    <stop offset="100%" stop-color="#4a250c"/>
+                                </linearGradient>
+                                <linearGradient id="honey-grad-real" x1="10%" y1="10%" x2="90%" y2="90%">
+                                    <stop offset="0%" stop-color="#ffecb3"/>
+                                    <stop offset="20%" stop-color="#ffb300"/>
+                                    <stop offset="80%" stop-color="#e65100"/>
+                                    <stop offset="100%" stop-color="#bf360c"/>
+                                </linearGradient>
+                                <linearGradient id="wood-grad" x1="0%" y1="0%" x2="100%" y2="0%">
+                                    <stop offset="0%" stop-color="#bcaaa4"/>
+                                    <stop offset="50%" stop-color="#8d6e63"/>
+                                    <stop offset="100%" stop-color="#5d4037"/>
+                                </linearGradient>
+                                <linearGradient id="wood-dark" x1="0%" y1="0%" x2="100%" y2="0%">
+                                    <stop offset="0%" stop-color="#795548"/>
+                                    <stop offset="100%" stop-color="#3e2723"/>
+                                </linearGradient>
+                            </defs>
+                            
+                            <!-- Pot Body -->
+                            <path d="M 20 110 C 5 145, 95 145, 80 110 C 95 85, 75 70, 65 70 L 35 70 C 25 70, 5 85, 20 110 Z" fill="url(#clay-grad-real)" />
+                            
+                            <!-- Inner Rim -->
+                            <ellipse cx="50" cy="70" rx="20" ry="8" fill="url(#rim-shadow)" />
+                            
+                            <!-- Honey Surface & Highlight -->
+                            <ellipse cx="50" cy="72" rx="17" ry="5" fill="url(#honey-grad-real)" />
+                            <ellipse cx="44" cy="71" rx="5" ry="1.5" fill="#ffffff" opacity="0.6"/>
+                            
+                            <!-- Front Rim -->
+                            <path d="M 30 70 C 30 76, 70 76, 70 70 C 70 72, 30 72, 30 70 Z" fill="#9f5f34" />
+                            
+                            <!-- Shika (Rope Netting) -->
+                            <g class="rope-netting" stroke="#a67b5b" stroke-width="1.5" fill="none" stroke-linecap="round">
+                                <!-- Knot -->
+                                <circle cx="50" cy="15" r="3" fill="#8b5a2b" stroke="none"/>
+                                <!-- Vertical strings -->
+                                <path d="M 50 15 Q 30 60 20 110" />
+                                <path d="M 50 15 Q 70 60 80 110" />
+                                <path d="M 50 15 Q 40 60 35 118" />
+                                <path d="M 50 15 Q 60 60 65 118" />
+                                <!-- Horizontal wrapping strings -->
+                                <path d="M 24 95 Q 50 110 76 95" />
+                                <path d="M 21 105 Q 50 120 79 105" />
+                                <path d="M 21 115 Q 50 130 79 115" />
+                            </g>
+                            
+                            <!-- Animated Dipper -->
+                            <g transform="translate(-18, -12) rotate(-35, 50, 50)">
+                                <g class="animated-tool">
+                                    <rect x="47" y="0" width="6" height="50" fill="url(#wood-grad)" rx="3" />
+                                    <path d="M 40 43 C 40 50, 60 50, 60 43 Z" fill="url(#wood-dark)"/>
+                                    <path d="M 38 48 C 38 56, 62 56, 62 48 Z" fill="url(#wood-dark)"/>
+                                    <path d="M 41 53 C 41 61, 59 61, 59 53 Z" fill="url(#wood-dark)"/>
+                                    <path d="M 46 56 C 46 65, 54 65, 54 56 Z" fill="url(#honey-grad-real)"/>
+                                    <path d="M 47 57 Q 48 62 50 62" stroke="#ffffff" stroke-width="1.5" fill="none" opacity="0.6" stroke-linecap="round"/>
+                                </g>
+                            </g>
+                        </svg>
+                        <div class="drop honey-drop"></div>
+                        <div class="drop honey-drop delay-1"></div>
+                    </div>
+
+                    <div class="bengali-tagline glow-text">প্রতিটি ফোঁটায় খাঁটি ঐতিহ্যের স্পর্শ</div>
+                    
+                    <!-- Right: Realistic Ghee Pot & Spoon -->
+                    <div class="ghee-spoon-anim">
+                        <svg viewBox="0 0 100 150" class="tool-and-pot-svg realistic">
+                            <defs>
+                                <linearGradient id="brass-grad-real" x1="0%" y1="0%" x2="100%" y2="0%">
+                                    <stop offset="0%" stop-color="#fff176"/>
+                                    <stop offset="15%" stop-color="#fbc02d"/>
+                                    <stop offset="30%" stop-color="#fff59d"/>
+                                    <stop offset="50%" stop-color="#f57f17"/>
+                                    <stop offset="80%" stop-color="#fbc02d"/>
+                                    <stop offset="100%" stop-color="#3e2723"/>
+                                </linearGradient>
+                                <linearGradient id="brass-inner" x1="0%" y1="0%" x2="0%" y2="100%">
+                                    <stop offset="0%" stop-color="#827717"/>
+                                    <stop offset="100%" stop-color="#332b00"/>
+                                </linearGradient>
+                                <linearGradient id="ghee-grad-real" x1="10%" y1="10%" x2="90%" y2="90%">
+                                    <stop offset="0%" stop-color="#ffffe5"/>
+                                    <stop offset="20%" stop-color="#fff59d"/>
+                                    <stop offset="80%" stop-color="#fbc02d"/>
+                                    <stop offset="100%" stop-color="#f57f17"/>
+                                </linearGradient>
+                                <linearGradient id="silver-grad" x1="0%" y1="0%" x2="100%" y2="0%">
+                                    <stop offset="0%" stop-color="#ffffff"/>
+                                    <stop offset="30%" stop-color="#b0bec5"/>
+                                    <stop offset="70%" stop-color="#eceff1"/>
+                                    <stop offset="100%" stop-color="#78909c"/>
+                                </linearGradient>
+                            </defs>
+                            
+                            <!-- Pot Body -->
+                            <path d="M 15 120 C 5 155, 95 155, 85 120 C 95 90, 70 75, 60 75 L 40 75 C 30 75, 5 90, 15 120 Z" fill="url(#brass-grad-real)" />
+                            <ellipse cx="50" cy="75" rx="24" ry="9" fill="url(#brass-inner)" />
+                            
+                            <!-- Ghee Surface & Highlight -->
+                            <ellipse cx="50" cy="77" rx="20" ry="6" fill="url(#ghee-grad-real)" />
+                            <ellipse cx="42" cy="76" rx="6" ry="1.5" fill="#ffffff" opacity="0.7"/>
+                            
+                            <!-- Front Rim -->
+                            <path d="M 26 75 C 26 81, 74 81, 74 75 C 74 78, 26 78, 26 75 Z" fill="#fff59d" />
+                            
+                            <!-- Shika (Rope Netting) -->
+                            <g class="rope-netting" stroke="#a67b5b" stroke-width="1.5" fill="none" stroke-linecap="round">
+                                <!-- Knot -->
+                                <circle cx="50" cy="15" r="3" fill="#8b5a2b" stroke="none"/>
+                                <!-- Vertical strings -->
+                                <path d="M 50 15 Q 25 60 15 120" />
+                                <path d="M 50 15 Q 75 60 85 120" />
+                                <path d="M 50 15 Q 35 60 30 125" />
+                                <path d="M 50 15 Q 65 60 70 125" />
+                                <!-- Horizontal wrapping strings -->
+                                <path d="M 19 105 Q 50 120 81 105" />
+                                <path d="M 16 115 Q 50 130 84 115" />
+                                <path d="M 17 125 Q 50 140 83 125" />
+                            </g>
+                            
+                            <!-- Animated Spoon -->
+                            <g transform="translate(18, -12) rotate(35, 50, 50)">
+                                <g class="animated-tool">
+                                    <rect x="47" y="0" width="6" height="60" fill="url(#silver-grad)" rx="3" />
+                                    <ellipse cx="50" cy="65" rx="12" ry="18" fill="url(#silver-grad)" />
+                                    <ellipse cx="50" cy="65" rx="9" ry="14" fill="#90a4ae" opacity="0.6"/>
+                                    <ellipse cx="50" cy="67" rx="8" ry="13" fill="url(#ghee-grad-real)" />
+                                    <path d="M 46 63 Q 48 68 50 68" stroke="#ffffff" stroke-width="1.5" fill="none" opacity="0.8" stroke-linecap="round"/>
+                                </g>
+                            </g>
+                        </svg>
+                        <div class="drop ghee-drop"></div>
+                        <div class="drop ghee-drop delay-2"></div>
+                    </div>
+                </div>
 
                 <h1 class="font-serif animated-title">Ghee You Can Trace.<br><span style="color: var(--brand-gold);">Taste You Can Trust.</span></h1>
                 <p class="hero-desc float-up-delay">Traditionally prepared ghee from Krishnanagar, carefully packed and batch-traceable
