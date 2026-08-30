@@ -129,18 +129,26 @@ header {
 }
 
 /* --- TRUST BAR --- */
-.trust-bar {
+.trust-bar-wrapper {
   position: relative;
+  padding: 16px 0;
+  display: flex;
+  align-items: center;
+}
+
+.trust-bar-bg {
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
   background: rgba(255, 255, 255, 0.95);
   backdrop-filter: blur(10px);
   border-top: 1px solid rgba(212, 175, 55, 0.4);
   border-bottom: 1px solid rgba(212, 175, 55, 0.4);
-  padding: 22px 0;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
   overflow: hidden;
+  z-index: 0;
 }
 
-.trust-bar::after {
+.trust-bar-bg::after {
   content: '';
   position: absolute;
   top: 0; left: -100%;
@@ -161,12 +169,31 @@ header {
   z-index: 1;
   display: flex;
   justify-content: center;
-  flex-wrap: wrap;
-  gap: 50px;
+  align-items: center;
+  flex-wrap: nowrap;
+  gap: 30px;
   font-weight: 600;
   font-size: 0.95rem;
   letter-spacing: 0.5px;
-  color: var(--brand-green); /* Dark green for contrast on white */
+  color: var(--brand-green);
+  width: 100%;
+}
+
+.trust-seal-center {
+  width: 75px;
+  height: 75px;
+  border-radius: 50%;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  z-index: 2;
+  margin: 0;
+  border: none;
+}
+
+@media (max-width: 768px) {
+  .trust-inner {
+    flex-wrap: wrap;
+    gap: 15px;
+  }
 }
 
 .trust-inner span {
@@ -3436,20 +3463,31 @@ body.no-scroll {
         padding: 15px 10px !important;
     }
 
-    /* Refine the Trust Bar / Features for a perfect symmetrical mobile grid */
+    /* Refine the Trust Bar / Features for a perfect symmetrical mobile grid with Seal */
     .trust-inner {
-        display: grid !important;
-        grid-template-columns: 1fr 1fr !important;
-        gap: 20px 10px !important;
-        justify-items: center;
+        display: flex !important;
+        flex-wrap: wrap !important;
+        justify-content: center !important;
+        align-items: center !important;
+        gap: 15px 10px !important;
         text-align: center;
         font-size: 0.85rem !important;
         padding: 0 5px;
     }
+    .trust-inner span {
+        flex: 1 1 45%;
+    }
+    .trust-seal-center {
+        flex: 0 0 65px;
+        width: 65px;
+        height: 65px;
+        margin: 5px 0 !important;
+        box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+    }
     
     /* Center the last item perfectly across the bottom row */
     .trust-inner span:last-child {
-        grid-column: 1 / -1;
+        flex: 1 1 100%;
     }
 
     /* Perfect sizing for section titles to prevent overflow */
