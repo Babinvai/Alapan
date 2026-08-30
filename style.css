@@ -3579,3 +3579,79 @@ body.no-scroll {
         font-size: 0.85rem !important;
     }
 }
+
+/* =========================================================
+   FLOATING ACTION BUTTONS (Scroll to Top & WhatsApp)
+========================================================= */
+.floating-actions {
+  position: fixed;
+  bottom: 40px;
+  right: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  z-index: 9999;
+}
+
+.fab {
+  width: 55px;
+  height: 55px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, opacity 0.3s ease;
+  text-decoration: none;
+}
+
+.fab:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 16px rgba(0,0,0,0.3);
+}
+
+.fab-top {
+  background: var(--brand-gold);
+  opacity: 0;
+  visibility: hidden;
+  border: 1.5px solid rgba(255, 255, 255, 0.4);
+}
+
+.fab-top.visible {
+  opacity: 1;
+  visibility: visible;
+}
+
+.fab-top svg {
+  fill: none;
+  stroke: var(--brand-green);
+  stroke-width: 2.5;
+  width: 24px;
+  height: 24px;
+}
+
+.fab-whatsapp {
+  background: #25D366; /* Official WhatsApp Green */
+  border: none;
+}
+
+.fab-whatsapp svg {
+  fill: #ffffff;
+  width: 32px;
+  height: 32px;
+}
+
+@media (max-width: 768px) {
+  .floating-actions {
+    bottom: 25px;
+    right: 15px;
+    gap: 10px;
+  }
+  .fab {
+    width: 50px;
+    height: 50px;
+  }
+  .fab-top svg { width: 22px; height: 22px; }
+  .fab-whatsapp svg { width: 28px; height: 28px; }
+}
