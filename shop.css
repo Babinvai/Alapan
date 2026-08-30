@@ -548,6 +548,10 @@ header a[href="shop.html"]::after, .desktop-nav a[href="shop.html"]::after, .nav
     .cta-text { text-align: center; }
     
     /* Product adjustments */
+    .product-gallery { display: flex; flex-direction: column; }
+    .village-sketch-filler { order: -1; min-height: 200px; margin-top: 0; margin-bottom: 20px; }
+    .main-image-container { order: 2; margin-top: 0; }
+    .thumbnail-wrapper { order: 3; }
     .sticky-panel { position: relative; top: 0; }
     .thumbnail-row { gap: 10px; }
     .price-display { justify-content: center; }
@@ -567,13 +571,6 @@ header a[href="shop.html"]::after, .desktop-nav a[href="shop.html"]::after, .nav
     .hero-actions a { width: 100%; }
     .cta-actions { flex-direction: column; width: 100%; }
     .cta-actions button, .cta-actions a { width: 100%; }
-    
-    /* Shrink the product gallery so image and text fit on one screen */
-    .product-showcase { padding: 20px 0 60px; }
-    .main-image-container { padding: 15px 10px; }
-    .main-image-container img { max-height: 250px; }
-    .village-sketch-filler { min-height: 100px; margin-top: 10px; }
-    .product-grid { gap: 20px !important; }
 }
 
 
