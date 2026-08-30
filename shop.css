@@ -567,6 +567,13 @@ header a[href="shop.html"]::after, .desktop-nav a[href="shop.html"]::after, .nav
     .hero-actions a { width: 100%; }
     .cta-actions { flex-direction: column; width: 100%; }
     .cta-actions button, .cta-actions a { width: 100%; }
+    
+    /* Shrink the product gallery so image and text fit on one screen */
+    .product-showcase { padding: 20px 0 60px; }
+    .main-image-container { padding: 15px 10px; }
+    .main-image-container img { max-height: 250px; }
+    .village-sketch-filler { min-height: 100px; margin-top: 10px; }
+    .product-grid { gap: 20px !important; }
 }
 
 
