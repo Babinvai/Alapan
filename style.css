@@ -1441,6 +1441,9 @@ footer {
     width: 60px;
     height: 90px;
   }
+  .honey-stick-anim::before, .ghee-spoon-anim::before {
+    bottom: 81px; /* Matches scaled knot position */
+  }
   .drop {
     width: 9px;
     height: 12px;
