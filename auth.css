@@ -1,0 +1,217 @@
+/* =========================================================
+   AUTHENTICATION & PROFILE STYLES
+========================================================= */
+
+/* Auth Container (Login & Register) */
+.auth-page {
+    background-color: var(--brand-ivory);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 120px 20px 80px;
+}
+
+.auth-container {
+    background: #fff;
+    max-width: 450px;
+    width: 100%;
+    padding: 50px 40px;
+    border-radius: 12px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.05);
+    border: 1px solid rgba(212, 175, 55, 0.2);
+    text-align: center;
+}
+
+.auth-logo {
+    max-width: 100px;
+    margin-bottom: 25px;
+}
+
+.auth-title {
+    font-family: var(--font-serif);
+    font-size: 2rem;
+    color: var(--brand-green);
+    margin-bottom: 10px;
+}
+
+.auth-subtitle {
+    color: #666;
+    font-size: 0.95rem;
+    margin-bottom: 30px;
+}
+
+.auth-form {
+    text-align: left;
+}
+
+.auth-form .form-group {
+    margin-bottom: 20px;
+}
+
+.auth-form label {
+    display: block;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--brand-green);
+    margin-bottom: 8px;
+}
+
+.auth-form input {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-family: var(--font-sans);
+    font-size: 1rem;
+    outline: none;
+    transition: border-color 0.3s;
+    box-sizing: border-box;
+}
+
+.auth-form input:focus {
+    border-color: var(--brand-gold);
+}
+
+.auth-btn {
+    width: 100%;
+    padding: 14px;
+    background: var(--brand-green);
+    color: #fff;
+    font-size: 1.1rem;
+    font-weight: 600;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.3s;
+    margin-top: 10px;
+}
+
+.auth-btn:hover {
+    background: #0e3022;
+}
+
+.auth-footer {
+    margin-top: 25px;
+    font-size: 0.9rem;
+    color: #666;
+}
+
+.auth-footer a {
+    color: var(--brand-gold);
+    font-weight: bold;
+    text-decoration: none;
+}
+
+/* =========================================================
+   PROFILE / DASHBOARD STYLES
+========================================================= */
+
+.profile-page {
+    background-color: var(--brand-ivory);
+    min-height: 100vh;
+    padding: 120px 20px 80px;
+}
+
+.profile-container {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.profile-header {
+    background: var(--brand-green);
+    color: #fff;
+    padding: 40px;
+    border-radius: 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.profile-greeting h1 {
+    font-family: var(--font-serif);
+    font-size: 2.5rem;
+    margin: 0 0 5px 0;
+}
+
+.profile-greeting p {
+    margin: 0;
+    opacity: 0.8;
+}
+
+.btn-logout {
+    padding: 10px 20px;
+    background: transparent;
+    border: 1px solid rgba(255,255,255,0.4);
+    color: #fff;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.3s;
+    font-weight: 600;
+}
+
+.btn-logout:hover {
+    background: rgba(255,255,255,0.1);
+    border-color: #fff;
+}
+
+.profile-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+}
+
+.profile-card {
+    background: #fff;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+    border: 1px solid rgba(212, 175, 55, 0.2);
+}
+
+.profile-card h3 {
+    font-family: var(--font-serif);
+    font-size: 1.5rem;
+    color: var(--brand-green);
+    margin-bottom: 20px;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 10px;
+}
+
+.account-info-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.account-info-list li {
+    margin-bottom: 15px;
+    font-size: 1rem;
+    color: #444;
+}
+
+.account-info-list li strong {
+    color: var(--brand-green);
+    display: block;
+    font-size: 0.85rem;
+    margin-bottom: 3px;
+}
+
+.empty-orders {
+    text-align: center;
+    color: #888;
+    padding: 20px 0;
+    font-style: italic;
+}
+
+@media (max-width: 768px) {
+    .profile-content {
+        grid-template-columns: 1fr;
+    }
+    .profile-header {
+        flex-direction: column;
+        text-align: center;
+        gap: 20px;
+    }
+}

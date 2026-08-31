@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>[Brand Name] - Traditional Ghee. Tested with Trust.</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
+
+
+    <!-- Google Analytics Placeholder -->
+    <!-- <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-XXXXXXXXXX');
+    </script> -->
+    
+
+    <!-- Meta Pixel Code Placeholder -->
+    <!-- <script>
+      !function(f,b,e,v,n,t,s){...}(window, document,'script','https://connect.facebook.net/en_US/fbevents.js');
+      fbq('init', 'XXXXXXXXXXXXXXX');
+      fbq('track', 'PageView');
+    </script> -->
+
+    <!-- JSON-LD Schema Markup for Local Business & Product SEO -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FoodEstablishment",
+      "name": "[Brand Name]",
+      "image": "URL_TO_YOUR_LOGO",
+      "@id": "",
+      "url": "YOUR_WEBSITE_URL",
+      "telephone": "[Phone]",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "[Address]",
+        "addressLocality": "[Village/Town]",
+        "addressRegion": "[State]",
+        "addressCountry": "IN"
+      },
+      "slogan": "Traditional Ghee. Tested with Trust."
+    }
+    </script>
+    <link rel="stylesheet" href="auth.css">
+</head>
+
+<body>
+    <!-- GLOBAL ANIMATED BACKGROUND -->
+    <div class="global-animated-bg"></div>
+
+        <!-- HEADER -->
+        <header>
+            <!-- ========================================================= -->
+            <!-- 1. MOBILE HEADER (Clean Layout: Cart, Logo, Menu)         -->
+            <!-- ========================================================= -->
+            <div class="mobile-header-layout">
+
+                <!-- LEFT: Cart Icon -->
+                <div class="mobile-header-left">
+                    <!-- Note: Removed 'cart-icon-btn' here so JS only updates the badge number, keeping the SVG safe -->
+                    <a href="#" class="mobile-cart-btn" onclick="window.openCart(); return false;"
+                        aria-label="Open Cart">
+                        <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="#174B37" stroke-width="1.5">
+                            <circle cx="9" cy="21" r="1"></circle>
+                            <circle cx="20" cy="21" r="1"></circle>
+                            <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                        </svg>
+                        <!-- This span is targeted by your JS to update just the number -->
+                        <span class="cart-count">0</span>
+                    </a>
+                </div>
+
+                <!-- CENTER: Brand Logo -->
+                <div class="mobile-header-center">
+                    <a href="index.html" class="logo">
+                        <img src="Logo.png" alt="Ghosh Dhara Logo" class="brand-logo-img">
+                    </a>
+                </div>
+
+                <!-- RIGHT: Hamburger Menu -->
+                <div class="mobile-header-right">
+                    <button id="mobileMenuBtn" class="hamburger-btn" aria-label="Open Menu">
+                        <svg viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="#B86745" stroke-width="2">
+                            <path d="M3 12h18M3 6h18M3 18h18"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+
+            <!-- ========================================================= -->
+            <!-- 2. DESKTOP HEADER (Automatically hidden on mobile via CSS)-->
+            <!-- ========================================================= -->
+            <div class="container header-inner desktop-nav-only">
+
+                <!-- Desktop Logo -->
+                <a href="index.html" class="logo">
+                    <img src="Logo.png" alt="Ghosh Family Ghee Logo" class="brand-logo-img">
+                </a>
+
+                <!-- Desktop Nav -->
+                <nav class="nav-links">
+                    <a href="index.html">Home</a>
+                    <a href="shop.html">Shop</a>
+                    <a href="story.html">Our Story</a>
+                    <a href="traceability.html">Quality</a>
+                    <a href="recipes.html">Recipes</a>
+                    <a href="lab-report.html" style="color: #D35400; font-weight: 700;">Lab Report</a>
+                    <a href="contact.html">Contact</a>
+                </nav>
+
+                <!-- Desktop Utilities: Scan, Account Login & Cart -->
+                <!-- Desktop Utilities: Scan, Cart & Account Login -->
+                <div style="display: flex; align-items: center; gap: 20px;">
+
+                    <a href="scan.html" class="header-scan-btn">🔍 Scan Batch</a>
+
+                    <!-- Desktop Cart Icon (Moved BEFORE the account icon) -->
+                    <a href="#" class="cart-icon-btn text-brand-green" onclick="window.openCart(); return false;"
+                        style="font-weight: bold; text-decoration: none;">🛒 (0)</a>
+
+                    <!-- PREMIUM ACCOUNT LOGIN ICON (Now at the absolute far right!) -->
+                    <a href="login.html" class="header-account-btn" aria-label="Sign In or Register">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round" style="width: 24px; height: 24px;">
+                            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                            <circle cx="12" cy="7" r="4"></circle>
+                        </svg>
+                    </a>
+
+                </div>
+            </div>
+        </header>
+
+        <!-- ========================================================= -->
+        <!-- 3. PREMIUM MOBILE SLIDE-OUT DRAWER                        -->
+        <!-- ========================================================= -->
+        <div id="mobileNavOverlay" class="mobile-nav-overlay"></div>
+        <div id="mobileNavDrawer" class="mobile-nav-drawer">
+
+            <!-- Drawer Header (Logo & Close Button) -->
+            <div class="mobile-nav-header">
+                <img src="Logo.png" alt="Ghosh Dhara" style="max-width: 80px;">
+                <button id="closeMobileNav" class="close-nav-btn">&times;</button>
+            </div>
+
+            <!-- Animated Nav Links (Merged from your old mobile menu) -->
+            <ul class="mobile-nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="shop.html">Shop Ghee</a></li>
+                <li><a href="story.html">Our Story</a></li>
+                <li><a href="traceability.html">Quality & Traceability</a></li>
+                <li><a href="scan.html" style="color: #D9B12D;">🔍 Scan Your Batch</a></li>
+                <li><a href="recipes.html">Recipes</a></li>
+                <li><a href="lab-report.html">Lab Reports</a></li>
+                <li><a href="faq.html">FAQ</a></li>
+                <li><a href="contact.html">Contact Us</a></li>
+                <li><a href="shipping-returns.html">Shipping & Returns</a></li>
+            </ul>
+
+            <!-- Beautiful Account Section at bottom of drawer -->
+            <div class="mobile-account-section">
+                <h3>My Account</h3>
+                <a href="login.html" class="btn-mobile-login">LOG IN</a>
+                <a href="register.html" class="btn-mobile-register">REGISTER</a>
+            </div>
+        </div>
+    <main class="auth-page">
+        <div class="auth-container">
+            <img src="Logo.png" alt="Ghosh Dhara" class="auth-logo">
+            <h1 class="auth-title">Create Account</h1>
+            <p class="auth-subtitle">Join the Ghosh Dhara family today.</p>
+            
+            <form id="register-form" class="auth-form">
+                <div class="form-group">
+                    <label for="reg-name">Full Name</label>
+                    <input type="text" id="reg-name" required placeholder="e.g. Alapan Ghosh">
+                </div>
+                <div class="form-group">
+                    <label for="reg-email">Email Address</label>
+                    <input type="email" id="reg-email" required placeholder="Enter your email">
+                </div>
+                <div class="form-group">
+                    <label for="reg-password">Password</label>
+                    <input type="password" id="reg-password" required minlength="6" placeholder="Create a password">
+                </div>
+                <button type="submit" class="auth-btn">Create Account</button>
+            </form>
+            
+            <div class="auth-footer">
+                Already have an account? <a href="login.html">Log In</a>
+            </div>
+        </div>
+    </main>
+<footer class="main-footer">
+        
+        <!-- 2D Ground Landscape with Yellow/Gold Adjustments -->
+        <div class="footer-landscape">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 150" preserveAspectRatio="none" style="width: 100%; height: 100%; display: block;">
+                <!-- Warm Golden-Olive Layer -->
+                <path d="M0,150 L0,100 Q150,70 300,95 T600,65 T900,105 T1200,55 L1200,150 Z" fill="#7A6822" opacity="0.85"></path>
+                <!-- Rich Deep Gold/Terracotta Transition Layer -->
+                <path d="M0,150 L0,125 Q200,95 400,115 T800,85 T1200,115 L1200,150 Z" fill="#5B4A15"></path>
+                <!-- Deep Earthy Base Silhouette -->
+                <path d="M0,150 L0,140 Q250,110 500,135 T1000,120 T1200,140 L1200,150 Z" fill="#382C0C"></path>
+                <!-- Subtle Grass Tufts -->
+                <g fill="#382C0C">
+                    <path d="M120,135 Q123,120 126,135 Z"></path>
+                    <path d="M125,137 Q128,115 130,137 Z"></path>
+                    <path d="M550,130 Q553,115 556,130 Z"></path>
+                    <path d="M555,132 Q560,110 562,132 Z"></path>
+                    <path d="M980,125 Q983,110 986,125 Z"></path>
+                    <path d="M985,127 Q990,105 992,127 Z"></path>
+                </g>
+            </svg>
+        </div>
+
+        <!-- Top Grid Section -->
+        <div class="container footer-grid" style="position: relative; z-index: 2;">
+            <div>
+                 <a href="index.html">
+                    <!-- You can use the same logo, or a white/light version if your footer is dark -->
+                    <img src="Logo 3.png" alt="Ghosh Family Ghee Logo" class="brand-logo-img-footer">
+                </a>
+                <p style="color: #FAF8F2; opacity: 0.9; font-size: 0.9rem; margin-top: 15px;">Traditional Ghee. Tested with Trust.</p>
+                <p style="color: #D9B12D; font-size: 0.8rem; margin-top: 10px; font-weight: 600;">FSSAI Lic. No. 12345</p>
+            </div>
+            
+            <div>
+                <h4 style="color: #D9B12D; margin-bottom: 15px; font-family: 'Playfair Display', serif;">Explore</h4>
+                <ul style="list-style: none; padding: 0; line-height: 2;">
+                    <li><a href="index.html" style="color: #FAF8F2; text-decoration: none; opacity: 0.8;">Home</a></li>
+                    <li><a href="shop.html" style="color: #FAF8F2; text-decoration: none; opacity: 0.8;">Shop</a></li>
+                    <li><a href="story.html" style="color: #FAF8F2; text-decoration: none; opacity: 0.8;">Our Story</a></li>
+                    <li><a href="traceability.html" style="color: #FAF8F2; text-decoration: none; opacity: 0.8;">Quality</a></li>
+                    <li><a href="recipes.html" style="color: #FAF8F2; text-decoration: none; opacity: 0.8;">Recipes</a></li>
+                </ul>
+            </div>
+            
+            <div>
+                <h4 style="color: #D9B12D; margin-bottom: 15px; font-family: 'Playfair Display', serif;">Customer Care</h4>
+                <ul style="list-style: none; padding: 0; line-height: 2;">
+                    <li><a href="scan.html" style="color: #FAF8F2; text-decoration: none; opacity: 0.8;">Scan Your Batch</a></li>
+                    <li><a href="contact.html" style="color: #FAF8F2; text-decoration: none; opacity: 0.8;">Contact Us</a></li>
+                    <li><a href="faq.html" style="color: #FAF8F2; text-decoration: none; opacity: 0.8;">FAQ</a></li>
+                    <li><a href="shipping-returns.html" style="color: #FAF8F2; text-decoration: none; opacity: 0.8;">Shipping & Returns</a></li>
+                </ul>
+            </div>
+            
+            <div>
+                <h4 style="color: #D9B12D; margin-bottom: 15px; font-family: 'Playfair Display', serif;">Contact</h4>
+                <ul>
+                    <li>WhatsApp: 8653890554</li>
+                    <li>Email: alapanghosh3@gmail.com</li>
+                    <li>Bergoom, Krishnanagar</li>
+                </ul>
+                <!-- Social Media Icons -->
+                <div class="social-icons">
+                    <!-- Facebook -->
+                    <a href="#" aria-label="Facebook">
+                        <svg viewBox="0 0 24 24"><path d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z"/></svg>
+                    </a>
+                    <!-- Instagram -->
+                    <a href="#" aria-label="Instagram">
+                        <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+                    </a>
+                    <!-- YouTube -->
+                    <a href="#" aria-label="YouTube">
+                        <svg viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.5 12 3.5 12 3.5s-7.505 0-9.377.55a3.016 3.016 0 0 0-2.122 2.136C0 8.07 0 12 0 12s0 3.93.501 5.814a3.016 3.016 0 0 0 2.122 2.136c1.872.55 9.377.55 9.377.55s7.505 0 9.377-.55a3.016 3.016 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Integrated Copyright Row -->
+        <div class="container footer-copyright">
+            <span class="copyright-text">2026 GHOSH DHARA. ALL RIGHTS RESERVED.</span>
+        </div>
+    </footer>
+
+
+
+
+
+
+
+        <!-- TOAST SUCCESS MESSAGE -->
+        <div id="cartToast" class="toast-notification">✅ Product successfully added to cart!</div>
+
+        <!-- SLIDE-OUT CART DRAWER -->
+        <div class="cart-overlay" id="cartOverlay"></div>
+        <div class="cart-drawer" id="cartDrawer">
+            <div class="cart-header">
+                <h2 class="font-serif" style="font-size: 1.5rem;">Your Cart</h2>
+                <button class="close-cart" id="closeCart">×</button>
+            </div>
+            <div class="cart-items">
+                <!-- Empty state -->
+                <div style="text-align: center; color: #888; margin-top: 50px;">
+                    <p>Your cart is currently empty.</p>
+                    <a href="shop.html" class="btn-primary" style="margin-top: 20px;">Continue Shopping</a>
+                </div>
+
+                <!-- Example of a populated cart item (Hidden for now) -->
+                <!-- 
+            <div style="display: flex; gap: 15px; border-bottom: 1px solid #eee; padding-bottom: 15px; margin-bottom: 15px;">
+                <div style="width: 80px; height: 80px; background: #f9f9f9;"></div>
+                <div style="flex: 1;">
+                    <h4 class="font-serif">[Brand Name] Traditional Ghee</h4>
+                    <p style="font-size: 0.8rem; color: #666;">500g Jar</p>
+                    <p style="font-weight: bold; color: var(--brand-gold);">₹[Price]</p>
+                </div>
+            </div> 
+            -->
+            </div>
+            <div class="cart-footer">
+                <div
+                    style="display: flex; justify-content: space-between; margin-bottom: 15px; font-weight: bold; font-size: 1.2rem;">
+                    <span>Subtotal</span>
+                    <span>₹0.00</span>
+                </div>
+                <p style="font-size: 0.8rem; color: #666; margin-bottom: 15px;">Shipping and taxes calculated at
+                    checkout.</p>
+                <button class="checkout-btn">Proceed to Secure Checkout</button>
+                <div style="text-align: center; margin-top: 10px; font-size: 0.8rem; opacity: 0.8;">
+                    💳 Cards, UPI & Net Banking Accepted
+                </div>
+            </div>
+        </div>
+
+        <script>
+            // FAQ Accordion Logic
+            document.addEventListener('DOMContentLoaded', () => {
+                const faqQuestions = document.querySelectorAll('.faq-question');
+                faqQuestions.forEach(question => {
+                    question.addEventListener('click', () => {
+                        const parent = question.parentElement;
+                        // Toggle current active class
+                        parent.classList.toggle('active');
+                        // Close other items to make it behave like an exclusive accordion
+                        document.querySelectorAll('.faq-item').forEach(item => {
+                            if (item !== parent) item.classList.remove('active');
+                        });
+                    });
+                });
+
+                // Cinematic Stamper Animation Logic
+                const promiseCards = document.querySelectorAll('.promise-card');
+                const trustSection = document.querySelector('.trust-stamps-section');
+                
+                // Pre-hide all cards so they don't flash before stamping
+                promiseCards.forEach(card => {
+                    card.style.opacity = '0';
+                    card.style.transform = 'scale(0.9) translateY(30px)';
+                });
+
+                let stamperIsRunning = false;
+                let stampQueue = [];
+
+                async function processStampQueue() {
+                    if (stampQueue.length === 0) {
+                        stamperIsRunning = false;
+                        return;
+                    }
+                    stamperIsRunning = true;
+                    
+                    if (!trustSection) return;
+
+                    try {
+                        trustSection.style.position = 'relative'; 
+
+                        const stamper = document.createElement('div');
+                        stamper.id = 'cinematic-stamper-wrapper';
+                        stamper.style.position = 'absolute';
+                        stamper.style.top = '0'; // CRITICAL: Sets absolute anchor to top-left of section
+                        stamper.style.left = '0';
+                        stamper.style.zIndex = '9999';
+                        stamper.style.pointerEvents = 'none';
+                        stamper.style.transformOrigin = 'bottom center';
+                        stamper.style.opacity = '0';
+                        
+                        // Extremely realistic looking stamper SVG
+                        stamper.innerHTML = `
+                            <svg viewBox="0 0 100 120" width="160" height="180" style="filter: drop-shadow(0px 40px 25px rgba(0,0,0,0.6)); transform-origin: center bottom; display:block;">
+                                <defs>
+                                    <linearGradient id="gold-metal" x1="0%" y1="0%" x2="100%" y2="0%">
+                                        <stop offset="0%" stop-color="#9a7109" />
+                                        <stop offset="30%" stop-color="#ffd700" />
+                                        <stop offset="50%" stop-color="#fff8dc" />
+                                        <stop offset="70%" stop-color="#ffd700" />
+                                        <stop offset="100%" stop-color="#9a7109" />
+                                    </linearGradient>
+                                    <linearGradient id="dark-wood" x1="0%" y1="0%" x2="100%" y2="0%">
+                                        <stop offset="0%" stop-color="#2a1610" />
+                                        <stop offset="50%" stop-color="#4e342e" />
+                                        <stop offset="100%" stop-color="#2a1610" />
+                                    </linearGradient>
+                                </defs>
+                                <!-- Knob Top -->
+                                <ellipse cx="50" cy="12" rx="20" ry="12" fill="url(#gold-metal)" />
+                                <!-- Handle Body -->
+                                <path d="M 30 12 C 30 40, 42 60, 46 80 L 54 80 C 58 60, 70 40, 70 12 Z" fill="url(#dark-wood)" />
+                                <!-- Gold Ring -->
+                                <ellipse cx="50" cy="50" rx="15" ry="5" fill="url(#gold-metal)" />
+                                <!-- Stamp Mount -->
+                                <path d="M 15 90 Q 50 70 85 90 L 90 105 L 10 105 Z" fill="url(#gold-metal)" />
+                                <!-- Rubber Pad -->
+                                <rect x="14" y="105" width="72" height="8" rx="2" fill="#111" />
+                            </svg>
+                        `;
+                        
+                        trustSection.appendChild(stamper);
+                        
+                        // Start off-screen right using dynamic window width to avoid overflow issues
+                        const startX = window.innerWidth;
+                        stamper.style.transition = 'none';
+                        stamper.style.transform = `translate(${startX}px, -100px) rotate(45deg) scale(1.5)`;
+                        
+                        await new Promise(r => setTimeout(r, 50)); // Ensure DOM applies initial transform
+                        stamper.style.opacity = '1';
+                        
+                        while (stampQueue.length > 0) {
+                            const card = stampQueue.shift();
+                            const ring = card.querySelector('.promise-icon-ring');
+                            
+                            if (!ring) {
+                                card.style.opacity = '';
+                                card.style.transform = '';
+                                card.style.animation = '';
+                                card.classList.add('stamped-reveal');
+                                continue;
+                            }
+                            
+                            const ringRect = ring.getBoundingClientRect();
+                            const sectionRect = trustSection.getBoundingClientRect();
+                            
+                            // 80 is half stamper width
+                            const targetX = ringRect.left - sectionRect.left + (ringRect.width / 2) - 80; 
+                            // 170 positions the rubber pad at the center of the ring
+                            const targetY = ringRect.top - sectionRect.top + (ringRect.height / 2) - 170; 
+                            
+                            // Swoop in and hover
+                            stamper.style.transition = 'transform 0.45s cubic-bezier(0.25, 1, 0.5, 1)';
+                            stamper.style.transform = `translate(${targetX}px, ${targetY - 100}px) rotate(0deg) scale(1.15)`;
+                            await new Promise(r => setTimeout(r, 450));
+                            
+                            // SMASH down
+                            stamper.style.transition = 'transform 0.15s cubic-bezier(0.5, 0, 1, 1)';
+                            stamper.style.transform = `translate(${targetX}px, ${targetY + 25}px) rotate(0deg) scale(1) scaleY(0.8)`;
+                            await new Promise(r => setTimeout(r, 150));
+                            
+                            // CRITICAL FIX: Clear inline styles blocking the CSS animation
+                            card.style.opacity = '';
+                            card.style.transform = '';
+                            card.style.animation = '';
+                            
+                            // Pop the card instantly on impact
+                            card.classList.add('stamped-reveal');
+                            
+                            // Recoil up
+                            stamper.style.transition = 'transform 0.35s cubic-bezier(0.25, 1, 0.5, 1)';
+                            stamper.style.transform = `translate(${targetX}px, ${targetY - 100}px) rotate(0deg) scale(1.2)`;
+                            await new Promise(r => setTimeout(r, 350));
+                        }
+                        
+                        // Fly away left
+                        stamper.style.transition = 'transform 0.6s cubic-bezier(0.5, 0, 1, 1), opacity 0.6s ease';
+                        stamper.style.transform = 'translate(-400px, -100px) rotate(-45deg) scale(1.5)';
+                        stamper.style.opacity = '0';
+                        
+                        await new Promise(r => setTimeout(r, 600));
+                        stamper.remove();
+                        
+                        stamperIsRunning = false;
+                        
+                        // Just in case queue received new items while flying away
+                        if (stampQueue.length > 0) {
+                            processStampQueue();
+                        }
+                    } catch (e) {
+                        console.error('Stamper animation error:', e);
+                        stamperIsRunning = false;
+                        promiseCards.forEach(c => {
+                            c.style.opacity = '';
+                            c.style.transform = '';
+                            c.style.animation = '';
+                            c.classList.add('stamped-reveal');
+                        });
+                    }
+                }
+
+                const promiseObserver = new IntersectionObserver((entries, observer) => {
+                    let newIntersections = false;
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            stampQueue.push(entry.target);
+                            observer.unobserve(entry.target);
+                            newIntersections = true;
+                        }
+                    });
+                    
+                    if (newIntersections && !stamperIsRunning) {
+                        processStampQueue();
+                    }
+                }, { 
+                    rootMargin: "0px",
+                    threshold: 0.2 
+                });
+
+                promiseCards.forEach(card => {
+                    promiseObserver.observe(card);
+                });
+            });
+        </script>
+    
+<!-- ==========================================
+     FLOATING ACTION BUTTONS
+     ========================================== -->
+<div class="floating-actions">
+    <button id="scrollToTopBtn" class="fab fab-top" aria-label="Scroll to top">
+        <!-- SVG for upward arrow -->
+        <svg viewBox="0 0 24 24"><path d="M12 19V5M5 12l7-7 7 7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+    <a href="https://wa.me/918653890554" target="_blank" rel="noopener noreferrer" class="fab fab-whatsapp" aria-label="Chat on WhatsApp">
+        <!-- SVG for WhatsApp -->
+        <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.888-.788-1.487-1.761-1.66-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    </a>
+</div>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    const scrollToTopBtn = document.getElementById("scrollToTopBtn");
+    if (scrollToTopBtn) {
+        window.addEventListener("scroll", function() {
+            if (window.pageYOffset > 300) {
+                scrollToTopBtn.classList.add("visible");
+            } else {
+                scrollToTopBtn.classList.remove("visible");
+            }
+        });
+        scrollToTopBtn.addEventListener("click", function(e) {
+            e.preventDefault();
+            window.scrollTo({ top: 0, behavior: "smooth" });
+        });
+    }
+});
+</script>
+
+    <script src="auth.js"></script>
+</body>
+</html>
