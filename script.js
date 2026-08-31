@@ -379,28 +379,3 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 // =========================================================
-// GLOBAL AUTHENTICATION CHECK
-// =========================================================
-document.addEventListener('DOMContentLoaded', () => {
-    const userStr = localStorage.getItem('ghoshDharaUser');
-    if (userStr) {
-        const user = JSON.parse(userStr);
-        
-        // 1. Update Desktop Profile Icon Link
-        const desktopProfileBtns = document.querySelectorAll('.header-account-btn');
-        desktopProfileBtns.forEach(btn => {
-            btn.href = 'profile.html';
-            // Optionally add a green dot or highlight to show logged-in state
-            btn.style.color = '#174B37';
-        });
-
-        // 2. Update Mobile Menu Account Section
-        const mobileAccountSection = document.querySelector('.mobile-account-section');
-        if (mobileAccountSection) {
-            mobileAccountSection.innerHTML = `
-                <h3 style="color: #174B37; margin-bottom: 15px;">Welcome, ${user.name.split(' ')[0]}!</h3>
-                <a href="profile.html" style="display: block; width: 100%; padding: 12px; background: #174B37; color: #fff; text-align: center; text-decoration: none; border-radius: 6px; font-weight: bold;">MY DASHBOARD</a>
-            `;
-        }
-    }
-});

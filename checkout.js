@@ -53,15 +53,49 @@ document.addEventListener('DOMContentLoaded', () => {
         checkoutForm.addEventListener('submit', (e) => {
             e.preventDefault();
             
-            // Basic validation
-            const name = document.getElementById('c-name').value;
-            const phone = document.getElementById('c-phone').value;
-            const address = document.getElementById('c-address').value;
-            const city = document.getElementById('c-city').value;
-            const pin = document.getElementById('c-pin').value;
+            // Strict validation
+            const name = document.getElementById('c-name').value.trim();
+            const phone = document.getElementById('c-phone').value.trim();
+            const address = document.getElementById('c-address').value.trim();
+            const city = document.getElementById('c-city').value.trim();
+            const pin = document.getElementById('c-pin').value.trim();
 
-            if(!name || !phone || !address || !city || !pin) {
-                alert("Please fill in all required shipping details.");
+            const phoneRegex = /^[0-9]{10}$/;
+            const pinRegex = /^[0-9]{6}$/;
+            const cityRegex = /^[a-zA-Z\s]{3,}$/;
+
+            if (!name || name.length < 3) {
+                alert("Please enter a valid Full Name (at least 3 characters).");
+                return;
+            }
+            if (!phoneRegex.test(phone)) {
+                alert("Please enter a valid 10-digit WhatsApp number (without +91).");
+                return;
+            }
+            if (!address || address.length < 10) {
+                alert("Please enter a complete address (minimum 10 characters).");
+                return;
+            }
+            if (!cityRegex.test(city)) {
+                alert("Please enter a valid city name.");
+                return;
+            }
+            if (!pinRegex.test(pin)) {
+                alert("Please enter a valid 6-digit PIN code.");
+                return;
+            }
+
+            // REGIONAL AVAILABILITY CHECK (PIN CODE PREFIX)
+            // 700: Kolkata/Greater Kolkata
+            // 711: Howrah
+            // 712: Hooghly
+            // 741: Nadia
+            // 743: North & South 24 Parganas
+            const allowedPrefixes = ['700', '711', '712', '741', '743'];
+            const pinPrefix = pin.substring(0, 3);
+            
+            if (!allowedPrefixes.includes(pinPrefix)) {
+                alert("Sorry! Currently we only deliver to Greater Kolkata, Howrah, Hooghly, Nadia, and North/South 24 Parganas.\n\nDelivery to your region will be available very soon.");
                 return;
             }
 

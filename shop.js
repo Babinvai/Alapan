@@ -180,9 +180,18 @@ document.addEventListener('DOMContentLoaded', () => {
             
             // Basic validation for a 6-digit Indian PIN code
             if(pin.length === 6 && !isNaN(pin)) {
-                // UI Success State
-                pincodeMessage.textContent = `✓ Delivery available to ${pin}. Standard shipping 3-5 days.`;
-                pincodeMessage.classList.add('success');
+                const allowedPrefixes = ['700', '711', '712', '741', '743'];
+                const pinPrefix = pin.substring(0, 3);
+                
+                if (allowedPrefixes.includes(pinPrefix)) {
+                    // UI Success State
+                    pincodeMessage.textContent = `✓ Delivery available to ${pin}. Standard shipping 3-5 days.`;
+                    pincodeMessage.classList.add('success');
+                } else {
+                    // Region Not Available State
+                    pincodeMessage.textContent = 'Sorry, delivery is currently not available in this region.';
+                    pincodeMessage.classList.add('error');
+                }
             } else {
                 // UI Error State
                 pincodeMessage.textContent = 'Please enter a valid 6-digit PIN code.';
