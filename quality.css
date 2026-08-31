@@ -317,17 +317,18 @@ a.active-nav::after {
 ========================================================= */
 .faq-section { padding: 100px 0 50px; }
 .faq-accordion { max-width: 800px; margin: 0 auto; }
-.faq-item { border-bottom: 1px solid rgba(23,75,55,0.1); }
+/* Let style.css handle the faq-item box border entirely */
 .faq-question {
     width: 100%; background: none; border: none; text-align: left;
-    padding: 25px 0; font-family: var(--font-sans); font-size: 1.1rem;
+    padding: 20px 25px; font-family: var(--font-sans); font-size: 1.1rem;
     font-weight: 600; color: var(--forest-green); cursor: pointer;
     display: flex; justify-content: space-between; align-items: center;
 }
+.faq-question::after { display: none !important; }
 .faq-question .icon { font-size: 1.5rem; color: var(--clay-terracotta); transition: transform 0.3s; }
 .faq-question[aria-expanded="true"] .icon { transform: rotate(45deg); }
 .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.4s ease; }
-.faq-answer p { padding-bottom: 25px; opacity: 0.8; font-size: 0.95rem; margin: 0; }
+.faq-answer p { padding: 0 25px 25px 25px; opacity: 0.8; font-size: 0.95rem; margin: 0; line-height: 1.6; }
 
 /* =========================================================
    9. FINAL CTA
@@ -454,7 +455,7 @@ a.active-nav::after {
     }
     
     /* Final CTA Card Mobile Fixes */
-    .cta-inner { flex-direction: column; text-align: center; padding: 40px 30px; gap: 40px; }
+    .cta-inner { flex-direction: column; text-align: center; padding: 50px 20px !important; gap: 40px; }
     .cta-content { text-align: center; }
     .cta-actions { justify-content: center; }
     .cta-image { width: 100%; }
