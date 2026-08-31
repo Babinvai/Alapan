@@ -335,43 +335,139 @@
             <div class="container reveal-on-scroll">
                 <!-- Add the class directly to your heading -->
 <h2 class="process-main-heading">From source to spoon, with care at every step.</h2>
-                <div class="process-flow">
-                    <div class="process-step">
-                        <div class="step-dot">1</div>
-                        <h4>Local Dairy Network</h4>
-                        <p>We begin with carefully selected dairy sources from our local network.</p>
+                <div class="interactive-process-container">
+                    <!-- Left: Crossfading Image Viewer -->
+                    <div class="process-image-viewer">
+                        <img src="Milk.jpeg" id="processImg1" class="process-img active" alt="Dairy sourcing">
+                        <img src="Making.jpeg" id="processImg2" class="process-img" alt="Ghee preparation">
+                        <img src="Food.jpeg" id="processImg3" class="process-img" alt="Warm cooked food with ghee">
                     </div>
-                    <div class="process-connector"></div>
-                    <div class="process-step">
-                        <div class="step-dot">2</div>
-                        <h4>Traditional Preparation</h4>
-                        <p>Ghee is prepared with patience to develop its familiar rich aroma and taste.</p>
-                    </div>
-                    <div class="process-connector"></div>
-                    <div class="process-step">
-                        <div class="step-dot">3</div>
-                        <h4>Quality Check</h4>
-                        <p>Each batch follows a documented quality and handling process.</p>
-                    </div>
-                    <div class="process-connector"></div>
-                    <div class="process-step">
-                        <div class="step-dot">4</div>
-                        <h4>Careful Packing</h4>
-                        <p>Packed securely to protect freshness, flavour and traceability.</p>
-                    </div>
-                    <div class="process-connector"></div>
-                    <div class="process-step">
-                        <div class="step-dot">5</div>
-                        <h4>Your Kitchen</h4>
-                        <p>Delivered for the everyday meals and celebrations that matter.</p>
+                    <!-- Animated Swipe Hint for Mobile -->
+                    <div class="swipe-hint-effect"></div>
+
+                    <!-- Right: Interactive Steps List -->
+                    <div class="process-steps-list">
+                        <div class="process-step-tab active" data-target="processImg1">
+                            <div class="step-dot">1</div>
+                            <div class="step-text">
+                                <h4>Local Dairy Network</h4>
+                                <p>We begin with carefully selected dairy sources from our local network.</p>
+                            </div>
+                        </div>
+                        <div class="process-step-tab" data-target="processImg1">
+                            <div class="step-dot">2</div>
+                            <div class="step-text">
+                                <h4>Traditional Preparation</h4>
+                                <p>Ghee is prepared with patience to develop its familiar rich aroma and taste.</p>
+                            </div>
+                        </div>
+                        <div class="process-step-tab" data-target="processImg2">
+                            <div class="step-dot">3</div>
+                            <div class="step-text">
+                                <h4>Quality Check</h4>
+                                <p>Each batch follows a documented quality and handling process.</p>
+                            </div>
+                        </div>
+                        <div class="process-step-tab" data-target="processImg3">
+                            <div class="step-dot">4</div>
+                            <div class="step-text">
+                                <h4>Careful Packing</h4>
+                                <p>Packed securely to protect freshness, flavour and traceability.</p>
+                            </div>
+                        </div>
+                        <div class="process-step-tab" data-target="processImg3">
+                            <div class="step-dot">5</div>
+                            <div class="step-text">
+                                <h4>Your Kitchen</h4>
+                                <p>Delivered for the everyday meals and celebrations that matter.</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                
-                <div class="process-imagery">
-                    <img src="Milk.jpeg" alt="Dairy sourcing">
-                    <img src="Making.jpeg" alt="Ghee preparation">
-                    <img src="Food.jpeg" alt="Warm cooked food with ghee">
-                </div>
+
+                <script>
+                    document.addEventListener('DOMContentLoaded', () => {
+                        const tabs = document.querySelectorAll('.process-step-tab');
+                        const images = document.querySelectorAll('.process-img');
+                        const swipeHint = document.querySelector('.swipe-hint-effect');
+                        const stepsList = document.querySelector('.process-steps-list');
+                        let autoPlayInterval;
+                        let currentIndex = 0;
+                        let userInteracted = false;
+                        let isAutoScrolling = false;
+
+                        const hideSwipeHint = () => {
+                            if (swipeHint && !swipeHint.classList.contains('hidden')) {
+                                swipeHint.classList.add('hidden');
+                            }
+                        };
+
+                        const activateTab = (index) => {
+                            tabs.forEach(t => t.classList.remove('active'));
+                            tabs[index].classList.add('active');
+
+                            const targetId = tabs[index].getAttribute('data-target');
+                            images.forEach(img => {
+                                if (img.id === targetId) {
+                                    img.classList.add('active');
+                                } else {
+                                    img.classList.remove('active');
+                                }
+                            });
+
+                            // Ensure active tab is visible in horizontal scroll on mobile
+                            if (window.innerWidth <= 768) {
+                                isAutoScrolling = true;
+                                tabs[index].scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+                                setTimeout(() => { isAutoScrolling = false; }, 800); // Allow smooth scroll to finish
+                            }
+                        };
+
+                        const startAutoPlay = () => {
+                            autoPlayInterval = setInterval(() => {
+                                if (userInteracted) {
+                                    clearInterval(autoPlayInterval);
+                                    return;
+                                }
+                                currentIndex = (currentIndex + 1) % tabs.length;
+                                activateTab(currentIndex);
+                            }, 3000);
+                        };
+
+                        // Hide swipe hint ONLY if user scrolls to the end of the list
+                        if (stepsList) {
+                            stepsList.addEventListener('scroll', () => {
+                                if (!isAutoScrolling) {
+                                    userInteracted = true;
+                                    clearInterval(autoPlayInterval);
+                                }
+                                
+                                // Check if scrolled to the end (allow 10px tolerance)
+                                if (stepsList.scrollLeft + stepsList.clientWidth >= stepsList.scrollWidth - 10) {
+                                    if (swipeHint) swipeHint.classList.add('hidden');
+                                } else {
+                                    if (swipeHint) swipeHint.classList.remove('hidden');
+                                }
+                            }, { passive: true });
+                        }
+
+                        // Event listener for desktop hover and mobile tap
+                        tabs.forEach((tab, index) => {
+                            const handleInteraction = () => {
+                                userInteracted = true; // Stop auto-play permanently once user interacts
+                                clearInterval(autoPlayInterval);
+                                currentIndex = index;
+                                activateTab(currentIndex);
+                            };
+
+                            tab.addEventListener('mouseenter', handleInteraction);
+                            tab.addEventListener('click', handleInteraction);
+                        });
+
+                        // Start auto-play initially
+                        startAutoPlay();
+                    });
+                </script>
             </div>
         </section>
 
