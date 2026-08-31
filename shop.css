@@ -583,7 +583,10 @@ header a[href="shop.html"]::after, .desktop-nav a[href="shop.html"]::after, .nav
 
 @media (max-width: 768px) {
     .shop-hero h1 { font-size: 2.5rem; }
-    .size-cards { grid-template-columns: 1fr; gap: 10px; }
+    .size-cards { grid-template-columns: repeat(3, 1fr); gap: 8px; }
+    .size-card { padding: 10px 5px; }
+    .size-card .weight { font-size: 0.95rem; margin-bottom: 2px; }
+    .size-card .size-note { font-size: 0.65rem; }
     .uses-grid { grid-template-columns: 1fr; }
     .purchase-actions { flex-direction: column; }
     .quantity-control { width: 100%; justify-content: center; margin-bottom: 10px;}
