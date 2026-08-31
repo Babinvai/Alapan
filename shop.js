@@ -246,20 +246,22 @@ window.closeShopMenu = function() {
 
 
 
-// Setup Continuous Cyclic Loop for Thumbnails
+// Setup Continuous Cyclic Loop for Thumbnails & Manual Navigation
     const thumbnailTrack = document.getElementById('thumbnailTrack');
-    if (thumbnailTrack) {
-        // Clone the original thumbnails
+    const trackContainer = document.getElementById('thumbTrackContainer');
+    const btnLeft = document.getElementById('thumbNavLeft');
+    const btnRight = document.getElementById('thumbNavRight');
+
+    if (thumbnailTrack && trackContainer) {
+        // Clone the original thumbnails to allow seamless looping
         const originalThumbs = Array.from(thumbnailTrack.children);
         originalThumbs.forEach(thumb => {
             const clone = thumb.cloneNode(true);
             
-            // Ensure clones also trigger the image swap when clicked
             clone.addEventListener('click', () => {
                 const newSrc = clone.getAttribute('data-img');
                 updateProductSelection(newSrc);
                 
-                // Sync the active state across all size cards and ALL thumbnails (original + clones)
                 sizeCards.forEach(card => {
                     if(card.getAttribute('data-img') === newSrc) card.click();
                 });
@@ -269,9 +271,52 @@ window.closeShopMenu = function() {
                 });
             });
             
-            // Add the clone to the track to complete the seamless loop
             thumbnailTrack.appendChild(clone);
         });
+
+        // Auto Scroll & Seamless Loop Logic
+        let autoScrollInterval;
+        let isManuallyScrolling = false;
+        let resumeScrollTimeout;
+
+        const autoScroll = () => {
+            // Only scroll automatically if the user isn't hovering, touching, or clicking buttons
+            if (!isManuallyScrolling && !trackContainer.matches(':hover') && !trackContainer.matches(':active')) {
+                trackContainer.scrollLeft += 1;
+                
+                // Seamless loop: if scrolled halfway, jump back to 0 instantly
+                if (trackContainer.scrollLeft >= thumbnailTrack.scrollWidth / 2) {
+                    trackContainer.scrollLeft = 0;
+                }
+            }
+            autoScrollInterval = requestAnimationFrame(autoScroll);
+        };
+        const startAutoScroll = () => { autoScrollInterval = requestAnimationFrame(autoScroll); };
+        startAutoScroll();
+
+        const pauseForManualInteraction = () => {
+            isManuallyScrolling = true;
+            clearTimeout(resumeScrollTimeout);
+            resumeScrollTimeout = setTimeout(() => {
+                isManuallyScrolling = false;
+            }, 600); // Wait for the smooth scroll to finish
+        };
+
+        // Manual Navigation Buttons
+        if (btnLeft && btnRight) {
+            btnLeft.addEventListener('click', () => {
+                pauseForManualInteraction();
+                // If at the very start, silently jump to the middle clone area so they can scroll backwards
+                if (trackContainer.scrollLeft <= 0) {
+                    trackContainer.scrollLeft = thumbnailTrack.scrollWidth / 2;
+                }
+                trackContainer.scrollBy({ left: -140, behavior: 'smooth' });
+            });
+            btnRight.addEventListener('click', () => {
+                pauseForManualInteraction();
+                trackContainer.scrollBy({ left: 140, behavior: 'smooth' });
+            });
+        }
     }
 
 

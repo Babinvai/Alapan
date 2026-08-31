@@ -222,11 +222,19 @@ header a[href="shop.html"]::after, .desktop-nav a[href="shop.html"]::after, .nav
 /* Cyclic Thumbnail Track */
 .thumbnail-wrapper {
     width: 100%;
-    overflow: hidden;
-    padding: 15px 0;
     position: relative;
-    /* Added this to keep it perfectly contained */
     box-sizing: border-box; 
+}
+.thumbnail-track-container {
+    width: 100%;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    padding: 15px 0;
+}
+.thumbnail-track-container::-webkit-scrollbar {
+    display: none;
 }
 
 /* Soft fading gradients on the left and right edges */
@@ -242,32 +250,48 @@ header a[href="shop.html"]::after, .desktop-nav a[href="shop.html"]::after, .nav
 }
 .thumbnail-wrapper::before {
     left: 0;
-    /* Changed from ivory to pure white to match the section background */
     background: linear-gradient(to right, #ffffff, transparent); 
 }
 .thumbnail-wrapper::after {
     right: 0;
-    /* Changed from ivory to pure white */
     background: linear-gradient(to left, #ffffff, transparent); 
+}
+
+/* Nav Buttons */
+.track-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: #fff;
+    border: 1px solid var(--ghee-gold);
+    color: var(--forest-green);
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    z-index: 5;
+    font-size: 14px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    transition: background 0.3s, color 0.3s;
+}
+.track-nav:hover {
+    background: var(--forest-green);
+    color: #fff;
+}
+.track-nav.prev {
+    left: 5px;
+}
+.track-nav.next {
+    right: 5px;
 }
 
 .thumbnail-row {
     display: flex;
     gap: 15px;
     width: max-content;
-    /* The continuous scrolling animation */
-    animation: cyclicScroll 20s linear infinite;
-}
-
-/* Pause the rotation when the customer wants to click an image */
-.thumbnail-row:hover {
-    animation-play-state: paused;
-}
-
-@keyframes cyclicScroll {
-    0% { transform: translateX(0); }
-    /* Scrolls exactly halfway, then seamlessly loops back to 0 */
-    100% { transform: translateX(calc(-50% - 7.5px)); } 
 }
 
 /* Cinematic Focus on Thumbnails */
@@ -548,10 +572,6 @@ header a[href="shop.html"]::after, .desktop-nav a[href="shop.html"]::after, .nav
     .cta-text { text-align: center; }
     
     /* Product adjustments */
-    .product-gallery { display: flex; flex-direction: column; }
-    .village-sketch-filler { order: -1; min-height: 200px; margin-top: 0; margin-bottom: 20px; }
-    .main-image-container { order: 2; margin-top: 0; }
-    .thumbnail-wrapper { order: 3; }
     .sticky-panel { position: relative; top: 0; }
     .thumbnail-row { gap: 10px; }
     .price-display { justify-content: center; }
