@@ -119,6 +119,7 @@ PAYMENT: Cash on Delivery
                         })
                     });
 
+                    
                     if (response.status !== 200) {
                         console.error("Failed to send order email.");
                     }
