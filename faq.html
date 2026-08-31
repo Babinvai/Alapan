@@ -12,44 +12,120 @@
     <!-- PASTE HEADER HERE -->
 
       <header>
-        <div class="container header-inner">
-            <a href="index.html" class="logo">
-                <!-- Replace 'logo.png' with the actual file name of your logo -->
-                <img src="Logo.png" alt="Ghosh Family Ghee Logo" class="brand-logo-img">
-            </a>
-            
-            <!-- Desktop Nav -->
-            <nav class="nav-links">
-                <a href="index.html">Home</a>
-                <a href="shop.html">Shop</a>
-                <a href="story.html">Our Story</a>
-                <a href="traceability.html">Quality</a>
-                <a href="recipes.html">Recipes</a>
-                <a href="lab-report.html" style="color: #D4AF37; font-weight: 700;">Lab Report</a>
-                <a href="contact.html">Contact</a>
-            </nav>
-            
-            <!-- Utilities: Scan, Cart & Mobile Menu -->
-            <div style="display: flex; align-items: center; gap: 20px;">
-                <a href="scan.html" class="header-scan-btn">🔍 Scan Batch</a>
-                <a href="#" class="cart-icon-btn text-brand-green" style="font-weight: bold;">🛒 (0)</a>
-                <button id="mobileMenuBtn" class="mobile-menu-btn">☰</button>
+            <!-- ========================================================= -->
+            <!-- 1. MOBILE HEADER (Clean Layout: Cart, Logo, Menu)         -->
+            <!-- ========================================================= -->
+            <div class="mobile-header-layout">
+
+                <!-- LEFT: Cart Icon -->
+                <div class="mobile-header-left">
+                    <!-- Note: Removed 'cart-icon-btn' here so JS only updates the badge number, keeping the SVG safe -->
+                    <a href="#" class="mobile-cart-btn" onclick="window.openCart(); return false;"
+                        aria-label="Open Cart">
+                        <svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="#174B37" stroke-width="1.5">
+                            <circle cx="9" cy="21" r="1"></circle>
+                            <circle cx="20" cy="21" r="1"></circle>
+                            <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                        </svg>
+                        <!-- This span is targeted by your JS to update just the number -->
+                        <span class="cart-count">0</span>
+                    </a>
+                </div>
+
+                <!-- CENTER: Brand Logo -->
+                <div class="mobile-header-center">
+                    <a href="index.html" class="logo">
+                        <img src="Logo.png" alt="Ghosh Dhara Logo" class="brand-logo-img">
+                    </a>
+                </div>
+
+                <!-- RIGHT: Hamburger Menu -->
+                <div class="mobile-header-right">
+                    <button id="mobileMenuBtn" class="hamburger-btn" aria-label="Open Menu">
+                        <svg viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="#B86745" stroke-width="2">
+                            <path d="M3 12h18M3 6h18M3 18h18"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+
+            <!-- ========================================================= -->
+            <!-- 2. DESKTOP HEADER (Automatically hidden on mobile via CSS)-->
+            <!-- ========================================================= -->
+            <div class="container header-inner desktop-nav-only">
+
+                <!-- Desktop Logo -->
+                <a href="index.html" class="logo">
+                    <img src="Logo.png" alt="Ghosh Family Ghee Logo" class="brand-logo-img">
+                </a>
+
+                <!-- Desktop Nav -->
+                <nav class="nav-links">
+                    <a href="index.html">Home</a>
+                    <a href="shop.html">Shop</a>
+                    <a href="story.html">Our Story</a>
+                    <a href="traceability.html">Quality</a>
+                    <a href="recipes.html">Recipes</a>
+                    <a href="lab-report.html" style="color: #D35400; font-weight: 700;">Lab Report</a>
+                    <a href="contact.html">Contact</a>
+                </nav>
+
+                <!-- Desktop Utilities: Scan, Account Login & Cart -->
+                <!-- Desktop Utilities: Scan, Cart & Account Login -->
+                <div style="display: flex; align-items: center; gap: 20px;">
+
+                    <a href="scan.html" class="header-scan-btn">🔍 Scan Batch</a>
+
+                    <!-- Desktop Cart Icon (Moved BEFORE the account icon) -->
+                    <a href="#" class="cart-icon-btn text-brand-green" onclick="window.openCart(); return false;"
+                        style="font-weight: bold; text-decoration: none;">🛒 (0)</a>
+
+                    <!-- PREMIUM ACCOUNT LOGIN ICON (Now at the absolute far right!) -->
+                    <a href="login.html" class="header-account-btn" aria-label="Sign In or Register">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round" style="width: 24px; height: 24px;">
+                            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                            <circle cx="12" cy="7" r="4"></circle>
+                        </svg>
+                    </a>
+
+                </div>
+            </div>
+        </header>
+
+        <!-- ========================================================= -->
+        <!-- 3. PREMIUM MOBILE SLIDE-OUT DRAWER                        -->
+        <!-- ========================================================= -->
+        <div id="mobileNavOverlay" class="mobile-nav-overlay"></div>
+        <div id="mobileNavDrawer" class="mobile-nav-drawer">
+
+            <!-- Drawer Header (Logo & Close Button) -->
+            <div class="mobile-nav-header">
+                <img src="Logo.png" alt="Ghosh Dhara" style="max-width: 80px;">
+                <button id="closeMobileNav" class="close-nav-btn">&times;</button>
+            </div>
+
+            <!-- Animated Nav Links (Merged from your old mobile menu) -->
+            <ul class="mobile-nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="shop.html">Shop Ghee</a></li>
+                <li><a href="story.html">Our Story</a></li>
+                <li><a href="traceability.html">Quality & Traceability</a></li>
+                <li><a href="scan.html" style="color: #D9B12D;">🔍 Scan Your Batch</a></li>
+                <li><a href="recipes.html">Recipes</a></li>
+                <li><a href="lab-report.html">Lab Reports</a></li>
+                <li><a href="faq.html">FAQ</a></li>
+                <li><a href="contact.html">Contact Us</a></li>
+                <li><a href="shipping-returns.html">Shipping & Returns</a></li>
+            </ul>
+
+            <!-- Beautiful Account Section at bottom of drawer -->
+            <div class="mobile-account-section">
+                <h3>My Account</h3>
+                <a href="login.html" class="btn-mobile-login">LOG IN</a>
+                <a href="register.html" class="btn-mobile-register">REGISTER</a>
             </div>
         </div>
-
-        <!-- Mobile Nav (Hidden on Desktop) -->
-        <div id="mobileNav" class="mobile-nav">
-            <a href="index.html">Home</a>
-            <a href="shop.html">Shop Ghee</a>
-            <a href="story.html">Our Story</a>
-            <a href="traceability.html">Quality & Traceability</a>
-            <a href="scan.html" style="color: var(--brand-gold);">🔍 Scan Your Batch</a>
-            <a href="recipes.html">Recipes</a>
-            <a href="faq.html">FAQ</a>
-            <a href="contact.html">Contact Us</a>
-            <a href="shipping-returns.html">Shipping & Returns</a>
-        </div>
-    </header>
 
     <!-- HERO SECTION -->
     <section class="faq-hero">
