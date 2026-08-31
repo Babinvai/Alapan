@@ -839,16 +839,14 @@ header.scrolled {
     margin: 0 auto;
 }
 
-.faq-item {
-    border-bottom: 1px solid rgba(23, 75, 55, 0.1);
-}
+/* Let style.css handle the faq-item box border entirely */
 
 .faq-question {
     width: 100%;
     background: none;
     border: none;
     text-align: left;
-    padding: 25px 0;
+    padding: 20px 25px;
     font-family: var(--font-sans);
     font-size: 1.1rem;
     font-weight: 600;
@@ -858,7 +856,10 @@ header.scrolled {
     align-items: center;
 }
 
+.faq-question::after { display: none !important; }
+
 .faq-question .icon {
+    font-size: 1.5rem;
     color: var(--clay-terracotta);
     transition: transform 0.3s;
 }
@@ -874,10 +875,11 @@ header.scrolled {
 }
 
 .faq-answer p {
-    padding-bottom: 25px;
+    padding: 0 25px 25px 25px;
     opacity: 0.8;
     font-size: 0.95rem;
     margin: 0;
+    line-height: 1.6;
 }
 
 /* =========================================================

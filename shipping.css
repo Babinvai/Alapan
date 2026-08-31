@@ -1,0 +1,146 @@
+/* =========================================================
+   SHIPPING & RETURNS PAGE STYLES
+========================================================= */
+
+/* Hero Section */
+.policy-hero {
+    padding: 140px 20px 80px;
+    background: var(--brand-ivory);
+    color: var(--brand-green);
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.policy-hero h1 {
+    font-size: 3.5rem;
+    color: var(--brand-green);
+    margin-bottom: 20px;
+    position: relative;
+    z-index: 2;
+}
+
+.policy-hero p {
+    font-size: 1.1rem;
+    max-width: 600px;
+    margin: 0 auto;
+    opacity: 0.8;
+    position: relative;
+    z-index: 2;
+}
+
+/* Page Content */
+.policy-page-content {
+    padding: 80px 0;
+    background-color: #fafafa;
+}
+
+.policy-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 40px;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+/* Premium Card */
+.policy-card {
+    background: #fff;
+    border: 1px solid rgba(212, 175, 55, 0.3);
+    border-radius: 12px;
+    padding: 50px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+    position: relative;
+    overflow: hidden;
+}
+
+.policy-card-icon {
+    width: 60px;
+    height: 60px;
+    background: rgba(212, 175, 55, 0.1);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--brand-gold);
+    margin-bottom: 25px;
+}
+
+.policy-card-icon svg {
+    width: 30px;
+    height: 30px;
+}
+
+.policy-card h2 {
+    font-family: var(--font-serif);
+    font-size: 2.2rem;
+    color: var(--brand-green);
+    margin-bottom: 20px;
+}
+
+.policy-card p {
+    font-size: 1.05rem;
+    line-height: 1.7;
+    opacity: 0.85;
+    margin-bottom: 15px;
+}
+
+.policy-card ul, .policy-card ol {
+    margin-left: 20px;
+    margin-bottom: 20px;
+    opacity: 0.85;
+    line-height: 1.7;
+}
+
+.policy-card li {
+    margin-bottom: 10px;
+}
+
+.policy-card strong {
+    color: var(--brand-green);
+    font-weight: 700;
+}
+
+/* Contact CTA */
+.policy-contact-cta {
+    text-align: center;
+    padding: 60px 40px;
+    background: var(--brand-green);
+    color: var(--brand-ivory);
+    border-radius: 12px;
+    max-width: 900px;
+    margin: 60px auto 0;
+    box-shadow: 0 15px 40px rgba(23,75,55,0.2);
+}
+
+.policy-contact-cta h3 {
+    font-family: var(--font-serif);
+    font-size: 2.2rem;
+    color: var(--brand-gold);
+    margin-bottom: 15px;
+}
+
+.policy-contact-cta p {
+    font-size: 1.1rem;
+    opacity: 0.9;
+    margin-bottom: 30px;
+}
+
+/* Mobile Adjustments */
+@media (max-width: 768px) {
+    .policy-hero h1 {
+        font-size: 2.5rem;
+    }
+    .policy-hero {
+        padding: 110px 20px 60px;
+    }
+    .policy-card {
+        padding: 30px 20px;
+    }
+    .policy-card h2 {
+        font-size: 1.8rem;
+    }
+    .policy-contact-cta {
+        padding: 40px 20px;
+    }
+}

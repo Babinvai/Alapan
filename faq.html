@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FAQ - [Brand Name]</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="faq.css">
 </head>
 <body style="background-color: var(--brand-ivory);">
 
@@ -50,49 +51,88 @@
         </div>
     </header>
 
-    <div class="container" style="max-width: 800px; padding: 80px 20px;">
-        <h1 class="font-serif" style="text-align: center; margin-bottom: 10px;">Frequently Asked Questions</h1>
-        <p style="text-align: center; opacity: 0.8; margin-bottom: 40px;">Find answers about our ghee, shipping, and quality checks.</p>
+    <!-- HERO SECTION -->
+    <section class="faq-hero">
+        <div class="faq-hero-bg"></div>
+        <div class="container">
+            <h1 class="font-serif">Frequently Asked Questions</h1>
+            <p>Everything you need to know about Ghosh Dhara Ghee, our processes, and your orders.</p>
+        </div>
+    </section>
 
-        <div style="background: #fff; padding: 30px; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.03);">
+    <!-- FAQ CONTENT -->
+    <main class="faq-page-content">
+        <div class="container" style="max-width: 800px;">
             
-            <div class="accordion-item">
-                <button class="accordion-header">What is the difference between cow ghee and buffalo ghee? <span class="icon">+</span></button>
-                <div class="accordion-content">
-                    <p>Cow ghee is typically yellowish and has a milder flavor, making it great for everyday digestion and cooking. Buffalo ghee is white, thicker, and has a higher fat content, which is excellent for making traditional sweets or deep-frying.</p>
-                </div>
+            <!-- Category 1 -->
+            <div class="faq-category">
+                <h2 class="faq-category-title">Product & Quality</h2>
+                
+                <article class="faq-item">
+                    <button class="faq-question" aria-expanded="false">
+                        What is the difference between cow ghee and buffalo ghee?
+                        <span class="icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Cow ghee is typically yellowish and has a milder flavor, making it great for everyday digestion and cooking. Buffalo ghee is white, thicker, and has a higher fat content, which is excellent for making traditional sweets or deep-frying.</p>
+                    </div>
+                </article>
+
+                <article class="faq-item">
+                    <button class="faq-question" aria-expanded="false">
+                        How should I store ghee? Does it need refrigeration?
+                        <span class="icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Ghee does not need refrigeration. Store it in a cool, dry place away from direct sunlight. Always use a clean, dry spoon to scoop the ghee, as moisture can spoil it.</p>
+                    </div>
+                </article>
+
+                <article class="faq-item">
+                    <button class="faq-question" aria-expanded="false">
+                        Why can ghee sometimes become grainy?
+                        <span class="icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Graininess (Danedar texture) is a sign of traditional, pure ghee. It happens because different fatty acids melt and solidify at different temperatures during the cooling process.</p>
+                    </div>
+                </article>
             </div>
 
-            <div class="accordion-item">
-                <button class="accordion-header">How should I store ghee? Does it need refrigeration? <span class="icon">+</span></button>
-                <div class="accordion-content">
-                    <p>Ghee does not need refrigeration. Store it in a cool, dry place away from direct sunlight. Always use a clean, dry spoon to scoop the ghee, as moisture can spoil it.</p>
-                </div>
+            <!-- Category 2 -->
+            <div class="faq-category">
+                <h2 class="faq-category-title">Orders & Support</h2>
+
+                <article class="faq-item">
+                    <button class="faq-question" aria-expanded="false">
+                        How do I check my batch details?
+                        <span class="icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Every jar has a unique batch code. Visit our <a href="scan.html" style="color: var(--brand-saffron); font-weight: bold; text-decoration: underline;">Scan Your Batch</a> page, enter the code, and view details like pack date, origin, and quality reports.</p>
+                    </div>
+                </article>
+
+                <article class="faq-item">
+                    <button class="faq-question" aria-expanded="false">
+                        What should I do if my jar is damaged or leaking?
+                        <span class="icon">+</span>
+                    </button>
+                    <div class="faq-answer">
+                        <p>We pack securely, but if this happens, please take a photo or video immediately and contact us via WhatsApp or Email within 24-48 hours. We will arrange a replacement or refund.</p>
+                    </div>
+                </article>
             </div>
 
-            <div class="accordion-item">
-                <button class="accordion-header">Why can ghee sometimes become grainy? <span class="icon">+</span></button>
-                <div class="accordion-content">
-                    <p>Graininess (Danedar texture) is a sign of traditional, pure ghee. It happens because different fatty acids melt and solidify at different temperatures during the cooling process.</p>
-                </div>
-            </div>
-
-            <div class="accordion-item">
-                <button class="accordion-header">How do I check my batch details? <span class="icon">+</span></button>
-                <div class="accordion-content">
-                    <p>Every jar has a unique batch code. Visit our <a href="scan.html" style="color: var(--brand-saffron); font-weight: bold;">Scan Your Batch</a> page, enter the code, and view details like pack date, origin, and quality reports.</p>
-                </div>
-            </div>
-
-            <div class="accordion-item">
-                <button class="accordion-header">What should I do if my jar is damaged or leaking? <span class="icon">+</span></button>
-                <div class="accordion-content">
-                    <p>We pack securely, but if this happens, please take a photo or video immediately and contact us via WhatsApp or Email within 24-48 hours. We will arrange a replacement or refund.</p>
-                </div>
+            <!-- CTA -->
+            <div class="faq-contact-cta">
+                <h3>Still have questions?</h3>
+                <p>Our team is here to help you with anything you need.</p>
+                <a href="contact.html" class="btn-primary">Contact Us</a>
             </div>
 
         </div>
-    </div>
+    </main>
 
     <!-- PASTE FOOTER HERE -->
 
@@ -223,6 +263,7 @@
     </div>
     
     <script src="script.js"></script>
+    <script src="faq.js"></script>
 
 <!-- ==========================================
      FLOATING ACTION BUTTONS
