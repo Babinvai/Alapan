@@ -596,7 +596,7 @@ header a[href="shop.html"]::after, .desktop-nav a[href="shop.html"]::after, .nav
     .cta-actions { flex-direction: column; width: 100%; }
     .cta-actions button, .cta-actions a { width: 100%; }
     
-    .final-cta-inner { margin: 30px 15px; padding: 40px 20px; width: auto; }
+    .final-cta-inner { margin: 30px 15px !important; padding: 40px 20px !important; width: auto !important; }
 }
 
 
