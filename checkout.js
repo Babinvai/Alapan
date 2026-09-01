@@ -85,6 +85,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 return;
             }
 
+            
+
             // REGIONAL AVAILABILITY CHECK (PIN CODE PREFIX)
             // 700: Kolkata/Greater Kolkata
             // 711: Howrah
