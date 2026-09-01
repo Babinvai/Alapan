@@ -1,3 +1,5 @@
+import { auth, db, collection, addDoc, serverTimestamp } from "./firebase-config.js";
+
 // =========================================================
 // CHECKOUT PAGE LOGIC
 // =========================================================
@@ -161,6 +163,23 @@ PAYMENT: Cash on Delivery
                     }
                 } catch (error) {
                     console.error("Error submitting order.", error);
+                }
+
+                // 3.5 SAVE ORDER TO FIRESTORE (If user is logged in)
+                try {
+                    const user = auth.currentUser;
+                    if (user) {
+                        await addDoc(collection(db, "orders"), {
+                            userId: user.uid,
+                            orderNumber: orderNumber,
+                            itemsSummary: orderItems,
+                            total: finalTotal,
+                            status: "Processing",
+                            createdAt: serverTimestamp()
+                        });
+                    }
+                } catch (error) {
+                    console.error("Error saving order to Firestore:", error);
                 }
 
                 // 4. Clear Cart

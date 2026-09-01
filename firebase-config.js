@@ -7,7 +7,16 @@ import {
     signOut,
     updateProfile 
 } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-auth.js";
-
+import { 
+    getFirestore,
+    collection,
+    query,
+    where,
+    getDocs,
+    orderBy,
+    addDoc,
+    serverTimestamp
+} from "https://www.gstatic.com/firebasejs/10.9.0/firebase-firestore.js";
 // Your web app's Firebase configuration
 const firebaseConfig = {
     apiKey: "AIzaSyBN4KadgxMff5yTQtgWddUXyz2n8vF_xTw",
@@ -22,6 +31,10 @@ const firebaseConfig = {
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
+const db = getFirestore(app);
+
+// Export for checkout.js
+export { auth, db, collection, addDoc, serverTimestamp };
 
 // =========================================================
 // GLOBAL AUTHENTICATION STATE OBSERVER
@@ -57,6 +70,59 @@ onAuthStateChanged(auth, (user) => {
             
             const infoEmail = document.getElementById('info-email');
             if (infoEmail) infoEmail.textContent = user.email;
+
+            // Fetch and render Recent Orders
+            const ordersContainer = document.querySelector('.empty-orders'); 
+            if (ordersContainer) {
+                ordersContainer.innerHTML = 'Loading your orders...';
+                
+                const q = query(
+                    collection(db, "orders"), 
+                    where("userId", "==", user.uid)
+                );
+
+                getDocs(q).then((querySnapshot) => {
+                    if (querySnapshot.empty) {
+                        ordersContainer.innerHTML = `
+                            You haven't placed any orders yet. <br><br>
+                            <a href="shop.html" style="color: #174B37; font-weight: bold;">Start Shopping &rarr;</a>
+                        `;
+                    } else {
+                        // Fetch all orders into an array and sort them in memory to avoid needing a Firestore composite index
+                        let orders = [];
+                        querySnapshot.forEach((doc) => {
+                            orders.push(doc.data());
+                        });
+
+                        // Sort descending by createdAt
+                        orders.sort((a, b) => {
+                            const timeA = a.createdAt ? a.createdAt.toMillis() : 0;
+                            const timeB = b.createdAt ? b.createdAt.toMillis() : 0;
+                            return timeB - timeA;
+                        });
+
+                        let ordersHTML = '<div style="display: flex; flex-direction: column; gap: 15px;">';
+                        orders.forEach((order) => {
+                            const date = order.createdAt ? order.createdAt.toDate().toLocaleDateString() : 'Just now';
+                            ordersHTML += `
+                                <div style="border: 1px solid #ddd; padding: 15px; border-radius: 8px; text-align: left;">
+                                    <div style="display: flex; justify-content: space-between; margin-bottom: 10px; border-bottom: 1px solid #eee; padding-bottom: 5px;">
+                                        <strong style="color: #174B37; font-size: 1.1rem;">${order.orderNumber || 'Order'}</strong>
+                                        <span style="color: #888; font-size: 0.9rem;">${date}</span>
+                                    </div>
+                                    <div style="font-size: 0.9rem; color: #555; white-space: pre-wrap; line-height: 1.5; margin-bottom: 10px;">${order.itemsSummary || 'Items ordered'}</div>
+                                    <div style="font-weight: bold; color: #D35400;">Total: ₹${(order.total || 0).toFixed(2)}</div>
+                                </div>
+                            `;
+                        });
+                        ordersHTML += '</div>';
+                        ordersContainer.innerHTML = ordersHTML;
+                    }
+                }).catch(error => {
+                    console.error("Error fetching orders: ", error);
+                    ordersContainer.innerHTML = 'Error loading orders. You might need to create the Firestore database in the Firebase Console and configure index rules.';
+                });
+            }
         }
 
         // Redirect if they land on login/register pages
