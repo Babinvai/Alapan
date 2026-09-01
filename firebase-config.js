@@ -300,8 +300,9 @@ onAuthStateChanged(auth, (user) => {
 
         if (mobileAccountSection) {
             mobileAccountSection.innerHTML = `
-                <a href="login.html" class="btn-login" style="margin-bottom: 10px; text-decoration: none;">LOG IN</a>
-                <a href="register.html" class="btn-register" style="text-decoration: none;">REGISTER</a>
+                <h3>My Account</h3>
+                <a href="login.html" class="btn-mobile-login">LOG IN</a>
+                <a href="register.html" class="btn-mobile-register">REGISTER</a>
             `;
         }
 
