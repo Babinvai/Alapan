@@ -19,9 +19,9 @@ body {
 .checkout-form-section {
     background: #fff;
     padding: 40px;
-    border-radius: 12px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.03);
-    border: 1px solid rgba(212, 175, 55, 0.2);
+    border-radius: 16px;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.04);
+    border: 1px solid rgba(212, 175, 55, 0.15);
 }
 
 .checkout-title {
@@ -66,18 +66,22 @@ body {
 
 .form-group input,
 .form-group select {
-    padding: 12px 15px;
-    border: 1px solid #ddd;
-    border-radius: 6px;
+    padding: 14px 18px;
+    border: 2px solid #EAEAEA;
+    border-radius: 8px;
     font-family: var(--font-sans);
     font-size: 1rem;
+    background-color: #FAFAFA;
+    transition: all 0.3s ease;
+    color: #333;
     outline: none;
-    transition: border-color 0.3s;
 }
 
 .form-group input:focus,
 .form-group select:focus {
-    border-color: var(--brand-gold);
+    border-color: var(--brand-green);
+    background-color: #fff;
+    box-shadow: 0 4px 12px rgba(23, 75, 55, 0.08);
 }
 
 /* Payment Methods */
@@ -90,16 +94,26 @@ body {
 .payment-option {
     display: flex;
     align-items: center;
-    padding: 15px;
-    border: 1px solid #ddd;
-    border-radius: 6px;
+    padding: 20px;
+    border: 2px solid #EAEAEA;
+    border-radius: 12px;
     cursor: pointer;
-    transition: all 0.2s;
+    transition: all 0.3s ease;
+    background: #fff;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.02);
 }
 
 .payment-option:hover {
     border-color: var(--brand-gold);
-    background: rgba(212, 175, 55, 0.03);
+    background: #FFF9E6;
+    box-shadow: 0 6px 16px rgba(212, 175, 55, 0.1);
+    transform: translateY(-2px);
+}
+
+.payment-option:has(input[type="radio"]:checked) {
+    border-color: var(--brand-green);
+    background: rgba(23, 75, 55, 0.03);
+    box-shadow: 0 4px 12px rgba(23, 75, 55, 0.08);
 }
 
 .payment-option input[type="radio"] {
@@ -118,10 +132,11 @@ body {
 .checkout-summary-section {
     position: sticky;
     top: 100px;
-    background: #fafafa;
+    background: linear-gradient(145deg, #ffffff 0%, #FAFAFA 100%);
     padding: 40px;
-    border-radius: 12px;
-    border: 1px solid #eee;
+    border-radius: 16px;
+    border: 1px solid rgba(212, 175, 55, 0.15);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.04);
     height: fit-content;
 }
 
@@ -204,19 +219,22 @@ body {
 .btn-place-order {
     width: 100%;
     padding: 18px;
-    background: var(--brand-green);
+    background: linear-gradient(135deg, var(--brand-green) 0%, #0e3022 100%);
     color: var(--brand-ivory);
     font-size: 1.2rem;
     font-weight: 600;
     border: none;
-    border-radius: 6px;
+    border-radius: 8px;
     cursor: pointer;
-    transition: background 0.3s;
-    margin-top: 20px;
+    transition: all 0.3s ease;
+    margin-top: 25px;
+    box-shadow: 0 8px 20px rgba(23, 75, 55, 0.2);
 }
 
 .btn-place-order:hover {
-    background: #0e3022;
+    transform: translateY(-2px);
+    box-shadow: 0 12px 25px rgba(23, 75, 55, 0.3);
+    background: linear-gradient(135deg, #0e3022 0%, var(--brand-green) 100%);
 }
 
 /* Success Modal */

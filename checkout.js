@@ -98,8 +98,12 @@ document.addEventListener('DOMContentLoaded', () => {
             const allowedPrefixes = ['700', '711', '712', '741', '743'];
             const pinPrefix = pin.substring(0, 3);
             
+            const errDiv = document.getElementById('checkout-error-message');
+            errDiv.style.display = 'none'; // reset previous errors
+
             if (!allowedPrefixes.includes(pinPrefix)) {
-                alert("Sorry! Currently we only deliver to Greater Kolkata, Howrah, Hooghly, Nadia, and North/South 24 Parganas.\n\nDelivery to your region will be available very soon.");
+                errDiv.innerHTML = "<strong>Delivery Unavailable</strong><br>We're sorry, but we don't currently deliver to this PIN code. We are expanding rapidly, so delivery to your area will be available very soon!";
+                errDiv.style.display = 'block';
                 return;
             }
 

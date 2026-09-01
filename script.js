@@ -255,7 +255,8 @@ window.updateCartUI = function() {
                 <span style="font-weight: 700; font-family: 'Playfair Display', serif;">₹${totalPrice.toFixed(2)}</span>
             </div>
             <p style="font-size: 0.8rem; color: #666; margin-top: -10px; margin-bottom: 15px;">Shipping and taxes calculated at checkout.</p>
-            <a href="checkout.html" style="display: block; width: 100%; padding: 15px; background: #174B37; color: #fff; text-align: center; text-decoration: none; font-weight: 600; border-radius: 4px; transition: transform 0.2s ease;">Proceed to Secure Checkout</a>
+            <div id="cart-checkout-error"></div>
+            <a href="#" onclick="handleCheckoutClick(event)" style="display: block; width: 100%; padding: 15px; background: #174B37; color: #fff; text-align: center; text-decoration: none; font-weight: 600; border-radius: 4px; transition: transform 0.2s ease;">Proceed to Secure Checkout</a>
             <p style="text-align: center; font-size: 0.75rem; color: #666; margin-top: 10px;">💳 Cards, UPI & Net Banking Accepted</p>
         `;
     }
@@ -367,7 +368,27 @@ document.addEventListener('DOMContentLoaded', () => {
             document.body.classList.remove('no-scroll');
         });
     }
-});
+});// =========================================================
+// CHECKOUT NAVIGATION HANDLER
+// =========================================================
+
+window.handleCheckoutClick = function(e) {
+    e.preventDefault();
+    if (window.firebaseUserLoggedIn) {
+        window.location.href = "checkout.html";
+    } else {
+        const errDiv = document.getElementById('cart-checkout-error');
+        if (errDiv) {
+            errDiv.innerHTML = `
+                <div style="background: #FFF0F0; color: #D32F2F; padding: 12px; border-radius: 6px; margin-bottom: 15px; font-size: 0.85rem; text-align: center; border: 1px solid #FFCDD2; font-family: 'Inter', sans-serif;">
+                    Please <a href="login.html" style="color: #D32F2F; font-weight: bold; text-decoration: underline;">Log In</a> or <a href="register.html" style="color: #D32F2F; font-weight: bold; text-decoration: underline;">Create an Account</a> to proceed.
+                </div>
+            `;
+        } else {
+            window.location.href = "login.html";
+        }
+    }
+}
 
 
 

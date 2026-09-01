@@ -177,26 +177,158 @@
                     <h1>Hello, <span id="profile-greeting-name">User</span>!</h1>
                     <p>Welcome to your Ghosh Dhara account dashboard.</p>
                 </div>
-                <button id="btn-logout" class="btn-logout">Log Out</button>
+                <div class="header-avatar-container">
+                    <div class="dashboard-avatar" id="profile-avatar">
+                        <span>U</span>
+                    </div>
+                    <button id="btn-logout" class="btn-logout">Log Out</button>
+                </div>
             </div>
 
             <div class="profile-content">
-                <!-- Account Info -->
-                <div class="profile-card">
-                    <h3>Account Details</h3>
-                    <ul class="account-info-list">
-                        <li><strong>Full Name</strong> <span id="info-name">--</span></li>
-                        <li><strong>Email Address</strong> <span id="info-email">--</span></li>
-                    </ul>
+                <!-- LEFT COLUMN -->
+                <div class="profile-sidebar">
+                    <!-- Account Info -->
+                    <div class="profile-card" style="margin-bottom: 30px;">
+                        <h3>Account Details</h3>
+                        <div class="sidebar-profile-badge">
+                            <div class="sidebar-avatar" id="sidebar-avatar-initial">U</div>
+                            <div class="sidebar-user-details" style="flex: 1; overflow: hidden;">
+                                <!-- Display Mode -->
+                                <div id="info-name-display-group" style="display: flex; align-items: center; gap: 8px;">
+                                    <h4 id="info-name" style="margin: 0; padding: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">--</h4>
+                                    <button id="btn-edit-name" title="Edit Name" style="background: none; border: none; cursor: pointer; color: var(--brand-green); padding: 0; display: flex; align-items: center; opacity: 0.6; transition: opacity 0.2s;">
+                                        <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg>
+                                    </button>
+                                </div>
+                                <!-- Edit Mode -->
+                                <div id="info-name-edit-group" style="display: none; align-items: center; gap: 5px; margin-bottom: 4px; margin-top: 2px;">
+                                    <input type="text" id="input-edit-name" style="width: 100%; padding: 4px 6px; border: 1px solid var(--brand-gold); border-radius: 4px; font-size: 0.9rem; outline: none; background: #fff;" />
+                                    <button id="btn-save-name" style="background: var(--brand-green); color: #fff; border: none; border-radius: 4px; padding: 4px 8px; font-size: 0.8rem; cursor: pointer; font-weight: bold; flex-shrink: 0;">Save</button>
+                                </div>
+                                <p id="info-email" style="margin-top: 4px;">--</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Quick Links Sidebar -->
+                        <ul class="quick-links-menu">
+                            <li><a href="#" class="tab-link active" data-target="view-dashboard">📊 Dashboard</a></li>
+                            <li><a href="#" class="tab-link" data-target="view-addresses">📍 Manage Addresses</a></li>
+                            <li><a href="#" class="tab-link" data-target="view-payments">💳 Payment Methods</a></li>
+                            <li><a href="shop.html">🛒 Shop More Ghee</a></li>
+                            <li><a href="contact.html">🎧 Contact Support</a></li>
+                        </ul>
+                    </div>
                 </div>
 
-                <!-- Order History -->
-                <div class="profile-card">
-                    <h3>Recent Orders</h3>
-                    <div class="empty-orders">
-                        You haven't placed any orders yet. <br><br>
-                        <a href="shop.html" style="color: #174B37; font-weight: bold;">Start Shopping &rarr;</a>
+                <!-- RIGHT COLUMN -->
+                <div class="profile-main">
+                    
+                    <!-- VIEW 1: DASHBOARD -->
+                    <div class="profile-view active" id="view-dashboard">
+                        <!-- Rewards Banner -->
+                        <div class="rewards-banner">
+                            <div class="rewards-info">
+                                <h3>Ghosh Dhara Rewards</h3>
+                                <p>Earn drops with every purchase to unlock exclusive discounts.</p>
+                            </div>
+                            <div class="rewards-points">
+                                <span style="font-size: 1.2rem;">💧</span> 150 Drops
+                            </div>
+                        </div>
+
+                        <!-- Order History -->
+                        <div class="profile-card">
+                            <h3>Recent Orders</h3>
+                            <!-- Container for dynamic orders -->
+                            <div id="orders-container">
+                                <div class="empty-orders">
+                                    Loading orders...
+                                </div>
+                            </div>
+                        </div>
                     </div>
+
+                    <!-- VIEW 2: MANAGE ADDRESSES -->
+                    <div class="profile-view" id="view-addresses">
+                        <div class="profile-card">
+                            <h3>Manage Addresses</h3>
+                            
+                            <!-- Address List Container -->
+                            <div id="addresses-container">
+                                <div class="empty-orders">Loading addresses...</div>
+                            </div>
+
+                            <button class="btn-add-new" id="btn-show-address-form">+ Add New Address</button>
+                            
+                            <!-- Add Address Form -->
+                            <div class="inline-form-container" id="address-form-container">
+                                <h4 style="margin-top: 0; color: var(--brand-green);">Add New Address</h4>
+                                <form id="add-address-form" class="auth-form">
+                                    <div class="form-group">
+                                        <label>Address Label (e.g., Home, Work)</label>
+                                        <input type="text" id="addr-label" required placeholder="Home">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Street Address</label>
+                                        <input type="text" id="addr-street" required placeholder="123 Main Street">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Phone Number</label>
+                                        <input type="tel" id="addr-phone" required placeholder="10-digit mobile number">
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="form-group">
+                                            <label>City</label>
+                                            <input type="text" id="addr-city" required placeholder="Kolkata">
+                                        </div>
+                                        <div class="form-group">
+                                            <label>PIN Code</label>
+                                            <input type="text" id="addr-pin" required placeholder="700001">
+                                        </div>
+                                    </div>
+                                    <div class="form-row">
+                                        <button type="button" class="auth-btn" id="btn-cancel-address" style="background: #ccc; flex: 1;">Cancel</button>
+                                        <button type="submit" class="auth-btn" style="flex: 2; margin-left: 10px;">Save Address</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- VIEW 3: PAYMENT METHODS -->
+                    <div class="profile-view" id="view-payments">
+                        <div class="profile-card">
+                            <h3>Payment Methods</h3>
+                            
+                            <div style="background: #FFF4E5; border: 1px solid #FFE0B2; padding: 15px; border-radius: 8px; margin-bottom: 20px; font-size: 0.9rem; color: #B26A00;">
+                                <strong>Secure Storage:</strong> For your security, we do not store full credit card numbers. Save a UPI ID or mock card for fast checkout.
+                            </div>
+
+                            <!-- Payments List Container -->
+                            <div id="payments-container">
+                                <div class="empty-orders">Loading payment methods...</div>
+                            </div>
+
+                            <button class="btn-add-new" id="btn-show-payment-form">+ Add Payment Method</button>
+                            
+                            <!-- Add Payment Form -->
+                            <div class="inline-form-container" id="payment-form-container">
+                                <h4 style="margin-top: 0; color: var(--brand-green);">Add UPI ID</h4>
+                                <form id="add-payment-form" class="auth-form">
+                                    <div class="form-group">
+                                        <label>UPI ID</label>
+                                        <input type="text" id="pay-upi" required placeholder="yourname@okhdfcbank">
+                                    </div>
+                                    <div class="form-row">
+                                        <button type="button" class="auth-btn" id="btn-cancel-payment" style="background: #ccc; flex: 1;">Cancel</button>
+                                        <button type="submit" class="auth-btn" style="flex: 2; margin-left: 10px;">Save Method</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
             </div>
 
