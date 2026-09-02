@@ -7,7 +7,16 @@ import { auth, db, collection, addDoc, serverTimestamp } from "./firebase-config
 document.addEventListener('DOMContentLoaded', () => {
     
     // 1. Load Cart Data
-    let cart = JSON.parse(localStorage.getItem('ghoshDharaCart')) || [];
+    // Check if user clicked "Buy Now" (Direct Checkout) via URL parameter
+    const isDirectBuy = window.location.search.includes('buyNow=true');
+    let directBuyCartRaw = sessionStorage.getItem('ghoshDharaDirectBuy');
+    let cart = [];
+    
+    if (isDirectBuy && directBuyCartRaw) {
+        cart = JSON.parse(directBuyCartRaw) || [];
+    } else {
+        cart = JSON.parse(localStorage.getItem('ghoshDharaCart')) || [];
+    }
     
     const checkoutItemsContainer = document.getElementById('checkout-items');
     const subtotalEl = document.getElementById('checkout-subtotal');
@@ -42,11 +51,66 @@ document.addEventListener('DOMContentLoaded', () => {
         // 3. Calculate Totals
         let subtotal = cart.reduce((sum, item) => sum + item.price, 0);
         let shipping = subtotal > 999 ? 0 : 99; // Free shipping over ₹999
-        let finalTotal = subtotal + shipping;
+        let discount = 0;
 
-        subtotalEl.textContent = `₹${subtotal.toFixed(2)}`;
-        shippingEl.textContent = shipping === 0 ? "Free" : `₹${shipping.toFixed(2)}`;
-        totalEl.textContent = `₹${finalTotal.toFixed(2)}`;
+        const updateTotals = () => {
+            let finalTotal = subtotal + shipping - discount;
+            if (finalTotal < 0) finalTotal = 0;
+            
+            subtotalEl.textContent = `₹${subtotal.toFixed(2)}`;
+            shippingEl.textContent = shipping === 0 ? "Free" : `₹${shipping.toFixed(2)}`;
+            totalEl.textContent = `₹${finalTotal.toFixed(2)}`;
+            
+            const discountLine = document.getElementById('discount-line');
+            const discountEl = document.getElementById('checkout-discount');
+            if (discountLine && discountEl) {
+                if (discount > 0) {
+                    discountLine.style.display = 'flex';
+                    discountEl.textContent = `-₹${discount.toFixed(2)}`;
+                } else {
+                    discountLine.style.display = 'none';
+                }
+            }
+        };
+        
+        updateTotals();
+
+        // 3.5 Promo Code Logic
+        const btnApplyPromo = document.getElementById('btn-apply-promo');
+        const promoInput = document.getElementById('promo-code-input');
+        const promoMsg = document.getElementById('promo-message');
+        const discountLabel = document.getElementById('discount-label');
+        
+        if (btnApplyPromo && promoInput) {
+            btnApplyPromo.addEventListener('click', () => {
+                const code = promoInput.value.trim().toUpperCase();
+                if (!code) {
+                    promoMsg.textContent = "Please enter a code.";
+                    promoMsg.className = "promo-msg error";
+                    return;
+                }
+                
+                // Dummy logic for demonstration
+                if (code === 'GHOSH10') {
+                    discount = subtotal * 0.10; // 10% off
+                    promoMsg.textContent = "🎉 10% discount applied successfully!";
+                    promoMsg.className = "promo-msg success";
+                    if (discountLabel) discountLabel.textContent = code;
+                    updateTotals();
+                } else if (code === 'WELCOME50') {
+                    discount = 50; // flat ₹50 off
+                    promoMsg.textContent = "🎉 Flat ₹50 discount applied!";
+                    promoMsg.className = "promo-msg success";
+                    if (discountLabel) discountLabel.textContent = code;
+                    updateTotals();
+                } else {
+                    discount = 0;
+                    promoMsg.textContent = "Invalid or expired promo code.";
+                    promoMsg.className = "promo-msg error";
+                    updateTotals();
+                }
+            });
+        }
     }
 
     // 4. Handle Order Submission
@@ -188,6 +252,7 @@ PAYMENT: Cash on Delivery
 
                 // 4. Clear Cart
                 localStorage.removeItem('ghoshDharaCart');
+                sessionStorage.removeItem('ghoshDharaDirectBuy');
                 
                 // 5. Show Success Modal instantly (Customer never leaves the page)
                 const modal = document.getElementById('orderSuccessModal');

@@ -88,8 +88,12 @@ window.addToCart = function(productName, price) {
 
 // BUY NOW FUNCTION
 window.buyNow = function(productName) {
-    // Redirects immediately to product page
-    window.location.href = 'shop.html'; 
+    // On mobile, bypass the large product image and jump straight to the purchase options
+    if (window.innerWidth <= 768) {
+        window.location.href = 'shop.html#purchasePanel';
+    } else {
+        window.location.href = 'shop.html#product-purchase'; 
+    }
 };
 
 // ==========================================
@@ -310,12 +314,171 @@ window.addToCart = function(productName, price, imgUrl) {
         price: parseFloat(price), 
         img: imgUrl || fallbackImg 
     });
-    
     saveCart();
     updateCartUI();
     window.showToast();
     window.openCart();
 };
+
+// Initial Render
+window.onload = function() {
+    window.renderCart();
+};
+
+// ==========================================
+// PROMOTIONAL MODAL & TAB LOGIC
+// ==========================================
+document.addEventListener('DOMContentLoaded', () => {
+    const promoOverlay = document.getElementById('promoOfferOverlay');
+    const promoCloseBtn = document.getElementById('promoCloseBtn');
+    const promoForm = document.getElementById('promoForm');
+    const promoSuccessMsg = document.getElementById('promoSuccessMsg');
+    const promoMiniTab = document.getElementById('promoMiniTab');
+    const promoPhoneInput = document.getElementById('promoPhoneInput');
+    
+    // Only run if elements exist (e.g. on homepage)
+    if (!promoOverlay) return;
+
+    // Check if dismissed in this session
+    const isPromoDismissed = sessionStorage.getItem('promoDismissed');
+    
+    if (!isPromoDismissed) {
+        // Show after 1.5s delay
+        setTimeout(() => {
+            promoOverlay.classList.remove('hidden');
+        }, 1500);
+    } else {
+        // If dismissed, just show the tab
+        promoMiniTab.classList.remove('hidden');
+        setTimeout(() => promoMiniTab.classList.add('visible'), 500);
+    }
+
+    function hideModalAndShowTab() {
+        promoOverlay.classList.add('hidden');
+        sessionStorage.setItem('promoDismissed', 'true');
+        promoMiniTab.classList.remove('hidden');
+        // Small delay to let modal fade out before tab slides in
+        setTimeout(() => {
+            promoMiniTab.classList.add('visible');
+        }, 300);
+    }
+
+    function showModalAndHideTab() {
+        promoMiniTab.classList.remove('visible');
+        setTimeout(() => {
+            promoMiniTab.classList.add('hidden');
+            promoOverlay.classList.remove('hidden');
+        }, 300);
+    }
+
+    // Close button
+    if(promoCloseBtn) {
+        promoCloseBtn.addEventListener('click', hideModalAndShowTab);
+    }
+
+    // Form Submission
+    if(promoForm) {
+        promoForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const phone = promoPhoneInput.value;
+            // In a real app, send this to Firebase or Web3Forms
+            console.log("Promo lead captured:", phone);
+            
+            promoForm.style.display = 'none';
+            promoSuccessMsg.style.display = 'block';
+            
+            // Auto close after 3.5 seconds
+            setTimeout(() => {
+                hideModalAndShowTab();
+            }, 3500);
+        });
+    }
+
+    // Tab Click (Maximize)
+    if(promoMiniTab) {
+        promoMiniTab.addEventListener('click', (e) => {
+            // Only maximize if we are not dragging
+            if (!isDragging) {
+                showModalAndHideTab();
+            }
+        });
+    }
+
+    // ==========================================
+    // DRAGGABLE MINIMIZED TAB LOGIC (Y-Axis only)
+    // ==========================================
+    let isDragging = false;
+    let startY, startTop;
+
+    if(promoMiniTab) {
+        promoMiniTab.addEventListener('mousedown', startDrag);
+        promoMiniTab.addEventListener('touchstart', startDrag, {passive: false});
+
+        function startDrag(e) {
+            isDragging = false; // Reset drag flag
+            
+            if (e.type === 'touchstart') {
+                startY = e.touches[0].clientY;
+            } else {
+                startY = e.clientY;
+            }
+            
+            const rect = promoMiniTab.getBoundingClientRect();
+            startTop = rect.top + (rect.height / 2); // Center of the tab relative to viewport
+            
+            document.addEventListener('mousemove', drag);
+            document.addEventListener('touchmove', drag, {passive: false});
+            document.addEventListener('mouseup', endDrag);
+            document.addEventListener('touchend', endDrag);
+        }
+
+        function drag(e) {
+            let currentY;
+            if (e.type === 'touchmove') {
+                currentY = e.touches[0].clientY;
+                e.preventDefault(); // Prevent scrolling while dragging
+            } else {
+                currentY = e.clientY;
+            }
+            
+            const diffY = currentY - startY;
+            
+            // If moved more than 5px, it's a drag, not a click
+            if (Math.abs(diffY) > 5) {
+                isDragging = true;
+                promoMiniTab.classList.add('dragging');
+            }
+            
+            if (isDragging) {
+                let newTop = startTop + diffY;
+                
+                // Boundaries (keep it within screen)
+                const minTop = 50;
+                const maxTop = window.innerHeight - 50;
+                
+                if (newTop < minTop) newTop = minTop;
+                if (newTop > maxTop) newTop = maxTop;
+                
+                promoMiniTab.style.top = newTop + 'px';
+            }
+        }
+
+        function endDrag() {
+            promoMiniTab.classList.remove('dragging');
+            document.removeEventListener('mousemove', drag);
+            document.removeEventListener('touchmove', drag);
+            document.removeEventListener('mouseup', endDrag);
+            document.removeEventListener('touchend', endDrag);
+            
+            // The click event listener will fire next, but we have isDragging to prevent it 
+            // from maximizing if it was a drag operation. 
+            // Reset isDragging after a tiny delay so the click event can check it.
+            setTimeout(() => {
+                isDragging = false;
+            }, 50);
+        }
+    }
+});
 
 // 5. Remove Function
 window.removeFromCart = function(index) {

@@ -85,15 +85,7 @@
                 <!-- RIGHT: Hamburger Menu -->
                 <div class="mobile-header-right">
                     
-                    <!-- PREMIUM ACCOUNT LOGIN ICON FOR MOBILE -->
-                    <a href="login.html" class="header-account-btn" aria-label="Sign In or Register" style="margin-right: 15px; display: none;">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                            stroke-linecap="round" stroke-linejoin="round" style="width: 24px; height: 24px;">
-                            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
-                            <circle cx="12" cy="7" r="4"></circle>
-                        </svg>
-                    </a>
-                    <button id="mobileMenuBtn" class="hamburger-btn" aria-label="Open Menu">
+<button id="mobileMenuBtn" class="hamburger-btn" aria-label="Open Menu">
                         <svg viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="#B86745" stroke-width="2">
                             <path d="M3 12h18M3 6h18M3 18h18"></path>
                         </svg>
@@ -183,8 +175,19 @@
             
             <div class="profile-header">
                 <div class="profile-greeting">
-                    <h1>Hello, <span id="profile-greeting-name">User</span>!</h1>
-                    <p>Welcome to your Ghosh Dhara account dashboard.</p>
+                    <div id="info-name-display-group" style="display: flex; align-items: center; gap: 12px; margin-bottom: 5px;">
+                        <h1 style="margin: 0;">Hello, <span id="profile-greeting-name">User</span>!</h1>
+                        <button id="btn-edit-name" title="Edit Name" style="background: none; border: none; cursor: pointer; color: #D9B12D; padding: 0; display: flex; align-items: center; opacity: 0.8; transition: opacity 0.2s;">
+                            <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg>
+                        </button>
+                    </div>
+                    <div id="info-name-edit-group" style="display: none; align-items: center; gap: 8px; margin-bottom: 15px;">
+                        <h1 style="margin: 0;">Hello,</h1>
+                        <input type="text" id="input-edit-name" style="width: 200px; padding: 8px 12px; border: 2px solid var(--brand-gold); border-radius: 6px; font-size: 1.1rem; outline: none; background: rgba(255,255,255,0.95); color: #111;" />
+                        <button id="btn-save-name" style="background: var(--brand-gold); color: #113627; border: none; border-radius: 6px; padding: 8px 16px; font-size: 1rem; cursor: pointer; font-weight: bold;">Save</button>
+                    </div>
+                    <p id="info-email" style="opacity: 0.8; font-size: 0.95rem; margin-bottom: 5px;">--</p>
+                    <p style="opacity: 0.9;">Welcome to your Ghosh Dhara account dashboard.</p>
                 </div>
                 <div class="header-avatar-container">
                     <div class="dashboard-avatar" id="profile-avatar">
@@ -199,27 +202,11 @@
                 <div class="profile-sidebar">
                     <!-- Account Info -->
                     <div class="profile-card" style="margin-bottom: 30px;">
-                        <h3>Account Details</h3>
-                        <div class="sidebar-profile-badge">
-                            <div class="sidebar-avatar" id="sidebar-avatar-initial">U</div>
-                            <div class="sidebar-user-details" style="flex: 1; overflow: hidden;">
-                                <!-- Display Mode -->
-                                <div id="info-name-display-group" style="display: flex; align-items: center; gap: 8px;">
-                                    <h4 id="info-name" style="margin: 0; padding: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">--</h4>
-                                    <button id="btn-edit-name" title="Edit Name" style="background: none; border: none; cursor: pointer; color: var(--brand-green); padding: 0; display: flex; align-items: center; opacity: 0.6; transition: opacity 0.2s;">
-                                        <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg>
-                                    </button>
-                                </div>
-                                <!-- Edit Mode -->
-                                <div id="info-name-edit-group" style="display: none; align-items: center; gap: 5px; margin-bottom: 4px; margin-top: 2px;">
-                                    <input type="text" id="input-edit-name" style="width: 100%; padding: 4px 6px; border: 1px solid var(--brand-gold); border-radius: 4px; font-size: 0.9rem; outline: none; background: #fff;" />
-                                    <button id="btn-save-name" style="background: var(--brand-green); color: #fff; border: none; border-radius: 4px; padding: 4px 8px; font-size: 0.8rem; cursor: pointer; font-weight: bold; flex-shrink: 0;">Save</button>
-                                </div>
-                                <p id="info-email" style="margin-top: 4px;">--</p>
-                            </div>
-                        </div>
                         
                         <!-- Quick Links Sidebar -->
+                        <div class="swipe-hint" style="display: none;">
+                            Swipe for more <span style="display: inline-block; animation: swipeAnim 1.5s infinite;">&rarr;</span>
+                        </div>
                         <ul class="quick-links-menu">
                             <li><a href="#" class="tab-link active" data-target="view-dashboard">📊 Dashboard</a></li>
                             <li><a href="#" class="tab-link" data-target="view-addresses">📍 Manage Addresses</a></li>

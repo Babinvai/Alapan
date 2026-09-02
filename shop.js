@@ -139,12 +139,24 @@ document.addEventListener('DOMContentLoaded', () => {
     const buyNowBtn = document.getElementById('btnBuyNow');
     if(buyNowBtn) {
         buyNowBtn.addEventListener('click', () => {
-            if (typeof window.BuyNow === 'function') {
-                window.BuyNow(currentSize);
-            } else {
-                if(addBtn) addBtn.click();
-                if (typeof window.openCart === 'function') window.openCart();
+            const qty = parseInt(qtyInput.value) || 1;
+            
+            // For a professional "Buy Now" flow, we bypass the main cart
+            // so we don't mix this immediate purchase with items they saved earlier.
+            let directBuyCart = [];
+            for (let i = 0; i < qty; i++) {
+                directBuyCart.push({
+                    name: currentSize,
+                    price: currentPrice,
+                    img: currentImg
+                });
             }
+            
+            // Save to sessionStorage for immediate checkout
+            sessionStorage.setItem('ghoshDharaDirectBuy', JSON.stringify(directBuyCart));
+            
+            // Instantly redirect to checkout page with a URL parameter
+            window.location.href = 'checkout.html?buyNow=true';
         });
     }
 

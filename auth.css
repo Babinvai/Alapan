@@ -485,11 +485,77 @@
     .profile-content {
         grid-template-columns: 1fr;
         gap: 20px;
+        max-width: 100%;
     }
     
-    /* Hide the large green banner on mobile as it takes too much space, or make it very compact */
+    .profile-sidebar, .profile-main {
+        min-width: 0;
+        width: 100%;
+    }
+    
+    /* Make the mobile profile header incredibly beautiful and compact */
     .profile-header {
-        display: none; /* Hide to save space, the sidebar-badge will serve as the header */
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        padding: 30px 20px;
+        gap: 15px;
+        border-radius: 20px;
+        margin-bottom: 25px;
+        background: linear-gradient(135deg, #0A2219 0%, #174B37 100%);
+        box-shadow: 0 15px 35px rgba(23, 75, 55, 0.25), inset 0 1px 0 rgba(255,255,255,0.1);
+        position: relative;
+        overflow: hidden;
+    }
+    
+    .profile-header::before {
+        content: '';
+        position: absolute;
+        top: -50%;
+        left: -50%;
+        width: 200%;
+        height: 200%;
+        background: radial-gradient(circle at center, rgba(217, 177, 45, 0.15) 0%, transparent 50%);
+        pointer-events: none;
+        animation: rotateGlow 15s linear infinite;
+    }
+    
+    .profile-greeting h1 {
+        font-size: 2rem;
+        margin-bottom: 0px;
+        text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+    }
+    
+    .header-avatar-container {
+        flex-direction: column;
+        gap: 15px;
+        width: 100%;
+        align-items: center;
+        z-index: 1;
+    }
+    
+    .dashboard-avatar {
+        margin: 0 auto;
+        width: 70px;
+        height: 70px;
+        box-shadow: 0 0 20px rgba(217, 177, 45, 0.4);
+        border: 3px solid #D9B12D;
+    }
+    
+    .btn-logout {
+        width: 100%;
+        max-width: 200px;
+        background: rgba(255, 255, 255, 0.1);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        backdrop-filter: blur(5px);
+        font-weight: 600;
+        letter-spacing: 0.5px;
+        padding: 12px;
+        border-radius: 30px;
+    }
+    
+    #info-name-display-group, #info-name-edit-group {
+        justify-content: center; /* Center the name edit group inside the mobile header */
     }
     
     .profile-card {
@@ -500,22 +566,20 @@
         display: none; /* Hide "Account Details" to save vertical space */
     }
 
-    .sidebar-profile-badge {
-        flex-direction: row;
-        text-align: left;
-        padding: 15px;
-        gap: 15px;
-        margin-bottom: 15px;
+    .swipe-hint {
+        display: block !important;
+        font-size: 0.85rem;
+        color: var(--brand-green);
+        text-align: right;
+        margin-bottom: 8px;
+        padding-right: 5px;
+        font-weight: 600;
+        opacity: 0.8;
     }
     
-    .sidebar-avatar {
-        width: 45px;
-        height: 45px;
-        font-size: 1.2rem;
-    }
-    
-    #info-name-display-group, #info-name-edit-group {
-        justify-content: flex-start;
+    @keyframes swipeAnim {
+        0%, 100% { transform: translateX(0); }
+        50% { transform: translateX(5px); }
     }
 
     /* Make tabs horizontal scrollable on mobile */
@@ -529,6 +593,8 @@
         border-top: none;
         -ms-overflow-style: none; /* IE and Edge */
         scrollbar-width: none; /* Firefox */
+        -webkit-mask-image: linear-gradient(to right, black 85%, transparent 100%);
+        mask-image: linear-gradient(to right, black 85%, transparent 100%);
     }
     
     .quick-links-menu::-webkit-scrollbar {

@@ -84,15 +84,7 @@
                 <!-- RIGHT: Hamburger Menu -->
                 <div class="mobile-header-right">
                     
-                    <!-- PREMIUM ACCOUNT LOGIN ICON FOR MOBILE -->
-                    <a href="login.html" class="header-account-btn" aria-label="Sign In or Register" style="margin-right: 15px; display: none;">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-                            stroke-linecap="round" stroke-linejoin="round" style="width: 24px; height: 24px;">
-                            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
-                            <circle cx="12" cy="7" r="4"></circle>
-                        </svg>
-                    </a>
-                    <button id="mobileMenuBtn" class="hamburger-btn" aria-label="Open Menu">
+<button id="mobileMenuBtn" class="hamburger-btn" aria-label="Open Menu">
                         <svg viewBox="0 0 24 24" width="30" height="30" fill="none" stroke="#B86745" stroke-width="2">
                             <path d="M3 12h18M3 6h18M3 18h18"></path>
                         </svg>
@@ -113,7 +105,7 @@
                 <!-- Desktop Nav -->
                 <nav class="nav-links">
                     <a href="index.html">Home</a>
-                    <a href="shop.html">Shop</a>
+                    <a href="shop.html#product-purchase">Shop</a>
                     <a href="story.html">Our Story</a>
                     <a href="traceability.html">Quality</a>
                     <a href="recipes.html">Recipes</a>
@@ -159,7 +151,7 @@
             <!-- Animated Nav Links (Merged from your old mobile menu) -->
             <ul class="mobile-nav-links">
                 <li><a href="index.html">Home</a></li>
-                <li><a href="shop.html">Shop Ghee</a></li>
+                <li><a href="shop.html#product-purchase">Shop Ghee</a></li>
                 <li><a href="story.html">Our Story</a></li>
                 <li><a href="traceability.html">Quality & Traceability</a></li>
                 <li><a href="scan.html" style="color: #D9B12D;">🔍 Scan Your Batch</a></li>
@@ -550,7 +542,7 @@
                     from our family’s dairy heritage to your kitchen.</p>
                 <!-- UPDATED BUTTON CONTAINER -->
                 <div class="hero-buttons float-up-delay-2">
-                    <a href="shop.html" class="btn-primary liquid-btn" style="text-decoration: none;">Shop Ghee</a>
+                    <a href="shop.html#product-purchase" class="btn-primary liquid-btn" style="text-decoration: none;">Shop Ghee</a>
                     <a href="traceability.html" class="btn-secondary glow-btn" style="text-decoration: none;">Know Our
                         Process</a>
                 </div>
@@ -2387,7 +2379,7 @@
                 <h4 style="color: #D9B12D; margin-bottom: 15px; font-family: 'Playfair Display', serif;">Explore</h4>
                 <ul style="list-style: none; padding: 0; line-height: 2;">
                     <li><a href="index.html" style="color: #FAF8F2; text-decoration: none; opacity: 0.8;">Home</a></li>
-                    <li><a href="shop.html" style="color: #FAF8F2; text-decoration: none; opacity: 0.8;">Shop</a></li>
+                    <li><a href="shop.html#product-purchase" style="color: #FAF8F2; text-decoration: none; opacity: 0.8;">Shop</a></li>
                     <li><a href="story.html" style="color: #FAF8F2; text-decoration: none; opacity: 0.8;">Our Story</a></li>
                     <li><a href="traceability.html" style="color: #FAF8F2; text-decoration: none; opacity: 0.8;">Quality</a></li>
                     <li><a href="recipes.html" style="color: #FAF8F2; text-decoration: none; opacity: 0.8;">Recipes</a></li>
@@ -2455,7 +2447,7 @@
                 <!-- Empty state -->
                 <div style="text-align: center; color: #888; margin-top: 50px;">
                     <p>Your cart is currently empty.</p>
-                    <a href="shop.html" class="btn-primary" style="margin-top: 20px;">Continue Shopping</a>
+                    <a href="shop.html#product-purchase" class="btn-primary" style="margin-top: 20px;">Continue Shopping</a>
                 </div>
 
                 <!-- Example of a populated cart item (Hidden for now) -->
@@ -2702,6 +2694,42 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 });
 </script>
+
+<!-- ========================================== -->
+    <!-- PROMOTIONAL MODAL & MINIMIZED TAB -->
+    <!-- ========================================== -->
+    <div id="promoOfferOverlay" class="promo-overlay hidden">
+        <div class="promo-modal">
+            <button id="promoCloseBtn" class="promo-close-btn">&times;</button>
+            <div class="promo-content">
+                <div class="promo-image-grid">
+                    <img src="500ml.png" alt="500g Ghee">
+                    <img src="1kg.png" alt="1kg Ghee">
+                    <img src="2ltr.jpeg" alt="2L Ghee">
+                    <img src="5ltr.jpeg" alt="5L Ghee">
+                </div>
+                <div class="promo-text-area">
+                    <h2>Unlock Secret Offers! 🎁</h2>
+                    <p>Experience the purity of authentic, traditional Bilona Ghee. Submit your WhatsApp number to unlock a secret discount on your first order.</p>
+                    <form id="promoForm">
+                        <input type="tel" id="promoPhoneInput" placeholder="WhatsApp Number (10 digits)" required pattern="[0-9]{10}">
+                        <button type="submit" class="btn-promo-submit">Reveal My Offer</button>
+                    </form>
+                    <div id="promoSuccessMsg" class="promo-success-msg" style="display: none;">
+                        🎉 Success! Your secret offer code is <strong>GHEE15</strong>. Use it at checkout!
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Draggable Minimized Tab -->
+    <div id="promoMiniTab" class="promo-mini-tab hidden">
+        <div class="promo-tab-content">
+            <span class="promo-tab-icon">🎁</span>
+            <span class="promo-tab-text">Get 15% OFF</span>
+        </div>
+    </div>
 
     <script type="module" src="firebase-config.js"></script>
 </body>

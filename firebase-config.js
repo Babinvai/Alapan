@@ -283,7 +283,66 @@ onAuthStateChanged(auth, (user) => {
         // Block checkout for guests if they land directly on checkout.html
         const isCheckoutPage = document.querySelector('.checkout-container');
         if (isCheckoutPage) {
-            window.location.href = 'login.html';
+            // Prevent normal checkout interaction
+            document.body.style.overflow = 'hidden';
+            
+            // Create a professional overlay
+            const authOverlay = document.createElement('div');
+            authOverlay.style.position = 'fixed';
+            authOverlay.style.top = '0';
+            authOverlay.style.left = '0';
+            authOverlay.style.width = '100vw';
+            authOverlay.style.height = '100vh';
+            authOverlay.style.backgroundColor = 'rgba(250, 248, 242, 0.85)';
+            authOverlay.style.backdropFilter = 'blur(12px)';
+            authOverlay.style.zIndex = '999999';
+            authOverlay.style.display = 'flex';
+            authOverlay.style.alignItems = 'center';
+            authOverlay.style.justifyContent = 'center';
+            
+            // Create the modal box
+            const authModal = document.createElement('div');
+            authModal.style.background = '#fff';
+            authModal.style.padding = '40px 30px';
+            authModal.style.borderRadius = '16px';
+            authModal.style.maxWidth = '420px';
+            authModal.style.width = '90%';
+            authModal.style.textAlign = 'center';
+            authModal.style.boxShadow = '0 20px 60px rgba(23, 75, 55, 0.15)';
+            authModal.style.border = '1px solid rgba(217, 177, 45, 0.3)';
+            authModal.style.fontFamily = 'var(--font-sans, "Inter", sans-serif)';
+            
+            authModal.innerHTML = `
+                <div style="background: linear-gradient(135deg, #113627 0%, var(--brand-green, #174B37) 100%); width: 64px; height: 64px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; box-shadow: 0 8px 20px rgba(23,75,55,0.2);">
+                    <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="var(--brand-gold, #D9B12D)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                        <circle cx="12" cy="7" r="4"></circle>
+                    </svg>
+                </div>
+                <h2 style="margin: 0 0 12px; color: var(--brand-green, #174B37); font-family: var(--font-serif, serif); font-size: 1.8rem; font-weight: 700;">Account Required</h2>
+                <p style="color: #666; font-size: 0.95rem; line-height: 1.5; margin-bottom: 25px;">To ensure the highest quality of service and full traceability of your Ghee batch, please log in or create a quick account to complete your purchase.</p>
+                
+                <div style="display: flex; flex-direction: column; gap: 12px;">
+                    <a href="login.html" style="display: block; padding: 14px; background: var(--brand-green, #174B37); color: #fff; text-decoration: none; border-radius: 8px; font-weight: 600; font-size: 1rem; transition: all 0.3s; box-shadow: 0 4px 12px rgba(23,75,55,0.2);">Log In to Continue</a>
+                    <a href="register.html" style="display: block; padding: 14px; background: #FAF8F2; color: var(--brand-green, #174B37); border: 1px solid var(--brand-gold, #D9B12D); text-decoration: none; border-radius: 8px; font-weight: 600; font-size: 1rem; transition: all 0.3s;">Create New Account</a>
+                </div>
+                
+                <div style="margin-top: 25px;">
+                    <a href="shop.html" style="color: #888; font-size: 0.9rem; text-decoration: underline; transition: color 0.2s;">Return to Shop</a>
+                </div>
+            `;
+            
+            // Add hover effects dynamically
+            const btns = authModal.querySelectorAll('a');
+            btns[0].onmouseover = () => btns[0].style.background = '#113627';
+            btns[0].onmouseout = () => btns[0].style.background = 'var(--brand-green, #174B37)';
+            btns[1].onmouseover = () => btns[1].style.background = '#F5E6B8';
+            btns[1].onmouseout = () => btns[1].style.background = '#FAF8F2';
+            btns[2].onmouseover = () => btns[2].style.color = '#333';
+            btns[2].onmouseout = () => btns[2].style.color = '#888';
+            
+            authOverlay.appendChild(authModal);
+            document.body.appendChild(authOverlay);
         }
 
         desktopProfileBtns.forEach(btn => {
