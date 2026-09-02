@@ -486,40 +486,81 @@
         grid-template-columns: 1fr;
         gap: 20px;
     }
+    
+    /* Hide the large green banner on mobile as it takes too much space, or make it very compact */
     .profile-header {
-        flex-direction: column;
-        text-align: center;
-        gap: 15px;
-        padding: 30px 20px;
+        display: none; /* Hide to save space, the sidebar-badge will serve as the header */
     }
-    .header-avatar-container {
-        flex-direction: column;
-        gap: 15px;
-        width: 100%;
-    }
-    .dashboard-avatar {
-        margin: 0 auto;
-    }
-    .btn-logout {
-        width: 100%;
-        max-width: 200px;
-    }
+    
     .profile-card {
-        padding: 20px 15px;
+        padding: 15px;
     }
+    
+    .profile-card h3 {
+        display: none; /* Hide "Account Details" to save vertical space */
+    }
+
     .sidebar-profile-badge {
-        flex-direction: column;
-        text-align: center;
-        padding: 20px 15px;
-        gap: 10px;
+        flex-direction: row;
+        text-align: left;
+        padding: 15px;
+        gap: 15px;
+        margin-bottom: 15px;
     }
+    
+    .sidebar-avatar {
+        width: 45px;
+        height: 45px;
+        font-size: 1.2rem;
+    }
+    
     #info-name-display-group, #info-name-edit-group {
-        justify-content: center;
+        justify-content: flex-start;
     }
+
+    /* Make tabs horizontal scrollable on mobile */
+    .quick-links-menu {
+        display: flex;
+        overflow-x: auto;
+        white-space: nowrap;
+        gap: 10px;
+        padding: 0 5px 15px 5px;
+        margin: 0;
+        border-top: none;
+        -ms-overflow-style: none; /* IE and Edge */
+        scrollbar-width: none; /* Firefox */
+    }
+    
+    .quick-links-menu::-webkit-scrollbar {
+        display: none;
+    }
+    
+    .quick-links-menu li {
+        flex: 0 0 auto;
+    }
+    
     .quick-links-menu li a {
-        padding: 14px 15px;
-        font-size: 1.05rem;
+        padding: 10px 18px;
+        font-size: 0.95rem;
+        border-left: none;
+        border-bottom: 3px solid transparent;
+        border-radius: 20px; /* Pill shape */
+        background: #F5F7F6;
+        color: #555;
     }
+    
+    .quick-links-menu li a:hover {
+        background: #E8F0EC;
+        padding-left: 18px; /* Override desktop hover */
+    }
+    
+    .quick-links-menu li a.active {
+        border-left: none;
+        border-bottom: none;
+        background: var(--brand-green);
+        color: #fff;
+    }
+
     .data-card-modern {
         flex-direction: column;
         align-items: flex-start;
