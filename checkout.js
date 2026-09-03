@@ -41,15 +41,15 @@ document.addEventListener('DOMContentLoaded', () => {
                     <img src="${item.img}" alt="${item.name}">
                 </div>
                 <div class="summary-item-info">
-                    <h4 class="summary-item-title">Ghosh Dhara Ghee</h4>
+                    <h4 class="summary-item-title">Ghosh Dhara Ghee <span style="color: #888; font-size: 0.85rem; font-weight: normal;">x${item.quantity || 1}</span></h4>
                     <p style="font-size: 0.85rem; color: #666; margin: 0;">${item.name}</p>
                 </div>
-                <p class="summary-item-price">₹${item.price.toFixed(2)}</p>
+                <p class="summary-item-price">₹${(item.price * (item.quantity || 1)).toFixed(2)}</p>
             </div>
         `).join('');
 
         // 3. Calculate Totals
-        let subtotal = cart.reduce((sum, item) => sum + item.price, 0);
+        let subtotal = cart.reduce((sum, item) => sum + (item.price * (item.quantity || 1)), 0);
         let shipping = subtotal > 999 ? 0 : 99; // Free shipping over ₹999
         let discount = 0;
 
@@ -182,12 +182,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 const orderNumber = "GD" + Math.floor(100000 + Math.random() * 900000);
                 
                 // 1. Calculate Totals
-                let subtotal = cart.reduce((sum, item) => sum + item.price, 0);
+                let subtotal = cart.reduce((sum, item) => sum + (item.price * (item.quantity || 1)), 0);
                 let shipping = subtotal > 999 ? 0 : 99;
                 let finalTotal = subtotal + shipping;
 
                 // 2. Format Order Details for Email
-                let orderItems = cart.map(item => `1x ${item.name} (₹${item.price.toFixed(2)})`).join('\n');
+                let orderItems = cart.map(item => `${item.quantity || 1}x ${item.name} (₹${(item.price * (item.quantity || 1)).toFixed(2)})`).join('\n');
                 
                 const orderDetails = `
 ORDER NUMBER: ${orderNumber}

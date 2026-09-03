@@ -237,8 +237,8 @@ window.updateCartUI = function() {
     const cartIcons = document.querySelectorAll('.cart-icon-btn, .cart-count');
     
     // Calculate precise totals
-    let totalItems = cart.length;
-    let totalPrice = cart.reduce((sum, item) => sum + item.price, 0);
+    let totalItems = cart.reduce((sum, item) => sum + (item.quantity || 1), 0);
+    let totalPrice = cart.reduce((sum, item) => sum + (item.price * (item.quantity || 1)), 0);
 
     // A. Update Header Icons
     cartIcons.forEach(icon => {
@@ -293,10 +293,25 @@ window.updateCartUI = function() {
                 <div style="flex: 1; text-align: left;">
                     <h4 class="font-serif" style="color: #174B37; font-size: 1rem; margin: 0 0 5px 0;">Ghosh Dhara Ghee</h4>
                     <p style="font-size: 0.85rem; color: #666; margin: 0 0 5px 0;">${item.name}</p>
-                    <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 8px;">
-                        <p style="font-weight: bold; color: #D9B12D; margin: 0;">₹${item.price.toFixed(2)}</p>
-                        <!-- REMOVE BUTTON -->
-                        <button onclick="removeFromCart(${index})" style="background: none; border: none; color: #B86745; font-size: 0.85rem; text-decoration: underline; cursor: pointer; padding: 0;">Remove</button>
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 10px; flex-wrap: wrap; gap: 10px;">
+                        
+                        <!-- QUANTITY CONTROL -->
+                        <div style="display: flex; align-items: center; border: 1px solid #EAEAEA; border-radius: 6px; background: #fff; overflow: hidden; height: 32px;">
+                            <button onclick="updateQuantity(${index}, -1)" style="width: 32px; height: 100%; background: #FAF8F2; border: none; border-right: 1px solid #EAEAEA; cursor: pointer; color: #174B37; font-weight: bold; transition: all 0.2s;">-</button>
+                            <span style="width: 35px; text-align: center; font-size: 0.9rem; font-weight: 600; color: #333;">${item.quantity || 1}</span>
+                            <button onclick="updateQuantity(${index}, 1)" style="width: 32px; height: 100%; background: #FAF8F2; border: none; border-left: 1px solid #EAEAEA; cursor: pointer; color: #174B37; font-weight: bold; transition: all 0.2s;">+</button>
+                        </div>
+
+                        <div style="display: flex; align-items: center; gap: 12px;">
+                            <p style="font-weight: bold; color: #D9B12D; margin: 0; font-size: 1.05rem;">₹${(item.price * (item.quantity || 1)).toFixed(2)}</p>
+                            <!-- REMOVE BUTTON -->
+                            <button class="btn-remove-item" onclick="removeFromCart(${index})" aria-label="Remove item" title="Remove">
+                                <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <polyline points="3 6 5 6 21 6"></polyline>
+                                    <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+                                </svg>
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -304,20 +319,41 @@ window.updateCartUI = function() {
     }
 };
 
-// 4. Upgraded Add to Cart Function (Now accepts Images!)
+// 4. Upgraded Add to Cart Function (Now accepts Images & Quantities!)
 window.addToCart = function(productName, price, imgUrl) {
-    // If no image is provided, it uses a beautiful default jar image
     let fallbackImg = "https://images.unsplash.com/photo-1605807646983-377bc5a76493?auto=format&fit=crop&q=80&w=200"; 
     
-    cart.push({ 
-        name: productName, 
-        price: parseFloat(price), 
-        img: imgUrl || fallbackImg 
-    });
+    // Check if item already exists
+    let existingItem = cart.find(item => item.name === productName);
+    
+    if (existingItem) {
+        existingItem.quantity = (existingItem.quantity || 1) + 1;
+    } else {
+        cart.push({ 
+            name: productName, 
+            price: parseFloat(price), 
+            img: imgUrl || fallbackImg,
+            quantity: 1
+        });
+    }
+    
     saveCart();
     updateCartUI();
     window.showToast();
     window.openCart();
+};
+
+// 5. Update Quantity in Cart
+window.updateQuantity = function(index, change) {
+    if (cart[index]) {
+        cart[index].quantity = (cart[index].quantity || 1) + change;
+        if (cart[index].quantity <= 0) {
+            removeFromCart(index);
+        } else {
+            saveCart();
+            updateCartUI();
+        }
+    }
 };
 
 // Initial Render

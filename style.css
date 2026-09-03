@@ -4005,15 +4005,21 @@ body.no-scroll {
     .promo-image-grid {
         display: flex;
         flex-direction: row;
-        justify-content: center;
-        gap: 10px;
-        padding: 15px;
-        flex: 0 0 auto;
+        justify-content: space-evenly;
+        align-items: center;
+        gap: 8px;
+        padding: 20px 15px;
+        width: 100%;
+        box-sizing: border-box;
     }
     .promo-image-grid img {
-        width: 60px;
-        max-width: none;
-        object-fit: contain;
+        width: 22%; /* Responsive width */
+        aspect-ratio: 3 / 4; /* Perfect for tall jars */
+        max-width: 70px;
+        height: auto;
+        object-fit: cover;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.3);
     }
     .promo-text-area {
         padding: 20px 20px 30px;
@@ -4039,3 +4045,35 @@ body.no-scroll {
     }
 }
 
+/* Cart Item Remove Button */
+.btn-remove-item {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    background: rgba(184, 103, 69, 0.08); /* Light terracotta background */
+    border: 1px solid rgba(184, 103, 69, 0.2);
+    color: #B86745;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    padding: 5px 10px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-remove-item:hover {
+    background: #B86745;
+    color: #FAF8F2; /* brand ivory */
+    border-color: #B86745;
+    box-shadow: 0 4px 10px rgba(184, 103, 69, 0.25);
+}
+
+.btn-remove-item svg {
+    transition: transform 0.3s ease;
+}
+
+.btn-remove-item:hover svg {
+    transform: scale(1.1) rotate(-10deg);
+}
