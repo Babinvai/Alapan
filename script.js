@@ -341,6 +341,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Check if dismissed in this session
     const isPromoDismissed = sessionStorage.getItem('promoDismissed');
+    const isPromoFullyDismissed = sessionStorage.getItem('promoFullyDismissed');
+    
+    if (isPromoFullyDismissed) {
+        promoOverlay.classList.add('hidden');
+        promoMiniTab.classList.add('hidden');
+        return;
+    }
     
     if (!isPromoDismissed) {
         // Show after 1.5s delay
@@ -384,6 +391,10 @@ document.addEventListener('DOMContentLoaded', () => {
             // In a real app, send this to Firebase or Web3Forms
             console.log("Promo lead captured:", phone);
             
+            if (window.savePromoLead) {
+                window.savePromoLead(phone);
+            }
+            
             promoForm.style.display = 'none';
             promoSuccessMsg.style.display = 'block';
             
@@ -397,10 +408,21 @@ document.addEventListener('DOMContentLoaded', () => {
     // Tab Click (Maximize)
     if(promoMiniTab) {
         promoMiniTab.addEventListener('click', (e) => {
+            if (e.target.closest('#promoMiniTabCloseBtn')) return;
             // Only maximize if we are not dragging
             if (!isDragging) {
                 showModalAndHideTab();
             }
+        });
+    }
+
+    const miniTabCloseBtn = document.getElementById('promoMiniTabCloseBtn');
+    if (miniTabCloseBtn) {
+        miniTabCloseBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            promoMiniTab.classList.remove('visible');
+            setTimeout(() => promoMiniTab.classList.add('hidden'), 400);
+            sessionStorage.setItem('promoFullyDismissed', 'true');
         });
     }
 

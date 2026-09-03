@@ -781,3 +781,16 @@ window.deleteUserDoc = async function(uid, subcollection, docId) {
         alert("Failed to delete.");
     }
 }
+
+// Global promo lead save function
+window.savePromoLead = async function(phone) {
+    try {
+        await addDoc(collection(db, "promoLeads"), {
+            phone: phone,
+            createdAt: serverTimestamp()
+        });
+        console.log("Promo lead saved to Firebase.");
+    } catch (e) {
+        console.error("Error saving promo lead: ", e);
+    }
+}
