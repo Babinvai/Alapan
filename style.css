@@ -4003,13 +4003,24 @@ body.no-scroll {
 /* Mobile adjustments */
 @media (max-width: 768px) {
     .promo-image-grid {
-        display: none; /* Hide images on mobile to save space */
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        gap: 10px;
+        padding: 15px;
+        flex: 0 0 auto;
+    }
+    .promo-image-grid img {
+        width: 60px;
+        max-width: none;
+        object-fit: contain;
     }
     .promo-text-area {
-        padding: 30px 20px;
+        padding: 20px 20px 30px;
     }
     .promo-text-area h2 {
-        font-size: 1.8rem;
+        font-size: 1.6rem;
+        margin-bottom: 10px;
     }
     .promo-mini-tab {
         padding: 8px 6px;
