@@ -318,6 +318,49 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
+    // File Upload for QR Image
+    const btnUploadQR = document.getElementById('btnUploadQR');
+    const qrInputFile = document.getElementById('qrInputFile');
+
+    if (btnUploadQR && qrInputFile) {
+        btnUploadQR.addEventListener('click', () => {
+            qrInputFile.click();
+        });
+
+        qrInputFile.addEventListener('change', (e) => {
+            if (e.target.files.length === 0) return;
+            
+            const file = e.target.files[0];
+            
+            if (typeof Html5Qrcode === 'undefined') {
+                scannerMessage.textContent = "Scanner library not loaded. Please enter batch manually.";
+                return;
+            }
+
+            // Stop camera scanner if running
+            stopScanner();
+            
+            if (!html5QrCode) {
+                html5QrCode = new Html5Qrcode("qrReader");
+            }
+            
+            scannerMessage.textContent = "Scanning uploaded image...";
+            
+            html5QrCode.scanFile(file, true)
+                .then(decodedText => {
+                    scannerMessage.textContent = "";
+                    onScanSuccess(decodedText);
+                })
+                .catch(err => {
+                    console.error(err);
+                    scannerMessage.textContent = "Could not find a QR code in the image. Please try another image or enter manually.";
+                });
+                
+            // Reset input so the same file can be uploaded again if needed
+            qrInputFile.value = '';
+        });
+    }
+
 
     /* =========================================================
        9. FOOLPROOF FAQ ACCORDION (Class Toggle)
